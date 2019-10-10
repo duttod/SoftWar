@@ -18,7 +18,15 @@
         android:layout_width="370dp"
         android:layout_height="match_parent"
         android:background="#DFC989"
-        android:orientation="vertical">
+        android:orientation="vertical"
+
+
+        
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher_foreground"/>
 
     </LinearLayout>
 
@@ -39,19 +47,22 @@
             android:layout_width="268dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Button" />
+            android:text="Nouvelle Partie"
+            android:onClick="Nouvelle_Partie"/>
 
         <Button
             android:id="@+id/button2"
             android:layout_width="268dp"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Charger Partie"
+            android:onClick="ChargerPartie"/>
 
         <Button
             android:id="@+id/button3"
             android:layout_width="268dp"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Crédit"
+            android:onClick="afficherCredit"/>
 
     </LinearLayout>
 
