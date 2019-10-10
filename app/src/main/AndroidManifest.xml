@@ -9,10 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".controllers.MainActivity"></activity>
+        <activity android:name=".controllers.CreditActivity" />
+        <activity android:name=".controllers.StartActivity">
         <activity android:name=".controllers.ChargePartie"></activity>
         <activity android:name=".controllers.CreationNewPartie" />
-        <activity android:name=".controllers.CreditActivity" />
-        <activity android:name=".controllers.MainActivity">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
