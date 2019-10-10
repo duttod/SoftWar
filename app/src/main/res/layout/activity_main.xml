@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="#DFC989"
     android:orientation="horizontal"
-    tools:context=".controllers.MainActivity">
+    tools:context=".controllers.HomePageActivity">
 
     <LinearLayout
 
@@ -19,10 +19,7 @@
         android:layout_height="match_parent"
         android:background="#DFC989"
         android:orientation="vertical"
-        android:gravity="center"
-
-        
-        >
+        android:gravity="center">
 
         <ImageView
             android:layout_width="307dp"
