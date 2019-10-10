@@ -2,56 +2,51 @@ package com.example.softwar.data;
 
 public class Evenement {
 
-	private int nbUtilisateurs;
-	private int argent;
-	private int productivite;
+	private long nbUtilisateurs;
+	private long argent;
+	private long productivite;
 	private int securite;
 	private int puissance;
 	private int ergonomie;
-	private int attribute;
 
-	public void getNbUtilisateurs() {
-		// TODO - implement com.example.softwar.data.Evenement.getNbUtilisateurs
-		throw new UnsupportedOperationException();
+	public long getNbUtilisateurs() {
+		return this.nbUtilisateurs;
 	}
 
 	/**
 	 * 
 	 * @param nbUtilisateurs
 	 */
-	public void setNbUtilisateurs(int nbUtilisateurs) {
+	public void setNbUtilisateurs(long nbUtilisateurs) {
 		this.nbUtilisateurs = nbUtilisateurs;
 	}
 
-	public void getArgent() {
-		// TODO - implement com.example.softwar.data.Evenement.getArgent
-		throw new UnsupportedOperationException();
+	public long getArgent() {
+		return this.argent;
 	}
 
 	/**
 	 * 
 	 * @param argent
 	 */
-	public void setArgent(int argent) {
+	public void setArgent(long argent) {
 		this.argent = argent;
 	}
 
-	public void getProductivite() {
-		// TODO - implement com.example.softwar.data.Evenement.getProductivite
-		throw new UnsupportedOperationException();
+	public long getProductivite() {
+		return this.productivite;
 	}
 
 	/**
 	 * 
 	 * @param productivite
 	 */
-	public void setProductivite(int productivite) {
+	public void setProductivite(long productivite) {
 		this.productivite = productivite;
 	}
 
-	public void getSecurite() {
-		// TODO - implement com.example.softwar.data.Evenement.getSecurite
-		throw new UnsupportedOperationException();
+	public int getSecurite() {
+		return this.securite;
 	}
 
 	/**
@@ -62,9 +57,8 @@ public class Evenement {
 		this.securite = securite;
 	}
 
-	public void getPuissance() {
-		// TODO - implement com.example.softwar.data.Evenement.getPuissance
-		throw new UnsupportedOperationException();
+	public int getPuissance() {
+		return this.puissance;
 	}
 
 	/**
@@ -75,9 +69,8 @@ public class Evenement {
 		this.puissance = puissance;
 	}
 
-	public void getErgonomie() {
-		// TODO - implement com.example.softwar.data.Evenement.getErgonomie
-		throw new UnsupportedOperationException();
+	public int getErgonomie() {
+		return this.ergonomie;
 	}
 
 	/**
@@ -86,19 +79,6 @@ public class Evenement {
 	 */
 	public void setErgonomie(int ergonomie) {
 		this.ergonomie = ergonomie;
-	}
-
-	public void getAttribute() {
-		// TODO - implement com.example.softwar.data.Evenement.getAttribute
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param attribute
-	 */
-	public void setAttribute(int attribute) {
-		this.attribute = attribute;
 	}
 
 }
