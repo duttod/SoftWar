@@ -25,6 +25,8 @@ public class StartActivity extends AppCompatActivity {
     }
 
     public void Nouvelle_Partie(View view) {
+        Intent intent = new Intent(this,CreationNewPartie.class);
+        startActivity(intent);
 
     }
 }
