@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="#DFC989"
     android:orientation="horizontal"
-    tools:context=".controllers.MainActivity">
+    tools:context=".controllers.StartActivity">
 
     <LinearLayout
 
