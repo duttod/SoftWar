@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">SoftWar</string>
-    <string name="credit">Ce prototype a été créé par:\nRenaud Lienard\nLucas Miras\nDriss Dutto\nLéo Kemplaire\nTuteur: Mr Eric Ceret</string>
+    <string name="credit">Ce prototype a été créé par:\nRenaud Lienard\nLucas Miras\nDriss Dutto\nLéo Kemplaire\n</string>
     <string name="minijeu_titre">Titre MiniJeu</string>
 </resources>
