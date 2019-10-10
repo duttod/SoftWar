@@ -17,6 +17,7 @@
             android:screenOrientation="landscape"/>
         <activity android:name=".controllers.CreationNewPartie"
             android:screenOrientation="landscape"/>
+        <activity android:name=".controllers.ChooseRenforcerAttaquerActivity"></activity>
 
         <activity
             android:name=".controllers.HomePageActivity"
