@@ -13,6 +13,8 @@ public class Entreprise implements Serializable {
     @PrimaryKey
     @NonNull
 	private String nomEntreprise;
+	@ColumnInfo(name = "nomLogiciel")
+    private String nomLogiciel ;
 
 	public String getNomEntreprise() {
 		// TODO - implement Entreprise.getNomEntreprise
@@ -27,4 +29,11 @@ public class Entreprise implements Serializable {
 		this.nomEntreprise = nomEntreprise;
 	}
 
+	public String getNomLogiciel() {
+		return nomLogiciel;
+	}
+
+	public void setNomLogiciel(String nomLogiciel) {
+		this.nomLogiciel = nomLogiciel;
+	}
 }

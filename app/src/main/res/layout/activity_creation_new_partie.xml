@@ -98,6 +98,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="25dp"
             android:gravity="center"
+            android:onClick="demarrerPartie"
             android:text="Démarrer la partie" />
 
     </LinearLayout>
