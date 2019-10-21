@@ -58,4 +58,7 @@ public class Jeu {
 		this.description = description;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
 }
