@@ -8,10 +8,10 @@ import android.support.annotation.NonNull;
 @Entity
 public class EntreprisePerso extends Entreprise {
 
-	@ColumnInfo(name = "argent")
+	@ColumnInfo(name = "argentEntreprise")
 	private long argentEntreprise;
 
-	@ColumnInfo(name = "nbcontrats")
+	@ColumnInfo(name = "nbContrats")
 	private int nbContrats;
 
 	@ColumnInfo(name = "productivite")

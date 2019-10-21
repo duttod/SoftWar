@@ -12,7 +12,7 @@ import java.util.List;
 public interface EntreprisePersoDAO {
 
     @Query("SELECT * FROM EntreprisePerso")
-    List<Entreprise> getAll();
+    List<EntreprisePerso> getAll();
 
     @Insert
     void insert(EntreprisePerso ent);

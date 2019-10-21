@@ -13,20 +13,20 @@ import java.util.List;
 @Dao
 public interface EntrepriseDAO {
 
-    @Query("SELECT * FROM Entreprise")
-    List<Entreprise> getAll();
+    @Query("SELECT * FROM EntreprisePerso")
+    List<EntreprisePerso> getAll();
 
     @Insert
-    void insert(Entreprise ent);
+    void insert(EntreprisePerso ent);
 
     @Insert
-    long[] insertAll(Entreprise... ent);
+    long[] insertAll(EntreprisePerso... ent);
 
     @Delete
-    void delete(Entreprise ent);
+    void delete(EntreprisePerso ent);
 
     @Update
-    void update(Entreprise ent);
+    void update(EntreprisePerso ent);
 
 }
 
