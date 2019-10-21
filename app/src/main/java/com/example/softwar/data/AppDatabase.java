@@ -8,5 +8,6 @@ public abstract class AppDatabase extends RoomDatabase {
 
     //Déclaration DAO's
     public abstract EntrepriseDAO entreprisedao();
+    public abstract EntreprisePersoDAO entreprisepersodao();
 
 }
