@@ -1,10 +1,25 @@
 package com.example.softwar.data;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
+@Entity
 public class Pattern {
 
+	@PrimaryKey(autoGenerate = true)
+	private int id;
+
+	@ColumnInfo
 	private String langage;
+
+	@ColumnInfo
 	private String text;
+
+	@ColumnInfo
 	private String[] reponses;
+
+	@ColumnInfo
 	private String[] bonnesReponses;
 
 	public String getLangage() {
