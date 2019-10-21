@@ -5,8 +5,20 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import java.util.ArrayList;
+
 @Entity
 public class Logiciel {
+
+	public void Logiciel(String nomL){
+		setNbUtilisateurs(1000);
+		setNiveauErgonomie(0);
+		setNiveauPuissance(0);
+		setNiveauRentabilite(0);
+		setNiveauSecurite(0);
+		setNomLogiciel(nomL);
+	}
+
 	@PrimaryKey
 	@NonNull
 	private String nomLogiciel;
@@ -20,6 +32,7 @@ public class Logiciel {
 	private int niveauErgonomie;
 	@ColumnInfo(name = "niveauPuissance")
 	private int niveauPuissance;
+
 
 	public String getNomLogiciel() {
 		return this.nomLogiciel;

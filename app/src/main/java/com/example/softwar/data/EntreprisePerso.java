@@ -7,10 +7,21 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class EntreprisePerso extends Entreprise {
+
+	public void EntreprisePerso(String nomE,String nomL,long argentEntreprise,int nbContrats ,int productivite){
+		super.setNomEntreprise(nomE);
+		super.setNomLogiciel(nomL);
+		setArgentEntreprise(argentEntreprise);
+		setNbContrats(nbContrats);
+		setProductivite(productivite);
+		employes = new ArrayList<Employe>();
+
+	}
 
 	public void EntreprisePerso(DatabaseClient mdb, long argentEntreprise, int nbContrats, int productivite) {
 		this.mdb = mdb;
