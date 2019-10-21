@@ -17,6 +17,11 @@ public class Entreprise implements Serializable {
 	@ColumnInfo(name = "nomLogiciel")
     private String nomLogiciel ;
 
+	public Entreprise(String nomEntreprise,String nomLogiciel){
+		this.setNomEntreprise(nomEntreprise);
+		this.setNomLogiciel(nomLogiciel);
+	}
+
 	public String getNomEntreprise() {
 		// TODO - implement Entreprise.getNomEntreprise
 		return nomEntreprise;
