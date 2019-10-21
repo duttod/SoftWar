@@ -19,8 +19,8 @@ public class EntreprisePerso extends Entreprise {
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
 		setProductivite(productivite);
-		employes = new ArrayList<Employe>();
 
+		employes = new ArrayList<EmployeDansEntreprise>();
 	}
 
 	public void EntreprisePerso(DatabaseClient mdb, long argentEntreprise, int nbContrats, int productivite) {
@@ -36,7 +36,7 @@ public class EntreprisePerso extends Entreprise {
 	private DatabaseClient mdb;
 
 	@Ignore
-	private HashMap<Employe,Integer> employes;
+	private List<EmployeDansEntreprise> employes;
 
 	@ColumnInfo(name = "argentEntreprise")
 	private long argentEntreprise;
@@ -52,15 +52,10 @@ public class EntreprisePerso extends Entreprise {
 	}
 
 	public void setEmployes() {
-		List<EmployeDansEntreprise> empdansentreprise;
-		empdansentreprise =  mdb.getAppDatabase().employeDansEntrepriseDao().getEmployeDuneEntreprise(getNomEntreprise());
-
-		for (int i = 0; i < empdansentreprise.size(); i++) {
-
-		}
+		employes =  mdb.getAppDatabase().employeDansEntrepriseDao().getEmployeDuneEntreprise(getNomEntreprise());
 	}
 
-	public List<Employe> getEmployes() {
+	public List<EmployeDansEntreprise> getEmployes() {
 		return this.employes;
 	}
 

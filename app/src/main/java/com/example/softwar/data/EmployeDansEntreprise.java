@@ -58,12 +58,10 @@ public class EmployeDansEntreprise {
         }
     }
 */
-    public Map<Integer, Employe> getEmploye(DatabaseClient mdb) {
+    public Employe getEmploye(DatabaseClient mdb) {
         Employe emp = mdb.getAppDatabase().employeDao().getAnEmploye(getIdEmploye());
-        HashMap employe_quantite = new HashMap<Employe,Integer>();
-        employe_quantite.put(emp, getQuantite());
 
-        return employe_quantite;
+        return emp;
     }
 
 }
