@@ -7,12 +7,12 @@ import android.view.View;
 
 import com.example.softwar.R;
 
-public class StartActivity extends AppCompatActivity {
+public class HomePageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_homepage);
     }
 
     public void ChargerPartie(View view) {
@@ -25,6 +25,8 @@ public class StartActivity extends AppCompatActivity {
     }
 
     public void Nouvelle_Partie(View view) {
+        Intent intent = new Intent(this,CreationNewPartie.class);
+        startActivity(intent);
 
     }
 }

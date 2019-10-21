@@ -15,9 +15,7 @@
         android:layout_height="wrap_content"
         android:textSize="30dp"
         android:text="@string/credit"/>
-
-
-
+    
    <Button
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
