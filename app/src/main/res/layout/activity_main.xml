@@ -25,7 +25,8 @@
             android:layout_width="307dp"
             android:layout_height="260dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_launcher_foreground" />
+            android:src="@drawable/ic_launcher_foreground"
+            app:srcCompat="@android:drawable/star_big_on" />
 
     </LinearLayout>
 

@@ -14,7 +14,6 @@
         <activity android:name=".controllers.CreditActivity" />
         <activity android:name=".controllers.HomePageActivity"/>
         <activity android:name=".controllers.ChargePartie"/>
-        <activity android:name=".controllers.CreationNewPartie" />
 
         </application>
 </manifest>

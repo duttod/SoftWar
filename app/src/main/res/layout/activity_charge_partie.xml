@@ -12,11 +12,10 @@
 
     <TextView
         android:id="@+id/titre_CreationNewPartie"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="291dp"
+        android:layout_height="166dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="Charger une partie"
@@ -28,7 +27,7 @@
     <LinearLayout
         android:id="@+id/linear_1"
         android:layout_width="match_parent"
-        android:layout_height="301dp"
+        android:layout_height="313dp"
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
         android:orientation="vertical">
@@ -37,12 +36,11 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Choissisez la partie à charger :"
-            android:gravity="center"
-            android:textSize="24sp"
-            android:textStyle="italic"
             android:layout_marginBottom="35dp"
-            />
+            android:gravity="center"
+            android:text="Choissisez la partie à charger :"
+            android:textSize="24sp"
+            android:textStyle="italic" />
 
         <Button
             android:id="@+id/button4"
@@ -62,9 +60,8 @@
             android:id="@+id/button6"
             android:layout_width="630dp"
             android:layout_height="wrap_content"
-            android:text="Partie 3 - bloblo"
             android:layout_gravity="center"
-            />
+            android:text="Partie 3 - bloblo" />
 
     </LinearLayout>
 
