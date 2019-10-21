@@ -91,7 +91,7 @@ public class ChargePartie extends AppCompatActivity {
             protected void onPostExecute(EntreprisePerso ent) {
                 super.onPostExecute(ent);
 
-                entreprise_joueur = ent;
+                entreprise_joueur = new EntreprisePerso (mdb, ent.getNomEntreprise(), ent.getNomLogiciel(), ent.getArgentEntreprise(), ent.getNbContrats(), ent.getProductivite());
                 setView();
 
             }
