@@ -2,6 +2,7 @@ package com.example.softwar.controllers;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.softwar.R;
 
 import com.example.softwar.R;
 
