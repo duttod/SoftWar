@@ -22,7 +22,7 @@ public class EntreprisePerso extends Entreprise {
 
 		employes = new ArrayList<EmployeDansEntreprise>();
 	}
-
+/*
 	public void EntreprisePerso(DatabaseClient mdb, long argentEntreprise, int nbContrats, int productivite) {
 		this.mdb = mdb;
 
@@ -30,7 +30,7 @@ public class EntreprisePerso extends Entreprise {
 		setNbContrats(nbContrats);
 		setProductivite(productivite);
 		setEmployes();
-	}
+	}*/
 
 	@Ignore
 	private DatabaseClient mdb;

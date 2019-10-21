@@ -4,23 +4,18 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity
+import java.util.ArrayList;
+
 public class Pattern {
 
-	@PrimaryKey(autoGenerate = true)
-	private int id;
 
-	@ColumnInfo
 	private String langage;
 
-	@ColumnInfo
 	private String text;
 
-	@ColumnInfo
-	private String[] reponses;
+	private ArrayList<String> reponses;
 
-	@ColumnInfo
-	private String[] bonnesReponses;
+	private ArrayList<String> bonnesReponses;
 
 	public String getLangage() {
 		return this.langage;
@@ -46,7 +41,7 @@ public class Pattern {
 		this.text = text;
 	}
 
-	public String[] getReponses() {
+	public ArrayList<String> getReponses() {
 		return this.reponses;
 	}
 
@@ -54,11 +49,11 @@ public class Pattern {
 	 * 
 	 * @param reponses
 	 */
-	public void setReponses(String[] reponses) {
+	public void setReponses(ArrayList<String> reponses) {
 		this.reponses = reponses;
 	}
 
-	public String[] getBonnesReponses() {
+	public ArrayList<String> getBonnesReponses() {
 		return this.bonnesReponses;
 	}
 
@@ -66,8 +61,16 @@ public class Pattern {
 	 * 
 	 * @param bonnesReponses
 	 */
-	public void setBonnesReponses(String[] bonnesReponses) {
+	public void setBonnesReponses(ArrayList<String> bonnesReponses) {
 		this.bonnesReponses = bonnesReponses;
+	}
+
+	public void addBonneReponse(String reponse){
+		this.bonnesReponses.add(reponse);
+		this.reponses.add(reponse);
+	}
+	public void addMauvaiseReponse(String reponse){
+		this.reponses.add(reponse);
 	}
 
 }

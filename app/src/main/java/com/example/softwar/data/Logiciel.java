@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class Logiciel {
 
 	public Logiciel(String nomL) {
+		setNomLogiciel(nomL);
 		setNbUtilisateurs(1000);
 		setNiveauErgonomie(0);
 		setNiveauPuissance(0);

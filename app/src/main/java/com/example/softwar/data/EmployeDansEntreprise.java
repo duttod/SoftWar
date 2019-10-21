@@ -3,6 +3,7 @@ package com.example.softwar.data;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.HashMap;
@@ -24,6 +25,7 @@ public class EmployeDansEntreprise {
     @ColumnInfo(name = "quantite")
     private int quantite;
 
+    @Ignore
     private List<Employe> employes=null;
 
     public void setNomEntreprise(String nomEntreprise) {
@@ -32,6 +34,14 @@ public class EmployeDansEntreprise {
 
     public void setIdEmploye(int idEmploye) {
         this.idEmploye = idEmploye;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setQuantite(int quantite) {
