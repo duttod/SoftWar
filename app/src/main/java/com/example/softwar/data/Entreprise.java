@@ -1,19 +1,29 @@
 package com.example.softwar.data;
 
-public class Entreprise {
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
-	private int nomEntreprise;
+import java.io.Serializable;
 
-	public void getNomEntreprise() {
+@Entity
+public class Entreprise implements Serializable {
+
+    @PrimaryKey
+    @NonNull
+	private String nomEntreprise;
+
+	public String getNomEntreprise() {
 		// TODO - implement Entreprise.getNomEntreprise
-		throw new UnsupportedOperationException();
+		return nomEntreprise;
 	}
 
 	/**
 	 * 
 	 * @param nomEntreprise
 	 */
-	public void setNomEntreprise(int nomEntreprise) {
+	public void setNomEntreprise(String nomEntreprise) {
 		this.nomEntreprise = nomEntreprise;
 	}
 

@@ -1,9 +1,20 @@
 package com.example.softwar.data;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+@Entity
 public class EntreprisePerso extends Entreprise {
 
+	@ColumnInfo(name = "argent")
 	private long argentEntreprise;
+
+	@ColumnInfo(name = "nbcontrats")
 	private int nbContrats;
+
+	@ColumnInfo(name = "productivite")
 	private int productivite;
 
 	public long getArgentEntreprise() {
