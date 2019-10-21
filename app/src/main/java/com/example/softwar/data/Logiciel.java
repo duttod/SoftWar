@@ -1,12 +1,24 @@
 package com.example.softwar.data;
 
-public class Logiciel {
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
+@Entity
+public class Logiciel {
+	@PrimaryKey
+	@NonNull
 	private String nomLogiciel;
+	@ColumnInfo(name = "nbUtilisateurs")
 	private int nbUtilisateurs;
+	@ColumnInfo(name = "niveauSecurite")
 	private int niveauSecurite;
+	@ColumnInfo(name = "niveauRentabilite")
 	private int niveauRentabilite;
+	@ColumnInfo(name = "niveauErgonomie")
 	private int niveauErgonomie;
+	@ColumnInfo(name = "niveauPuissance")
 	private int niveauPuissance;
 
 	public String getNomLogiciel() {
