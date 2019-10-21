@@ -1,6 +1,8 @@
 package com.example.softwar.controllers;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +23,9 @@ public class CreationNewPartie extends AppCompatActivity {
     private DatabaseClient mDb;
     ArrayList<Logiciel> arraylog = new ArrayList();
     ArrayList<Entreprise> arrayEnt = new ArrayList();
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    Logiciel logicielperso;
+    SharedPreferences session ;
 
 
     @Override
@@ -28,17 +33,29 @@ public class CreationNewPartie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation_new_partie);
         mDb = DatabaseClient.getInstance(getApplicationContext());
+        session = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
     }
 
     public void demarrerPartie(View view) {
         tnomE = (EditText) findViewById(R.id.edit_nom_entreprise);
         tnomL = (EditText) findViewById(R.id.edit_nom_logiciel);
         getLogiciels();
+        getEntreprises();
+        System.out.println("Boutton OK");
+        System.out.println(nomEValide(tnomE.getText().toString()));
+        System.out.println(nomLValide(tnomE.getText().toString()));
 
         if(nomEValide(tnomE.getText().toString()) && nomLValide(tnomE.getText().toString()) ){
             creerLogiciel(tnomL.getText().toString());
             creerEntreprisePerso(tnomE.getText().toString(),tnomL.getText().toString());
+
+            SharedPreferences.Editor editor = session.edit();
+
+            editor.putString("NomEntreprise", tnomE.getText().toString());
+            editor.commit();
+
             Intent intent = new Intent(this,MainActivity.class);
+
             startActivity(intent);
         }
     }
@@ -49,7 +66,7 @@ public class CreationNewPartie extends AppCompatActivity {
             while(i<arrayEnt.size() && arrayEnt.get(i).getNomEntreprise() != nomE ){
                 i++;
             }
-            return i==arrayEnt.size()-1;
+            return i==arrayEnt.size();
         }else{
             return false;
         }
@@ -62,7 +79,7 @@ public class CreationNewPartie extends AppCompatActivity {
             while(i<arrayEnt.size() && arrayEnt.get(i).getNomEntreprise() != nomL ){
                 i++;
             }
-            return i==arrayEnt.size()-1;
+            return i==arrayEnt.size();
         }else{
             return false;
         }
@@ -101,8 +118,9 @@ public class CreationNewPartie extends AppCompatActivity {
 
             @Override
             protected List<Entreprise> doInBackground(Void... voids) {
-                List<Entreprise> EntrepriseList = mDb.getAppDatabase()
-                        .entreprisedao().getAll();
+
+                ArrayList<Entreprise> EntrepriseList = new ArrayList<>();
+                EntrepriseList.addAll(mDb.getAppDatabase().entreprisedao().getAll());
                 return EntrepriseList;
             }
 
@@ -123,14 +141,22 @@ public class CreationNewPartie extends AppCompatActivity {
 
     private void creerEntreprisePerso(final String nomE, final String nomL) {
 
-        class creerEntreprisePerso extends AsyncTask<Void, Void, Void> {
+        class creerEntreprisePerso extends AsyncTask<Void, Void, EntreprisePerso> {
 
             @Override
-            protected Void doInBackground(Void... voids) {
+            protected EntreprisePerso doInBackground(Void... voids) {
                 EntreprisePerso e = new EntreprisePerso(nomE,nomL,1000 , 1 , 0);
-                mDb.getAppDatabase().entreprisedao().insert(e);
+                mDb.getAppDatabase().entreprisepersodao().insert(e);
 
-                return null;
+                return e;
+            }
+
+            @Override
+            protected void onPostExecute(EntreprisePerso e) {
+                super.onPostExecute(e);
+
+                // Mettre à jour l'adapter avec la liste de taches
+
             }
 
         }
@@ -147,7 +173,7 @@ public class CreationNewPartie extends AppCompatActivity {
             protected Void doInBackground(Void... voids) {
                 Logiciel l = new Logiciel(nomL);
                 mDb.getAppDatabase().logicieldao().insert(l);
-
+                logicielperso = l;
                 return null;
             }
 
@@ -156,7 +182,5 @@ public class CreationNewPartie extends AppCompatActivity {
         creerLogiciel gt = new creerLogiciel();
         gt.execute();
     }
-
-
 
 }

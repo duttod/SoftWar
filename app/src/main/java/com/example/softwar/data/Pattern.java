@@ -8,6 +8,12 @@ import java.util.ArrayList;
 
 public class Pattern {
 
+	public Pattern(){
+		this.reponses = new ArrayList<>();
+		this.bonnesReponses = new ArrayList<>();
+
+	}
+
 
 	private String langage;
 
