@@ -12,7 +12,7 @@ import java.util.List;
 @Entity
 public class EntreprisePerso extends Entreprise {
 
-	public void EntreprisePerso(String nomE,String nomL,long argentEntreprise,int nbContrats ,int productivite){
+	public EntreprisePerso(String nomE,String nomL,long argentEntreprise,int nbContrats ,int productivite){
 		super.setNomEntreprise(nomE);
 		super.setNomLogiciel(nomL);
 		setArgentEntreprise(argentEntreprise);
