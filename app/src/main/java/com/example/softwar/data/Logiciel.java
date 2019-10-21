@@ -2,14 +2,14 @@ package com.example.softwar.data;
 
 public class Logiciel {
 
-	private String nomLogiciel;
+	private string nomLogiciel;
 	private int nbUtilisateurs;
 	private int niveauSecurite;
 	private int niveauRentabilite;
 	private int niveauErgonomie;
 	private int niveauPuissance;
 
-	public String getNomLogiciel() {
+	public string getNomLogiciel() {
 		return this.nomLogiciel;
 	}
 
@@ -17,7 +17,7 @@ public class Logiciel {
 	 * 
 	 * @param nomLogiciel
 	 */
-	public void setNomLogiciel(String nomLogiciel) {
+	public void setNomLogiciel(string nomLogiciel) {
 		this.nomLogiciel = nomLogiciel;
 	}
 
