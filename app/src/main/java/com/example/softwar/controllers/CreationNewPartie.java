@@ -24,7 +24,7 @@ public class CreationNewPartie extends AppCompatActivity {
     ArrayList<Logiciel> arraylog = new ArrayList();
     ArrayList<Entreprise> arrayEnt = new ArrayList();
     public static final String MyPREFERENCES = "MyPrefs" ;
-
+    Logiciel logicielperso;
     SharedPreferences session ;
 
 
@@ -55,6 +55,7 @@ public class CreationNewPartie extends AppCompatActivity {
             editor.commit();
 
             Intent intent = new Intent(this,MainActivity.class);
+
             startActivity(intent);
         }
     }
@@ -117,6 +118,7 @@ public class CreationNewPartie extends AppCompatActivity {
 
             @Override
             protected List<Entreprise> doInBackground(Void... voids) {
+
                 ArrayList<Entreprise> EntrepriseList = new ArrayList<>();
                 EntrepriseList.addAll(mDb.getAppDatabase().entreprisedao().getAll());
                 return EntrepriseList;
@@ -171,7 +173,7 @@ public class CreationNewPartie extends AppCompatActivity {
             protected Void doInBackground(Void... voids) {
                 Logiciel l = new Logiciel(nomL);
                 mDb.getAppDatabase().logicieldao().insert(l);
-
+                logicielperso = l;
                 return null;
             }
 
@@ -180,7 +182,5 @@ public class CreationNewPartie extends AppCompatActivity {
         creerLogiciel gt = new creerLogiciel();
         gt.execute();
     }
-
-
 
 }

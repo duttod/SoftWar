@@ -59,8 +59,9 @@ public class MainActivity extends AppCompatActivity {
             protected void onPostExecute(EntreprisePerso ent) {
                 super.onPostExecute(ent);
 
-                entreprise_joueur = ent;
-                getLogiciel();
+                entreprise_joueur = new EntreprisePerso (mdb, ent.getNomEntreprise(), ent.getNomLogiciel(), ent.getArgentEntreprise(), ent.getNbContrats(), ent.getProductivite());
+                LoadDataEntreprise();
+
             }
 
         }
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         ge.execute();
 
     }
-
+/*
     private void getLogiciel() {
 
         class getPartie extends AsyncTask<Void, Void, Logiciel> {
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         ge.execute();
 
     }
-
+*/
     public void LoadDataEntreprise() {
 
         argent.setText(Long.toString(entreprise_joueur.getArgentEntreprise()));
