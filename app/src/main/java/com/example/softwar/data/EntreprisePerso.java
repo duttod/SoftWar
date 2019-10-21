@@ -14,6 +14,7 @@ import java.util.List;
 public class EntreprisePerso extends Entreprise {
 
 	public EntreprisePerso(String nomE,String nomL,long argentEntreprise,int nbContrats ,int productivite){
+
 		super.setNomEntreprise(nomE);
 		super.setNomLogiciel(nomL);
 		setArgentEntreprise(argentEntreprise);

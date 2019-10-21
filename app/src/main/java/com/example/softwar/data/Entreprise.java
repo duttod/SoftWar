@@ -6,6 +6,7 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Entreprise implements Serializable {
@@ -36,4 +37,14 @@ public class Entreprise implements Serializable {
 	public void setNomLogiciel(String nomLogiciel) {
 		this.nomLogiciel = nomLogiciel;
 	}
+
+	public Alea getEvenementAleatoire(DatabaseClient mdb) {
+		int indicemin = 0;
+		int indicemax = mdb.getAppDatabase().aleadao().getAll().size();
+
+		int indice = (int) (Math.random() * ( indicemax - indicemin ));
+		return mdb.getAppDatabase().aleadao().getAll().get(indice);
+
+	}
+
 }
