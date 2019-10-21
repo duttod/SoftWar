@@ -5,6 +5,8 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import java.util.List;
+
 @Entity
 public class EntreprisePerso extends Entreprise {
 
@@ -19,6 +21,10 @@ public class EntreprisePerso extends Entreprise {
 
 	public long getArgentEntreprise() {
 		return this.argentEntreprise;
+	}
+
+	public List<Employe> getEmployes(DatabaseClient mdb) {
+		return mdb.getAppDatabase().employeDao().getAll();
 	}
 
 	/**
