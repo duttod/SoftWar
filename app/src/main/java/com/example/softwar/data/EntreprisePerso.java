@@ -6,6 +6,7 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Entity
@@ -24,7 +25,7 @@ public class EntreprisePerso extends Entreprise {
 	private DatabaseClient mdb;
 
 	@Ignore
-	private List<Employe> employes;
+	private HashMap<Employe,Integer> employes;
 
 	@ColumnInfo(name = "argentEntreprise")
 	private long argentEntreprise;
@@ -40,7 +41,12 @@ public class EntreprisePerso extends Entreprise {
 	}
 
 	public void setEmployes() {
-		employes =  mdb.getAppDatabase().employeDao().getAll();
+		List<EmployeDansEntreprise> empdansentreprise;
+		empdansentreprise =  mdb.getAppDatabase().employeDansEntrepriseDao().getEmployeDuneEntreprise(getNomEntreprise());
+
+		for (int i = 0; i < empdansentreprise.size(); i++) {
+			
+		}
 	}
 
 	public List<Employe> getEmployes() {

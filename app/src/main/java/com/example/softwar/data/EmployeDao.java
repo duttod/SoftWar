@@ -14,6 +14,9 @@ public interface EmployeDao {
     @Query("SELECT * FROM Employe")
     List<Employe> getAll();
 
+    @Query("SELECT * FROM Employe WHERE id = :ide")
+    Employe getAnEmploye(int ide);
+
     @Insert
     void insert(Employe employe);
 
