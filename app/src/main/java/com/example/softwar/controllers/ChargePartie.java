@@ -1,7 +1,9 @@
 package com.example.softwar.controllers;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,9 +22,10 @@ public class ChargePartie extends AppCompatActivity {
 
     LinearLayout linear_bouttons_parties;
     private DatabaseClient mdb;
+    public static final String MyPREFERENCES = "MyPrefs" ;
 
-    EntreprisePerso entreprise_joueur;
-
+    public EntreprisePerso entreprise_joueur;
+    SharedPreferences session ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +33,7 @@ public class ChargePartie extends AppCompatActivity {
 
         mdb = DatabaseClient.getInstance(getApplicationContext());
         linear_bouttons_parties = findViewById(R.id.linear_bouttons_partie);
-
+        session = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         getPartie();
     }
 
@@ -45,6 +48,12 @@ public class ChargePartie extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     //Start la partie
+                    SharedPreferences.Editor editor = session.edit();
+
+                    editor.putString("NomEntreprise", entreprise_joueur.getNomEntreprise());
+                    editor.commit();
+                    Intent intent = new Intent(ChargePartie.super.getApplication(),MainActivity.class);
+                    startActivity(intent);
                 }
             });
 

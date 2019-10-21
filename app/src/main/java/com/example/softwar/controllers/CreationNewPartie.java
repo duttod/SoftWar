@@ -1,6 +1,8 @@
 package com.example.softwar.controllers;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +23,9 @@ public class CreationNewPartie extends AppCompatActivity {
     private DatabaseClient mDb;
     ArrayList<Logiciel> arraylog = new ArrayList();
     ArrayList<Entreprise> arrayEnt = new ArrayList();
+    public static final String MyPREFERENCES = "MyPrefs" ;
+
+    SharedPreferences session ;
 
 
     @Override
@@ -28,16 +33,23 @@ public class CreationNewPartie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation_new_partie);
         mDb = DatabaseClient.getInstance(getApplicationContext());
+        session = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
     }
 
     public void demarrerPartie(View view) {
         tnomE = (EditText) findViewById(R.id.edit_nom_entreprise);
         tnomL = (EditText) findViewById(R.id.edit_nom_logiciel);
         getLogiciels();
+        getEntreprises();
 
         if(nomEValide(tnomE.getText().toString()) && nomLValide(tnomE.getText().toString()) ){
             creerLogiciel(tnomL.getText().toString());
             creerEntreprisePerso(tnomE.getText().toString(),tnomL.getText().toString());
+
+            SharedPreferences.Editor editor = session.edit();
+
+            editor.putString("NomEntreprise", tnomE.getText().toString());
+            editor.commit();
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
         }
