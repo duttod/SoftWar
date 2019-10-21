@@ -59,15 +59,7 @@ public class EmployeDansEntreprise {
     public int getQuantite() {
         return quantite;
     }
-/*
-    public void setEmployes(List<Integer> id){ //map pour avoir et l'id et l'occurrence
-        List<Employe> toutEmployes =  mdb.getAppDatabase().employeDao().getAll();
-        for (int i =0; id.size();i++){
 
-            employes.add(toutEmployes.get(i))
-        }
-    }
-*/
     public Employe getEmploye(DatabaseClient mdb) {
         Employe emp = mdb.getAppDatabase().employeDao().getAnEmploye(getIdEmploye());
 

@@ -1,5 +1,6 @@
 package com.example.softwar.controllers;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,6 +38,8 @@ public class CreationNewPartie extends AppCompatActivity {
         if(nomEValide(tnomE.getText().toString()) && nomLValide(tnomE.getText().toString()) ){
             creerLogiciel(tnomL.getText().toString());
             creerEntreprisePerso(tnomE.getText().toString(),tnomL.getText().toString());
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
         }
     }
 
