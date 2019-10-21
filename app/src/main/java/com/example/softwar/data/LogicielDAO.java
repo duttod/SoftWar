@@ -14,6 +14,9 @@ public interface LogicielDAO {
     @Query("SELECT * FROM Logiciel")
     List<Logiciel> getAll();
 
+    @Query("SELECT * FROM Logiciel WHERE nomLogiciel = :nm")
+    Logiciel getALogiciel(String nm);
+
     @Insert
     void insert(Logiciel log);
 

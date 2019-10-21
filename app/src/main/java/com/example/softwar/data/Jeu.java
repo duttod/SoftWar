@@ -19,7 +19,6 @@ public class Jeu {
 	@ColumnInfo(name = "description")
 	private String description;
 
-
 	public int getId() { return this.id;}
 
 	public String getNomJeu() {
@@ -61,4 +60,16 @@ public class Jeu {
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	public void getRecompenses(EntreprisePerso p, DatabaseClient mdb) {
+
+		int indicemin = 0;
+		int indicemax = mdb.getAppDatabase().resultatjeudao().getAll().size();
+
+		int indice = (int) (Math.random() * ( indicemax - indicemin ));
+
+		ResultatJeu recompense = mdb.getAppDatabase().resultatjeudao().getAll().get(indice);
+
+	}
+
 }

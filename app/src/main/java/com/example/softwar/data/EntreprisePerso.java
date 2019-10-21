@@ -22,17 +22,21 @@ public class EntreprisePerso extends Entreprise {
 		employes = new ArrayList<EmployeDansEntreprise>();
 	}
 /*
-	public void EntreprisePerso(DatabaseClient mdb, long argentEntreprise, int nbContrats, int productivite) {
+	public void EntreprisePerso(DatabaseClient mdb, String nomEntreprise, String nomLogiciel, long argentEntreprise, int nbContrats, int productivite) {
 		this.mdb = mdb;
 
+		super(nomEntreprise,nomLogiciel);
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
 		setProductivite(productivite);
 		setEmployes();
+		setLogiciel();
 	}*/
 
 	@Ignore
 	private DatabaseClient mdb;
+
+	@Ignore Logiciel logiciel;
 
 	@Ignore
 	private List<EmployeDansEntreprise> employes;
@@ -88,6 +92,14 @@ public class EntreprisePerso extends Entreprise {
 	 */
 	public void setProductivite(int productivite) {
 		this.productivite = productivite;
+	}
+
+	public void setLogiciel() {
+		logiciel = mdb.getAppDatabase().logicieldao().getALogiciel(this.getNomLogiciel());
+	}
+
+	public Logiciel getLogiciel() {
+		return this.logiciel;
 	}
 
 }
