@@ -136,13 +136,13 @@ public class CreationNewPartie extends AppCompatActivity {
         gt.execute();
     }
 
-    private void creerLogiciel(String nomL) {
+    private void creerLogiciel(final String nomL) {
 
         class creerLogiciel extends AsyncTask<Void, Void, Void> {
 
             @Override
             protected Void doInBackground(Void... voids) {
-                Logiciel l = new Logiciel("adad");
+                Logiciel l = new Logiciel(nomL);
                 mDb.getAppDatabase().logicieldao().insert(l);
 
                 return null;
