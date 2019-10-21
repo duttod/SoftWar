@@ -2,6 +2,7 @@ package com.example.softwar.data;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -9,6 +10,21 @@ import java.util.List;
 
 @Entity
 public class EntreprisePerso extends Entreprise {
+
+	public void EntreprisePerso(DatabaseClient mdb, long argentEntreprise, int nbContrats, int productivite) {
+		this.mdb = mdb;
+
+		setArgentEntreprise(argentEntreprise);
+		setNbContrats(nbContrats);
+		setProductivite(productivite);
+		setEmployes();
+	}
+
+	@Ignore
+	private DatabaseClient mdb;
+
+	@Ignore
+	private List<Employe> employes;
 
 	@ColumnInfo(name = "argentEntreprise")
 	private long argentEntreprise;
@@ -23,8 +39,12 @@ public class EntreprisePerso extends Entreprise {
 		return this.argentEntreprise;
 	}
 
-	public List<Employe> getEmployes(DatabaseClient mdb) {
-		return mdb.getAppDatabase().employeDao().getAll();
+	public void setEmployes() {
+		employes =  mdb.getAppDatabase().employeDao().getAll();
+	}
+
+	public List<Employe> getEmployes() {
+		return this.employes;
 	}
 
 	/**
