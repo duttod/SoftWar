@@ -55,6 +55,7 @@ public class CreationNewPartie extends AppCompatActivity {
             editor.commit();
 
             Intent intent = new Intent(this,MainActivity.class);
+
             startActivity(intent);
         }
     }
