@@ -45,7 +45,7 @@ public class EntreprisePerso extends Entreprise {
 		empdansentreprise =  mdb.getAppDatabase().employeDansEntrepriseDao().getEmployeDuneEntreprise(getNomEntreprise());
 
 		for (int i = 0; i < empdansentreprise.size(); i++) {
-			
+
 		}
 	}
 
