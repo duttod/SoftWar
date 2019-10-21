@@ -1,13 +1,39 @@
 package com.example.softwar.data;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.PrimaryKey;
+
 public class Evenement {
 
+	@PrimaryKey(autoGenerate = true)
+	private int id;
+
+	@ColumnInfo(name = "nbUtilisateurs")
 	private long nbUtilisateurs;
+
+	@ColumnInfo(name = "argent")
 	private long argent;
+
+	@ColumnInfo(name = "productivite")
 	private long productivite;
+
+	@ColumnInfo(name = "securite")
 	private int securite;
+
+	@ColumnInfo(name = "puissance")
 	private int puissance;
+
+	@ColumnInfo(name = "ergonomie")
 	private int ergonomie;
+
+	public void setId(int id)
+	{
+		this.id = id;
+	}
+
+	public int getId() {
+		return this.id;
+	}
 
 	public long getNbUtilisateurs() {
 		return this.nbUtilisateurs;
