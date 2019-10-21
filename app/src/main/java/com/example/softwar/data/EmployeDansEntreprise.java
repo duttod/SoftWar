@@ -3,6 +3,7 @@ package com.example.softwar.data;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.HashMap;
@@ -24,6 +25,7 @@ public class EmployeDansEntreprise {
     @ColumnInfo(name = "quantite")
     private int quantite;
 
+    @Ignore
     private List<Employe> employes=null;
 
     public void setNomEntreprise(String nomEntreprise) {
@@ -32,6 +34,14 @@ public class EmployeDansEntreprise {
 
     public void setIdEmploye(int idEmploye) {
         this.idEmploye = idEmploye;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setQuantite(int quantite) {
@@ -49,15 +59,7 @@ public class EmployeDansEntreprise {
     public int getQuantite() {
         return quantite;
     }
-/*
-    public void setEmployes(List<Integer> id){ //map pour avoir et l'id et l'occurrence
-        List<Employe> toutEmployes =  mdb.getAppDatabase().employeDao().getAll();
-        for (int i =0; id.size();i++){
 
-            employes.add(toutEmployes.get(i))
-        }
-    }
-*/
     public Employe getEmploye(DatabaseClient mdb) {
         Employe emp = mdb.getAppDatabase().employeDao().getAnEmploye(getIdEmploye());
 

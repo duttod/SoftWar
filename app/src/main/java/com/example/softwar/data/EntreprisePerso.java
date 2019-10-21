@@ -13,16 +13,15 @@ import java.util.List;
 @Entity
 public class EntreprisePerso extends Entreprise {
 
-	public EntreprisePerso(String nomE,String nomL,long argentEntreprise,int nbContrats ,int productivite){
-		super.setNomEntreprise(nomE);
-		super.setNomLogiciel(nomL);
+	public EntreprisePerso(String nomEntreprise,String nomLogiciel,long argentEntreprise,int nbContrats ,int productivite){
+		super(nomEntreprise,nomLogiciel);
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
 		setProductivite(productivite);
 
 		employes = new ArrayList<EmployeDansEntreprise>();
 	}
-
+/*
 	public void EntreprisePerso(DatabaseClient mdb, long argentEntreprise, int nbContrats, int productivite) {
 		this.mdb = mdb;
 
@@ -30,7 +29,7 @@ public class EntreprisePerso extends Entreprise {
 		setNbContrats(nbContrats);
 		setProductivite(productivite);
 		setEmployes();
-	}
+	}*/
 
 	@Ignore
 	private DatabaseClient mdb;

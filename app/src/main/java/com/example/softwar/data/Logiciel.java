@@ -10,12 +10,13 @@ import java.util.ArrayList;
 @Entity
 public class Logiciel {
 
-	public Logiciel(String nomL) {
+	public Logiciel(String nomLogiciel) {
 		setNbUtilisateurs(1000);
 		setNiveauErgonomie(0);
 		setNiveauPuissance(0);
 		setNiveauRentabilite(0);
 		setNiveauSecurite(0);
+		setNomLogiciel(nomLogiciel);
 	}
 
 	@PrimaryKey
