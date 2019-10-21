@@ -43,10 +43,11 @@ public class Tirage {
         employeTire.add(tirageEmploye.get(random.nextInt(tirageEmploye.size())));
     }
 
-    public void Tirages(int nbTirage){
+    public List<Employe> Tirages(int nbTirage){
         employeTire.clear();
         for (int i = 0; i < nbTirage; i++){
             tirageUnique();
         }
+        return employeTire;
     }
 }
