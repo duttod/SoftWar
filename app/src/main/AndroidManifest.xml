@@ -9,11 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".controllers.MainActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".controllers.CreditActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".controllers.ChargePartie"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".controllers.CreationNewPartie"
+            android:screenOrientation="landscape"/>
         <activity android:name=".controllers.ChooseRenforcerAttaquerActivity"></activity>
-        <activity android:name=".controllers.CreationNewPartie" />
-        <activity android:name=".controllers.CreditActivity" />
-        <activity android:name=".controllers.HomePageActivity"/>
-        <activity android:name=".controllers.ChargePartie"/>
+
+        <activity
+            android:name=".controllers.HomePageActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         </application>
 </manifest>
