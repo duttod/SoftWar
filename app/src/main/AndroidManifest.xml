@@ -11,6 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".controllers.AmeliorationsActivity"></activity>
         <activity android:name=".controllers.Statistiques" />
+        <activity android:name=".controllers.TirageAuSortActivity"></activity>
+
         <activity
             android:name=".controllers.MainActivity"
             android:screenOrientation="landscape" />
@@ -34,6 +36,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        </application>
 </manifest>
