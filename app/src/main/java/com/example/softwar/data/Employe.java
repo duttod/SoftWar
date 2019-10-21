@@ -6,7 +6,7 @@ public class Employe {
 	private String prenomEmploye;
 	private int ageEmploye;
 	private int productivite;
-	private int efficience;
+	private int rapidite;
 	private int rarete;
 
 	public String getNomEmploye() {
@@ -57,18 +57,6 @@ public class Employe {
 		this.productivite = productivite;
 	}
 
-	public int getEfficience() {
-		return this.efficience;
-	}
-
-	/**
-	 * 
-	 * @param efficience
-	 */
-	public void setEfficience(int efficience) {
-		this.efficience = efficience;
-	}
-
 	public int getRarete() {
 		return this.rarete;
 	}
@@ -79,6 +67,18 @@ public class Employe {
 	 */
 	public void setRarete(int rarete) {
 		this.rarete = rarete;
+	}
+
+	public int getRapidite() {
+		return this.rapidite;
+	}
+
+	/**
+	 * 
+	 * @param rapidite
+	 */
+	public void setRapidite(int rapidite) {
+		this.rapidite = rapidite;
 	}
 
 }

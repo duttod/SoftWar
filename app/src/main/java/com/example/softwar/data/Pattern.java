@@ -5,6 +5,7 @@ public class Pattern {
 	private String langage;
 	private String text;
 	private String[] reponses;
+	private String[] bonnesReponses;
 
 	public String getLangage() {
 		return this.langage;
@@ -40,6 +41,18 @@ public class Pattern {
 	 */
 	public void setReponses(String[] reponses) {
 		this.reponses = reponses;
+	}
+
+	public String[] getBonnesReponses() {
+		return this.bonnesReponses;
+	}
+
+	/**
+	 * 
+	 * @param bonnesReponses
+	 */
+	public void setBonnesReponses(String[] bonnesReponses) {
+		this.bonnesReponses = bonnesReponses;
 	}
 
 }
