@@ -14,6 +14,7 @@ import com.example.softwar.data.Logiciel;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     EntreprisePerso entreprise_joueur ;
     TextView argent,nbuser,nomE;
     Logiciel monlogiciel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,9 @@ public class MainActivity extends AppCompatActivity {
         argent = (TextView) findViewById(R.id.argent);
         nbuser = (TextView) findViewById(R.id.nbUtilisateurs);
         nomE = (TextView) findViewById(R.id.nomE);
+
         mdb = DatabaseClient.getInstance(getApplicationContext());
+
         getPartie();
     }
 
@@ -42,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             protected EntreprisePerso doInBackground(Void... voids) {
 
-                List<EntreprisePerso> entreprise_j = mdb.getAppDatabase().entreprisepersodao().getAll();
+                ArrayList<EntreprisePerso> entreprise_j = new ArrayList<>();
+                entreprise_j.addAll(mdb.getAppDatabase().entreprisepersodao().getAll());
                 if (entreprise_j.get(0) != null) {
                     return entreprise_j.get(0);
                 } else {
@@ -55,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                 super.onPostExecute(ent);
 
                 entreprise_joueur = ent;
-
+                getLogiciel();
             }
 
         }
@@ -93,9 +98,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void LoadDataEntreprise() {
+
         argent.setText(Long.toString(entreprise_joueur.getArgentEntreprise()));
         nomE.setText(entreprise_joueur.getNomEntreprise());
-        nbuser.setText(monlogiciel.getNbUtilisateurs());
+        nbuser.setText(Integer.toString(monlogiciel.getNbUtilisateurs()));
+
     }
 
 

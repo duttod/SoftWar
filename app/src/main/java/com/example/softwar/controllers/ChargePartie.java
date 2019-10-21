@@ -16,6 +16,7 @@ import com.example.softwar.R;
 import com.example.softwar.data.DatabaseClient;
 import com.example.softwar.data.EntreprisePerso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChargePartie extends AppCompatActivity {
@@ -77,7 +78,8 @@ public class ChargePartie extends AppCompatActivity {
             @Override
             protected EntreprisePerso doInBackground(Void... voids) {
 
-                List<EntreprisePerso> entreprise_j = mdb.getAppDatabase().entreprisepersodao().getAll();
+                ArrayList<EntreprisePerso> entreprise_j = new ArrayList<EntreprisePerso>();
+                entreprise_j.addAll(mdb.getAppDatabase().entreprisepersodao().getAll());
                 if (entreprise_j.get(0) != null) {
                     return entreprise_j.get(0);
                 } else {
