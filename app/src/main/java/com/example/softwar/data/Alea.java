@@ -2,9 +2,9 @@ package com.example.softwar.data;
 
 public class Alea extends Evenement {
 
-	private string contexte;
+	private String contexte;
 
-	public string getContexte() {
+	public String getContexte() {
 		return this.contexte;
 	}
 
@@ -12,7 +12,7 @@ public class Alea extends Evenement {
 	 * 
 	 * @param contexte
 	 */
-	public void setContexte(string contexte) {
+	public void setContexte(String contexte) {
 		this.contexte = contexte;
 	}
 

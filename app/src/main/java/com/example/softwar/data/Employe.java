@@ -2,14 +2,14 @@ package com.example.softwar.data;
 
 public class Employe {
 
-	private string nomEmploye;
-	private string prenomEmploye;
+	private String nomEmploye;
+	private String prenomEmploye;
 	private int ageEmploye;
 	private int productivite;
 	private int rapidite;
 	private int rarete;
 
-	public string getNomEmploye() {
+	public String getNomEmploye() {
 		return this.nomEmploye;
 	}
 
@@ -17,11 +17,11 @@ public class Employe {
 	 * 
 	 * @param nomEmploye
 	 */
-	public void setNomEmploye(string nomEmploye) {
+	public void setNomEmploye(String nomEmploye) {
 		this.nomEmploye = nomEmploye;
 	}
 
-	public string getPrenomEmploye() {
+	public String getPrenomEmploye() {
 		return this.prenomEmploye;
 	}
 
@@ -29,7 +29,7 @@ public class Employe {
 	 * 
 	 * @param prenomEmploye
 	 */
-	public void setPrenomEmploye(string prenomEmploye) {
+	public void setPrenomEmploye(String prenomEmploye) {
 		this.prenomEmploye = prenomEmploye;
 	}
 

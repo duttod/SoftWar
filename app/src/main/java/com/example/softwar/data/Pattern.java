@@ -2,12 +2,12 @@ package com.example.softwar.data;
 
 public class Pattern {
 
-	private string langage;
-	private string text;
-	private string[] reponses;
-	private string[] bonnesReponses;
+	private String langage;
+	private String text;
+	private String[] reponses;
+	private String[] bonnesReponses;
 
-	public string getLangage() {
+	public String getLangage() {
 		return this.langage;
 	}
 
@@ -15,11 +15,11 @@ public class Pattern {
 	 * 
 	 * @param langage
 	 */
-	public void setLangage(string langage) {
+	public void setLangage(String langage) {
 		this.langage = langage;
 	}
 
-	public string getText() {
+	public String getText() {
 		return this.text;
 	}
 
@@ -27,11 +27,11 @@ public class Pattern {
 	 * 
 	 * @param text
 	 */
-	public void setText(string text) {
+	public void setText(String text) {
 		this.text = text;
 	}
 
-	public string[] getReponses() {
+	public String[] getReponses() {
 		return this.reponses;
 	}
 
@@ -39,11 +39,11 @@ public class Pattern {
 	 * 
 	 * @param reponses
 	 */
-	public void setReponses(string[] reponses) {
+	public void setReponses(String[] reponses) {
 		this.reponses = reponses;
 	}
 
-	public string[] getBonnesReponses() {
+	public String[] getBonnesReponses() {
 		return this.bonnesReponses;
 	}
 
@@ -51,7 +51,7 @@ public class Pattern {
 	 * 
 	 * @param bonnesReponses
 	 */
-	public void setBonnesReponses(string[] bonnesReponses) {
+	public void setBonnesReponses(String[] bonnesReponses) {
 		this.bonnesReponses = bonnesReponses;
 	}
 

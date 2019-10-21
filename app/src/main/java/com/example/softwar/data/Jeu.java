@@ -2,11 +2,11 @@ package com.example.softwar.data;
 
 public class Jeu {
 
-	private string nomJeu;
+	private String nomJeu;
 	private int dureeJeu;
-	private string description;
+	private String description;
 
-	public string getNomJeu() {
+	public String getNomJeu() {
 		return this.nomJeu;
 	}
 
@@ -14,7 +14,7 @@ public class Jeu {
 	 * 
 	 * @param nomJeu
 	 */
-	public void setNomJeu(string nomJeu) {
+	public void setNomJeu(String nomJeu) {
 		this.nomJeu = nomJeu;
 	}
 
@@ -30,7 +30,7 @@ public class Jeu {
 		this.dureeJeu = dureeJeu;
 	}
 
-	public string getDescription() {
+	public String getDescription() {
 		return this.description;
 	}
 
@@ -38,7 +38,7 @@ public class Jeu {
 	 * 
 	 * @param description
 	 */
-	public void setDescription(string description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
