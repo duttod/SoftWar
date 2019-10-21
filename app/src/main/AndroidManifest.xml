@@ -13,8 +13,15 @@
         <activity android:name=".controllers.CreationNewPartie" />
         <activity android:name=".controllers.CreditActivity" />
         <activity android:name=".controllers.HomePageActivity"/>
-        <activity android:name=".controllers.ChargePartie"/>
         <activity android:name=".controllers.CreationNewPartie" />
+
+        <activity android:name=".controllers.ChargePartie">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         </application>
 </manifest>
