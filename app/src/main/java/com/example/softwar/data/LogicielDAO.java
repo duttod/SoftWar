@@ -11,4 +11,18 @@ import java.util.List;
 
 @Dao
 public interface LogicielDAO {
+    @Query("SELECT * FROM Logiciel")
+    List<Logiciel> getAll();
+
+    @Insert
+    void insert(Logiciel log);
+
+    @Insert
+    long[] insertAll(Logiciel... log);
+
+    @Delete
+    void delete(Logiciel log);
+
+    @Update
+    void update(Logiciel log);
 }
