@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import com.example.softwar.MyApplication;
 import com.example.softwar.R;
 import com.example.softwar.data.DatabaseClient;
 import com.example.softwar.data.EntreprisePerso;
@@ -117,6 +118,7 @@ public class ChargePartie extends AppCompatActivity {
                 super.onPostExecute(ent);
 
                 entreprise_joueur = new EntreprisePerso (mdb, ent.getNomEntreprise(), ent.getNomLogiciel(), ent.getArgentEntreprise(), ent.getNbContrats(), ent.getProductivite());
+                MyApplication.getInstance().setEntreprise_joueur(entreprise_joueur);
                 setView();
 
             }
