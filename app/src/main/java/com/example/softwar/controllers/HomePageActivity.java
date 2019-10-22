@@ -1,10 +1,14 @@
 package com.example.softwar.controllers;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.annotation.Nullable;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.softwar.R;
@@ -19,6 +23,10 @@ public class HomePageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+        getSupportActionBar().hide();
+        TextView titre = findViewById(R.id.home_titre);
+        Typeface typeface = ResourcesCompat.getFont(this, R.font.digitall);
+        titre.setTypeface(typeface);
     }
 
     public void ChargerPartie(View view) {
@@ -39,6 +47,7 @@ public class HomePageActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
+
         if (requestCode == CREDIT_REQU || requestCode == CHARGER_PARTIE_REQ || requestCode == NOUVELLE_PARTIE_REQ) {
             if (resultCode == RESULT_OK) {
                 Toast.makeText(this,"Retour OK", Toast.LENGTH_SHORT).show();
@@ -47,5 +56,16 @@ public class HomePageActivity extends AppCompatActivity {
             }
         }
     }
+/*
+    public void setFont(TextView textView, String fontName) {
+        if(fontName != null){
+            try {
+                //Typeface typeface = Typeface.createFromAsset(getAssets(), fontName);
+                textView.setTypeface(Typeface);
+            } catch (Exception e) {
+                Log.e("FONT", fontName + " not found", e);
+            }
+        }
+    }*/
 
 }
