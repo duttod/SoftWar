@@ -66,7 +66,7 @@ public class MiniJeu extends AppCompatActivity {
         layout.addView(tv);
     }
     public void initReponse(String text, LinearLayout layout){
-        TextView tv1 = new EditText(this);
+        TextView tv1 = new TextView(this);
 
         //LinearLayout l = new LinearLayout(this);
         //l.addView(tv1);
@@ -137,6 +137,8 @@ public class MiniJeu extends AppCompatActivity {
                     //update the text in the target view to reflect the data being dropped
 
                     dropTarget.setText(dropped.getText());
+                    dropTarget.setOnTouchListener(new MyTouchListener());
+
                     //make it bold to highlight the fact that an item has been dropped
                     dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
 
