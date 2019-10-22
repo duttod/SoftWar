@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.softwar.MyApplication;
 import com.example.softwar.R;
 import com.example.softwar.data.DatabaseClient;
 import com.example.softwar.data.EntreprisePerso;
@@ -23,7 +24,6 @@ public class ChargePartie extends AppCompatActivity {
 
     LinearLayout linear_bouttons_parties;
     private DatabaseClient mdb;
-    public static final String MyPREFERENCES = "MyPrefs" ;
 
     public EntreprisePerso entreprise_joueur;
     SharedPreferences session ;
@@ -34,7 +34,6 @@ public class ChargePartie extends AppCompatActivity {
 
         mdb = DatabaseClient.getInstance(getApplicationContext());
         linear_bouttons_parties = findViewById(R.id.linear_bouttons_partie);
-        session = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         getPartie();
     }
 
@@ -49,10 +48,7 @@ public class ChargePartie extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     //Start la partie
-                    SharedPreferences.Editor editor = session.edit();
 
-                    editor.putString("NomEntreprise", entreprise_joueur.getNomEntreprise());
-                    editor.commit();
                     Intent intent = new Intent(ChargePartie.super.getApplication(),MainActivity.class);
                     startActivity(intent);
                 }
@@ -92,6 +88,7 @@ public class ChargePartie extends AppCompatActivity {
                 super.onPostExecute(ent);
 
                 entreprise_joueur = new EntreprisePerso (mdb, ent.getNomEntreprise(), ent.getNomLogiciel(), ent.getArgentEntreprise(), ent.getNbContrats(), ent.getProductivite());
+                MyApplication.getInstance().setEntreprise_joueur(entreprise_joueur);
                 setView();
 
             }

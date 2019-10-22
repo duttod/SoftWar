@@ -6,6 +6,8 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import com.example.softwar.MyApplication;
+
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,7 @@ public class EntreprisePerso extends Entreprise {
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
 		setProductivite(productivite);
+		setLogiciel();
 
 		employes = new ArrayList<EmployeDansEntreprise>();
 	}
@@ -35,7 +38,7 @@ public class EntreprisePerso extends Entreprise {
 	}
 
 	@Ignore
-	private DatabaseClient mdb;
+	private DatabaseClient mdb = DatabaseClient.getInstance(MyApplication.getContext());
 
 	@Ignore Logiciel logiciel;
 
@@ -94,6 +97,8 @@ public class EntreprisePerso extends Entreprise {
 	public void setProductivite(int productivite) {
 		this.productivite = productivite;
 	}
+
+
 
 	public void setLogiciel() {
 		logiciel = mdb.getAppDatabase().logicieldao().getByEntreprise(this.getNomLogiciel());
