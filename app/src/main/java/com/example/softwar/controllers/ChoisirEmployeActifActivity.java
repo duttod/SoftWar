@@ -1,11 +1,18 @@
 package com.example.softwar.controllers;
 
+import android.content.ClipData;
 import android.content.Intent;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.DragEvent;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.softwar.R;
 import com.example.softwar.data.DatabaseClient;
@@ -36,7 +43,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
         mDb = DatabaseClient.getInstance(getApplicationContext());
 
         // Récupérer les vues
-
+        listEmp = findViewById(R.id.listEmploye);
 
         // Lier l'adapter au listView
         adapter = new ListeEmployeAdapter(this,new ArrayList<Employe>());
@@ -50,8 +57,87 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
         * */
 
         getEmp();
+    }
 
+    // This defines your touch listener
+    private final class MyTouchListener implements View.OnTouchListener {
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                ClipData data = ClipData.newPlainText("", "");
+                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+                view.startDrag(data, shadowBuilder, view, 0);
+                //view.setVisibility(View.INVISIBLE);
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 
+    class MyDragListener implements View.OnDragListener {
+        Drawable enterShape = getResources().getDrawable(R.drawable.shape_droptarget);
+        Drawable normalShape = getResources().getDrawable(R.drawable.shape);
+
+        @Override
+        public boolean onDrag(View v, DragEvent event) {
+            int action = event.getAction();
+            switch (event.getAction()) {
+                case DragEvent.ACTION_DRAG_STARTED:
+                    // do nothing
+                    break;
+                case DragEvent.ACTION_DRAG_ENTERED:
+                    //v.setBackgroundDrawable(enterShape);
+                    break;
+                case DragEvent.ACTION_DRAG_EXITED:
+                    //v.setBackgroundDrawable(normalShape);
+                    break;
+                case DragEvent.ACTION_DROP:
+                    // Dropped, reassign View to ViewGroup
+                    View view = (View) event.getLocalState();
+                    //stop displaying the view where it was before it was dragged
+
+                    // view.setVisibility(View.INVISIBLE);
+                    //view dragged item is being dropped on
+                    TextView dropTarget = (TextView) v;
+                    //view being dragged and dropped
+                    TextView dropped = (TextView) view;
+                    //update the text in the target view to reflect the data being dropped
+
+                    if (dropTarget instanceof TextView) {
+
+                        String init = dropTarget.getText().toString();
+
+                        dropTarget.setText(dropped.getText());
+                        dropTarget.setOnTouchListener(new MyTouchListener());
+
+                        ((TextView) view).setText(init);
+/*
+                        if (((TextView) view).getText() == "       ") {
+                            view.setBackgroundColor(Color.YELLOW);
+                        }
+*/
+                        //make it bold to highlight the fact that an item has been dropped
+                        dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
+
+                        Object tag = dropTarget.getTag();
+                        //if there is already an item here, set it back visible in its original place
+                        if(tag!=null)
+                        {
+                            //the tag is the view id already dropped here
+                            int existingID = (Integer)tag;
+                            //set the original view visible again
+                            findViewById(existingID).setVisibility(View.VISIBLE);
+                        }
+                    }
+
+                    break;
+                case DragEvent.ACTION_DRAG_ENDED:
+                    //v.setBackgroundDrawable(normalShape);
+                default:
+                    break;
+            }
+            return true;
+        }
     }
 
     private void getEmp(){
@@ -60,7 +146,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
             @Override
             protected List<Employe> doInBackground(Void... voids) {
                 List<Employe> employeList = mDb.getAppDatabase()
-                        .employeDao() // ne pas récupếrer dans la bdd mais dans entreprise !
+                        .employeDao() // ne pas récupếrer dans la bdd mais dans entreprise ! à faire lorsque l'on a les var global !!!!!!
                         .getAll();
 
                 return employeList;
