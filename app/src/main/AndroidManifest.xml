@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controllers.AmeliorationsActivity"></activity>
+        <activity android:name=".controllers.ChoisirEmployeActifActivity"></activity>
+        <activity android:name=".controllers.AmeliorationsActivity" />
         <activity android:name=".controllers.Statistiques" />
-        <activity android:name=".controllers.TirageAuSortActivity"></activity>
-
+        <activity android:name=".controllers.TirageAuSortActivity" />
         <activity
             android:name=".controllers.MainActivity"
             android:screenOrientation="landscape" />
@@ -36,6 +36,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+    </application>
 
-        </application>
 </manifest>
