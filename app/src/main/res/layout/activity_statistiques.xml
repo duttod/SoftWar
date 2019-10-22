@@ -15,41 +15,182 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:text="Statistiques"
         android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="20dp"
-        />
+        android:textStyle="bold|italic" />
 
     <LinearLayout
 
-        android:layout_width="281dp"
-        android:layout_height="188dp"
+        android:layout_width="653dp"
+        android:layout_height="187dp"
         android:background="#DFC989"
-        android:orientation="vertical">
+        android:orientation="horizontal">
+
+        <LinearLayout
+
+            android:layout_width="227dp"
+            android:layout_height="180dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/border"
+            android:orientation="vertical">
 
 
-        <TextView
-            android:id="@+id/nom_entreprise"
-            android:layout_width="267dp"
-            android:layout_height="wrap_content"
-            android:text="Nom entreprise"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="15dp"
+                android:text="Entreprise"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/argent_entreprise"
-            android:layout_width="267dp"
-            android:layout_height="wrap_content"
-            android:text="Argent entreprise"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/nom_entreprise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Nom entreprise"
+                android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/nb_utilisateurs"
-            android:layout_width="265dp"
-            android:layout_height="wrap_content"
-            android:text="Nombre d'utilisateurs"
-            android:textSize="24sp" />
+            <TextView
+                android:id="@+id/argent_entreprise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Argent entreprise"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/nb_utilisateurs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Nombre d'utilisateurs"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/nom_entreprise10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Nombre d'employés"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/nom_entreprise9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="Parts de marché"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="407dp"
+            android:layout_height="188dp"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="177dp"
+                android:background="@drawable/border"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="Parties"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/nom_entreprise5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Nombre de mini-jeux joués"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nom_entreprise7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Nombre de mini-jeux gagnés"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nom_entreprise8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Pourcentage de victoire"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:layout_width="149dp"
+                android:layout_height="176dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/border"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="Employé"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/nom_entreprise11"
+                    android:layout_width="107dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Nom"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nom_entreprise12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Prénom"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nom_entreprise13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Productivité"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/nom_entreprise14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="Rapidité"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <TextView
@@ -60,6 +201,7 @@
         android:textSize="20dp"
         android:textStyle="italic"
         android:layout_marginBottom="20dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
         />
 
@@ -70,7 +212,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="217dp"
-        android:background="#DFC989"
+        android:background="@drawable/border"
         android:orientation="horizontal">
 
     </LinearLayout>
