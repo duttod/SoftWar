@@ -14,9 +14,11 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.softwar.MyApplication;
 import com.example.softwar.R;
 import com.example.softwar.data.DatabaseClient;
 import com.example.softwar.data.Employe;
+import com.example.softwar.data.EntreprisePerso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -148,6 +150,8 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
                 List<Employe> employeList = mDb.getAppDatabase()
                         .employeDao() // ne pas récupếrer dans la bdd mais dans entreprise ! à faire lorsque l'on a les var global !!!!!!
                         .getAll();
+
+                // EntreprisePerso entreprise_joueur =((MyApplication)this.getApplication()).getEntreprise_joueur();
 
                 return employeList;
             }
