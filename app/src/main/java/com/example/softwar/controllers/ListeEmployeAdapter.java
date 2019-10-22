@@ -50,6 +50,7 @@ public class ListeEmployeAdapter extends ArrayAdapter<Employe> {
         textViewRapidite.setText(emp.getRapidite());
 //        textViewQuantite.setText();
        /*Récupérer les valeurs de la table asso pour ça !*/
+        
         return rowView;
     }
 }
