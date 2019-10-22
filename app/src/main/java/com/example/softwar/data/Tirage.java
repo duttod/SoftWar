@@ -12,6 +12,7 @@ public class Tirage {
 * moins lourd en mémoire mais peut-être un peu plus long en terme d'utilisation.
 *
 * */
+
     private List<Employe> tirageEmploye;
     private List<Employe> employeTire;
     private DatabaseClient mdb;
