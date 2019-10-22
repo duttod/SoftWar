@@ -4,7 +4,14 @@ import java.util.List;
 import java.util.Random;
 
 public class Tirage {
-
+/*
+*
+* Amélioration possible : récupérer la liste des employé dans une list, tirageEmploye devient une list contenant seulement les id
+* des employés.
+* Le tirage ce fais seulement sur des id et il faut donc récupérer le bon employé dans la list exprimé ci-dessus
+* moins lourd en mémoire mais peut-être un peu plus long en terme d'utilisation.
+*
+* */
     private List<Employe> tirageEmploye;
     private List<Employe> employeTire;
     private DatabaseClient mdb;
