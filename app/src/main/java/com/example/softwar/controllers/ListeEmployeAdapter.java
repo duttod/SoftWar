@@ -44,10 +44,10 @@ public class ListeEmployeAdapter extends ArrayAdapter<Employe> {
         // Remplir les objet graphique avec les bonnes valeurs
         textViewNom.setText(emp.getNomEmploye());
         textViewPrenom.setText(emp.getPrenomEmploye());
-        textViewRarete.setText(emp.getRarete()); // Erreur possible : cast en String !
-        textViewAge.setText(emp.getAgeEmploye());
-        textViewProductivite.setText(emp.getProductivite());
-        textViewRapidite.setText(emp.getRapidite());
+        textViewRarete.setText(Integer.toString(emp.getRarete())); // Erreur possible : cast en String !
+        textViewAge.setText(Integer.toString(emp.getAgeEmploye()));
+        textViewProductivite.setText(Integer.toString(emp.getProductivite()));
+        textViewRapidite.setText(Integer.toString(emp.getRapidite()));
 //        textViewQuantite.setText();
        /*Récupérer les valeurs de la table asso pour ça !*/
 
