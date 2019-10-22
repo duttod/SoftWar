@@ -42,20 +42,21 @@ public class MiniJeu extends AppCompatActivity {
             }
         */
         LinearLayout l1 = initLigne();
-        initText("int ", l1);
+        initText("1-  int ", l1);
         initReponse("i",l1);
         initText("=1;", l1);
         LinearLayout l2 = initLigne();
+        initText("2-  ", l2);
         initReponse("while", l2);
         initText("(i<=10){", l2);
         LinearLayout l3 = initLigne();
-        initText("      System.out.println(i);", l3);
+        initText("3-        System.out.println(i);", l3);
         LinearLayout l4 = initLigne();
-        initText("      ", l4);
+        initText("4-        ", l4);
         initReponse("i++", l4);
         initText(";", l4);
         LinearLayout l5 = initLigne();
-        initText("}", l5);
+        initText("5-  }", l5);
 
 
     }
@@ -72,7 +73,7 @@ public class MiniJeu extends AppCompatActivity {
         //l.addView(tv1);
         tv1.setTextSize(26);
         tv1.setText("       ");
-        tv1.setBackgroundColor(Color.DKGRAY);
+        tv1.setBackgroundColor(Color.YELLOW);
         //et.setEnabled(false);
         tv1.setOnDragListener(new MyDragListener());
         layout.addView(tv1);
@@ -100,7 +101,7 @@ public class MiniJeu extends AppCompatActivity {
                 ClipData data = ClipData.newPlainText("", "");
                 View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
                 view.startDrag(data, shadowBuilder, view, 0);
-                view.setVisibility(View.INVISIBLE);
+                //view.setVisibility(View.INVISIBLE);
                 return true;
             } else {
                 return false;
@@ -120,18 +121,17 @@ public class MiniJeu extends AppCompatActivity {
                     // do nothing
                     break;
                 case DragEvent.ACTION_DRAG_ENTERED:
-                    v.setBackgroundDrawable(enterShape);
+                    //v.setBackgroundDrawable(enterShape);
                     break;
                 case DragEvent.ACTION_DRAG_EXITED:
-                    v.setBackgroundDrawable(normalShape);
+                    //v.setBackgroundDrawable(normalShape);
                     break;
                 case DragEvent.ACTION_DROP:
                     // Dropped, reassign View to ViewGroup
                     View view = (View) event.getLocalState();
                     //stop displaying the view where it was before it was dragged
 
-
-                    view.setVisibility(View.INVISIBLE);
+                   // view.setVisibility(View.INVISIBLE);
                     //view dragged item is being dropped on
                     TextView dropTarget = (TextView) v;
                     //view being dragged and dropped
@@ -139,9 +139,18 @@ public class MiniJeu extends AppCompatActivity {
                     //update the text in the target view to reflect the data being dropped
 
                     if (dropTarget instanceof TextView) {
+
+                        String init = dropTarget.getText().toString();
+
                         dropTarget.setText(dropped.getText());
                         dropTarget.setOnTouchListener(new MyTouchListener());
 
+                        ((TextView) view).setText(init);
+/*
+                        if (((TextView) view).getText() == "       ") {
+                            view.setBackgroundColor(Color.YELLOW);
+                        }
+*/
                         //make it bold to highlight the fact that an item has been dropped
                         dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
 
@@ -158,7 +167,7 @@ public class MiniJeu extends AppCompatActivity {
 
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
-                    v.setBackgroundDrawable(normalShape);
+                    //v.setBackgroundDrawable(normalShape);
                 default:
                     break;
             }

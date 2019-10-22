@@ -14,6 +14,7 @@ import java.util.List;
 public class EntreprisePerso extends Entreprise {
 
 	public EntreprisePerso(String nomEntreprise,String nomLogiciel,long argentEntreprise,int nbContrats ,int productivite){
+
 		super(nomEntreprise,nomLogiciel);
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
@@ -32,7 +33,7 @@ public class EntreprisePerso extends Entreprise {
 		setProductivite(productivite);
 
 		setEmployes();
-		setLogiciel(this.getNomLogiciel());
+		setLogiciel();
 	}
 
 	@Ignore
@@ -82,14 +83,8 @@ public class EntreprisePerso extends Entreprise {
 		this.productivite = productivite;
 	}
 
-	@Override
-	public void setLogiciel(String nom) {
-		logiciel = mdb.getAppDatabase().logicieldao().getByEntreprise(nom);
-	}
-
-	@Override
-	public Logiciel getLogiciel() {
-		return this.logiciel;
+	public void setLogiciel() {
+		logiciel = mdb.getAppDatabase().logicieldao().getByEntreprise(this.getNomLogiciel());
 	}
 
 }
