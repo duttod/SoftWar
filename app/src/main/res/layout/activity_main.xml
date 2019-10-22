@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DFC989"
+    android:background="@drawable/bg4"
     android:orientation="vertical"
     tools:context=".controllers.MainActivity">
 
@@ -14,15 +14,14 @@
 
         android:layout_width="match_parent"
         android:layout_height="47dp"
-        android:background="#9C9692"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/nomE"
-            android:layout_width="wrap_content"
+            android:layout_width="345dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="150dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:text="Entreprise blablabla"
             android:textSize="24sp" />
@@ -52,40 +51,36 @@
     </LinearLayout>
 
     <TableRow
-        android:layout_width="180dp"
-        android:layout_height="90dp"
-        android:orientation="vertical"
-        >
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <Button
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:text="Concurrent"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Concurrent" />
 
-        <Button
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:text="employer"
-            />
+        <ImageButton
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/employes" />
     </TableRow>
+
     <TableRow
         android:layout_width="180dp"
-        android:layout_height="90dp"
-        android:orientation="vertical"
-        >
+        android:layout_height="66dp"
+        android:orientation="vertical">
+
         <Button
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:text="invoquer"
-            />
+            android:text="invoquer" />
 
     </TableRow>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_foreground"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -99,26 +94,30 @@
 
             <Button
                 android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_height="66dp"
+                android:layout_marginBottom="70dp"
                 android:text="Amelior"
                 />
 
             <Button
                 android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_height="66dp"
+                android:layout_marginBottom="70dp"
                 android:text="Stats"
                 />
 
             <Button
                 android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_height="66dp"
+                android:layout_marginBottom="70dp"
                 android:text="Mini-jeu" />
 
             <Button
                 android:layout_width="90dp"
-                android:layout_height="90dp"
+                android:layout_height="66dp"
+                android:layout_marginBottom="65dp"
                 android:text="Fin tour"
-                android:layout_marginLeft="365dp"/>
+                android:layout_marginLeft="325dp"/>
 
 
 

@@ -24,6 +24,7 @@ public class ChargePartie extends AppCompatActivity {
 
     LinearLayout linear_bouttons_parties;
     private DatabaseClient mdb;
+    public static final String MyPREFERENCES = "MyPrefs" ;
 
     public EntreprisePerso entreprise_joueur;
     SharedPreferences session ;

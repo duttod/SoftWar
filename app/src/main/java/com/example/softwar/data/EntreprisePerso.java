@@ -16,6 +16,7 @@ import java.util.List;
 public class EntreprisePerso extends Entreprise {
 
 	public EntreprisePerso(String nomEntreprise,String nomLogiciel,long argentEntreprise,int nbContrats ,int productivite){
+
 		super(nomEntreprise,nomLogiciel);
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
@@ -33,6 +34,7 @@ public class EntreprisePerso extends Entreprise {
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
 		setProductivite(productivite);
+
 		setEmployes();
 		setLogiciel();
 	}
@@ -45,8 +47,6 @@ public class EntreprisePerso extends Entreprise {
 	@Ignore
 	private List<EmployeDansEntreprise> employes;
 
-	@ColumnInfo(name = "argentEntreprise")
-	private long argentEntreprise;
 
 	@ColumnInfo(name = "nbContrats")
 	private int nbContrats;
@@ -54,24 +54,12 @@ public class EntreprisePerso extends Entreprise {
 	@ColumnInfo(name = "productivite")
 	private int productivite;
 
-	public long getArgentEntreprise() {
-		return this.argentEntreprise;
-	}
-
 	public void setEmployes() {
 		employes =  mdb.getAppDatabase().employeDansEntrepriseDao().getEmployeDuneEntreprise(getNomEntreprise());
 	}
 
 	public List<EmployeDansEntreprise> getEmployes() {
 		return this.employes;
-	}
-
-	/**
-	 * 
-	 * @param argentEntreprise
-	 */
-	public void setArgentEntreprise(long argentEntreprise) {
-		this.argentEntreprise = argentEntreprise;
 	}
 
 	public int getNbContrats() {
@@ -102,10 +90,6 @@ public class EntreprisePerso extends Entreprise {
 
 	public void setLogiciel() {
 		logiciel = mdb.getAppDatabase().logicieldao().getByEntreprise(this.getNomLogiciel());
-	}
-
-	public Logiciel getLogiciel() {
-		return this.logiciel;
 	}
 
 }

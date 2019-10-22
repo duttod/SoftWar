@@ -106,4 +106,8 @@ public class Logiciel {
 		this.niveauPuissance = niveauPuissance;
 	}
 
+	public int getNiveauLogiciel() {
+		return (int) (getNiveauErgonomie() + getNiveauPuissance() + getNiveauRentabilite() + getNiveauSecurite())/4;
+	}
+
 }

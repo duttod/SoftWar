@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.softwar.MyApplication;
 import com.example.softwar.R;
 import com.example.softwar.data.DatabaseClient;
+import com.example.softwar.data.Entreprise;
 import com.example.softwar.data.EntreprisePerso;
 import com.example.softwar.data.Logiciel;
 
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     EntreprisePerso entreprise_joueur ;
     TextView argent,nbuser,nomE;
 
+    ArrayList<Entreprise> concurrents;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,24 +35,92 @@ public class MainActivity extends AppCompatActivity {
         nbuser = (TextView) findViewById(R.id.nbUtilisateurs);
         nomE = (TextView) findViewById(R.id.nomE);
 
+        mdb = DatabaseClient.getInstance(getApplicationContext());
+        concurrents = new ArrayList<>();
+
+        getPartie();
+        LoadDataEntreprise();
+    }
+
+
+    private void getPartie() {
+
+        class getPartie extends AsyncTask<Void, Void, EntreprisePerso> {
         //Récupérer la variable globale Application
         //!!!!!!!!!!!
         entreprise_joueur = ((MyApplication) this.getApplication()).getEntreprise_joueur();
 
 
-       LoadDataEntreprise();
+
+                ArrayList<EntreprisePerso> entreprise_j = new ArrayList<>();
+                entreprise_j.addAll(mdb.getAppDatabase().entreprisepersodao().getAll());
+                if (entreprise_j.get(0) != null) {
+                    return entreprise_j.get(0);
+                } else {
+                    return null;
+                }
+
+            }
+
+            @Override
+            protected void onPostExecute(EntreprisePerso ent) {
+                super.onPostExecute(ent);
+
+                entreprise_joueur = new EntreprisePerso (mdb, ent.getNomEntreprise(), ent.getNomLogiciel(), ent.getArgentEntreprise(), ent.getNbContrats(), ent.getProductivite());
+
+                LoadDataEntreprise();
+                CreerRandomConcurrents();
+                setImageLogiciel();
+
+            }
+
+        }
+
+        getPartie ge = new getPartie();
+        ge.execute();
+
     }
-
-
-
-
     public void LoadDataEntreprise() {
+
 
         argent.setText(Long.toString(entreprise_joueur.getArgentEntreprise()));
         nomE.setText(entreprise_joueur.getNomEntreprise());
         nbuser.setText(Integer.toString(entreprise_joueur.getLogiciel().getNbUtilisateurs()));
+        argent.setText("Argent:"+Long.toString(entreprise_joueur.getArgentEntreprise()));
+        nomE.setText("Entreprise:"+entreprise_joueur.getNomEntreprise());
+        nbuser.setText("Utilisateurs:"+Integer.toString(entreprise_joueur.getLogiciel().getNbUtilisateurs()));
 
     }
 
+    public void CreerRandomConcurrents() {
 
+        for (int i = 0; i < 5; i++) {
+            Entreprise ets_conc = new Entreprise("Concurrent"+i,"Soft"+i);
+
+            int argent_depart = (int) (Math.random() * (500 - 2000));
+            int nb_utilisateurs_depart = (int) (Math.random() * (1500 - 50000));
+
+            ets_conc.setArgentEntreprise(argent_depart);
+            ets_conc.getLogiciel().setNbUtilisateurs(nb_utilisateurs_depart);
+
+            concurrents.add(ets_conc);
+        }
+    }
+
+    public void setImageLogiciel() {
+
+        switch(entreprise_joueur.getLogiciel().getNiveauLogiciel()) {
+            case 1 : ////
+                break;
+            case 2 : ////
+                break;
+            case 3 : ////
+                break;
+            case 4 : ////
+                break;
+            case 5 : ////
+                break;
+        }
+
+    }
 }

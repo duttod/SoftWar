@@ -1,98 +1,63 @@
 package com.example.softwar.controllers;
 
 import android.content.ClipData;
-import android.graphics.Color;
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.softwar.R;
-import com.example.softwar.data.Pattern;
+import com.example.softwar.data.DatabaseClient;
+import com.example.softwar.data.Employe;
 
-public class MiniJeu extends AppCompatActivity {
-    TextView titre;
-    LinearLayout layout_text;
-    LinearLayout layout_reponses;
-    Pattern pattern;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ChoisirEmployeActifActivity extends AppCompatActivity {
+
+    //
+
+    // DATA
+    private DatabaseClient mDb;
+    private ListeEmployeAdapter adapter;
+
+
+    // VIEW
+    private ListView listEmp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mini_jeu);
-        titre = findViewById(R.id.minijeu_titre);
-        layout_text = findViewById(R.id.layout_text);
-        layout_reponses = findViewById(R.id.layout_reponses);
-        pattern = new Pattern();
-        initPattern1_1();
+        setContentView(R.layout.activity_choisir_employe_actif);
 
+        // Récupération du DatabaseClient
+        mDb = DatabaseClient.getInstance(getApplicationContext());
+
+        // Récupérer les vues
+        listEmp = findViewById(R.id.listEmploye);
+
+        // Lier l'adapter au listView
+        adapter = new ListeEmployeAdapter(this,new ArrayList<Employe>());
+        listEmp.setAdapter(adapter);
+
+
+        // Ajout du drag and drop sur la listView
+        /*
+        * listEmp.set [...]
+        *
+        * */
+
+        getEmp();
     }
-    public void initPattern1_1(){
-        /*  int i=1;
-            while(i<=10){
-                System.out.println(i);
-                i++;
-            }
-        */
-        LinearLayout l1 = initLigne();
-        initText("1-  int ", l1);
-        initReponse("i",l1);
-        initText("=1;", l1);
-        LinearLayout l2 = initLigne();
-        initText("2-  ", l2);
-        initReponse("while", l2);
-        initText("(i<=10){", l2);
-        LinearLayout l3 = initLigne();
-        initText("3-        System.out.println(i);", l3);
-        LinearLayout l4 = initLigne();
-        initText("4-        ", l4);
-        initReponse("i++", l4);
-        initText(";", l4);
-        LinearLayout l5 = initLigne();
-        initText("5-  }", l5);
-
-
-    }
-    public void initText(String text, LinearLayout layout){
-        TextView tv = new TextView(this);
-        tv.setText(text);
-        tv.setTextSize(26);
-        layout.addView(tv);
-    }
-    public void initReponse(String text, LinearLayout layout){
-        TextView tv1 = new TextView(this);
-
-        //LinearLayout l = new LinearLayout(this);
-        //l.addView(tv1);
-        tv1.setTextSize(26);
-        tv1.setText("       ");
-        tv1.setBackgroundColor(Color.YELLOW);
-        //et.setEnabled(false);
-        tv1.setOnDragListener(new MyDragListener());
-        layout.addView(tv1);
-
-        pattern.addBonneReponse(text);
-        TextView tv = new TextView(this);
-        tv.setText(text);
-        tv.setTextSize(26);
-        tv.setOnTouchListener(new MyTouchListener());
-        layout_reponses.addView(tv);
-    }
-
-    public LinearLayout initLigne(){
-        LinearLayout l1 = new LinearLayout(this);
-        l1.setOrientation(LinearLayout.HORIZONTAL);
-        this.layout_text.addView(l1);
-        return l1;
-    }
-
 
     // This defines your touch listener
     private final class MyTouchListener implements View.OnTouchListener {
@@ -131,7 +96,7 @@ public class MiniJeu extends AppCompatActivity {
                     View view = (View) event.getLocalState();
                     //stop displaying the view where it was before it was dragged
 
-                   // view.setVisibility(View.INVISIBLE);
+                    // view.setVisibility(View.INVISIBLE);
                     //view dragged item is being dropped on
                     TextView dropTarget = (TextView) v;
                     //view being dragged and dropped
@@ -174,4 +139,42 @@ public class MiniJeu extends AppCompatActivity {
             return true;
         }
     }
+
+    private void getEmp(){
+        class GetEmp extends AsyncTask<Void, Void, List<Employe>>{
+
+            @Override
+            protected List<Employe> doInBackground(Void... voids) {
+                List<Employe> employeList = mDb.getAppDatabase()
+                        .employeDao() // ne pas récupếrer dans la bdd mais dans entreprise ! à faire lorsque l'on a les var global !!!!!!
+                        .getAll();
+
+                return employeList;
+            }
+
+            @Override
+            protected void onPostExecute(List<Employe> employeList) {
+                super.onPostExecute(employeList);
+
+                // Mettre à jour l'adapter avec la liste des employés
+                adapter.clear();
+                adapter.addAll(employeList);
+
+                // Notifier l'adapter du changement
+                adapter.notifyDataSetChanged();
+            }
+        }
+
+        GetEmp ge = new GetEmp();
+        ge.execute();
+
+    }
+/*
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+
+
+    }*/
 }

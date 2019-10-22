@@ -6,71 +6,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DFC989"
     android:orientation="horizontal"
-    tools:context=".controllers.HomePageActivity">
+    android:background="@drawable/bg1"
+    tools:context=".controllers.HomePageActivity"
+    >
 
     <LinearLayout
 
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="370dp"
+        android:layout_width="306dp"
         android:layout_height="match_parent"
-        android:background="#DFC989"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="307dp"
-            android:layout_height="260dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_launcher_foreground" />
-
+        <TextView
+            android:id="@+id/home_titre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:gravity="center"
+            android:text="SOFT'WAR"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="45sp"
+            android:textStyle="bold"
+            app:fontFamily="sans-serif-medium" />
     </LinearLayout>
 
     <LinearLayout
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DFC989"
         android:orientation="vertical"
         android:gravity="center"
         >
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="SOFT'WAR"
-            android:layout_marginBottom="25dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:fontFamily="sans-serif-medium" />
-
-        <Button
+        <ImageButton
             android:id="@+id/button"
-            android:layout_width="268dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:onClick="Nouvelle_Partie"
+            android:padding="0dp"
+            android:src="@drawable/nouvellepartie"
             android:text="Nouvelle Partie"
-            android:onClick="Nouvelle_Partie"/>
+            android:layout_margin="10dp"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/button2"
-            android:layout_width="268dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="ChargerPartie"
+            android:padding="0dp"
+            android:src="@drawable/chargerpartie"
             android:text="Charger Partie"
-            android:onClick="ChargerPartie"/>
+            android:layout_margin="10dp"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/button3"
-            android:layout_width="268dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="afficherCredit"
+            android:padding="0dp"
+            android:src="@drawable/credits"
             android:text="Crédit"
-            android:onClick="afficherCredit"/>
+            android:layout_margin="10dp"/>
 
     </LinearLayout>
 
