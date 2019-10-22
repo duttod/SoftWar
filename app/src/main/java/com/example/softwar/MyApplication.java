@@ -3,11 +3,15 @@ package com.example.softwar;
 import android.app.Application;
 import android.content.Context;
 
+import com.example.softwar.data.Entreprise;
 import com.example.softwar.data.EntreprisePerso;
+
+import java.util.ArrayList;
 
 public class MyApplication extends Application {
     private static MyApplication instance;
     private EntreprisePerso entreprise_joueur ;
+    private ArrayList<Entreprise> concurrents;
 
     public static MyApplication getInstance() {
         return instance;
@@ -30,5 +34,13 @@ public class MyApplication extends Application {
 
     public void setEntreprise_joueur(EntreprisePerso entreprise_joueur) {
         this.entreprise_joueur = entreprise_joueur;
+    }
+
+    public ArrayList<Entreprise> getConcurrents() {
+        return concurrents;
+    }
+
+    public void setConcurrents(ArrayList<Entreprise> concurrents) {
+        this.concurrents = concurrents;
     }
 }

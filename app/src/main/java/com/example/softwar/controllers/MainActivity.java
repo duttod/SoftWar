@@ -21,9 +21,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    EntreprisePerso entreprise_joueur ;
-    TextView argent,nbuser,nomE;
-
+    EntreprisePerso entreprise_joueur;
+    TextView argent, nbuser, nomE;
+    private DatabaseClient mdb;
     ArrayList<Entreprise> concurrents;
 
     @Override
@@ -38,50 +38,19 @@ public class MainActivity extends AppCompatActivity {
         mdb = DatabaseClient.getInstance(getApplicationContext());
         concurrents = new ArrayList<>();
 
-        getPartie();
-        LoadDataEntreprise();
-    }
 
-
-    private void getPartie() {
-
-        class getPartie extends AsyncTask<Void, Void, EntreprisePerso> {
         //Récupérer la variable globale Application
         //!!!!!!!!!!!
-        entreprise_joueur = ((MyApplication) this.getApplication()).getEntreprise_joueur();
-
-
-
-                ArrayList<EntreprisePerso> entreprise_j = new ArrayList<>();
-                entreprise_j.addAll(mdb.getAppDatabase().entreprisepersodao().getAll());
-                if (entreprise_j.get(0) != null) {
-                    return entreprise_j.get(0);
-                } else {
-                    return null;
-                }
-
-            }
-
-            @Override
-            protected void onPostExecute(EntreprisePerso ent) {
-                super.onPostExecute(ent);
-
-                entreprise_joueur = new EntreprisePerso (mdb, ent.getNomEntreprise(), ent.getNomLogiciel(), ent.getArgentEntreprise(), ent.getNbContrats(), ent.getProductivite());
-
-                LoadDataEntreprise();
-                CreerRandomConcurrents();
-                setImageLogiciel();
-
-            }
-
-        }
-
-        getPartie ge = new getPartie();
-        ge.execute();
-
+        entreprise_joueur =((MyApplication)this.getApplication()).getEntreprise_joueur();
+        CreerRandomConcurrents();
+        setImageLogiciel();
+        LoadDataEntreprise();
+        ((MyApplication)this.getApplication()).setConcurrents(concurrents);
     }
-    public void LoadDataEntreprise() {
 
+
+
+    public void LoadDataEntreprise() {
 
         argent.setText(Long.toString(entreprise_joueur.getArgentEntreprise()));
         nomE.setText(entreprise_joueur.getNomEntreprise());

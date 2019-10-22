@@ -61,24 +61,17 @@ public class CreationNewPartie extends AppCompatActivity {
         tnomL.setTypeface(typeface);
         tnomE.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP);
         tnomL.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP);
-
-    }
-
-    public void demarrerPartie(View view) {
-
-
         getLogiciels();
         getEntreprises();
-        System.out.println("Boutton OK");
-        System.out.println(nomEValide(tnomE.getText().toString()));
-        System.out.println(nomLValide(tnomE.getText().toString()));
 
         if(nomEValide(tnomE.getText().toString()) && nomLValide(tnomE.getText().toString()) ){
             creerLogiciel(tnomL.getText().toString());
             creerEntreprisePerso(tnomE.getText().toString(),tnomL.getText().toString());
             ((MyApplication) this.getApplication()).setEntreprise_joueur(eperso);
         }
+
     }
+
 
     private boolean nomEValide(String nomE) {
         int i = 0;

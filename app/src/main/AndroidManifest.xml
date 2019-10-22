@@ -10,6 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".controllers.ConcurrentsActivity"></activity>
         <activity android:name=".controllers.AmeliorationsActivity" />
         <activity android:name=".controllers.Statistiques" />
         <activity android:name=".controllers.TirageAuSortActivity" />
@@ -27,7 +28,7 @@
             android:screenOrientation="landscape" />
         <activity android:name=".controllers.ChooseRenforcerAttaquerActivity" />
         <activity
-            android:name=".controllers.ChoisirEmployeActifActivity"
+            android:name=".controllers.HomePageActivity"
             android:label="@string/app_name"
             android:screenOrientation="landscape">
             <intent-filter>
