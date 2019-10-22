@@ -53,20 +53,24 @@
     <TableRow
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:orientation="vertical">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Concurrent" />
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:background="@drawable/bgbutton"
+            android:text="Concurrent"
+            android:layout_margin="5dp"/>
 
-        <ImageButton
+        <Button
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="0dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/employes" />
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:background="@drawable/bgbutton"
+            android:src="@drawable/employes"
+            android:text="Employés"
+            android:layout_margin="5dp"/>
     </TableRow>
 
     <TableRow
