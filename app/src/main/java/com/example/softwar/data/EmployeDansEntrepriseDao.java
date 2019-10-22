@@ -17,6 +17,9 @@ public interface EmployeDansEntrepriseDao {
     @Query("SELECT * FROM EmployeDansEntreprise WHERE nomEntreprise = :nom")
     List<EmployeDansEntreprise> getEmployeDuneEntreprise(String nom);
 
+    @Query("SELECT * FROM EmployeDansEntreprise WHERE nomEntreprise = :nomentr AND idEmploye = :idemp")
+    EmployeDansEntreprise getUnEmployeDuneEntreprise(String nomentr, int idemp);
+
     @Insert
     void insert(EmployeDansEntreprise ent);
 
