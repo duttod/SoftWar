@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.softwar.MyApplication;
 import com.example.softwar.R;
 import com.example.softwar.data.DatabaseClient;
 import com.example.softwar.data.Entreprise;
@@ -20,10 +21,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    EntreprisePerso entreprise_joueur;
+    TextView argent, nbuser, nomE;
     private DatabaseClient mdb;
-    EntreprisePerso entreprise_joueur ;
-    TextView argent,nbuser,nomE;
-
     ArrayList<Entreprise> concurrents;
 
     @Override
@@ -38,48 +38,23 @@ public class MainActivity extends AppCompatActivity {
         mdb = DatabaseClient.getInstance(getApplicationContext());
         concurrents = new ArrayList<>();
 
-        getPartie();
+
+        //Récupérer la variable globale Application
+        //!!!!!!!!!!!
+        entreprise_joueur =((MyApplication)this.getApplication()).getEntreprise_joueur();
+        CreerRandomConcurrents();
+        setImageLogiciel();
+        LoadDataEntreprise();
+        ((MyApplication)this.getApplication()).setConcurrents(concurrents);
     }
 
 
-    private void getPartie() {
-
-        class getPartie extends AsyncTask<Void, Void, EntreprisePerso> {
-
-            @Override
-            protected EntreprisePerso doInBackground(Void... voids) {
-
-                ArrayList<EntreprisePerso> entreprise_j = new ArrayList<>();
-                entreprise_j.addAll(mdb.getAppDatabase().entreprisepersodao().getAll());
-                if (entreprise_j.get(0) != null) {
-                    return entreprise_j.get(0);
-                } else {
-                    return null;
-                }
-
-            }
-
-            @Override
-            protected void onPostExecute(EntreprisePerso ent) {
-                super.onPostExecute(ent);
-
-                entreprise_joueur = new EntreprisePerso (mdb, ent.getNomEntreprise(), ent.getNomLogiciel(), ent.getArgentEntreprise(), ent.getNbContrats(), ent.getProductivite());
-
-                LoadDataEntreprise();
-                CreerRandomConcurrents();
-                setImageLogiciel();
-
-            }
-
-        }
-
-        getPartie ge = new getPartie();
-        ge.execute();
-
-    }
 
     public void LoadDataEntreprise() {
 
+        argent.setText(Long.toString(entreprise_joueur.getArgentEntreprise()));
+        nomE.setText(entreprise_joueur.getNomEntreprise());
+        nbuser.setText(Integer.toString(entreprise_joueur.getLogiciel().getNbUtilisateurs()));
         argent.setText("Argent:"+Long.toString(entreprise_joueur.getArgentEntreprise()));
         nomE.setText("Entreprise:"+entreprise_joueur.getNomEntreprise());
         nbuser.setText("Utilisateurs:"+Integer.toString(entreprise_joueur.getLogiciel().getNbUtilisateurs()));

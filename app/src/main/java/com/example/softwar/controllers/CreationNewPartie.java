@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.softwar.MyApplication;
 import com.example.softwar.R;
 import com.example.softwar.data.DatabaseClient;
 import com.example.softwar.data.Entreprise;
@@ -27,10 +28,9 @@ public class CreationNewPartie extends AppCompatActivity {
     private DatabaseClient mDb;
     ArrayList<Logiciel> arraylog = new ArrayList();
     ArrayList<Entreprise> arrayEnt = new ArrayList();
-
-    public static final String MyPREFERENCES = "MyPrefs" ;
+    EntreprisePerso eperso;
     Logiciel logicielperso;
-    SharedPreferences session ;
+
     Typeface typeface;
     Typeface typeface2;
 
@@ -40,7 +40,11 @@ public class CreationNewPartie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation_new_partie);
         mDb = DatabaseClient.getInstance(getApplicationContext());
-        session = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+    }
+
+    public void demarrerPartie(View view) {
+        tnomE = (EditText) findViewById(R.id.edit_nom_entreprise);
         TextView titre = findViewById(R.id.titre_CreationNewPartie);
         typeface = ResourcesCompat.getFont(this, R.font.nasalization);
         typeface2 = ResourcesCompat.getFont(this, R.font.digitall);
@@ -57,32 +61,17 @@ public class CreationNewPartie extends AppCompatActivity {
         tnomL.setTypeface(typeface);
         tnomE.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP);
         tnomL.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP);
-
-    }
-
-    public void demarrerPartie(View view) {
-
-
         getLogiciels();
         getEntreprises();
-        System.out.println("Boutton OK");
-        System.out.println(nomEValide(tnomE.getText().toString()));
-        System.out.println(nomLValide(tnomE.getText().toString()));
 
         if(nomEValide(tnomE.getText().toString()) && nomLValide(tnomE.getText().toString()) ){
             creerLogiciel(tnomL.getText().toString());
             creerEntreprisePerso(tnomE.getText().toString(),tnomL.getText().toString());
-
-            SharedPreferences.Editor editor = session.edit();
-
-            editor.putString("NomEntreprise", tnomE.getText().toString());
-            editor.commit();
-
-            Intent intent = new Intent(this,MainActivity.class);
-
-            startActivity(intent);
+            ((MyApplication) this.getApplication()).setEntreprise_joueur(eperso);
         }
+
     }
+
 
     private boolean nomEValide(String nomE) {
         int i = 0;
@@ -171,7 +160,6 @@ public class CreationNewPartie extends AppCompatActivity {
             protected EntreprisePerso doInBackground(Void... voids) {
                 EntreprisePerso e = new EntreprisePerso(nomE,nomL,1000 , 1 , 0);
                 mDb.getAppDatabase().entreprisepersodao().insert(e);
-                mDb.getAppDatabase().logicieldao().insert(e.getLogiciel());
 
                 return e;
             }
@@ -179,8 +167,15 @@ public class CreationNewPartie extends AppCompatActivity {
             @Override
             protected void onPostExecute(EntreprisePerso e) {
                 super.onPostExecute(e);
+                eperso = e;
 
-                // Mettre à jour l'adapter avec la liste de taches
+                if(eperso==null){
+                    System.out.println("NULL DANS LE NEW");
+                }
+                MyApplication.getInstance().setEntreprise_joueur(eperso);
+                Intent intent = new Intent(MyApplication.getInstance(),MainActivity.class);
+
+                startActivity(intent);
 
             }
 
@@ -207,5 +202,7 @@ public class CreationNewPartie extends AppCompatActivity {
         creerLogiciel gt = new creerLogiciel();
         gt.execute();
     }
+
+
 
 }
