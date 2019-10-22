@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.softwar.R;
 import com.example.softwar.data.DatabaseClient;
+import com.example.softwar.data.Entreprise;
 import com.example.softwar.data.EntreprisePerso;
 import com.example.softwar.data.Logiciel;
 
@@ -22,18 +23,20 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseClient mdb;
     EntreprisePerso entreprise_joueur ;
     TextView argent,nbuser,nomE;
-    Logiciel monlogiciel;
+
+    ArrayList<Entreprise> concurrents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SharedPreferences session = getSharedPreferences(ChargePartie.MyPREFERENCES, Context.MODE_PRIVATE);
+
         argent = (TextView) findViewById(R.id.argent);
         nbuser = (TextView) findViewById(R.id.nbUtilisateurs);
         nomE = (TextView) findViewById(R.id.nomE);
 
         mdb = DatabaseClient.getInstance(getApplicationContext());
+        concurrents = new ArrayList<>();
 
         getPartie();
     }
@@ -60,7 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 super.onPostExecute(ent);
 
                 entreprise_joueur = new EntreprisePerso (mdb, ent.getNomEntreprise(), ent.getNomLogiciel(), ent.getArgentEntreprise(), ent.getNbContrats(), ent.getProductivite());
+
                 LoadDataEntreprise();
+                CreerRandomConcurrents();
+                setImageLogiciel();
 
             }
 
@@ -70,41 +76,44 @@ public class MainActivity extends AppCompatActivity {
         ge.execute();
 
     }
-/*
-    private void getLogiciel() {
 
-        class getPartie extends AsyncTask<Void, Void, Logiciel> {
-
-            @Override
-            protected Logiciel doInBackground(Void... voids) {
-
-                Logiciel log = mdb.getAppDatabase().logicieldao().getByEntreprise(entreprise_joueur.getNomLogiciel());
-                return log ;
-            }
-
-            @Override
-            protected void onPostExecute(Logiciel l) {
-                super.onPostExecute(l);
-
-                monlogiciel = l;
-                LoadDataEntreprise();
-
-            }
-
-        }
-
-        getPartie ge = new getPartie();
-        ge.execute();
-
-    }
-*/
     public void LoadDataEntreprise() {
 
-        argent.setText(Long.toString(entreprise_joueur.getArgentEntreprise()));
-        nomE.setText(entreprise_joueur.getNomEntreprise());
-        nbuser.setText(Integer.toString(monlogiciel.getNbUtilisateurs()));
+        argent.setText("Argent:"+Long.toString(entreprise_joueur.getArgentEntreprise()));
+        nomE.setText("Entreprise:"+entreprise_joueur.getNomEntreprise());
+        nbuser.setText("Utilisateurs:"+Integer.toString(entreprise_joueur.getLogiciel().getNbUtilisateurs()));
 
     }
 
+    public void CreerRandomConcurrents() {
 
+        for (int i = 0; i < 5; i++) {
+            Entreprise ets_conc = new Entreprise("Concurrent"+i,"Soft"+i);
+
+            int argent_depart = (int) (Math.random() * (500 - 2000));
+            int nb_utilisateurs_depart = (int) (Math.random() * (1500 - 50000));
+
+            ets_conc.setArgentEntreprise(argent_depart);
+            ets_conc.getLogiciel().setNbUtilisateurs(nb_utilisateurs_depart);
+
+            concurrents.add(ets_conc);
+        }
+    }
+
+    public void setImageLogiciel() {
+
+        switch(entreprise_joueur.getLogiciel().getNiveauLogiciel()) {
+            case 1 : ////
+                break;
+            case 2 : ////
+                break;
+            case 3 : ////
+                break;
+            case 4 : ////
+                break;
+            case 5 : ////
+                break;
+        }
+
+    }
 }

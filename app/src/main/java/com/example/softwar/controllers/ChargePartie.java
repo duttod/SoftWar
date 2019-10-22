@@ -23,10 +23,9 @@ public class ChargePartie extends AppCompatActivity {
 
     LinearLayout linear_bouttons_parties;
     private DatabaseClient mdb;
-    public static final String MyPREFERENCES = "MyPrefs" ;
 
     public EntreprisePerso entreprise_joueur;
-    SharedPreferences session ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +33,7 @@ public class ChargePartie extends AppCompatActivity {
 
         mdb = DatabaseClient.getInstance(getApplicationContext());
         linear_bouttons_parties = findViewById(R.id.linear_bouttons_partie);
-        session = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
         getPartie();
     }
 
@@ -49,10 +48,7 @@ public class ChargePartie extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     //Start la partie
-                    SharedPreferences.Editor editor = session.edit();
 
-                    editor.putString("NomEntreprise", entreprise_joueur.getNomEntreprise());
-                    editor.commit();
                     Intent intent = new Intent(ChargePartie.super.getApplication(),MainActivity.class);
                     startActivity(intent);
                 }
