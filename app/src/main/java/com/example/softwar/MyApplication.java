@@ -2,6 +2,8 @@ package com.example.softwar;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.Typeface;
+import android.support.v4.content.res.ResourcesCompat;
 
 import com.example.softwar.data.Entreprise;
 import com.example.softwar.data.EntreprisePerso;

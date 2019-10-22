@@ -6,21 +6,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DFC989"
+    android:background="@drawable/bg1"
+    android:gravity="center"
     android:orientation="vertical"
     tools:context=".controllers.CreditActivity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/nasalization"
+        android:text="Protoype créé par :"
+        android:textColor="#FFB900"
         android:textSize="30dp"
-        android:text="@string/credit"/>
-    
-   <Button
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:layout_gravity="bottom"
-       android:text="Retour au menu"
-       android:onClick="retourmenu"/>
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nasalization"
+        android:text="@string/credit"
+        android:textColor="#FFB900"
+        android:textSize="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nasalization"
+        android:text="Visuels : "
+        android:textColor="#FFB900"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nasalization"
+        android:text="Luis Zuno\nhttps://www.patreon.com/ansimuz"
+        android:textColor="#FFB900"
+        android:textSize="30dp" />
+
+    <Button
+        android:layout_width="243dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bgbutton"
+        android:fontFamily="@font/nasalization"
+        android:onClick="retourmenu"
+        android:text="Retour au menu"
+        android:textColor="#FFB900"
+        android:textSize="18dp" />
 
 </LinearLayout>

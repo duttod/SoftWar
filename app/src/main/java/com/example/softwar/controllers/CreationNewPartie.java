@@ -3,6 +3,7 @@ package com.example.softwar.controllers;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -31,36 +32,25 @@ public class CreationNewPartie extends AppCompatActivity {
     EntreprisePerso eperso;
     Logiciel logicielperso;
 
-    Typeface typeface;
-    Typeface typeface2;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_creation_new_partie);
+        getSupportActionBar().hide();
         mDb = DatabaseClient.getInstance(getApplicationContext());
 
     }
 
     public void demarrerPartie(View view) {
-        tnomE = (EditText) findViewById(R.id.edit_nom_entreprise);
-        TextView titre = findViewById(R.id.titre_CreationNewPartie);
-        typeface = ResourcesCompat.getFont(this, R.font.nasalization);
-        typeface2 = ResourcesCompat.getFont(this, R.font.digitall);
         tnomL = (EditText) findViewById(R.id.edit_nom_logiciel);
         tnomE = (EditText) findViewById(R.id.edit_nom_entreprise);
-        titre.setTypeface(typeface);
-        TextView tv1 = findViewById(R.id.text_nom_entreprise);
-        tv1.setTypeface(typeface);
-        TextView tv2 = findViewById(R.id.text_nom_logiciel);
-        getSupportActionBar().hide();
-        tv2.setTypeface(typeface);
-        tnomE.setTypeface(typeface);
 
-        tnomL.setTypeface(typeface);
-        tnomE.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP);
-        tnomL.getBackground().mutate().setColorFilter(getResources().getColor(R.color.colorPrimaryDark), PorterDuff.Mode.SRC_ATOP);
+
+        tnomE.getBackground().mutate().setColorFilter(Color.parseColor("#FFB900"), PorterDuff.Mode.SRC_ATOP);
+        tnomL.getBackground().mutate().setColorFilter(Color.parseColor("#FFB900"), PorterDuff.Mode.SRC_ATOP);
         getLogiciels();
         getEntreprises();
 
