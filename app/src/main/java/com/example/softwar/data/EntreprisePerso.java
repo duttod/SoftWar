@@ -30,8 +30,9 @@ public class EntreprisePerso extends Entreprise {
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
 		setProductivite(productivite);
+
 		setEmployes();
-		setLogiciel();
+		setLogiciel(this.getNomLogiciel());
 	}
 
 	@Ignore
@@ -42,8 +43,6 @@ public class EntreprisePerso extends Entreprise {
 	@Ignore
 	private List<EmployeDansEntreprise> employes;
 
-	@ColumnInfo(name = "argentEntreprise")
-	private long argentEntreprise;
 
 	@ColumnInfo(name = "nbContrats")
 	private int nbContrats;
@@ -51,24 +50,12 @@ public class EntreprisePerso extends Entreprise {
 	@ColumnInfo(name = "productivite")
 	private int productivite;
 
-	public long getArgentEntreprise() {
-		return this.argentEntreprise;
-	}
-
 	public void setEmployes() {
 		employes =  mdb.getAppDatabase().employeDansEntrepriseDao().getEmployeDuneEntreprise(getNomEntreprise());
 	}
 
 	public List<EmployeDansEntreprise> getEmployes() {
 		return this.employes;
-	}
-
-	/**
-	 * 
-	 * @param argentEntreprise
-	 */
-	public void setArgentEntreprise(long argentEntreprise) {
-		this.argentEntreprise = argentEntreprise;
 	}
 
 	public int getNbContrats() {
@@ -95,10 +82,12 @@ public class EntreprisePerso extends Entreprise {
 		this.productivite = productivite;
 	}
 
-	public void setLogiciel() {
-		logiciel = mdb.getAppDatabase().logicieldao().getByEntreprise(this.getNomLogiciel());
+	@Override
+	public void setLogiciel(String nom) {
+		logiciel = mdb.getAppDatabase().logicieldao().getByEntreprise(nom);
 	}
 
+	@Override
 	public Logiciel getLogiciel() {
 		return this.logiciel;
 	}
