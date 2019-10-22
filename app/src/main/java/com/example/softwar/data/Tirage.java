@@ -1,5 +1,7 @@
 package com.example.softwar.data;
 
+import com.example.softwar.MyApplication;
+
 import java.util.List;
 import java.util.Random;
 
@@ -15,11 +17,11 @@ public class Tirage {
 
     private List<Employe> tirageEmploye;
     private List<Employe> employeTire;
-    private DatabaseClient mdb;
+    private DatabaseClient mdb ;
     private Random random;
 
-    public Tirage(DatabaseClient mdb){
-        this.mdb = mdb;
+    public Tirage(){
+        this.mdb = DatabaseClient.getInstance(MyApplication.getContext());
         this.random = new Random();
         List<Employe> allEmploye = mdb.getAppDatabase().employeDao().getAll();
         for (int i = 0; i < allEmploye.size() ; i++)
@@ -48,6 +50,7 @@ public class Tirage {
     }
 
     public void tirageUnique(){
+
         employeTire.add(tirageEmploye.get(random.nextInt(tirageEmploye.size())));
     }
 
