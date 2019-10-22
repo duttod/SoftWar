@@ -6,17 +6,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DFC989"
+    android:background="@drawable/bg1"
     android:orientation="vertical"
     tools:context=".controllers.MainActivity">
 
     <TextView
         android:id="@+id/titre_CreationNewPartie"
-        android:layout_width="291dp"
-        android:layout_height="166dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:layout_weight="1"
         android:gravity="center"
         android:text="Charger une partie"
         android:textColor="@color/colorPrimaryDark"
@@ -26,22 +25,22 @@
 
     <LinearLayout
         android:id="@+id/linear_bouttons_partie"
-        android:layout_width="match_parent"
-        android:layout_height="313dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
+            android:id="@+id/chargerpartie_soustitre"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="35dp"
             android:gravity="center"
             android:text="Choissisez la partie à charger :"
+            android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="italic" />
-
 
 
     </LinearLayout>

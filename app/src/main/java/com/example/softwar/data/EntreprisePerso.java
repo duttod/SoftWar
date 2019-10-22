@@ -92,4 +92,31 @@ public class EntreprisePerso extends Entreprise {
 		logiciel = mdb.getAppDatabase().logicieldao().getByEntreprise(this.getNomLogiciel());
 	}
 
+	public void addEmploye(Employe emp) {
+		if (mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId()) != null) {
+			EmployeDansEntreprise employedansets = mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId());
+			employedansets.setQuantite(employedansets.getQuantite()+1);
+
+			mdb.getAppDatabase().employeDansEntrepriseDao().update(employedansets);
+		} else {
+			EmployeDansEntreprise employedansets = new EmployeDansEntreprise();
+			employedansets.setIdEmploye(emp.getId());
+			employedansets.setNomEntreprise(this.getNomEntreprise());
+			employedansets.setQuantite(1);
+
+			mdb.getAppDatabase().employeDansEntrepriseDao().insert(employedansets);
+		}
+	}
+
+	public void removeEmploye(Employe emp) {
+		if (mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId()) != null && mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId()).getQuantite() > 1) {
+			EmployeDansEntreprise employedansets = mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId());
+			employedansets.setQuantite(employedansets.getQuantite()-1);
+		} else if (mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId()) != null && mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId()).getQuantite() == 1){
+
+			EmployeDansEntreprise employedansets = mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId());
+			mdb.getAppDatabase().employeDansEntrepriseDao().delete(employedansets);
+		}
+	}
+
 }

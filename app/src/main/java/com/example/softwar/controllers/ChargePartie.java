@@ -4,13 +4,22 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.AsyncTask;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Layout;
+import android.text.TextWatcher;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.example.softwar.MyApplication;
 import com.example.softwar.R;
@@ -21,20 +30,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChargePartie extends AppCompatActivity {
-
+    Typeface typeface;
     LinearLayout linear_bouttons_parties;
     private DatabaseClient mdb;
-    public static final String MyPREFERENCES = "MyPrefs" ;
+    TextView titre;
+    TextView soustitre;
 
     public EntreprisePerso entreprise_joueur;
-    SharedPreferences session ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_charge_partie);
+        getSupportActionBar().hide();
 
+        setContentView(R.layout.activity_charge_partie);
+        typeface = ResourcesCompat.getFont(this, R.font.nasalization);
         mdb = DatabaseClient.getInstance(getApplicationContext());
         linear_bouttons_parties = findViewById(R.id.linear_bouttons_partie);
+        titre = findViewById(R.id.titre_CreationNewPartie);
+        soustitre = findViewById(R.id.chargerpartie_soustitre);
+        soustitre.setTypeface(typeface);
+        titre.setTypeface(typeface);
         getPartie();
     }
 
@@ -45,6 +61,19 @@ public class ChargePartie extends AppCompatActivity {
         if (entreprise_joueur != null) {
 
             Button but = new Button(this);
+            but.setTypeface(typeface);
+            but.setTextColor(Color.WHITE);
+            but.setTextSize(25);
+
+            GradientDrawable drawable = new GradientDrawable();
+            drawable.setShape(GradientDrawable.RECTANGLE);
+            drawable.setStroke(5, Color.parseColor("#00BBDE"));
+            drawable.setColor(Color.parseColor("#21004B"));
+
+            but.setBackgroundDrawable(drawable);
+            //but.setBackground(Drawable.createFromPath("@drawable/bgbutton.png"));
+            //but.setPadding(0,0,0,0);
+            //but.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             but.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
