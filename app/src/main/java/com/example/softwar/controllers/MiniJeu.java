@@ -84,6 +84,7 @@ public class MiniJeu extends AppCompatActivity {
         tv.setOnTouchListener(new MyTouchListener());
         layout_reponses.addView(tv);
     }
+
     public LinearLayout initLigne(){
         LinearLayout l1 = new LinearLayout(this);
         l1.setOrientation(LinearLayout.HORIZONTAL);
@@ -106,8 +107,6 @@ public class MiniJeu extends AppCompatActivity {
             }
         }
     }
-
-
 
     class MyDragListener implements View.OnDragListener {
         Drawable enterShape = getResources().getDrawable(R.drawable.shape_droptarget);
@@ -136,10 +135,11 @@ public class MiniJeu extends AppCompatActivity {
                     //view being dragged and dropped
                     TextView dropped = (TextView) view;
                     //update the text in the target view to reflect the data being dropped
+
                     dropTarget.setText(dropped.getText());
                     //make it bold to highlight the fact that an item has been dropped
                     dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
-                    dropTarget.setOnTouchListener(new MyTouchListener());
+
                     Object tag = dropTarget.getTag();
                     //if there is already an item here, set it back visible in its original place
                     if(tag!=null)
