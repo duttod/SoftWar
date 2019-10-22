@@ -146,7 +146,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
             @Override
             protected List<Employe> doInBackground(Void... voids) {
                 List<Employe> employeList = mDb.getAppDatabase()
-                        .employeDao()
+                        .employeDao() // ne pas récupếrer dans la bdd mais dans entreprise !
                         .getAll();
 
                 return employeList;

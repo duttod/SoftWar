@@ -13,10 +13,10 @@
 
     <LinearLayout
 
-        android:layout_width="370dp"
+        android:layout_width="306dp"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/home_titre"
@@ -39,27 +39,36 @@
         android:gravity="center"
         >
 
-        <Button
+        <ImageButton
             android:id="@+id/button"
-            android:layout_width="268dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:onClick="Nouvelle_Partie"
+            android:padding="0dp"
+            android:src="@drawable/nouvellepartie"
             android:text="Nouvelle Partie"
-            android:onClick="Nouvelle_Partie"/>
+            android:layout_margin="10dp"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/button2"
-            android:layout_width="268dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="ChargerPartie"
+            android:padding="0dp"
+            android:src="@drawable/chargerpartie"
             android:text="Charger Partie"
-            android:onClick="ChargerPartie"/>
+            android:layout_margin="10dp"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/button3"
-            android:layout_width="268dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="afficherCredit"
+            android:padding="0dp"
+            android:src="@drawable/credits"
             android:text="Crédit"
-            android:onClick="afficherCredit"/>
+            android:layout_margin="10dp"/>
 
     </LinearLayout>
 
