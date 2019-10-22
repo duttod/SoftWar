@@ -129,6 +129,8 @@ public class MiniJeu extends AppCompatActivity {
                     // Dropped, reassign View to ViewGroup
                     View view = (View) event.getLocalState();
                     //stop displaying the view where it was before it was dragged
+
+
                     view.setVisibility(View.INVISIBLE);
                     //view dragged item is being dropped on
                     TextView dropTarget = (TextView) v;
@@ -136,21 +138,24 @@ public class MiniJeu extends AppCompatActivity {
                     TextView dropped = (TextView) view;
                     //update the text in the target view to reflect the data being dropped
 
-                    dropTarget.setText(dropped.getText());
-                    dropTarget.setOnTouchListener(new MyTouchListener());
+                    if (dropTarget instanceof TextView) {
+                        dropTarget.setText(dropped.getText());
+                        dropTarget.setOnTouchListener(new MyTouchListener());
 
-                    //make it bold to highlight the fact that an item has been dropped
-                    dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
+                        //make it bold to highlight the fact that an item has been dropped
+                        dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
 
-                    Object tag = dropTarget.getTag();
-                    //if there is already an item here, set it back visible in its original place
-                    if(tag!=null)
-                    {
-                        //the tag is the view id already dropped here
-                        int existingID = (Integer)tag;
-                        //set the original view visible again
-                        findViewById(existingID).setVisibility(View.VISIBLE);
+                        Object tag = dropTarget.getTag();
+                        //if there is already an item here, set it back visible in its original place
+                        if(tag!=null)
+                        {
+                            //the tag is the view id already dropped here
+                            int existingID = (Integer)tag;
+                            //set the original view visible again
+                            findViewById(existingID).setVisibility(View.VISIBLE);
+                        }
                     }
+
                     break;
                 case DragEvent.ACTION_DRAG_ENDED:
                     v.setBackgroundDrawable(normalShape);
