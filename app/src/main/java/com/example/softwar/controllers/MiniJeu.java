@@ -46,6 +46,8 @@ public class MiniJeu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mini_jeu);
+        getSupportActionBar().hide();
+
         titre = findViewById(R.id.minijeu_titre);
         layout_text = findViewById(R.id.layout_text);
         layout_reponses = findViewById(R.id.layout_reponses);
