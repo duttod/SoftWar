@@ -34,7 +34,7 @@ public class ResultatMiniJeu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultat_mini_jeu);
-
+        getSupportActionBar().hide();
         mDb = DatabaseClient.getInstance(getApplicationContext());
 
         nbjuste_i = getIntent().getIntExtra(nbjuste,0);
