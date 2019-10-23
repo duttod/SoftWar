@@ -48,6 +48,10 @@ public class DatabaseClient {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
+            Employe e = new Employe("Gérot","Cédric",44,20,20,3);
+            Employe e1 = new Employe("Ceret","éric",44,14,18,2);
+            appDatabase.employeDao().insert(e);
+            appDatabase.employeDao().insert(e1);
         }
     };
 

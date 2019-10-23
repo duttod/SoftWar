@@ -28,6 +28,16 @@ public class Employe {
     @ColumnInfo(name = "rarete")
 	private int rarete;
 
+    public Employe(String nomEmploye,String prenomEmploye,int ageEmploye,int productivite,int rapidite,int rarete){
+    	setAgeEmploye(ageEmploye);
+    	setNomEmploye(nomEmploye);
+    	setPrenomEmploye(prenomEmploye);
+    	setProductivite(productivite);
+    	setRapidite(rapidite);
+    	setRarete(rarete);
+
+	}
+
 	public String getNomEmploye() {
 		return this.nomEmploye;
 	}

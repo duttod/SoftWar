@@ -197,14 +197,14 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
                 /*for (int i =0; i<entreprise_joueur.getEmployes().size();i++){
                    employeList.add(entreprise_joueur.getEmployes().get(i).getEmploye(mDb));
                 }*/
-                Employe e = new Employe();
-                e.setAgeEmploye(4);
-                e.setProductivite(1);
-                e.setRapidite(1);
-                e.setRarete(1);
-                e.setPrenomEmploye("Henry");
-                e.setNomEmploye("Thierry");
-                employeList.add(e);
+//                Employe e = new Employe();
+//                e.setAgeEmploye(4);
+//                e.setProductivite(1);
+//                e.setRapidite(1);
+//                e.setRarete(1);
+//                e.setPrenomEmploye("Henry");
+//                e.setNomEmploye("Thierry");
+//                employeList.add(e);
 
 
                 return employeList;

@@ -1,6 +1,7 @@
 package com.example.softwar.controllers;
 
 import android.app.Dialog;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,11 +20,14 @@ public class TirageAuSortActivity extends AppCompatActivity {
     EntreprisePerso entreprise_joueur ;
     private DatabaseClient mDb;
     Dialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tirage_au_sort);
         mDb = DatabaseClient.getInstance(getApplicationContext());
+        entreprise_joueur =((MyApplication)this.getApplication()).getEntreprise_joueur();
         getSupportActionBar().hide();
     }
 
@@ -32,7 +36,6 @@ public class TirageAuSortActivity extends AppCompatActivity {
         t = new Tirage();
         t.Tirages(1);
         //Ajoute au model et a la BD
-        entreprise_joueur =((MyApplication)this.getApplication()).getEntreprise_joueur();
         entreprise_joueur.addEmploye(t.getEmployeTire().get(0));
         dialog = new Dialog(MyApplication.getContext());
         dialog.setContentView(R.layout.popup_tirage);
@@ -49,9 +52,14 @@ public class TirageAuSortActivity extends AppCompatActivity {
 
     public void tenpull(View view) {
         //Tire l'employé
-        for (int i=0 ; i<10 ;i++){
-            onepull(view);
+        if(entreprise_joueur.getNbContrats()>=10){
+            for (int i=0 ; i<10 ;i++){
+                onepull(view);
+            }
+        }else{
+            System.out.println("Pas assez de contrats");
         }
+
 
     }
 

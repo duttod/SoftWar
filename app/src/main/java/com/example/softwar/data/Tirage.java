@@ -1,7 +1,10 @@
 package com.example.softwar.data;
 
+import android.app.Application;
+
 import com.example.softwar.MyApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -19,11 +22,15 @@ public class Tirage {
     private List<Employe> employeTire;
     private DatabaseClient mdb ;
     private Random random;
+    EntreprisePerso entreprise_joueur;
 
     public Tirage(){
         this.mdb = DatabaseClient.getInstance(MyApplication.getContext());
         this.random = new Random();
-        List<Employe> allEmploye = mdb.getAppDatabase().employeDao().getAll();
+        employeTire = new ArrayList<>();
+        tirageEmploye = new ArrayList<>();
+        ArrayList<Employe> allEmploye = new ArrayList<>();
+        allEmploye.addAll(mdb.getAppDatabase().employeDao().getAll());
         for (int i = 0; i < allEmploye.size() ; i++)
         {
             switch (allEmploye.get(i).getRarete()) {
@@ -55,10 +62,14 @@ public class Tirage {
     }
 
     public List<Employe> Tirages(int nbTirage){
+
         getEmployeTire().clear();
+
         for (int i = 0; i < nbTirage; i++){
             tirageUnique();
         }
+        entreprise_joueur = MyApplication.getInstance().getEntreprise_joueur();
+        entreprise_joueur.setNbContrats(entreprise_joueur.getNbContrats()-nbTirage);
         return getEmployeTire();
     }
 
