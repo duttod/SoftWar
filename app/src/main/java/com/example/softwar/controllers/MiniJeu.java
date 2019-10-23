@@ -60,7 +60,7 @@ public class MiniJeu extends AppCompatActivity {
 
         mDb = DatabaseClient.getInstance(getApplicationContext());
         InitJeu();
-        
+
     }
     public void initPattern1_1(){
         /*  int i=1;
