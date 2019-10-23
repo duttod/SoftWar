@@ -34,7 +34,6 @@ public class ChargePartie extends AppCompatActivity {
     LinearLayout linear_bouttons_parties;
     private DatabaseClient mdb;
 
-
     public EntreprisePerso entreprise_joueur;
 
     @Override
@@ -94,28 +93,25 @@ public class ChargePartie extends AppCompatActivity {
 
     private void getPartie() {
 
-        class getPartie extends AsyncTask<Void, Void, EntreprisePerso> {
+        class getPartie extends AsyncTask<Void, Void, List<EntreprisePerso>> {
 
             @Override
-            protected EntreprisePerso doInBackground(Void... voids) {
+            protected List<EntreprisePerso> doInBackground(Void... voids) {
 
-                ArrayList<EntreprisePerso> entreprise_j = new ArrayList<EntreprisePerso>();
-                entreprise_j.addAll(mdb.getAppDatabase().entreprisepersodao().getAll());
-                if (entreprise_j.get(0) != null) {
-                    return entreprise_j.get(0);
-                } else {
-                    return null;
-                }
+                List<EntreprisePerso> entreprise_j = mdb.getAppDatabase().entreprisepersodao().getAll();
+                return entreprise_j;
+
             }
 
             @Override
-            protected void onPostExecute(EntreprisePerso ent) {
+            protected void onPostExecute(List<EntreprisePerso> ent) {
                 super.onPostExecute(ent);
 
-                entreprise_joueur = new EntreprisePerso (mdb, ent.getNomEntreprise(), ent.getNomLogiciel(), ent.getArgentEntreprise(), ent.getNbContrats(), ent.getProductivite());
-                MyApplication.getInstance().setEntreprise_joueur(entreprise_joueur);
-                setView();
-
+                if (ent != null && ent.size() != 0) {
+                    entreprise_joueur = new EntreprisePerso (mdb, ent.get(0).getNomEntreprise(), ent.get(0).getNomLogiciel(), ent.get(0).getArgentEntreprise(), ent.get(0).getNbContrats(), ent.get(0).getProductivite());
+                    MyApplication.getInstance().setEntreprise_joueur(entreprise_joueur);
+                    setView();
+                }
             }
 
         }

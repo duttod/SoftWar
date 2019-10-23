@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.softwar.MyApplication;
 import com.example.softwar.R;
@@ -27,8 +28,8 @@ import java.util.List;
 public class CreationNewPartie extends AppCompatActivity {
     EditText tnomL,tnomE;
     private DatabaseClient mDb;
-    ArrayList<Logiciel> arraylog = new ArrayList();
-    ArrayList<Entreprise> arrayEnt = new ArrayList();
+    ArrayList<Logiciel> liste_logiciels = new ArrayList();
+    ArrayList<EntreprisePerso> liste_entreprises = new ArrayList();
     EntreprisePerso eperso;
 
     @Override
@@ -42,17 +43,25 @@ public class CreationNewPartie extends AppCompatActivity {
     }
 
     public void demarrerPartie(View view) {
+
         tnomL = (EditText) findViewById(R.id.edit_nom_logiciel);
         tnomE = (EditText) findViewById(R.id.edit_nom_entreprise);
 
 
         tnomE.getBackground().mutate().setColorFilter(Color.parseColor("#FFB900"), PorterDuff.Mode.SRC_ATOP);
         tnomL.getBackground().mutate().setColorFilter(Color.parseColor("#FFB900"), PorterDuff.Mode.SRC_ATOP);
+
         getLogiciels();
         getEntreprises();
 
-        if(nomEValide(tnomE.getText().toString()) && nomLValide(tnomE.getText().toString()) ){
-            creerEntreprisePerso(tnomE.getText().toString(),tnomL.getText().toString());
+        if(liste_entreprises.size() == 0){
+            if(nomEValide(tnomE.getText().toString()) && nomLValide(tnomE.getText().toString()) ) {
+                creerEntreprisePerso(tnomE.getText().toString(), tnomL.getText().toString());
+            } else {
+                Toast.makeText(this,"Veuillez remplir les champs !", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this,"Une partie a déjà a été crée ! veuillez la charger.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -60,10 +69,10 @@ public class CreationNewPartie extends AppCompatActivity {
     private boolean nomEValide(String nomE) {
         int i = 0;
         if(!nomE.isEmpty()){
-            while(i<arrayEnt.size() && arrayEnt.get(i).getNomEntreprise() != nomE ){
+            while(i<liste_entreprises.size() && liste_entreprises.get(i).getNomEntreprise() != nomE ){
                 i++;
             }
-            return i==arrayEnt.size();
+            return i==liste_entreprises.size();
         }else{
             return false;
         }
@@ -73,10 +82,10 @@ public class CreationNewPartie extends AppCompatActivity {
     private boolean nomLValide(String nomL) {
         int i = 0;
         if(!nomL.isEmpty()){
-            while(i<arrayEnt.size() && arrayEnt.get(i).getNomEntreprise() != nomL ){
+            while(i<liste_logiciels.size() && liste_logiciels.get(i).getNomLogiciel() != nomL ){
                 i++;
             }
-            return i==arrayEnt.size();
+            return i==liste_logiciels.size();
         }else{
             return false;
         }
@@ -100,8 +109,8 @@ public class CreationNewPartie extends AppCompatActivity {
                 super.onPostExecute(mylist);
 
                 // Mettre à jour l'adapter avec la liste de taches
-                arraylog.clear();
-                arraylog.addAll(mylist);
+                liste_logiciels.clear();
+                liste_logiciels.addAll(mylist);
 
             }
         }
@@ -112,23 +121,23 @@ public class CreationNewPartie extends AppCompatActivity {
 
     private void getEntreprises() {
 
-        class getEntreprises extends AsyncTask<Void, Void, List<Entreprise>> {
+        class getEntreprises extends AsyncTask<Void, Void, List<EntreprisePerso>> {
 
             @Override
-            protected List<Entreprise> doInBackground(Void... voids) {
+            protected List<EntreprisePerso> doInBackground(Void... voids) {
 
-                ArrayList<Entreprise> EntrepriseList = new ArrayList<>();
-                EntrepriseList.addAll(mDb.getAppDatabase().entreprisedao().getAll());
+                List<EntreprisePerso> EntrepriseList = mDb.getAppDatabase().entreprisepersodao().getAll();
+
                 return EntrepriseList;
             }
 
             @Override
-            protected void onPostExecute(List<Entreprise> mylist) {
+            protected void onPostExecute(List<EntreprisePerso> mylist) {
                 super.onPostExecute(mylist);
 
                 // Mettre à jour l'adapter avec la liste de taches
-                arrayEnt.clear();
-                arrayEnt.addAll(mylist);
+                liste_entreprises.clear();
+                liste_entreprises.addAll(mylist);
 
             }
         }
