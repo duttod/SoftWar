@@ -14,6 +14,7 @@ import com.example.softwar.R;
 import com.example.softwar.data.DatabaseClient;
 import com.example.softwar.data.Entreprise;
 import com.example.softwar.data.EntreprisePerso;
+import com.example.softwar.data.Jeu;
 import com.example.softwar.data.Logiciel;
 
 import org.w3c.dom.Text;
@@ -48,10 +49,9 @@ public class MainActivity extends AppCompatActivity {
         CreerRandomConcurrents();
         setImageLogiciel();
         LoadDataEntreprise();
+
         ((MyApplication)this.getApplication()).setConcurrents(concurrents);
     }
-
-
 
     public void LoadDataEntreprise() {
 

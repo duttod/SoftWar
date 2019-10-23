@@ -55,6 +55,8 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
+                android:onClick="valider_minijeu"
+                android:text="Valider"
                 android:textColor="#FFB900"
                 tools:text="Valider" />
 
@@ -65,6 +67,7 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
+                android:text="Abandonner"
                 android:textColor="#FFB900"
                 tools:text="Abandonner" />
         </LinearLayout>

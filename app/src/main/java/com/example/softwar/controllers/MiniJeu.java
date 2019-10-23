@@ -1,9 +1,11 @@
 package com.example.softwar.controllers;
 
 import android.content.ClipData;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,25 +17,49 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.softwar.MyApplication;
 import com.example.softwar.R;
+import com.example.softwar.data.DatabaseClient;
+import com.example.softwar.data.EntreprisePerso;
+import com.example.softwar.data.Jeu;
+import com.example.softwar.data.Logiciel;
 import com.example.softwar.data.Pattern;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MiniJeu extends AppCompatActivity {
+
     TextView titre;
     LinearLayout layout_text;
     LinearLayout layout_reponses;
     Pattern pattern;
 
+    int indice;
+    int nb_bonnerep;
+    int nb_mauvaiserep;
+
+    private DatabaseClient mDb;
+    private Jeu jeu_en_cours;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mini_jeu);
+        getSupportActionBar().hide();
+
         titre = findViewById(R.id.minijeu_titre);
         layout_text = findViewById(R.id.layout_text);
         layout_reponses = findViewById(R.id.layout_reponses);
         pattern = new Pattern();
-        getSupportActionBar().hide();
         initPattern1_1();
+
+        nb_bonnerep = 0;
+        nb_mauvaiserep = 0;
+        indice = 0;
+
+        mDb = DatabaseClient.getInstance(getApplicationContext());
+        InitJeu();
 
     }
     public void initPattern1_1(){
@@ -79,6 +105,9 @@ public class MiniJeu extends AppCompatActivity {
 
         tv1.setText("       ");
         tv1.setBackgroundColor(Color.YELLOW);
+
+        tv1.setId(indice);
+        indice++;
         //et.setEnabled(false);
         tv1.setOnDragListener(new MyDragListener());
         layout.addView(tv1);
@@ -98,6 +127,10 @@ public class MiniJeu extends AppCompatActivity {
         l1.setOrientation(LinearLayout.HORIZONTAL);
         this.layout_text.addView(l1);
         return l1;
+    }
+
+    public void valider_minijeu(View view) {
+
     }
 
 
@@ -138,7 +171,7 @@ public class MiniJeu extends AppCompatActivity {
                     View view = (View) event.getLocalState();
                     //stop displaying the view where it was before it was dragged
 
-                   // view.setVisibility(View.INVISIBLE);
+                    // view.setVisibility(View.INVISIBLE);
                     //view dragged item is being dropped on
                     TextView dropTarget = (TextView) v;
                     //view being dragged and dropped
@@ -170,6 +203,20 @@ public class MiniJeu extends AppCompatActivity {
                             //set the original view visible again
                             findViewById(existingID).setVisibility(View.VISIBLE);
                         }
+
+                        nb_bonnerep = 0;
+                        nb_mauvaiserep = 0;
+
+                       for (int i = 0; i < pattern.getBonnesReponses().size(); i++) {
+                               TextView t = (TextView) findViewById(i);
+                               if(pattern.getBonnesReponses().get(i).equals(t.getText().toString())){
+                                   nb_bonnerep++;
+                               } else {
+                                   nb_mauvaiserep++;
+                               }
+                       }
+                        System.out.println(nb_bonnerep);
+                        System.out.println(nb_mauvaiserep);
                     }
 
                     break;
@@ -181,4 +228,43 @@ public class MiniJeu extends AppCompatActivity {
             return true;
         }
     }
+
+    private void InitJeu() {
+        ///////////////////////
+        // Classe asynchrone permettant de récupérer des taches et de mettre à jour le listView de l'activité
+        class InitJeu extends AsyncTask<Void, Void, Jeu> {
+
+            @Override
+            protected Jeu doInBackground(Void... voids) {
+                Jeu jeu = mDb.getAppDatabase()
+                        .jeuDao()
+                        .getAJeu("Resolution de code");
+                return jeu;
+            }
+
+            @Override
+            protected void onPostExecute(Jeu jeu) {
+                super.onPostExecute(jeu);
+                jeu_en_cours = jeu;
+
+            }
+        }
+
+        InitJeu jeu = new InitJeu();
+        jeu.execute();
+    }
+
 }
+
+    /*
+    	public void getRecompenses(EntreprisePerso p, DatabaseClient mdb) {
+
+		int indicemin = 0;
+		int indicemax = mdb.getAppDatabase().resultatjeudao().getAll().size();
+
+		int indice = (int) (Math.random() * ( indicemax - indicemin ));
+
+		ResultatJeu recompense = mdb.getAppDatabase().resultatjeudao().getAll().get(indice);
+
+	}
+     */

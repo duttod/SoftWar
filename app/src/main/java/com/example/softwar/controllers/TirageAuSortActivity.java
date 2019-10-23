@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.softwar.MyApplication;
@@ -20,6 +21,7 @@ public class TirageAuSortActivity extends AppCompatActivity {
     EntreprisePerso entreprise_joueur ;
     private DatabaseClient mDb;
     Dialog dialog;
+    TextView nbc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,23 +31,34 @@ public class TirageAuSortActivity extends AppCompatActivity {
         mDb = DatabaseClient.getInstance(getApplicationContext());
         entreprise_joueur =((MyApplication)this.getApplication()).getEntreprise_joueur();
         getSupportActionBar().hide();
+        nbc = findViewById(R.id.nbcontrats);
+        nbc.setText("Nombre de contrats possédés:"+Integer.toString(entreprise_joueur.getNbContrats()));
     }
 
     public void onepull(View view) {
         //Tire l'employé
+        if(entreprise_joueur.getNbContrats()>=1){
+
+
         t = new Tirage();
         t.Tirages(1);
+        nbc.setText("Nombre de contrats possédés:"+Integer.toString(entreprise_joueur.getNbContrats()));
         //Ajoute au model et a la BD
         entreprise_joueur.addEmploye(t.getEmployeTire().get(0));
-        dialog = new Dialog(MyApplication.getContext());
+        dialog = new Dialog(TirageAuSortActivity.this);
         dialog.setContentView(R.layout.popup_tirage);
         TextView nomE = (TextView)dialog.findViewById(R.id.nom_employe);
         TextView pnomE = (TextView)dialog.findViewById(R.id.prenom_employe);
         TextView rarE = (TextView)dialog.findViewById(R.id.rarete_employe);
         nomE.setText(t.getEmployeTire().get(0).getNomEmploye());
         pnomE.setText(t.getEmployeTire().get(0).getPrenomEmploye());
-        rarE.setText(t.getEmployeTire().get(0).getRarete());
+        rarE.setText(Integer.toString(t.getEmployeTire().get(0).getRarete()));
         dialog.show();
+        LinearLayout layoutpop = findViewById(R.id.layout_tirage);
+        dialog.getWindow().setLayout(layoutpop.getWidth()+130, (layoutpop.getHeight()/2)+40);
+        }else{
+            //Pas asser de contrat ouvrir boite de dialogue
+        }
 
 
     }
@@ -57,7 +70,7 @@ public class TirageAuSortActivity extends AppCompatActivity {
                 onepull(view);
             }
         }else{
-            System.out.println("Pas assez de contrats");
+            //Pas asser de contrat ouvrir boite de dialogue
         }
 
 

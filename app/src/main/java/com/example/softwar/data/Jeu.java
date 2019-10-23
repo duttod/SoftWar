@@ -61,15 +61,4 @@ public class Jeu {
 		this.id = id;
 	}
 
-	public void getRecompenses(EntreprisePerso p, DatabaseClient mdb) {
-
-		int indicemin = 0;
-		int indicemax = mdb.getAppDatabase().resultatjeudao().getAll().size();
-
-		int indice = (int) (Math.random() * ( indicemax - indicemin ));
-
-		ResultatJeu recompense = mdb.getAppDatabase().resultatjeudao().getAll().get(indice);
-
-	}
-
 }
