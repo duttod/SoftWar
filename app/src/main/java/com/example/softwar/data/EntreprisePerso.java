@@ -54,6 +54,15 @@ public class EntreprisePerso extends Entreprise {
 	@ColumnInfo(name = "productivite")
 	private int productivite;
 
+	@ColumnInfo(name = "employeActif1")
+	private int idEmployeActif1;
+
+	@ColumnInfo(name = "employeActif2")
+	private int idEmployeActif2;
+
+	@ColumnInfo(name = "employeActif3")
+	private int idEmployeActif3;
+
 	public void setEmployes() {
 		employes =  mdb.getAppDatabase().employeDansEntrepriseDao().getEmployeDuneEntreprise(getNomEntreprise());
 	}
@@ -117,6 +126,33 @@ public class EntreprisePerso extends Entreprise {
 			EmployeDansEntreprise employedansets = mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId());
 			mdb.getAppDatabase().employeDansEntrepriseDao().delete(employedansets);
 		}
+	}
+
+	public void setEmployeActif(int numEmp, int idEmployeActif) {
+		switch (numEmp) {
+			case 0:
+				this.idEmployeActif1 = idEmployeActif;
+				break;
+			case 1:
+				this.idEmployeActif2 = idEmployeActif;
+				break;
+			case 2:
+				this.idEmployeActif3 = idEmployeActif;
+				break;
+		}
+	}
+
+
+	public int getIdEmployeActif2() {
+		return idEmployeActif2;
+	}
+
+	public int getIdEmployeActif3() {
+		return idEmployeActif3;
+	}
+
+	public int getIdEmployeActif1() {
+		return idEmployeActif1;
 	}
 
 }

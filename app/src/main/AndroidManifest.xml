@@ -20,9 +20,6 @@
             android:name=".controllers.AmeliorationsActivity"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".controllers.HomePageActivity"
-            android:screenOrientation="landscape" />
-        <activity
             android:name=".controllers.TirageAuSortActivity"
             android:screenOrientation="landscape" />
 
