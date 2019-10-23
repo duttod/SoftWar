@@ -57,7 +57,7 @@ public class TirageAuSortActivity extends AppCompatActivity {
         LinearLayout layoutpop = findViewById(R.id.layout_tirage);
         dialog.getWindow().setLayout(layoutpop.getWidth()+130, (layoutpop.getHeight()/2)+40);
         }else{
-            //Pas asser de contrat ouvrir boite de dialogue
+            //TODO Pas asser de contrat ouvrir boite de dialogue
         }
 
 
@@ -70,7 +70,7 @@ public class TirageAuSortActivity extends AppCompatActivity {
                 onepull(view);
             }
         }else{
-            //Pas asser de contrat ouvrir boite de dialogue
+            //TODO Pas asser de contrat ouvrir boite de dialogue
         }
 
 
