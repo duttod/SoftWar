@@ -145,13 +145,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void go_minijeu(View view) {
         Intent intent = new Intent(this, MiniJeu.class);
-<<<<<<< HEAD
         startActivity(intent);
     }
 
-=======
-    }
->>>>>>> bc3e2e9be7f12b6c3aa3186e281774b736f1b45f
     public void GoToAmeliorer(View view) {
         Intent intent = new Intent(this,AmeliorationsActivity.class);
         startActivity(intent);
