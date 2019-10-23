@@ -12,13 +12,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="285dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -30,7 +31,7 @@
                 <LinearLayout
 
                     android:layout_width="wrap_content"
-                    android:layout_height="165dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -77,30 +78,29 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="308dp"
-                    android:layout_weight="5"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <Button
 
-                        android:layout_width="120dp"
-                        android:layout_height="70dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:background="@drawable/bgbutton"
                         android:fontFamily="@font/nasalization"
-                        android:text="Concurrent"
-                        android:textColor="#FFB900"
                         android:onClick="go_concurrents"
-                        />
+                        android:text="Concurrent"
+                        android:textColor="#FFB900" />
 
                     <Button
-                        android:layout_width="120dp"
-                        android:layout_height="70dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:background="@drawable/bgbutton"
                         android:fontFamily="@font/nasalization"
-                        android:text="INVOQUER"
                         android:onClick="GoToInvocation"
+                        android:text="INVOQUER"
                         android:textColor="#FFB900" />
 
                 </LinearLayout>
@@ -111,7 +111,7 @@
 
         <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="512dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             app:srcCompat="@drawable/hangingterm" />
@@ -121,66 +121,69 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:layout_weight="4">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/nasalization"
-            android:gravity="bottom|left"
             android:orientation="horizontal">
 
             <Button
-                android:layout_width="120dp"
-                android:layout_height="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
                 android:text="AMELIORER"
                 android:textColor="#FFB900" />
 
             <Button
-                android:layout_width="120dp"
-                android:layout_height="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
-                android:textColor="#FFB900"
-                android:text="STATS"/>
-
-            <Button
-                android:layout_width="120dp"
-                android:layout_height="70dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/bgbutton"
-                android:fontFamily="@font/nasalization"
-                android:text="Employés"
-                android:onClick="go_employes"
+                android:text="STATS"
                 android:textColor="#FFB900" />
 
             <Button
-                android:layout_width="120dp"
-                android:layout_height="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/bgbutton"
+                android:fontFamily="@font/nasalization"
+                android:onClick="go_employes"
+                android:text="Employés"
+                android:textColor="#FFB900" />
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+
+                android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
                 android:text="MINI-JEU"
                 android:textColor="#FF22CD" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="bottom|center|right"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:gravity="bottom|center|end">
 
             <Button
-                android:layout_width="120dp"
-                android:layout_height="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
