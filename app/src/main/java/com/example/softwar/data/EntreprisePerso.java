@@ -169,6 +169,14 @@ public class EntreprisePerso extends Entreprise {
 		return idEmployeActif1;
 	}
 
+	public ArrayList<Integer> getEmployeActif(){
+		ArrayList<Integer> emps = new ArrayList<>();
+		emps.add(getIdEmployeActif1());
+		emps.add(getIdEmployeActif2());
+		emps.add(getIdEmployeActif3());
+		return emps;
+	}
+
 	public ArrayList<Integer> getStatEmployeActif(){
 		ArrayList<Integer> statistiquesEmployes = new ArrayList<>();
 		int sommeRapidite =0;
