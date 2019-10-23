@@ -32,7 +32,7 @@ public class MiniJeu extends AppCompatActivity {
         layout_text = findViewById(R.id.layout_text);
         layout_reponses = findViewById(R.id.layout_reponses);
         pattern = new Pattern();
-
+        getSupportActionBar().hide();
         initPattern1_1();
 
     }
@@ -76,8 +76,7 @@ public class MiniJeu extends AppCompatActivity {
         //LinearLayout l = new LinearLayout(this);
         //l.addView(tv1);
         tv1.setTextSize(26);
-        tv1.setTextColor(Color.parseColor("#FF22CD"));
-        tv1.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
+
         tv1.setText("       ");
         tv1.setBackgroundColor(Color.YELLOW);
         //et.setEnabled(false);
@@ -88,6 +87,8 @@ public class MiniJeu extends AppCompatActivity {
         TextView tv = new TextView(this);
         tv.setText(text);
         tv.setTextSize(26);
+        tv.setTextColor(Color.parseColor("#FF22CD"));
+        tv.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
         tv.setOnTouchListener(new MyTouchListener());
         layout_reponses.addView(tv);
     }

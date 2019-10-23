@@ -13,7 +13,7 @@
         <activity android:name=".controllers.ChoisirEmployeActifActivity"></activity>
         <activity android:name=".controllers.ConcurrentsActivity"></activity>
         <activity android:name=".controllers.AmeliorationsActivity" />
-        <activity android:name=".controllers.Statistiques" />
+        <activity android:name=".controllers.MiniJeu" />
         <activity android:name=".controllers.TirageAuSortActivity" />
         <activity
             android:name=".controllers.MainActivity"
@@ -29,7 +29,11 @@
             android:screenOrientation="landscape" />
         <activity android:name=".controllers.ChooseRenforcerAttaquerActivity" />
         <activity
-            android:name=".controllers.MiniJeu"
+<<<<<<< HEAD
+            android:name=".controllers.HomePageActivity"
+=======
+            android:name=".controllers.Statistiques"
+>>>>>>> 9fe5ea4941228c5977fa916a5fdb8a37420dea4d
             android:label="@string/app_name"
             android:screenOrientation="landscape">
             <intent-filter>

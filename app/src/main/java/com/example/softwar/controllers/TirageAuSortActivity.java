@@ -11,5 +11,6 @@ public class TirageAuSortActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tirage_au_sort);
+        getSupportActionBar().hide();
     }
 }
