@@ -51,9 +51,9 @@ public class CreationNewPartie extends AppCompatActivity {
         getLogiciels();
         getEntreprises();
 
-        //if(nomEValide(tnomE.getText().toString()) && nomLValide(tnomE.getText().toString()) ){
-        creerEntreprisePerso(tnomE.getText().toString(),tnomL.getText().toString());
-        //}
+        if(nomEValide(tnomE.getText().toString()) && nomLValide(tnomE.getText().toString()) ){
+            creerEntreprisePerso(tnomE.getText().toString(),tnomL.getText().toString());
+        }
     }
 
 

@@ -11,14 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".controllers.ConcurrentsActivity"
+            android:screenOrientation="landscape" ></activity>
+        <activity android:name=".controllers.AmeliorationsActivity"/>
 
         <activity android:name=".controllers.ResultatMiniJeu"></activity>
-        <activity
-            android:name=".controllers.ConcurrentsActivity"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".controllers.AmeliorationsActivity"
-            android:screenOrientation="landscape" />
+
         <activity
             android:name=".controllers.Statistiques"
             android:screenOrientation="landscape" />
@@ -42,7 +40,7 @@
             android:name=".controllers.CreationNewPartie"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".controllers.HomePageActivity"
+            android:name=".controllers.MiniJeu"
 
             android:label="@string/app_name"
             android:screenOrientation="landscape">

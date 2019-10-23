@@ -65,6 +65,8 @@ public class MiniJeu extends AppCompatActivity {
         mDb = DatabaseClient.getInstance(getApplicationContext());
         InitJeu();
 
+        titre.setText(jeu_en_cours.getNomJeu());
+
         chrono = findViewById(R.id.chrono);
          countDownTimer = new CountDownTimer(15000, 1000) {
 

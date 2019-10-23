@@ -37,8 +37,8 @@ public class ResultatMiniJeu extends AppCompatActivity {
 
         mDb = DatabaseClient.getInstance(getApplicationContext());
 
-        nbjuste_i = Integer.parseInt(getIntent().getStringExtra(nbjuste));
-        nbpossible_i = Integer.parseInt(getIntent().getStringExtra(nbpossible));
+        nbjuste_i = getIntent().getIntExtra(nbjuste,0);
+        nbpossible_i = getIntent().getIntExtra(nbpossible,0);
         resultats = findViewById(R.id.resultats_mini_jeu);
 
         argent = findViewById(R.id.argent);
@@ -69,23 +69,23 @@ public class ResultatMiniJeu extends AppCompatActivity {
 
     public void affiche_resultats() {
         if (nbjuste_i == nbpossible_i) {
-            resultats.setText("Bravo c'est gagné ! Score : "+nbjuste_i/nbpossible_i);
+            resultats.setText("Bravo c'est gagné ! Score : "+nbjuste_i +"/"+nbpossible_i);
         } else {
-            resultats.setText("Quelques petites erreurs ont été trouvées ! Score : "+nbjuste_i/nbpossible_i);
+            resultats.setText("Quelques petites erreurs ont été trouvées ! Score : "+nbjuste_i +"/"+nbpossible_i);
         }
     }
 
     public void giveRecompense() {
-        int indice = (int) (Math.random() * (0 - (listEvents.size()-1)));
+        int indice = (int) (Math.random() * ((listEvents.size()-1) - 0));
         ResultatJeu recompense = listEvents.get(indice);
 
-        ((MyApplication)this.getApplication()).getEntreprise_joueur().setArgentEntreprise(((MyApplication)this.getApplication()).getEntreprise_joueur().getArgentEntreprise()+recompense.getArgent());
+        /*((MyApplication)this.getApplication()).getEntreprise_joueur().setArgentEntreprise(((MyApplication)this.getApplication()).getEntreprise_joueur().getArgentEntreprise()+recompense.getArgent());
         ((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().setNbUtilisateurs(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNbUtilisateurs()+recompense.getNbUtilisateurs());
         ((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauErgonomie(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauErgonomie()+recompense.getErgonomie());
         ((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauPuissance(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauPuissance()+recompense.getPuissance());
         ((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauRentabilite(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauRentabilite()+recompense.getRentabilite());
         ((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauSecurite(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauSecurite()+recompense.getSecurite());
-
+*/
         argent.setText("+ "+recompense.getArgent()+"€");
         nbusers.setText("+ "+recompense.getNbUtilisateurs()+" utilisateurs");
         puissance.setText("+ "+recompense.getPuissance()+" puissance du logiciel");
