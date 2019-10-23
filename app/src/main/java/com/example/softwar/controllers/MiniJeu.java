@@ -203,15 +203,17 @@ public class MiniJeu extends AppCompatActivity {
                             findViewById(existingID).setVisibility(View.VISIBLE);
                         }
 
-                        if (pattern.getBonnesReponses().get(Integer.valueOf(dropTarget.getId())) == dropTarget.getText().toString()) {
-                            nb_bonnerep++;
-                            System.out.println(" OK : "+nb_bonnerep);
-                            System.out.println(" NOK : "+nb_mauvaiserep);
-                        } else {
-                            nb_mauvaiserep++;
-                            System.out.println(" OK : "+nb_bonnerep);
-                            System.out.println(" NOK : "+nb_mauvaiserep);
-                        }
+                        nb_bonnerep = 0;
+                        nb_mauvaiserep = 0;
+
+                       for (int i = 1; i <= pattern.getBonnesReponses().size(); i++) {
+                               TextView t = (TextView) findViewById(i);
+                               if(pattern.getBonnesReponses().get(i).equals(t.getText().toString())){
+                                   nb_bonnerep++;
+                               } else {
+                                   nb_mauvaiserep++;
+                               }
+                       }
                     }
 
                     break;
