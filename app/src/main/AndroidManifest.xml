@@ -29,6 +29,9 @@
             android:name=".controllers.Statistiques"
             android:screenOrientation="landscape" />
         <activity
+            android:name=".controllers.MiniJeu"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".controllers.TirageAuSortActivity"
             android:screenOrientation="landscape" />
 
@@ -48,7 +51,7 @@
             android:name=".controllers.CreationNewPartie"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".controllers.MiniJeu"
+            android:name=".controllers.HomePageActivity"
 
             android:label="@string/app_name"
             android:screenOrientation="landscape">
