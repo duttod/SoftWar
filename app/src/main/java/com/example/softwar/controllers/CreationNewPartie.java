@@ -53,7 +53,7 @@ public class CreationNewPartie extends AppCompatActivity {
         getLogiciels();
         getEntreprises();
 
-        if(mDb.getAppDatabase().entreprisepersodao().getAll().size() <= 0){
+        if(mDb.getAppDatabase().entreprisepersodao().getAll().size() == 0){
             if(nomEValide(tnomE.getText().toString()) && nomLValide(tnomE.getText().toString()) ) {
                 CreerRandomConcurrents();
                 creerEntreprisePerso(tnomE.getText().toString(), tnomL.getText().toString());
@@ -122,6 +122,7 @@ public class CreationNewPartie extends AppCompatActivity {
     public void CreerRandomConcurrents() {
 
         for (int i = 0; i < 5; i++) {
+
             Entreprise ets_conc = new Entreprise("Concurrent"+i,"Soft"+i);
 
             int argent_depart = (int) (Math.random() * (2000 - 500));
@@ -129,6 +130,7 @@ public class CreationNewPartie extends AppCompatActivity {
 
             ets_conc.setArgentEntreprise(argent_depart);
             ets_conc.getLogiciel().setNbUtilisateurs(nb_utilisateurs_depart);
+            ets_conc.setNbusers(nb_utilisateurs_depart);
 
             setConcurrent(ets_conc);
         }
@@ -192,7 +194,7 @@ public class CreationNewPartie extends AppCompatActivity {
 
             @Override
             protected EntreprisePerso doInBackground(Void... voids) {
-                EntreprisePerso e = new EntreprisePerso(nomE, nomL, 1000, 1, 0);
+                EntreprisePerso e = new EntreprisePerso(nomE, nomL, 20000, 1, 0);
                 mDb.getAppDatabase().entreprisepersodao().insert(e);
 
                 return e;
@@ -202,6 +204,8 @@ public class CreationNewPartie extends AppCompatActivity {
             protected void onPostExecute(EntreprisePerso e) {
                 super.onPostExecute(e);
                 eperso = e;
+
+                eperso.getLogiciel().setNbUtilisateurs(1000);
 
                 creerLogiciel();
                 MyApplication.getInstance().setEntreprise_joueur(eperso);
@@ -220,6 +224,8 @@ public class CreationNewPartie extends AppCompatActivity {
 
             @Override
             protected Void doInBackground(Void... voids) {
+
+                System.out.println(eperso.getNomLogiciel());
 
                 mDb.getAppDatabase().logicieldao().insert(eperso.getLogiciel());
                 return null;

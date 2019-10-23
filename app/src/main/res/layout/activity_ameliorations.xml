@@ -11,34 +11,214 @@
     tools:context=".controllers.AmeliorationsActivity">
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/argentdispo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Améliorations"
-
+        android:textColor="@color/colorPrimaryDark"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textSize="36sp"
         android:textStyle="bold"
         android:layout_marginBottom="20dp"
         />
 
+
     <LinearLayout
 
-        android:layout_width="522dp"
+        android:layout_width="match_parent"
         android:layout_height="58dp"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:textColor="#FF22CD"
             android:textStyle="bold"
             android:textSize="30dp"
             android:text="Optimisation Fiscale:"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <ProgressBar
+            android:id="@+id/OfiscalBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="400dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
+            android:progress="25"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Copti"
+            android:gravity="center"
+            android:layout_marginLeft="200dp"
+            android:layout_alignLeft="@id/OfiscalBar"
+            android:layout_alignTop="@id/OfiscalBar"
+            android:layout_alignBottom="@id/OfiscalBar"
+            android:background="#00000000"
+            android:textSize="20dp"
+            android:textColor="@color/colorAccent"></TextView>
+    </RelativeLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cross"
+            android:onClick="upOptiFisc"
+            >
+
+        </Button>
+
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF22CD"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:text="Sécurité du logiciel  :"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <ProgressBar
+            android:id="@+id/secuBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="400dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
+            android:progress="25"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Csecu"
+            android:gravity="center"
+            android:layout_marginLeft="200dp"
+            android:layout_alignLeft="@id/secuBar"
+            android:layout_alignTop="@id/secuBar"
+            android:layout_alignBottom="@id/secuBar"
+            android:background="#00000000"
+            android:textSize="20dp"
+            android:textColor="@color/colorAccent"></TextView>
+    </RelativeLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cross"
+            android:onClick="upSecu"
+            >
+
+        </Button>
+
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF22CD"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:text="Ergonomie                 :"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <ProgressBar
+            android:id="@+id/ergoBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="400dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
+            android:progress="25"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Cergo"
+            android:gravity="center"
+            android:layout_marginLeft="200dp"
+            android:layout_alignLeft="@id/ergoBar"
+            android:layout_alignTop="@id/ergoBar"
+            android:layout_alignBottom="@id/ergoBar"
+            android:background="#00000000"
+            android:textSize="20dp"
+            android:textColor="@color/colorAccent"></TextView>
+        </RelativeLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cross"
+            android:onClick="upErgo"
+            >
+
+        </Button>
+
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF22CD"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:text="Puissance de calcul :"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <ProgressBar
+            android:id="@+id/puissanceBar"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="400dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center"
+            android:progress="25"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/Cpuissance"
+            android:gravity="center"
+            android:layout_marginLeft="200dp"
+            android:layout_alignLeft="@id/puissanceBar"
+            android:layout_alignTop="@id/puissanceBar"
+            android:layout_alignBottom="@id/puissanceBar"
+            android:background="#00000000"
+            android:textSize="20dp"
+            android:textColor="@color/colorAccent">
+
+        </TextView>
+        </RelativeLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cross"
+            android:onClick="upPuissance"
+            >
+
+        </Button>
+
     </LinearLayout>
 
 </LinearLayout>
