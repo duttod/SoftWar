@@ -45,7 +45,7 @@ public class Statistiques extends AppCompatActivity {
                 super.onPostExecute(ent);
 
                 entreprise_joueur = ent;
-                setStatistiques();
+                setStatistiques(ent);
             }
 
         }
@@ -55,7 +55,20 @@ public class Statistiques extends AppCompatActivity {
 
     }
 
-    public void setStatistiques() {
+    public void setStatistiques(EntreprisePerso ent) {
+
+        // TODO récupérer les stats avec getStatEmployeActif et récupérer les employé avec :
+        /*
+        * Récup des employé pour les afficher dans le bas [ employé actif ]
+        * for (int i =0; i <3; i++){
+        *   mdb.getAppDatabase().employeDao().getAnEmploye(ent.getEmployeActif().get(i));
+        * }
+        *
+        * Récup des stat global
+        *   ent.getStatEmployeActif().get(0); Productivité
+        *   ent.getStatEmployeActif().get(1); Rapidité
+        *
+        * */
 
     }
 

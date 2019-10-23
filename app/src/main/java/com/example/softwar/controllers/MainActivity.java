@@ -143,11 +143,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void go_minijeu(View view) {
-        Intent intent = new Intent(this, MiniJeu.class);
-    }
+
     public void GoToAmeliorer(View view) {
         Intent intent = new Intent(this,AmeliorationsActivity.class);
+        startActivity(intent);
+    }
+
+    public void GoToChoixAttackDef(View view) {
+        Intent intent = new Intent(this,ChooseRenforcerAttaquerActivity.class);
         startActivity(intent);
     }
 }
