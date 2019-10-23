@@ -46,7 +46,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choisir_employe_actif);
-
+        getSupportActionBar().hide();
         // Récupération du DatabaseClient
         mDb = DatabaseClient.getInstance(getApplicationContext());
         entreprise_joueur=((MyApplication)this.getApplication()).getEntreprise_joueur();

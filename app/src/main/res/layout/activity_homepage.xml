@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
             android:gravity="center"
+            android:fontFamily="@font/digitall"
             android:text="SOFT'WAR"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="45sp"
@@ -39,36 +40,42 @@
         android:gravity="center"
         >
 
-        <ImageButton
+        <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_marginTop="20dp"
+            android:background="@drawable/bgbutton"
+            android:fontFamily="@font/nasalization"
             android:onClick="Nouvelle_Partie"
-            android:padding="0dp"
-            android:src="@drawable/nouvellepartie"
+            android:textSize="30dp"
             android:text="Nouvelle Partie"
-            android:layout_margin="10dp"/>
+            android:textColor="#FFB900" />
 
-        <ImageButton
+        <Button
             android:id="@+id/button2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/bgbutton"
+            android:textSize="30dp"
+            android:fontFamily="@font/nasalization"
             android:onClick="ChargerPartie"
-            android:padding="0dp"
-            android:src="@drawable/chargerpartie"
             android:text="Charger Partie"
-            android:layout_margin="10dp"/>
+            android:textColor="#FFB900" />
 
-        <ImageButton
+        <Button
             android:id="@+id/button3"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="30dp"
+            android:background="@drawable/bgbutton"
+            android:fontFamily="@font/nasalization"
             android:onClick="afficherCredit"
-            android:padding="0dp"
-            android:src="@drawable/credits"
             android:text="Crédit"
-            android:layout_margin="10dp"/>
+            android:textColor="#FFB900" />
 
     </LinearLayout>
 
