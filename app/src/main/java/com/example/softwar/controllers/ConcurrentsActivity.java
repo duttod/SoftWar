@@ -1,6 +1,7 @@
 package com.example.softwar.controllers;
 
 import android.graphics.Color;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -90,6 +91,8 @@ public class ConcurrentsActivity extends AppCompatActivity {
 
             tx.setText(i+". "+nomets);
             tx.setTextSize(16);
+            tx.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
+            tx.setTextColor(Color.parseColor("#FFB900"));
 
             linclassement.addView(tx);
         }

@@ -9,16 +9,12 @@ public class ResultatJeu extends Evenement {
 	@ColumnInfo(name = "resultat")
 	private int resultat;
 
-	public int getResultat() {
-		return this.resultat;
+	public void setResultat(int res) {
+		this.resultat = res;
 	}
 
-	/**
-	 * 
-	 * @param resultat
-	 */
-	public void setResultat(int resultat) {
-		this.resultat = resultat;
+	public int getResultat() {
+		return this.resultat;
 	}
 
 }

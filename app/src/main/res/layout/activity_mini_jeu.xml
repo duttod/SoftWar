@@ -56,7 +56,9 @@
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
                 android:textColor="#FFB900"
-                tools:text="Valider" />
+                tools:text="Valider"
+                android:onClick="valider_minijeu"
+                />
 
             <Button
                 android:id="@+id/abandonner"
