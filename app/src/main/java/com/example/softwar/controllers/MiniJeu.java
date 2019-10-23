@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
@@ -31,6 +32,7 @@ public class MiniJeu extends AppCompatActivity {
         layout_text = findViewById(R.id.layout_text);
         layout_reponses = findViewById(R.id.layout_reponses);
         pattern = new Pattern();
+        getSupportActionBar().hide();
         initPattern1_1();
 
     }
@@ -64,6 +66,8 @@ public class MiniJeu extends AppCompatActivity {
         TextView tv = new TextView(this);
         tv.setText(text);
         tv.setTextSize(26);
+        tv.setTextColor(Color.parseColor("#FFB900"));
+        tv.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
         layout.addView(tv);
     }
     public void initReponse(String text, LinearLayout layout){
@@ -72,6 +76,7 @@ public class MiniJeu extends AppCompatActivity {
         //LinearLayout l = new LinearLayout(this);
         //l.addView(tv1);
         tv1.setTextSize(26);
+
         tv1.setText("       ");
         tv1.setBackgroundColor(Color.YELLOW);
         //et.setEnabled(false);
@@ -82,6 +87,8 @@ public class MiniJeu extends AppCompatActivity {
         TextView tv = new TextView(this);
         tv.setText(text);
         tv.setTextSize(26);
+        tv.setTextColor(Color.parseColor("#FF22CD"));
+        tv.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
         tv.setOnTouchListener(new MyTouchListener());
         layout_reponses.addView(tv);
     }

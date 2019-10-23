@@ -17,10 +17,10 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="Débuter une nouvelle partie"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="#FFB900"
+        android:fontFamily="@font/nasalization"
         android:textSize="32sp"
-        android:textStyle="bold"
-        app:fontFamily="sans-serif-medium" />
+        android:textStyle="bold"/>
 
     <LinearLayout
         android:id="@+id/linear_1"
@@ -46,9 +46,8 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:text="Nom de l'entreprise"
-                android:textColor="@color/colorPrimary"
-                android:textColorHighlight="@color/colorPrimary"
-                android:textColorLink="@color/colorPrimary"
+                android:textColor="#FFB900"
+                android:fontFamily="@font/nasalization"
                 android:textSize="24sp"
                 android:textStyle="bold|italic" />
 
@@ -58,7 +57,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:gravity="center_horizontal"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#FFB900"
+                android:fontFamily="@font/nasalization"
                 />
 
         </LinearLayout>
@@ -79,7 +79,8 @@
                 android:layout_weight="1"
                 android:gravity="right"
                 android:text="Nom du logiciel"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#FFB900"
+                android:fontFamily="@font/nasalization"
                 android:textSize="24sp"
                 android:textStyle="bold|italic" />
 
@@ -89,11 +90,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:gravity="center_horizontal"
-                android:shadowColor="@color/colorPrimary"
-                android:textColor="@color/colorPrimary"
-                android:textColorHighlight="@color/colorPrimary"
-                android:textColorHint="@color/colorPrimary"
-                android:textColorLink="@color/colorPrimary" />
+                android:textColor="#FFB900"
+                android:fontFamily="@font/nasalization"/>
 
         </LinearLayout>
 

@@ -18,7 +18,8 @@
         android:layout_marginTop="20dp"
         android:gravity="center"
         android:text="Charger une partie"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="#FFB900"
+        android:fontFamily="@font/nasalization"
         android:textSize="32sp"
         android:textStyle="bold"
         app:fontFamily="sans-serif-medium" />
@@ -37,8 +38,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="35dp"
             android:gravity="center"
-            android:text="Choissisez la partie à charger :"
-            android:textColor="#FFFFFF"
+            android:text="Choisissez la partie à charger :"
+            android:textColor="#FFB900"
+            android:fontFamily="@font/nasalization"
             android:textSize="24sp"
             android:textStyle="italic" />
 
