@@ -47,13 +47,14 @@ public class MainActivity extends AppCompatActivity {
 
         concurrents = new ArrayList<>();
 
-        setImageLogiciel();
+        //setImageLogiciel();
         LoadDataEntreprise();
     }
 
+    //Pas toucher
     public void LoadConcurrents() {
+
         getConcurrents();
-        ((MyApplication)this.getApplication()).setConcurrents(concurrents);
 
     }
 
@@ -76,11 +77,25 @@ public class MainActivity extends AppCompatActivity {
                 concurrents.clear();
                 concurrents.addAll(concu);
 
+                for (int i = 0; i < concurrents.size(); i++) {
+
+                    concurrents.get(i).setLogiciel(concurrents.get(i).getNomLogiciel());
+                    concurrents.get(i).getLogiciel().setNbUtilisateurs(concurrents.get(i).getNbusers());
+                    System.out.println(concurrents.get(i).getNomLogiciel());
+                    concurrents.get(i).getLogiciel().setNomLogiciel(concurrents.get(i).getNomLogiciel());
+                }
+
+                setMyAppConcu();
+
             }
         }
 
         getConcurrents gc = new getConcurrents();
         gc.execute();
+    }
+
+    public void setMyAppConcu() {
+        ((MyApplication)this.getApplication()).setConcurrents(concurrents);
     }
 
     public void LoadDataEntreprise() {

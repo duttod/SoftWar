@@ -17,7 +17,8 @@ public class EntreprisePerso extends Entreprise {
 
 	public EntreprisePerso(String nomEntreprise,String nomLogiciel,long argentEntreprise,int nbContrats ,int productivite){
 
-		super(nomEntreprise,nomLogiciel);
+		setNomLogiciel(nomLogiciel);
+		setNomEntreprise(nomEntreprise);
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
 		setProductivite(productivite);
@@ -34,6 +35,7 @@ public class EntreprisePerso extends Entreprise {
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
 		setProductivite(productivite);
+		setNomLogiciel(nomLogiciel);
 
 		setEmployes();
 		setLogiciel();
@@ -41,8 +43,6 @@ public class EntreprisePerso extends Entreprise {
 
 	@Ignore
 	private DatabaseClient mdb;
-
-	@Ignore Logiciel logiciel;
 
 	@Ignore
 	private List<EmployeDansEntreprise> employes;

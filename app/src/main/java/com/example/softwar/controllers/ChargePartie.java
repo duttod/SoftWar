@@ -45,7 +45,9 @@ public class ChargePartie extends AppCompatActivity {
         mdb = DatabaseClient.getInstance(getApplicationContext());
         linear_bouttons_parties = findViewById(R.id.linear_bouttons_partie);
 
-        getPartie();
+        if (mdb.getAppDatabase().entreprisepersodao() != null && (mdb.getAppDatabase().entreprisepersodao().getAll().size() != 0)) {
+            getPartie();
+        }
     }
 
     public void setView() {
@@ -107,11 +109,10 @@ public class ChargePartie extends AppCompatActivity {
             protected void onPostExecute(List<EntreprisePerso> ent) {
                 super.onPostExecute(ent);
 
-                if (ent != null && ent.size() != 0) {
                     entreprise_joueur = new EntreprisePerso (mdb, ent.get(0).getNomEntreprise(), ent.get(0).getNomLogiciel(), ent.get(0).getArgentEntreprise(), ent.get(0).getNbContrats(), ent.get(0).getProductivite());
+
                     MyApplication.getInstance().setEntreprise_joueur(entreprise_joueur);
                     setView();
-                }
             }
 
         }
