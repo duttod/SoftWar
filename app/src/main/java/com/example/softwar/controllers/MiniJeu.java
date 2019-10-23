@@ -129,7 +129,7 @@ public class MiniJeu extends AppCompatActivity {
     }
 
     public void valider_minijeu(View view) {
-
+        
     }
 
 
