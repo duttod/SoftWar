@@ -56,10 +56,11 @@ public class MiniJeu extends AppCompatActivity {
 
         nb_bonnerep = 0;
         nb_mauvaiserep = 0;
-        indice = 1;
+        indice = 0;
 
         mDb = DatabaseClient.getInstance(getApplicationContext());
         InitJeu();
+
     }
     public void initPattern1_1(){
         /*  int i=1;
@@ -206,7 +207,7 @@ public class MiniJeu extends AppCompatActivity {
                         nb_bonnerep = 0;
                         nb_mauvaiserep = 0;
 
-                       for (int i = 1; i <= pattern.getBonnesReponses().size(); i++) {
+                       for (int i = 0; i < pattern.getBonnesReponses().size(); i++) {
                                TextView t = (TextView) findViewById(i);
                                if(pattern.getBonnesReponses().get(i).equals(t.getText().toString())){
                                    nb_bonnerep++;
@@ -214,6 +215,8 @@ public class MiniJeu extends AppCompatActivity {
                                    nb_mauvaiserep++;
                                }
                        }
+                        System.out.println(nb_bonnerep);
+                        System.out.println(nb_mauvaiserep);
                     }
 
                     break;
