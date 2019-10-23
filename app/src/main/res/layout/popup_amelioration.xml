@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/layout_popup"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg12"
+    tools:context=".controllers.TirageAuSortActivity">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        tools:ignore="MissingDefaultResource"
+        android:background="@drawable/bgbutton"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Erreur : Vous n'avez pas assez d'argent pour effectuer cette action"
+                        android:textColor="#FFB900"
+                        android:fontFamily="@font/nasalization"
+                        android:textSize="20dp"
+                        android:gravity="center" />
+
+    </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bgbutton"
+        android:fontFamily="@font/nasalization"
+        android:text="Valider"
+        android:onClick="fermerbox"
+        android:textColor="#FFB900"
+        android:textSize="25dp"/>
+
+
+</LinearLayout>

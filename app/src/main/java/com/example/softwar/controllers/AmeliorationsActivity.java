@@ -1,5 +1,6 @@
 package com.example.softwar.controllers;
 
+import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,16 +13,22 @@ import com.example.softwar.data.EntreprisePerso;
 import com.example.softwar.data.Logiciel;
 
 public class AmeliorationsActivity extends AppCompatActivity {
+
     ProgressBar barOpti,barSecu,barErgo,barPuissance;
     TextView tErgo,tOpti,tSecu,tPuissance,monargent;
     EntreprisePerso entreprise_joueur ;
     long argentpossede ;
     Logiciel log ;
     long coutErgo,coutOpti,coutSecu,coutPuissance;
+    private Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        dialog = new Dialog(AmeliorationsActivity.this);
+        dialog.setContentView(R.layout.popup_amelioration);
+
         setContentView(R.layout.activity_ameliorations);
         barErgo = findViewById(R.id.ergoBar);
         barOpti = findViewById(R.id.OfiscalBar);
@@ -68,6 +75,7 @@ public class AmeliorationsActivity extends AppCompatActivity {
             LoadData();
         }else{
             //TODO Afficher Popup PAS ASSEZ D ARGENT
+            dialog.show();
         }
 
     }
@@ -79,6 +87,7 @@ public class AmeliorationsActivity extends AppCompatActivity {
             LoadData();
         }else{
             //TODO Afficher Popup PAS ASSEZ D ARGENT
+            dialog.show();
         }
     }
 
@@ -89,6 +98,7 @@ public class AmeliorationsActivity extends AppCompatActivity {
             LoadData();
         }else{
             //TODO Afficher Popup PAS ASSEZ D ARGENT
+            dialog.show();
         }
     }
 
@@ -99,6 +109,11 @@ public class AmeliorationsActivity extends AppCompatActivity {
             LoadData();
         }else{
             //TODO Afficher Popup PAS ASSEZ D ARGENT
+            dialog.show();
         }
+    }
+
+    public void fermerbox(View view) {
+        dialog.cancel();
     }
 }
