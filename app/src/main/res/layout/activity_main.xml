@@ -143,8 +143,8 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
-                android:text="STATS"
-                android:textColor="#FFB900" />
+                android:textColor="#FFB900"
+                android:text="STATS"/>
 
             <Button
                 android:layout_width="120dp"
