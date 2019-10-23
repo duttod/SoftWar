@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DFC989"
+    android:background="@drawable/bg14"
     android:orientation="vertical"
     tools:context=".controllers.ConcurrentsActivity">
 
@@ -16,6 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"
+        android:fontFamily="@font/nasalization"
+        android:textColor="#FFB900"
         android:gravity="center"
         android:text="Classement et concurrents"
         android:textSize="30sp"
@@ -25,21 +27,23 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DFC989"
+        android:layout_weight="1"
         android:orientation="horizontal"
         tools:context=".controllers.ConcurrentsActivity">
 
         <LinearLayout
-            android:layout_width="360dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="2"
             android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/fiche_entreprise"
-                android:layout_width="339dp"
-                android:layout_height="184dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/border"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+
+                android:background="@drawable/bgbutton"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -47,76 +51,104 @@
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/nasalization"
                     android:text="Fiche d'entreprise"
-                    android:textSize="24sp" />
+                    android:textColor="#FFB900"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/nom_entreprise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nasalization"
                     android:text="Nom de l'entreprise :"
-                    android:textSize="18sp" />
+                    android:textColor="#FFB900"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/nom_logiciel"
-                    android:layout_width="345dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nasalization"
                     android:text="Nom du logiciel :"
-                    android:textSize="18sp" />
+                    android:textColor="#FFB900"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/nb_users_entreprise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nasalization"
                     android:text="Nombre d'utilisateurs : "
-                    android:textSize="18sp" />
+                    android:textColor="#FFB900"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/argent_entreprise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nasalization"
                     android:text="Capital : "
-                    android:textSize="18sp" />
+                    android:textColor="#FFB900"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/partdemarche_entreprise"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nasalization"
                     android:text="Parts de marché : "
-                    android:textSize="18sp" />
+                    android:textColor="#FFB900"
+                    android:textSize="15sp" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="341dp"
-                android:layout_height="115dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:background="@drawable/border"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@drawable/bgbutton"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView13"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/nasalization"
                     android:text="Informations générales"
-                    android:layout_marginBottom="20dp"
-                    android:textSize="24sp" />
+                    android:textColor="#FFB900"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/nb_users_total"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nasalization"
                     android:text="Nombre d'utilisateurs total"
-                    android:textSize="18sp" />
+                    android:textColor="#FF22CD"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/argent_total"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nasalization"
                     android:text="Argent total"
-                    android:textSize="18sp" />
+                    android:textColor="#FF22CD"
+                    android:textSize="15sp" />
 
 
             </LinearLayout>
@@ -124,23 +156,29 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="349dp"
-            android:layout_height="309dp"
-            android:background="@drawable/border"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="3"
+            android:background="@drawable/bgbutton"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
+                android:fontFamily="@font/nasalization"
                 android:text="Classement"
-                android:textSize="24sp" />
+                android:textColor="#FFB900"
+                android:textSize="20sp" />
 
             <ScrollView
                 android:id="@+id/scroll_classement"
-                android:layout_width="331dp"
-                android:layout_height="189dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="5dp">
 
                 <LinearLayout

@@ -31,6 +31,7 @@ public class ConcurrentsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_concurrents);
+        getSupportActionBar().hide();
 
         nom_entreprise = findViewById(R.id.nom_entreprise);
         nb_users_entreprise = findViewById(R.id.nb_users_entreprise);
