@@ -48,7 +48,9 @@ public class DatabaseClient {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-           
+            db.execSQL("INSERT INTO Employe(nom,prenom,age,productivite,rapidite,rarete) VALUES(\"Gérot\", \"Cédric\",44,17,19,3);");
+            db.execSQL("INSERT INTO Employe(nom,prenom,age,productivite,rapidite,rarete) VALUES(\"Ceret\", \"Eric\",44,15,15,2);");
+            db.execSQL("INSERT INTO Employe(nom,prenom,age,productivite,rapidite,rarete) VALUES(\"Blancool\", \"Gaelle\",50,7,10,1);");
         }
     };
 

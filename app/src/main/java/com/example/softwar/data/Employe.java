@@ -42,10 +42,7 @@ public class Employe {
 		return this.nomEmploye;
 	}
 
-	/**
-	 *
-	 * @param id
-	 */
+
 	public int getId(){
         return this.id;
     }
