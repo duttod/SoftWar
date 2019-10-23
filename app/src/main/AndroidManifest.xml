@@ -48,7 +48,7 @@
             android:name=".controllers.CreationNewPartie"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".controllers.HomePageActivity"
+            android:name=".controllers.MiniJeu"
 
             android:label="@string/app_name"
             android:screenOrientation="landscape">

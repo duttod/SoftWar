@@ -55,6 +55,7 @@ public class MiniJeu extends AppCompatActivity {
 
         action_demander = this.getIntent().getStringExtra(ChooseRenforcerAttaquerActivity.ACTION_KEY);
         System.out.println(action_demander);
+        titre = findViewById(R.id.minijeu_titre);
         layout_text = findViewById(R.id.layout_text);
         layout_reponses = findViewById(R.id.layout_reponses);
         pattern = new Pattern();
@@ -67,7 +68,7 @@ public class MiniJeu extends AppCompatActivity {
         mDb = DatabaseClient.getInstance(getApplicationContext());
         InitJeu();
 
-        titre.setText(jeu_en_cours.getNomJeu());
+        //titre.setText(jeu_en_cours.getNomJeu());
 
         chrono = findViewById(R.id.chrono);
          countDownTimer = new CountDownTimer(15000, 1000) {
@@ -267,7 +268,7 @@ public class MiniJeu extends AppCompatActivity {
             protected Jeu doInBackground(Void... voids) {
                 Jeu jeu = mDb.getAppDatabase()
                         .jeuDao()
-                        .getAJeu("Resolution de code");
+                        .getAJeu("Resolutiondecode");
                 return jeu;
             }
 
