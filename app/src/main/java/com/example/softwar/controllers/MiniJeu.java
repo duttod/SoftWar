@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.os.CountDownTimer;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,9 +14,11 @@ import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.softwar.MyApplication;
 import com.example.softwar.R;
@@ -34,6 +37,7 @@ public class MiniJeu extends AppCompatActivity {
     LinearLayout layout_text;
     LinearLayout layout_reponses;
     Pattern pattern;
+    TextView chrono;
 
     int indice;
     int nb_bonnerep;
@@ -48,7 +52,6 @@ public class MiniJeu extends AppCompatActivity {
         setContentView(R.layout.activity_mini_jeu);
         getSupportActionBar().hide();
 
-        titre = findViewById(R.id.minijeu_titre);
         layout_text = findViewById(R.id.layout_text);
         layout_reponses = findViewById(R.id.layout_reponses);
         pattern = new Pattern();
@@ -60,6 +63,21 @@ public class MiniJeu extends AppCompatActivity {
 
         mDb = DatabaseClient.getInstance(getApplicationContext());
         InitJeu();
+
+        chrono = findViewById(R.id.chrono);
+        new CountDownTimer(15000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                chrono.setText("seconds remaining: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                chrono.setText("done!");
+                Button valider = findViewById(R.id.valider);
+                valider.performClick();
+            }
+        }.start();
+
 
     }
     public void initPattern1_1(){
@@ -85,7 +103,8 @@ public class MiniJeu extends AppCompatActivity {
         initText(";", l4);
         LinearLayout l5 = initLigne();
         initText("5-  }", l5);
-
+        LinearLayout l6 = initLigne();
+        initText("  ",l6);
 
     }
     public void initText(String text, LinearLayout layout){
@@ -130,9 +149,13 @@ public class MiniJeu extends AppCompatActivity {
     }
 
     public void valider_minijeu(View view) {
+<<<<<<< HEAD
         Intent intent = new Intent(this, ResultatMiniJeu.class);
         intent.putExtra(ResultatMiniJeu.nbjuste, nb_bonnerep);
         intent.putExtra(ResultatMiniJeu.nbpossible, pattern.getBonnesReponses().size());
+=======
+        Toast.makeText(this, "blblbl", Toast.LENGTH_LONG).show();
+>>>>>>> 2aadc6dcc74ea978ce7e434853f130ddf698ae41
 
         startActivity(intent);
     }

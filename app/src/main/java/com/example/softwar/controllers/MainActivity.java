@@ -106,4 +106,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ConcurrentsActivity.class);
         startActivity(intent);
     }
+
+    public void go_employes(View view) {
+        Intent intent = new Intent(this,ChoisirEmployeActifActivity.class);
+        startActivity(intent);
+    }
 }
