@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -22,6 +24,7 @@ import com.example.softwar.data.EntreprisePerso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ChoisirEmployeActifActivity extends AppCompatActivity {
 
@@ -30,11 +33,12 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
     // DATA
     private DatabaseClient mDb;
     private ListeEmployeAdapter adapter;
-
+    private EntreprisePerso entreprise_joueur =((MyApplication)this.getApplication()).getEntreprise_joueur();
 
     // VIEW
     private ListView listEmp;
-
+    private ArrayList<LinearLayout> empActif = new ArrayList<>();
+    private TextView text = new TextView(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,10 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
 
         // Récupérer les vues
         listEmp = findViewById(R.id.listEmploye);
+        empActif.add((LinearLayout) findViewById(R.id.employe1));
+        empActif.add((LinearLayout) findViewById(R.id.employe2));
+        empActif.add((LinearLayout) findViewById(R.id.employe3));
+
 
         // Lier l'adapter au listView
         adapter = new ListeEmployeAdapter(this,new ArrayList<Employe>());
@@ -53,15 +61,50 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
 
 
         // Ajout du drag and drop sur la listView
-        /*
-        * listEmp.set [...]
-        *
-        * */
+        listEmp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Employe emp = adapter.getItem(position);
+                int i = 0;
+                while (i < 3 && empActif.get(i).getChildCount()>0){
+                    i++;
+                }
+                if (i == 3 && empActif.get(i-1).getChildCount() >0){
+
+                }
+                else {
+                    final int j = i;
+                    text.setText(emp.getNomEmploye());
+                    empActif.get(i).addView(text);
+                    text.setText(emp.getPrenomEmploye());
+                    empActif.get(i).addView(text);
+                    empActif.get(i).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            empActif.get(j).removeAllViews();
+                        }
+                    });
+                    /*
+                    * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    *
+                    * Zone Code : mettre à jour la bdd de entreprise + set employé dans MyApplication
+                    *
+                    * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    * */
+
+
+
+                }
+            }
+        });
+
+
+
 
         getEmp();
     }
 
-    // This defines your touch listener
+/*    // This defines your touch listener
     private final class MyTouchListener implements View.OnTouchListener {
         public boolean onTouch(View view, MotionEvent motionEvent) {
             if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
@@ -74,9 +117,9 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
                 return false;
             }
         }
-    }
+    }*/
 
-    class MyDragListener implements View.OnDragListener {
+/*    class MyDragListener implements View.OnDragListener {
         Drawable enterShape = getResources().getDrawable(R.drawable.shape_droptarget);
         Drawable normalShape = getResources().getDrawable(R.drawable.shape);
 
@@ -113,11 +156,11 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
                         dropTarget.setOnTouchListener(new MyTouchListener());
 
                         ((TextView) view).setText(init);
-/*
+*//*
                         if (((TextView) view).getText() == "       ") {
                             view.setBackgroundColor(Color.YELLOW);
                         }
-*/
+*//*
                         //make it bold to highlight the fact that an item has been dropped
                         dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
 
@@ -140,18 +183,29 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
             }
             return true;
         }
-    }
+    }*/
 
     private void getEmp(){
         class GetEmp extends AsyncTask<Void, Void, List<Employe>>{
 
             @Override
             protected List<Employe> doInBackground(Void... voids) {
-                List<Employe> employeList = mDb.getAppDatabase()
+/*                List<Employe> employeList = mDb.getAppDatabase()
                         .employeDao() // ne pas récupếrer dans la bdd mais dans entreprise ! à faire lorsque l'on a les var global !!!!!!
-                        .getAll();
+                        .getAll();*/
+                ArrayList<Employe> employeList = new ArrayList<>();
+                /*for (int i =0; i<entreprise_joueur.getEmployes().size();i++){
+                   employeList.add(entreprise_joueur.getEmployes().get(i).getEmploye(mDb));
+                }*/
+                Employe e = new Employe();
+                e.setAgeEmploye(4);
+                e.setProductivite(1);
+                e.setRapidite(1);
+                e.setRarete(1);
+                e.setPrenomEmploye("Henry");
+                e.setNomEmploye("Thierry");
+                employeList.add(e);
 
-                // EntreprisePerso entreprise_joueur =((MyApplication)this.getApplication()).getEntreprise_joueur();
 
                 return employeList;
             }

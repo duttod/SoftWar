@@ -9,14 +9,18 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.softwar.MyApplication;
 import com.example.softwar.R;
+import com.example.softwar.data.DatabaseClient;
 import com.example.softwar.data.Employe;
+import com.example.softwar.data.EntreprisePerso;
 
 import java.util.List;
 
 public class ListeEmployeAdapter extends ArrayAdapter<Employe> {
     public ListeEmployeAdapter(@NonNull Context mCtx, List<Employe> employeList) {
         super(mCtx, R.layout.template_list_employe, employeList);
+
     }
 
     @NonNull
@@ -50,6 +54,12 @@ public class ListeEmployeAdapter extends ArrayAdapter<Employe> {
         textViewRapidite.setText(Integer.toString(emp.getRapidite()));
 //        textViewQuantite.setText();
        /*Récupérer les valeurs de la table asso pour ça !*/
+
+
+        // A TESTER ! Vraiment pas beau !
+        EntreprisePerso entreprisePerso = ((MyApplication)this.getContext()).getEntreprise_joueur();
+        DatabaseClient mdb = DatabaseClient.getInstance(getContext());
+        textViewQuantite.setText(Integer.toString(mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(entreprisePerso.getNomEntreprise(),emp.getId()).getQuantite()));
 
         return rowView;
     }
