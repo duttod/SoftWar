@@ -194,7 +194,7 @@ public class CreationNewPartie extends AppCompatActivity {
 
             @Override
             protected EntreprisePerso doInBackground(Void... voids) {
-                EntreprisePerso e = new EntreprisePerso(nomE, nomL, 20000, 3, 0);
+                EntreprisePerso e = new EntreprisePerso(nomE, nomL, 20000, 3);
                 mDb.getAppDatabase().entreprisepersodao().insert(e);
 
                 return e;

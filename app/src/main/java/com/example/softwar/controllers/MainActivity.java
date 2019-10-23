@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.softwar.MyApplication;
 import com.example.softwar.R;
+import com.example.softwar.data.Alea;
 import com.example.softwar.data.DatabaseClient;
 import com.example.softwar.data.Entreprise;
 import com.example.softwar.data.EntreprisePerso;
@@ -163,6 +164,18 @@ public class MainActivity extends AppCompatActivity {
     {
         super.onResume();
         LoadDataEntreprise();
+    }
+
+    //PARTIE A PASSER EN ASYNCHRONE SI POSSIBLE
+
+    public void RandomEvenementDebutTour() {
+        List<Alea> aleas = mdb.getAppDatabase().aleadao().getAll();
+        int indice = (int) (Math.random() * ((aleas.size()-1) - 0));
+
+        Alea aleachoisi = aleas.get(indice);
+        ((MyApplication)this.getApplication()).getEntreprise_joueur().setArgentEntreprise(((MyApplication)this.getApplication()).getEntreprise_joueur().getArgentEntreprise()+((MyApplication)this.getApplication()).getEntreprise_joueur().getArgentEntreprise()*(aleachoisi.getArgent()/100));
+
+        //Suite à faire
     }
 
     public void saveContext(View view) {

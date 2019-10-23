@@ -15,26 +15,24 @@ import java.util.List;
 @Entity
 public class EntreprisePerso extends Entreprise {
 
-	public EntreprisePerso(String nomEntreprise,String nomLogiciel,long argentEntreprise,int nbContrats ,int productivite){
+	public EntreprisePerso(String nomEntreprise,String nomLogiciel,long argentEntreprise,int nbContrats){
 
 		setNomLogiciel(nomLogiciel);
 		setNomEntreprise(nomEntreprise);
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
-		setProductivite(productivite);
 		setLogiciel(nomLogiciel);
 
 		employes = new ArrayList<EmployeDansEntreprise>();
 	}
 
-	public EntreprisePerso (DatabaseClient mdb, String nomEntreprise, String nomLogiciel, long argentEntreprise, int nbContrats, int productivite) {
+	public EntreprisePerso (DatabaseClient mdb, String nomEntreprise, String nomLogiciel, long argentEntreprise, int nbContrats) {
 
 		super(nomEntreprise,nomLogiciel);
 		this.mdb = mdb;
 
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
-		setProductivite(productivite);
 		setNomLogiciel(nomLogiciel);
 
 		setEmployes();
@@ -50,9 +48,6 @@ public class EntreprisePerso extends Entreprise {
 
 	@ColumnInfo(name = "nbContrats")
 	private int nbContrats;
-
-	@ColumnInfo(name = "productivite")
-	private int productivite;
 
 	public void setIdEmployeActif1(int idEmployeActif1) {
 		this.idEmployeActif1 = idEmployeActif1;
@@ -106,20 +101,6 @@ public class EntreprisePerso extends Entreprise {
 	public void setNbContrats(int nbContrats) {
 		this.nbContrats = nbContrats;
 	}
-
-	public int getProductivite() {
-		return this.productivite;
-	}
-
-	/**
-	 * 
-	 * @param productivite
-	 */
-	public void setProductivite(int productivite) {
-		this.productivite = productivite;
-	}
-
-
 
 	public void setLogiciel() {
 		logiciel = mdb.getAppDatabase().logicieldao().getByEntreprise(this.getNomLogiciel());
