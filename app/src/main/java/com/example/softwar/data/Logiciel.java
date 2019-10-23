@@ -2,10 +2,14 @@ package com.example.softwar.data;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import com.example.softwar.MyApplication;
+
 import java.util.ArrayList;
+import java.util.Random;
 
 @Entity
 public class Logiciel {
@@ -13,7 +17,8 @@ public class Logiciel {
 	public Logiciel(String nomLogiciel) {
 		setNomLogiciel(nomLogiciel);
 	}
-
+	@Ignore
+	private DatabaseClient mdb;
 	@PrimaryKey
 	@NonNull
 	private String nomLogiciel;
@@ -27,6 +32,35 @@ public class Logiciel {
 	private int niveauErgonomie;
 	@ColumnInfo(name = "niveauPuissance")
 	private int niveauPuissance;
+
+	public void upSecu(){
+		mdb=DatabaseClient.getInstance(MyApplication.getInstance());
+		Random r = new Random();
+		int val = r.nextInt(2)+5;
+		this.niveauSecurite+=val;
+		mdb.getAppDatabase().logicieldao().update(this);
+	}
+	public void upErgo(){
+		mdb=DatabaseClient.getInstance(MyApplication.getInstance());
+		Random r = new Random();
+		int val = r.nextInt(2)+5;
+		this.niveauErgonomie+=val;
+		mdb.getAppDatabase().logicieldao().update(this);
+	}
+	public void upPuissance(){
+		mdb=DatabaseClient.getInstance(MyApplication.getInstance());
+		Random r = new Random();
+		int val = r.nextInt(2)+5;
+		this.niveauPuissance+=val;
+		mdb.getAppDatabase().logicieldao().update(this);
+	}
+	public void upRenta(){
+		mdb=DatabaseClient.getInstance(MyApplication.getInstance());
+		Random r = new Random();
+		int val = r.nextInt(2)+5;
+		this.niveauRentabilite+=val;
+		mdb.getAppDatabase().logicieldao().update(this);
+	}
 
 
 	public String getNomLogiciel() {

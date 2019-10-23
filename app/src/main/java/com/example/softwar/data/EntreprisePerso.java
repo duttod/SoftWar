@@ -42,7 +42,7 @@ public class EntreprisePerso extends Entreprise {
 	}
 
 	@Ignore
-	private DatabaseClient mdb;
+	private DatabaseClient mdb =DatabaseClient.getInstance(MyApplication.getInstance());
 
 	@Ignore
 	private List<EmployeDansEntreprise> employes;

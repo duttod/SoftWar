@@ -142,4 +142,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,ChoisirEmployeActifActivity.class);
         startActivity(intent);
     }
+
+    public void GoToAmeliorer(View view) {
+        Intent intent = new Intent(this,AmeliorationsActivity.class);
+        startActivity(intent);
+    }
 }
