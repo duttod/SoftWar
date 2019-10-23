@@ -6,127 +6,188 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg4"
+    android:background="@drawable/bg13"
     android:orientation="vertical"
     tools:context=".controllers.MainActivity">
 
     <LinearLayout
-
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="320dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/nomE"
-            android:layout_width="345dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:text="Entreprise blablabla"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/nbUtilisateurs"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="1"
-            android:text="50 Utilisateurs"
-            android:textSize="20dp" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/argent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-            android:text="3 000 000€"
-            android:layout_gravity="center"
-            android:textSize="20dp"
-            />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nomE"
+                        android:layout_width="345dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|start"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/nasalization"
+                        android:text="Entreprise blablabla"
+                        android:textColor="#FFB900"
+
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/nbUtilisateurs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|start"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/nasalization"
+                        android:text="50 Utilisateurs"
+                        android:textColor="#FFB900"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/argent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|start"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/nasalization"
+                        android:text="3 000 000€"
+                        android:textColor="#FFB900"
+                        android:textSize="20dp" />
+
+
+                </LinearLayout>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="120dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/bgbutton"
+                        android:fontFamily="@font/nasalization"
+                        android:text="Concurrent"
+                        android:textColor="#FFB900" />
+
+                    <Button
+
+                        android:layout_width="120dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/bgbutton"
+                        android:fontFamily="@font/nasalization"
+                        android:text="Employés"
+                        android:textColor="#FFB900" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="192dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:layout_width="120dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/bgbutton"
+                        android:fontFamily="@font/nasalization"
+                        android:text="INVOQUER"
+                        android:textColor="#FFB900" />
+
+                </TableRow>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="512dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/hangingterm" />
 
     </LinearLayout>
-
-    <TableRow
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:orientation="vertical">
-
-        <Button
-            android:layout_width="120dp"
-            android:layout_height="70dp"
-            android:background="@drawable/bgbutton"
-            android:text="Concurrent"
-            android:layout_margin="5dp"/>
-
-        <Button
-
-            android:layout_width="120dp"
-            android:layout_height="70dp"
-            android:background="@drawable/bgbutton"
-            android:src="@drawable/employes"
-            android:text="Employés"
-            android:layout_margin="5dp"/>
-    </TableRow>
-
-    <TableRow
-        android:layout_width="180dp"
-        android:layout_height="66dp"
-        android:orientation="vertical">
-
-        <Button
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:text="invoquer" />
-
-    </TableRow>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            >
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/nasalization"
+            android:gravity="bottom|left"
+            android:orientation="horizontal">
 
             <Button
-                android:layout_width="90dp"
-                android:layout_height="66dp"
-                android:layout_marginBottom="70dp"
-                android:text="Amelior"
-                />
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/bgbutton"
+                android:fontFamily="@font/nasalization"
+                android:text="AMELIORER"
+                android:textColor="#FFB900" />
 
             <Button
-                android:layout_width="90dp"
-                android:layout_height="66dp"
-                android:layout_marginBottom="70dp"
-                android:text="Stats"
-                />
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/bgbutton"
+                android:fontFamily="@font/nasalization"
+                android:text="STATS"
+                android:textColor="#FFB900" />
 
             <Button
-                android:layout_width="90dp"
-                android:layout_height="66dp"
-                android:layout_marginBottom="70dp"
-                android:text="Mini-jeu" />
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/bgbutton"
+
+                android:text="MINI-JEU"
+                android:fontFamily="@font/nasalization"
+                android:textColor="#FFB900" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|center|right"
+            android:layout_weight="1"
+            android:gravity="bottom|end">
 
             <Button
-                android:layout_width="90dp"
-                android:layout_height="66dp"
-                android:layout_marginBottom="65dp"
-                android:text="Fin tour"
-                android:layout_marginLeft="325dp"/>
-
+                android:layout_width="120dp"
+                android:layout_height="70dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/bgbutton"
+                android:fontFamily="@font/nasalization"
+                android:text="FIN TOUR"
+                android:textColor="#FF22CD" />
 
 
         </LinearLayout>
-
 
 
     </LinearLayout>

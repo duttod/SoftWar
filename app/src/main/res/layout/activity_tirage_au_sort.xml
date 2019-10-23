@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DFC989"
+    android:background="@drawable/bg14"
     android:orientation="horizontal">
     <!-- manque contexte ! -->
 
@@ -43,19 +43,30 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Engage un nouvel employe"
+            android:text="Engage un nouvel employé !"
+            android:fontFamily="@font/nasalization"
+            android:textColor="#FFB900"
+
             android:layout_gravity="center"/>
 
         <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/bgbutton"
+            android:fontFamily="@font/nasalization"
+            android:textColor="#FFB900"
             android:text="1 Recrutement" />
 
         <Button
             android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/bgbutton"
+            android:fontFamily="@font/nasalization"
+            android:textColor="#FFB900"
             android:text="10 recrutements" />
     </LinearLayout>
 

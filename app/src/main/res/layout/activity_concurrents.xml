@@ -37,6 +37,7 @@
             >
 
             <ScrollView
+                android:id="@+id/scroll_classement"
                 android:layout_width="349dp"
                 android:layout_height="match_parent">
 

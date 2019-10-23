@@ -78,4 +78,6 @@ public class Entreprise implements Serializable {
 		return this.logiciel;
 	}
 
+
+
 }

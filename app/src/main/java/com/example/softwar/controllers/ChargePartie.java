@@ -33,8 +33,7 @@ public class ChargePartie extends AppCompatActivity {
     Typeface typeface;
     LinearLayout linear_bouttons_parties;
     private DatabaseClient mdb;
-    TextView titre;
-    TextView soustitre;
+
 
     public EntreprisePerso entreprise_joueur;
 
@@ -44,13 +43,9 @@ public class ChargePartie extends AppCompatActivity {
         getSupportActionBar().hide();
 
         setContentView(R.layout.activity_charge_partie);
-        typeface = ResourcesCompat.getFont(this, R.font.nasalization);
         mdb = DatabaseClient.getInstance(getApplicationContext());
         linear_bouttons_parties = findViewById(R.id.linear_bouttons_partie);
-        titre = findViewById(R.id.titre_CreationNewPartie);
-        soustitre = findViewById(R.id.chargerpartie_soustitre);
-        soustitre.setTypeface(typeface);
-        titre.setTypeface(typeface);
+
         getPartie();
     }
 
@@ -61,8 +56,8 @@ public class ChargePartie extends AppCompatActivity {
         if (entreprise_joueur != null) {
 
             Button but = new Button(this);
-            but.setTypeface(typeface);
-            but.setTextColor(Color.WHITE);
+            but.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
+            but.setTextColor(Color.parseColor("#FFB900"));
             but.setTextSize(25);
 
             GradientDrawable drawable = new GradientDrawable();
