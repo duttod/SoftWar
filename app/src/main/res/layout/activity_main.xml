@@ -172,6 +172,7 @@
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
                 android:text="MINI-JEU"
+                android:onClick="GoToChoixAttackDef"
                 android:textColor="#FF22CD" />
         </LinearLayout>
 

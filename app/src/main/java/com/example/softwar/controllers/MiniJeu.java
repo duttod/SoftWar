@@ -39,7 +39,7 @@ public class MiniJeu extends AppCompatActivity {
     Pattern pattern;
     TextView chrono;
     CountDownTimer countDownTimer;
-
+    String action_demander;
     int indice;
     int nb_bonnerep;
     int nb_mauvaiserep;
@@ -53,6 +53,8 @@ public class MiniJeu extends AppCompatActivity {
         setContentView(R.layout.activity_mini_jeu);
         getSupportActionBar().hide();
 
+        action_demander = this.getIntent().getStringExtra(ChooseRenforcerAttaquerActivity.ACTION_KEY);
+        System.out.println(action_demander);
         layout_text = findViewById(R.id.layout_text);
         layout_reponses = findViewById(R.id.layout_reponses);
         pattern = new Pattern();

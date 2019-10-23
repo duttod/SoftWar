@@ -53,6 +53,7 @@
             android:background="@drawable/bgbutton"
             android:fontFamily="@font/nasalization"
             android:text="Se Renforcer"
+            android:onClick="MiniJeuRenforcer"
             android:textColor="#FFB900"
             android:textSize="24sp" />
 
