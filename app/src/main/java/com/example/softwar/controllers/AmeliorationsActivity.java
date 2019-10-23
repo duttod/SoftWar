@@ -23,6 +23,7 @@ public class AmeliorationsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ameliorations);
+        getSupportActionBar().hide();
         barErgo = findViewById(R.id.ergoBar);
         barOpti = findViewById(R.id.OfiscalBar);
         barSecu = findViewById(R.id.secuBar);
