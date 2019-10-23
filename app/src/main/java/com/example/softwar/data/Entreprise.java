@@ -25,9 +25,15 @@ public class Entreprise implements Serializable, Comparable<Entreprise> {
 	@ColumnInfo(name = "argentEntreprise")
 	private long argentEntreprise;
 
+	@ColumnInfo(name = "nbusers")
+	private int nbusers;
+
+	public Entreprise() {}
+
 	public Entreprise(String nomEntreprise,String nomLogiciel){
 
 		this.setNomEntreprise(nomEntreprise);
+		this.setNomLogiciel(nomLogiciel);
 		this.setLogiciel(nomLogiciel);
 
 	}
@@ -78,6 +84,13 @@ public class Entreprise implements Serializable, Comparable<Entreprise> {
 		return this.logiciel;
 	}
 
+	public int getNbusers() {
+		return this.nbusers;
+	}
+
+	public void setNbusers(int nb) {
+		this.nbusers = nb;
+	}
 
     @Override
     public int compareTo(@NonNull Entreprise entreprise) {

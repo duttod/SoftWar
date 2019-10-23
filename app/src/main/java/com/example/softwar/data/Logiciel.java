@@ -11,11 +11,6 @@ import java.util.ArrayList;
 public class Logiciel {
 
 	public Logiciel(String nomLogiciel) {
-		setNbUtilisateurs(1000);
-		setNiveauErgonomie(0);
-		setNiveauPuissance(0);
-		setNiveauRentabilite(0);
-		setNiveauSecurite(0);
 		setNomLogiciel(nomLogiciel);
 	}
 

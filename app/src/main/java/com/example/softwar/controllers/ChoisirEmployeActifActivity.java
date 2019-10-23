@@ -112,6 +112,9 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
 
                                 // Mise à jour bdd
                                 // TODO enlever les employeActif
+                                // -1 id quand il n'y a pas d'employé
+                                entreprise_joueur.setEmployeActif(j,-1);
+                                mDb.getAppDatabase().entreprisepersodao().update(entreprise_joueur);
 
                             }
                         });
