@@ -64,24 +64,8 @@ public class MiniJeu extends AppCompatActivity {
         indice = 0;
 
         mDb = DatabaseClient.getInstance(getApplicationContext());
+
         InitJeu();
-
-        //titre.setText(jeu_en_cours.getNomJeu());
-
-        chrono = findViewById(R.id.chrono);
-         countDownTimer = new CountDownTimer(15000, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-                chrono.setText("seconds remaining: " + millisUntilFinished / 1000);
-            }
-
-            public void onFinish() {
-                chrono.setText("done!");
-                Button valider = findViewById(R.id.valider);
-                valider.performClick();
-            }
-        }.start();
-
 
     }
     public void initPattern1_1(){
@@ -274,6 +258,22 @@ public class MiniJeu extends AppCompatActivity {
             protected void onPostExecute(Jeu jeu) {
                 super.onPostExecute(jeu);
                 jeu_en_cours = jeu;
+
+                titre.setText(jeu.getNomJeu());
+
+                chrono = findViewById(R.id.chrono);
+                countDownTimer = new CountDownTimer(15000, 1000) {
+
+                    public void onTick(long millisUntilFinished) {
+                        chrono.setText("seconds remaining: " + millisUntilFinished / 1000);
+                    }
+
+                    public void onFinish() {
+                        chrono.setText("done!");
+                        Button valider = findViewById(R.id.valider);
+                        valider.performClick();
+                    }
+                }.start();
 
             }
         }
