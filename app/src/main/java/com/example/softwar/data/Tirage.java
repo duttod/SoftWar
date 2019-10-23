@@ -51,14 +51,22 @@ public class Tirage {
 
     public void tirageUnique(){
 
-        employeTire.add(tirageEmploye.get(random.nextInt(tirageEmploye.size())));
+        getEmployeTire().add(tirageEmploye.get(random.nextInt(tirageEmploye.size())));
     }
 
     public List<Employe> Tirages(int nbTirage){
-        employeTire.clear();
+        getEmployeTire().clear();
         for (int i = 0; i < nbTirage; i++){
             tirageUnique();
         }
+        return getEmployeTire();
+    }
+
+    public List<Employe> getEmployeTire() {
         return employeTire;
+    }
+
+    public void setEmployeTire(List<Employe> employeTire) {
+        this.employeTire = employeTire;
     }
 }
