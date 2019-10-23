@@ -48,7 +48,6 @@ public class DatabaseClient {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-<<<<<<< HEAD
 
             db.execSQL("INSERT INTO Jeu (nom,dureeJeu,description) VALUES(\"Resolution de code\",0,\"Complète le code pour gagner des récompenses\");");
 
@@ -73,9 +72,7 @@ public class DatabaseClient {
             db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,productivite,securite,puissance,ergonomie,contexte,type) VALUES(15000,0,0,0,0,0,\"Votre campagne de promotion a attiré de riches investisseurs !\",\"bien\");");
             db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,productivite,securite,puissance,ergonomie,contexte,type) VALUES(0,0,0,-1,0,0,\"Un de vos concurrents a DDOS vos serveurs durant la nuit !\",\"mauvais\");");
             db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,productivite,securite,puissance,ergonomie,contexte,type) VALUES(-3000,1,0,2,0,0,\"Un de vos concurrents a fait une campagne massive d'e-mailing auprès de vos utilisateurs !\",\"bien\");");
-=======
-           
->>>>>>> e959e0cd0fd81382a431c79240a057475c6eb308
+
         }
     };
 
