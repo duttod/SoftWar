@@ -93,6 +93,7 @@
                         />
 
 
+
                     <Button
                         android:layout_width="120dp"
                         android:layout_height="70dp"
@@ -100,6 +101,7 @@
                         android:background="@drawable/bgbutton"
                         android:fontFamily="@font/nasalization"
                         android:text="INVOQUER"
+                        android:onClick="GoToInvocation"
                         android:textColor="#FFB900" />
                 </LinearLayout>
 

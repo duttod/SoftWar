@@ -18,6 +18,8 @@
             android:screenOrientation="landscape" />
         <activity android:name=".controllers.TirageAuSortActivity"
             android:screenOrientation="landscape" />
+
+        <activity android:name=".controllers.ChoisirEmployeActifActivity"></activity>
         <activity
             android:name=".controllers.MainActivity"
             android:screenOrientation="landscape" />

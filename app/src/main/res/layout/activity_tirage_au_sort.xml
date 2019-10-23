@@ -57,7 +57,8 @@
             android:background="@drawable/bgbutton"
             android:fontFamily="@font/nasalization"
             android:textColor="#FFB900"
-            android:text="1 Recrutement" />
+            android:text="1 Recrutement"
+            android:onClick="onepull"/>
 
         <Button
             android:id="@+id/button5"
