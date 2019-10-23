@@ -21,7 +21,7 @@ public class EntreprisePerso extends Entreprise {
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
 		setProductivite(productivite);
-		setLogiciel();
+		setLogiciel(nomLogiciel);
 
 		employes = new ArrayList<EmployeDansEntreprise>();
 	}
@@ -40,7 +40,7 @@ public class EntreprisePerso extends Entreprise {
 	}
 
 	@Ignore
-	private DatabaseClient mdb = DatabaseClient.getInstance(MyApplication.getContext());
+	private DatabaseClient mdb;
 
 	@Ignore Logiciel logiciel;
 
