@@ -66,7 +66,7 @@ public class DatabaseClient {
 
             db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(10000,5000,0,0,0,0,\"excellent\");");
             db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,2,0,1,0,\"excellent\");");
-            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,1,0,2,0,0,\"excellent\");");
+            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,2,0,0,\"excellent\");");
             db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,0,2,1,\"excellent\");");
 
             db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,contexte,type) VALUES(15000,0,0,0,0,0,\"Votre campagne de promotion a attiré de riches investisseurs !\",\"bien\");");
