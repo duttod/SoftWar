@@ -37,8 +37,8 @@ public class ResultatMiniJeu extends AppCompatActivity {
 
         mDb = DatabaseClient.getInstance(getApplicationContext());
 
-        nbjuste_i = Integer.parseInt(getIntent().getStringExtra(nbjuste));
-        nbpossible_i = Integer.parseInt(getIntent().getStringExtra(nbpossible));
+        nbjuste_i = getIntent().getIntExtra(nbjuste,0);
+        nbpossible_i = getIntent().getIntExtra(nbpossible,0);
         resultats = findViewById(R.id.resultats_mini_jeu);
 
         argent = findViewById(R.id.argent);
