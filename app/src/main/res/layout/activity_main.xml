@@ -82,6 +82,10 @@
                     android:orientation="vertical">
 
                     <Button
+<<<<<<< HEAD
+
+=======
+>>>>>>> e959e0cd0fd81382a431c79240a057475c6eb308
                         android:layout_width="120dp"
                         android:layout_height="70dp"
                         android:layout_margin="5dp"

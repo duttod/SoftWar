@@ -15,6 +15,9 @@ public interface JeuDao {
     @Query("SELECT * FROM Jeu")
     List<Jeu> getAll();
 
+    @Query("SELECT * FROM Jeu WHERE nom = :nm")
+    Jeu getAJeu(String nm);
+
     @Insert
     void insert(Jeu jeu);
 

@@ -11,7 +11,6 @@ public class Pattern {
 	public Pattern(){
 		this.reponses = new ArrayList<>();
 		this.bonnesReponses = new ArrayList<>();
-
 	}
 
 
