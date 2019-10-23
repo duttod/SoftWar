@@ -112,7 +112,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
 
                                 // Mise à jour bdd
                                 // TODO enlever les employeActif
-                                
+
                             }
                         });
                         /*
