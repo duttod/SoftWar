@@ -96,6 +96,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void GoToInvocation(View view) {
+        Intent intent = new Intent(MyApplication.getInstance(),TirageAuSortActivity.class);
+        startActivity(intent);
+
+    }
+
     public void go_concurrents(View view) {
         Intent intent = new Intent(this, ConcurrentsActivity.class);
         startActivity(intent);

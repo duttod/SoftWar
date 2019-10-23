@@ -82,7 +82,10 @@
                     android:orientation="vertical">
 
                     <Button
+<<<<<<< HEAD
 
+=======
+>>>>>>> e959e0cd0fd81382a431c79240a057475c6eb308
                         android:layout_width="120dp"
                         android:layout_height="70dp"
                         android:layout_margin="5dp"
@@ -92,16 +95,8 @@
                         android:textColor="#FFB900"
                         android:onClick="go_concurrents"
                         />
-=======
->>>>>>> 9fe5ea4941228c5977fa916a5fdb8a37420dea4d
 
-                        android:layout_width="117dp"
-                        android:layout_height="70dp"
-                        android:layout_margin="5dp"
-                        android:background="@drawable/bgbutton"
-                        android:fontFamily="@font/nasalization"
-                        android:text="Employés"
-                        android:textColor="#FFB900" />
+
 
                     <Button
                         android:layout_width="120dp"
@@ -110,6 +105,7 @@
                         android:background="@drawable/bgbutton"
                         android:fontFamily="@font/nasalization"
                         android:text="INVOQUER"
+                        android:onClick="GoToInvocation"
                         android:textColor="#FFB900" />
                 </LinearLayout>
 
@@ -164,7 +160,7 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
-                android:text="Concurrent"
+                android:text="Employés"
                 android:textColor="#FFB900" />
 
             <Button

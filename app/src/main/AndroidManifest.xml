@@ -10,9 +10,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".controllers.ConcurrentsActivity"></activity>
         <activity android:name=".controllers.AmeliorationsActivity" />
         <activity android:name=".controllers.TirageAuSortActivity" />
+=======
+        <activity android:name=".controllers.ConcurrentsActivity"
+            android:screenOrientation="landscape" ></activity>
+        <activity android:name=".controllers.AmeliorationsActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".controllers.MiniJeu"
+            android:screenOrientation="landscape" />
+        <activity android:name=".controllers.TirageAuSortActivity"
+            android:screenOrientation="landscape" />
+
+        <activity android:name=".controllers.ChoisirEmployeActifActivity"></activity>
+>>>>>>> e959e0cd0fd81382a431c79240a057475c6eb308
         <activity
             android:name=".controllers.MainActivity"
             android:screenOrientation="landscape" />
@@ -28,9 +41,15 @@
         <activity
             android:name=".controllers.CreationNewPartie"
             android:screenOrientation="landscape" />
-        <activity android:name=".controllers.ChooseRenforcerAttaquerActivity" />
+        <activity android:name=".controllers.Statistiques"
+            android:screenOrientation="landscape" />
         <activity
+<<<<<<< HEAD
             android:name=".controllers.MiniJeu"
+=======
+            android:name=".controllers.HomePageActivity"
+
+>>>>>>> e959e0cd0fd81382a431c79240a057475c6eb308
             android:label="@string/app_name"
             android:screenOrientation="landscape">
             <intent-filter>
