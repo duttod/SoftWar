@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.softwar.MyApplication;
 import com.example.softwar.R;
@@ -33,12 +34,12 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
     // DATA
     private DatabaseClient mDb;
     private ListeEmployeAdapter adapter;
-    private EntreprisePerso entreprise_joueur =((MyApplication)this.getApplication()).getEntreprise_joueur();
+    //private EntreprisePerso entreprise_joueur =((MyApplication)this.getApplication()).getEntreprise_joueur();
 
     // VIEW
     private ListView listEmp;
     private ArrayList<LinearLayout> empActif = new ArrayList<>();
-    private TextView text = new TextView(this);
+    private TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,9 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
         empActif.add((LinearLayout) findViewById(R.id.employe3));
 
 
+        // Création du TextView
+        text = new TextView(this);
+
         // Lier l'adapter au listView
         adapter = new ListeEmployeAdapter(this,new ArrayList<Employe>());
         listEmp.setAdapter(adapter);
@@ -65,8 +69,12 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Employe emp = adapter.getItem(position);
+                //
+                Toast.makeText(ChoisirEmployeActifActivity.this,"test",Toast.LENGTH_SHORT).show();
+                //
                 int i = 0;
                 while (i < 3 && empActif.get(i).getChildCount()>0){
+                    System.out.println("test");
                     i++;
                 }
                 if (i == 3 && empActif.get(i-1).getChildCount() >0){

@@ -157,6 +157,7 @@
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
                 android:text="Employés"
+                android:onClick="go_employes"
                 android:textColor="#FFB900" />
 
             <Button
