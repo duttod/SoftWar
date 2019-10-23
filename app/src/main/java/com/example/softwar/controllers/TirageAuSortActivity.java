@@ -21,6 +21,7 @@ public class TirageAuSortActivity extends AppCompatActivity {
     EntreprisePerso entreprise_joueur ;
     private DatabaseClient mDb;
     Dialog dialog;
+    TextView nbc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,8 @@ public class TirageAuSortActivity extends AppCompatActivity {
         mDb = DatabaseClient.getInstance(getApplicationContext());
         entreprise_joueur =((MyApplication)this.getApplication()).getEntreprise_joueur();
         getSupportActionBar().hide();
+        nbc = findViewById(R.id.nbcontrats);
+        nbc.setText("Nombre de contrats possédés:"+Integer.toString(entreprise_joueur.getNbContrats()));
     }
 
     public void onepull(View view) {
@@ -39,6 +42,7 @@ public class TirageAuSortActivity extends AppCompatActivity {
 
         t = new Tirage();
         t.Tirages(1);
+        nbc.setText("Nombre de contrats possédés:"+Integer.toString(entreprise_joueur.getNbContrats()));
         //Ajoute au model et a la BD
         entreprise_joueur.addEmploye(t.getEmployeTire().get(0));
         dialog = new Dialog(TirageAuSortActivity.this);

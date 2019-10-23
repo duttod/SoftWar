@@ -10,10 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-
-=======
->>>>>>> 0ba44d06c7808c47051739dd3263f3b5f97af340
         <activity android:name=".controllers.ConcurrentsActivity"
             android:screenOrientation="landscape" ></activity>
         <activity android:name=".controllers.AmeliorationsActivity"
