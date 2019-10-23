@@ -66,14 +66,16 @@ public class EntreprisePerso extends Entreprise {
 		this.idEmployeActif3 = idEmployeActif3;
 	}
 
+	// id -1 = employé non set !
+
 	@ColumnInfo(name = "employeActif1")
-	private int idEmployeActif1;
+	private int idEmployeActif1 =-1;
 
 	@ColumnInfo(name = "employeActif2")
-	private int idEmployeActif2;
+	private int idEmployeActif2 =-1;
 
 	@ColumnInfo(name = "employeActif3")
-	private int idEmployeActif3;
+	private int idEmployeActif3 =-1;
 
 	public Employe getEmployeById(int id ){
 		EmployeDansEntreprise e = mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),id);
@@ -175,6 +177,45 @@ public class EntreprisePerso extends Entreprise {
 
 	public int getIdEmployeActif1() {
 		return idEmployeActif1;
+	}
+
+	public ArrayList<Integer> getEmployeActif(){
+		ArrayList<Integer> emps = new ArrayList<>();
+		emps.add(getIdEmployeActif1());
+		emps.add(getIdEmployeActif2());
+		emps.add(getIdEmployeActif3());
+		return emps;
+	}
+
+	public ArrayList<Integer> getStatEmployeActif(){
+		ArrayList<Integer> statistiquesEmployes = new ArrayList<>();
+		int sommeRapidite =0;
+		int sommeProductivite =0;
+		Employe emp;
+		if (getIdEmployeActif1()!=-1){
+
+			emp = mdb.getAppDatabase().employeDao().getAnEmploye(getIdEmployeActif1());
+			sommeProductivite = sommeProductivite + emp.getProductivite();
+			sommeRapidite = sommeRapidite + emp.getRapidite();
+
+		}if (getIdEmployeActif2()!=-1){
+
+			emp = mdb.getAppDatabase().employeDao().getAnEmploye(getIdEmployeActif2());
+			sommeProductivite = sommeProductivite + emp.getProductivite();
+			sommeRapidite = sommeRapidite + emp.getRapidite();
+
+		}if (getIdEmployeActif3()!=-1){
+
+			emp = mdb.getAppDatabase().employeDao().getAnEmploye(getIdEmployeActif3());
+			sommeProductivite = sommeProductivite + emp.getProductivite();
+			sommeRapidite = sommeRapidite + emp.getRapidite();
+		}
+
+		statistiquesEmployes.add(sommeProductivite);
+		statistiquesEmployes.add(sommeRapidite);
+		return statistiquesEmployes;
+		/*
+		* Faire juste la somme des statistiques !*/
 	}
 
 }
