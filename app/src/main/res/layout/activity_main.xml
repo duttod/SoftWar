@@ -86,7 +86,9 @@
                         android:background="@drawable/bgbutton"
                         android:fontFamily="@font/nasalization"
                         android:text="Concurrent"
-                        android:textColor="#FFB900" />
+                        android:textColor="#FFB900"
+                        android:onClick="go_concurrents"
+                        />
 
                     <Button
 
