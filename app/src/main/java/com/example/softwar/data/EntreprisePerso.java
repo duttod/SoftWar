@@ -75,6 +75,16 @@ public class EntreprisePerso extends Entreprise {
 	@ColumnInfo(name = "employeActif3")
 	private int idEmployeActif3;
 
+	public Employe getEmployeById(int id ){
+		EmployeDansEntreprise e = mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),id);
+		if(e!=null){
+			return e.getEmploye(mdb);
+		}else{
+			return null;
+		}
+
+	}
+
 	public void setEmployes() {
 		employes =  mdb.getAppDatabase().employeDansEntrepriseDao().getEmployeDuneEntreprise(getNomEntreprise());
 	}

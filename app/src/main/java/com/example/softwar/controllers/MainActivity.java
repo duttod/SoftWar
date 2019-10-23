@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView argent, nbuser, nomE;
     private DatabaseClient mdb;
-
+    EntreprisePerso entreprise_joueur ;
     ArrayList<Entreprise> concurrents;
 
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Récupérer la variable globale Application
         //!!!!!!!!!!
-
+        entreprise_joueur =((MyApplication)this.getApplication()).getEntreprise_joueur();
         concurrents = new ArrayList<>();
 
         //setImageLogiciel();
@@ -151,6 +151,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void GoToChoixAttackDef(View view) {
         Intent intent = new Intent(this,ChooseRenforcerAttaquerActivity.class);
+        startActivity(intent);
+    }
+
+    public void GoToStats(View view) {
+        Intent intent = new Intent(this,Statistiques.class);
         startActivity(intent);
     }
 }
