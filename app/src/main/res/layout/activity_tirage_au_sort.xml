@@ -70,6 +70,14 @@
             android:fontFamily="@font/nasalization"
             android:textColor="#FFB900"
             android:text="10 recrutements" />
+        <TextView
+            android:id="@+id/nbcontrats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nasalization"
+            android:textColor="#FFB900"
+
+            android:layout_gravity="center"/>
     </LinearLayout>
 
     </LinearLayout>

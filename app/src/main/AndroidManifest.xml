@@ -3,13 +3,15 @@
     package="com.example.softwar">
 
     <application
-        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name=".MyApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
         <activity android:name=".controllers.ResultatMiniJeu"></activity>
         <activity
             android:name=".controllers.ConcurrentsActivity"
@@ -23,7 +25,10 @@
         <activity
             android:name=".controllers.TirageAuSortActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".controllers.ChoisirEmployeActifActivity" />
+
+        <activity android:name=".controllers.ChoisirEmployeActifActivity"
+            android:screenOrientation="landscape">
+        </activity>
         <activity
             android:name=".controllers.MainActivity"
             android:screenOrientation="landscape" />
@@ -37,7 +42,8 @@
             android:name=".controllers.CreationNewPartie"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".controllers.MiniJeu"
+            android:name=".controllers.HomePageActivity"
+
             android:label="@string/app_name"
             android:screenOrientation="landscape">
             <intent-filter>

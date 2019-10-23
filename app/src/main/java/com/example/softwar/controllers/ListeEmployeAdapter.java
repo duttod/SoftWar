@@ -52,15 +52,14 @@ public class ListeEmployeAdapter extends ArrayAdapter<Employe> {
         textViewAge.setText(Integer.toString(emp.getAgeEmploye()));
         textViewProductivite.setText(Integer.toString(emp.getProductivite()));
         textViewRapidite.setText(Integer.toString(emp.getRapidite()));
-//        textViewQuantite.setText();
-       /*Récupérer les valeurs de la table asso pour ça !*/
 
 
-        // A TESTER ! Vraiment pas beau !
-        EntreprisePerso entreprisePerso = ((MyApplication)this.getContext()).getEntreprise_joueur();
+
+        // TODO  : Enlever la création en dur adapter
+        EntreprisePerso entreprisePerso = MyApplication.getInstance().getEntreprise_joueur();
         DatabaseClient mdb = DatabaseClient.getInstance(getContext());
-        textViewQuantite.setText(Integer.toString(mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(entreprisePerso.getNomEntreprise(),emp.getId()).getQuantite()));
-
+        //textViewQuantite.setText(Integer.toString(mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(entreprisePerso.getNomEntreprise(),emp.getId()).getQuantite()));
+        textViewQuantite.setText("0");
         return rowView;
     }
 }
