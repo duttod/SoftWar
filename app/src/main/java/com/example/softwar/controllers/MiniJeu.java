@@ -38,6 +38,7 @@ public class MiniJeu extends AppCompatActivity {
     LinearLayout layout_reponses;
     Pattern pattern;
     TextView chrono;
+    CountDownTimer countDownTimer;
 
     int indice;
     int nb_bonnerep;
@@ -65,7 +66,7 @@ public class MiniJeu extends AppCompatActivity {
         InitJeu();
 
         chrono = findViewById(R.id.chrono);
-        new CountDownTimer(15000, 1000) {
+         countDownTimer = new CountDownTimer(15000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 chrono.setText("seconds remaining: " + millisUntilFinished / 1000);
@@ -149,14 +150,11 @@ public class MiniJeu extends AppCompatActivity {
     }
 
     public void valider_minijeu(View view) {
-<<<<<<< HEAD
         Intent intent = new Intent(this, ResultatMiniJeu.class);
         intent.putExtra(ResultatMiniJeu.nbjuste, nb_bonnerep);
         intent.putExtra(ResultatMiniJeu.nbpossible, pattern.getBonnesReponses().size());
-=======
         Toast.makeText(this, "blblbl", Toast.LENGTH_LONG).show();
->>>>>>> 2aadc6dcc74ea978ce7e434853f130ddf698ae41
-
+        countDownTimer.cancel();
         startActivity(intent);
     }
 
