@@ -152,4 +152,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,AmeliorationsActivity.class);
         startActivity(intent);
     }
+
+    public void GoToChoixAttackDef(View view) {
+        Intent intent = new Intent(this,ChooseRenforcerAttaquerActivity.class);
+        startActivity(intent);
+    }
 }
