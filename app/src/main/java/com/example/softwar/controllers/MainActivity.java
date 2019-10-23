@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         //Récupérer la variable globale Application
         //!!!!!!!!!!
 
+        concurrents = new ArrayList<>();
+
         setImageLogiciel();
         LoadDataEntreprise();
     }

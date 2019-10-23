@@ -47,14 +47,13 @@ public class CreationNewPartie extends AppCompatActivity {
         tnomL = (EditText) findViewById(R.id.edit_nom_logiciel);
         tnomE = (EditText) findViewById(R.id.edit_nom_entreprise);
 
-
         tnomE.getBackground().mutate().setColorFilter(Color.parseColor("#FFB900"), PorterDuff.Mode.SRC_ATOP);
         tnomL.getBackground().mutate().setColorFilter(Color.parseColor("#FFB900"), PorterDuff.Mode.SRC_ATOP);
 
         getLogiciels();
         getEntreprises();
 
-        if(liste_entreprises.size() == 0){
+        if(mDb.getAppDatabase().entreprisepersodao().getAll().size() <= 0){
             if(nomEValide(tnomE.getText().toString()) && nomLValide(tnomE.getText().toString()) ) {
                 CreerRandomConcurrents();
                 creerEntreprisePerso(tnomE.getText().toString(), tnomL.getText().toString());
