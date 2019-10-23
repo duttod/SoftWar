@@ -30,9 +30,6 @@ public class CreationNewPartie extends AppCompatActivity {
     ArrayList<Logiciel> arraylog = new ArrayList();
     ArrayList<Entreprise> arrayEnt = new ArrayList();
     EntreprisePerso eperso;
-    Logiciel logicielperso;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +52,8 @@ public class CreationNewPartie extends AppCompatActivity {
         getEntreprises();
 
         if(nomEValide(tnomE.getText().toString()) && nomLValide(tnomE.getText().toString()) ){
-            creerLogiciel(tnomL.getText().toString());
             creerEntreprisePerso(tnomE.getText().toString(),tnomL.getText().toString());
-            ((MyApplication) this.getApplication()).setEntreprise_joueur(eperso);
         }
-
     }
 
 
@@ -149,7 +143,7 @@ public class CreationNewPartie extends AppCompatActivity {
 
             @Override
             protected EntreprisePerso doInBackground(Void... voids) {
-                EntreprisePerso e = new EntreprisePerso(nomE,nomL,1000 , 1 , 0);
+                EntreprisePerso e = new EntreprisePerso(nomE, nomL, 1000, 1, 0);
                 mDb.getAppDatabase().entreprisepersodao().insert(e);
 
                 return e;
@@ -160,40 +154,30 @@ public class CreationNewPartie extends AppCompatActivity {
                 super.onPostExecute(e);
                 eperso = e;
 
-                if(eperso==null){
-                    System.out.println("NULL DANS LE NEW");
-                }
+                creerLogiciel();
                 MyApplication.getInstance().setEntreprise_joueur(eperso);
-                Intent intent = new Intent(MyApplication.getInstance(),MainActivity.class);
 
+                Intent intent = new Intent(MyApplication.getInstance(), MainActivity.class);
                 startActivity(intent);
-
             }
-
         }
-
         creerEntreprisePerso gt = new creerEntreprisePerso();
         gt.execute();
     }
 
-    private void creerLogiciel(final String nomL) {
+    private void creerLogiciel() {
 
         class creerLogiciel extends AsyncTask<Void, Void, Void> {
 
             @Override
             protected Void doInBackground(Void... voids) {
-                Logiciel l = new Logiciel(nomL);
-                mDb.getAppDatabase().logicieldao().insert(l);
-                logicielperso = l;
+
+                mDb.getAppDatabase().logicieldao().insert(eperso.getLogiciel());
                 return null;
             }
-
         }
 
         creerLogiciel gt = new creerLogiciel();
         gt.execute();
     }
-
-
-
 }

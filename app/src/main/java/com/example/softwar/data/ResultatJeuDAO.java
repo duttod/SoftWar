@@ -14,6 +14,9 @@ public interface ResultatJeuDAO {
     @Query("SELECT * FROM ResultatJeu")
     List<ResultatJeu> getAll();
 
+    @Query("SELECT * FROM ResultatJeu WHERE resultat = :res")
+    List<ResultatJeu> getResultatSelonScore(String res);
+
     @Insert
     void insert(ResultatJeu res);
 

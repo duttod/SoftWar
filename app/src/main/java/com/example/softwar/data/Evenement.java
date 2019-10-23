@@ -9,13 +9,13 @@ public class Evenement {
 	private int id;
 
 	@ColumnInfo(name = "nbUtilisateurs")
-	private long nbUtilisateurs;
+	private int nbUtilisateurs;
 
 	@ColumnInfo(name = "argent")
-	private long argent;
+	private int argent;
 
-	@ColumnInfo(name = "productivite")
-	private long productivite;
+	@ColumnInfo(name = "rentabilite")
+	private int rentabilite;
 
 	@ColumnInfo(name = "securite")
 	private int securite;
@@ -35,7 +35,7 @@ public class Evenement {
 		return this.id;
 	}
 
-	public long getNbUtilisateurs() {
+	public int getNbUtilisateurs() {
 		return this.nbUtilisateurs;
 	}
 
@@ -43,11 +43,11 @@ public class Evenement {
 	 * 
 	 * @param nbUtilisateurs
 	 */
-	public void setNbUtilisateurs(long nbUtilisateurs) {
+	public void setNbUtilisateurs(int nbUtilisateurs) {
 		this.nbUtilisateurs = nbUtilisateurs;
 	}
 
-	public long getArgent() {
+	public int getArgent() {
 		return this.argent;
 	}
 
@@ -55,20 +55,20 @@ public class Evenement {
 	 * 
 	 * @param argent
 	 */
-	public void setArgent(long argent) {
+	public void setArgent(int argent) {
 		this.argent = argent;
 	}
 
-	public long getProductivite() {
-		return this.productivite;
+	public int getRentabilite() {
+		return this.rentabilite;
 	}
 
 	/**
 	 * 
-	 * @param productivite
+	 * @param rentabilite
 	 */
-	public void setProductivite(long productivite) {
-		this.productivite = productivite;
+	public void setRentabilite(int rentabilite) {
+		this.rentabilite = rentabilite;
 	}
 
 	public int getSecurite() {
