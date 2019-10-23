@@ -9,6 +9,9 @@ public class Alea extends Evenement {
 	@ColumnInfo(name = "contexte")
 	private String contexte;
 
+	@ColumnInfo(name = "type")
+	private String type;
+
 	public String getContexte() {
 		return this.contexte;
 	}
@@ -19,6 +22,18 @@ public class Alea extends Evenement {
 	 */
 	public void setContexte(String contexte) {
 		this.contexte = contexte;
+	}
+
+	public String getType() {
+		return this.type;
+	}
+
+	/**
+	 *
+	 * @param contexte
+	 */
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

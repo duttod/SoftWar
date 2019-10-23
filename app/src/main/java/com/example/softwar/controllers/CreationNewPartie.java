@@ -115,6 +115,7 @@ public class CreationNewPartie extends AppCompatActivity {
         getLogiciels gt = new getLogiciels();
         gt.execute();
     }
+
     private void getEntreprises() {
 
         class getEntreprises extends AsyncTask<Void, Void, List<Entreprise>> {
