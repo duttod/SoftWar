@@ -49,7 +49,7 @@ public class DatabaseClient {
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
 
-            db.execSQL("INSERT INTO Jeu (nom,dureeJeu,description) VALUES(\"Resolution de code\",0,\"Complète le code pour gagner des récompenses\");");
+            db.execSQL("INSERT INTO Jeu (nom,dureeJeu,description) VALUES(\"Resolutiondecode\",0,\"Complète le code pour gagner des récompenses\");");
 
             db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,0,0,0,\"mauvais\");");
 

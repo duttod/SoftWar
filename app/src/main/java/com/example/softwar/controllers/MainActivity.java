@@ -142,4 +142,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,ChoisirEmployeActifActivity.class);
         startActivity(intent);
     }
+
+    public void go_minijeu(View view) {
+        Intent intent = new Intent(this,MiniJeu.class);
+        startActivity(intent);
+    }
 }

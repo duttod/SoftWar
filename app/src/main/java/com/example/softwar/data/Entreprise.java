@@ -39,7 +39,6 @@ public class Entreprise implements Serializable, Comparable<Entreprise> {
 	}
 
 	public String getNomEntreprise() {
-		// TODO - implement Entreprise.getNomEntreprise
 		return nomEntreprise;
 	}
 
