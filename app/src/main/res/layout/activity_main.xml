@@ -102,7 +102,7 @@
                         android:text="INVOQUER"
                         android:onClick="GoToInvocation"
                         android:textColor="#FFB900" />
-                    
+
                 </LinearLayout>
 
             </LinearLayout>
