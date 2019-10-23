@@ -23,6 +23,15 @@
             android:orientation="horizontal"
             android:layout_weight="1">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""/>
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/employe2"
@@ -31,6 +40,16 @@
             android:orientation="horizontal"
             android:layout_weight="1">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""/>
+
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/employe3"
@@ -38,6 +57,16 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:layout_weight="1">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""/>
 
         </LinearLayout>
     </LinearLayout>

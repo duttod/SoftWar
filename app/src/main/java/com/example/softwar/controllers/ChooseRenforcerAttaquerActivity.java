@@ -12,5 +12,6 @@ public class ChooseRenforcerAttaquerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_renforcer_attaquer);
+        getSupportActionBar().hide();
     }
 }

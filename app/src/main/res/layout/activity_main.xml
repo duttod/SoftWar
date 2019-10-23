@@ -82,6 +82,18 @@
                     android:orientation="vertical">
 
                     <Button
+<<<<<<< HEAD
+                        android:layout_width="120dp"
+                        android:layout_height="70dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/bgbutton"
+                        android:fontFamily="@font/nasalization"
+                        android:text="Concurrent"
+                        android:textColor="#FFB900"
+                        android:onClick="go_concurrents"
+                        />
+=======
+>>>>>>> 9fe5ea4941228c5977fa916a5fdb8a37420dea4d
 
                         android:layout_width="117dp"
                         android:layout_height="70dp"
@@ -144,8 +156,8 @@
                 android:layout_margin="5dp"
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
-                android:text="STATS"
-                android:textColor="#FFB900" />
+                android:textColor="#FFB900"
+                android:text="STATS"/>
 
             <Button
                 android:layout_width="120dp"

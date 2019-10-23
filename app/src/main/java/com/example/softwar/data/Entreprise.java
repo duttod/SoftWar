@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Entreprise implements Serializable {
+public class Entreprise implements Serializable, Comparable<Entreprise> {
 
     @PrimaryKey
     @NonNull
@@ -79,5 +79,8 @@ public class Entreprise implements Serializable {
 	}
 
 
-
+    @Override
+    public int compareTo(@NonNull Entreprise entreprise) {
+        return ((Integer) getLogiciel().getNbUtilisateurs()).compareTo(entreprise.getLogiciel().getNbUtilisateurs());
+    }
 }

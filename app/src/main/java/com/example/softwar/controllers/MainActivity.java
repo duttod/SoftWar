@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 5; i++) {
             Entreprise ets_conc = new Entreprise("Concurrent"+i,"Soft"+i);
 
-            int argent_depart = (int) (Math.random() * (500 - 2000));
-            int nb_utilisateurs_depart = (int) (Math.random() * (1500 - 50000));
+            int argent_depart = (int) (Math.random() * (2000 - 500));
+            int nb_utilisateurs_depart = (int) (Math.random() * (50000 - 1500));
 
             ets_conc.setArgentEntreprise(argent_depart);
             ets_conc.getLogiciel().setNbUtilisateurs(nb_utilisateurs_depart);
@@ -100,5 +100,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MyApplication.getInstance(),TirageAuSortActivity.class);
         startActivity(intent);
 
+    }
+
+    public void go_concurrents(View view) {
+        Intent intent = new Intent(this, ConcurrentsActivity.class);
+        startActivity(intent);
     }
 }
