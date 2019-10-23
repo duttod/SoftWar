@@ -54,6 +54,18 @@ public class EntreprisePerso extends Entreprise {
 	@ColumnInfo(name = "productivite")
 	private int productivite;
 
+	public void setIdEmployeActif1(int idEmployeActif1) {
+		this.idEmployeActif1 = idEmployeActif1;
+	}
+
+	public void setIdEmployeActif2(int idEmployeActif2) {
+		this.idEmployeActif2 = idEmployeActif2;
+	}
+
+	public void setIdEmployeActif3(int idEmployeActif3) {
+		this.idEmployeActif3 = idEmployeActif3;
+	}
+
 	@ColumnInfo(name = "employeActif1")
 	private int idEmployeActif1;
 
