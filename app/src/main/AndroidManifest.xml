@@ -6,20 +6,26 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".MyApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".controllers.ConcurrentsActivity"
             android:screenOrientation="landscape" ></activity>
         <activity android:name=".controllers.AmeliorationsActivity"
+        <activity android:name=".controllers.ResultatMiniJeu"></activity>
+        <activity
+            android:name=".controllers.ConcurrentsActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".controllers.MiniJeu"
+        <activity
+            android:name=".controllers.AmeliorationsActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".controllers.TirageAuSortActivity"
+        <activity
+            android:name=".controllers.HomePageActivity"
             android:screenOrientation="landscape" />
-
-        <activity android:name=".controllers.ChoisirEmployeActifActivity"></activity>
+        <activity
+            android:name=".controllers.TirageAuSortActivity"
+            android:screenOrientation="landscape" />
+        <activity android:name=".controllers.ChoisirEmployeActifActivity" />
         <activity
             android:name=".controllers.MainActivity"
             android:screenOrientation="landscape" />
