@@ -24,27 +24,26 @@
         android:textStyle="bold|italic" />
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        tools:context=".controllers.ConcurrentsActivity">
+        android:orientation="vertical">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:orientation="vertical">
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            tools:context=".controllers.ConcurrentsActivity">
 
             <LinearLayout
                 android:id="@+id/fiche_entreprise"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="10dp"
 
+                android:layout_weight="2"
                 android:background="@drawable/bgbutton"
-                android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
@@ -56,7 +55,7 @@
                     android:layout_marginBottom="10dp"
                     android:fontFamily="@font/nasalization"
                     android:text="Fiche d'entreprise"
-                    android:textColor="#FFB900"
+                    android:textColor="#FF22CD"
                     android:textSize="20sp" />
 
                 <TextView
@@ -114,43 +113,55 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10dp"
+                android:layout_weight="3"
                 android:background="@drawable/bgbutton"
+                android:layout_margin="10dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView13"
+                    android:id="@+id/textView14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
                     android:fontFamily="@font/nasalization"
-                    android:text="Informations générales"
-                    android:textColor="#FFB900"
+                    android:text="Classement"
+                    android:textColor="#FF22CD"
                     android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/nb_users_total"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:fontFamily="@font/nasalization"
-                    android:text="Nombre d'utilisateurs total"
-                    android:textColor="#FF22CD"
-                    android:textSize="15sp" />
+                    android:layout_height="match_parent"
 
-                <TextView
-                    android:id="@+id/argent_total"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:fontFamily="@font/nasalization"
-                    android:text="Argent total"
-                    android:textColor="#FF22CD"
-                    android:textSize="15sp" />
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
+
+                        <ScrollView
+                            android:id="@+id/scroll_classement"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp">
+
+                            <LinearLayout
+                                android:id="@+id/classement"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="40dp"
+                                android:gravity="center"
+                                android:orientation="vertical">
 
 
+                            </LinearLayout>
+
+                        </ScrollView>
+                    </LinearLayout>
+                </ScrollView>
             </LinearLayout>
 
         </LinearLayout>
@@ -159,40 +170,43 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:background="@drawable/bgbutton"
+            android:gravity="top"
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/textView13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/nasalization"
-                android:text="Classement"
-                android:textColor="#FFB900"
+                android:text="Informations générales"
+                android:textColor="#FF22CD"
                 android:textSize="20sp" />
 
-            <ScrollView
-                android:id="@+id/scroll_classement"
+            <TextView
+                android:id="@+id/nb_users_total"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="5dp">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/nasalization"
+                android:text="Nombre d'utilisateurs total"
+                android:textColor="#FFB900"
+                android:textSize="15sp" />
 
-                <LinearLayout
-                    android:id="@+id/classement"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="40dp"
-                    android:gravity="center"
-                    android:orientation="vertical">
+            <TextView
+                android:id="@+id/argent_total"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/nasalization"
+                android:text="Argent total"
+                android:textColor="#FFB900"
+                android:textSize="15sp" />
 
-
-                </LinearLayout>
-
-            </ScrollView>
 
         </LinearLayout>
 
