@@ -21,6 +21,7 @@ public class TirageAuSortActivity extends AppCompatActivity {
     EntreprisePerso entreprise_joueur ;
     private DatabaseClient mDb;
     Dialog dialog;
+    Dialog dialog2;
     TextView nbc;
 
     @Override
@@ -33,6 +34,10 @@ public class TirageAuSortActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         nbc = findViewById(R.id.nbcontrats);
         nbc.setText("Nombre de contrats possédés:"+Integer.toString(entreprise_joueur.getNbContrats()));
+
+
+        dialog2 = new Dialog(TirageAuSortActivity.this);
+        dialog2.setContentView(R.layout.popup_amelioration);
     }
 
     public void onepull(View view) {
@@ -58,6 +63,7 @@ public class TirageAuSortActivity extends AppCompatActivity {
         dialog.getWindow().setLayout(layoutpop.getWidth()+130, (layoutpop.getHeight()/2)+40);
         }else{
             //TODO Pas asser de contrat ouvrir boite de dialogue
+            dialog2.show();
         }
 
 
@@ -71,6 +77,7 @@ public class TirageAuSortActivity extends AppCompatActivity {
             }
         }else{
             //TODO Pas asser de contrat ouvrir boite de dialogue
+            dialog2.show();
         }
 
 

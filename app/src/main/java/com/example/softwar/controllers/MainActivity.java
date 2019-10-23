@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         concurrents = new ArrayList<>();
 
         //setImageLogiciel();
-        LoadDataEntreprise();
+        LoadConcurrents();
     }
 
     //Pas toucher
@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 setMyAppConcu();
+                LoadDataEntreprise();
 
             }
         }
@@ -106,8 +107,6 @@ public class MainActivity extends AppCompatActivity {
         argent.setText("Argent:"+Long.toString(((MyApplication)this.getApplication()).getEntreprise_joueur().getArgentEntreprise()));
         nomE.setText("Entreprise:"+((MyApplication)this.getApplication()).getEntreprise_joueur().getNomEntreprise());
         nbuser.setText("Utilisateurs:"+Integer.toString(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNbUtilisateurs()));
-
-        LoadConcurrents();
     }
 
     public void setImageLogiciel() {
@@ -157,5 +156,25 @@ public class MainActivity extends AppCompatActivity {
     public void GoToStats(View view) {
         Intent intent = new Intent(this,Statistiques.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        LoadDataEntreprise();
+    }
+
+    public void saveContext(View view) {
+        mdb.getAppDatabase().entreprisepersodao().update(((MyApplication)this.getApplication()).getEntreprise_joueur());
+
+        for (int i = 0; i < ((MyApplication)this.getApplication()).getConcurrents().size(); i++) {
+            ((MyApplication)this.getApplication()).getConcurrents().get(i).setNbusers(((MyApplication)this.getApplication()).getConcurrents().get(i).getLogiciel().getNbUtilisateurs());
+            mdb.getAppDatabase().entreprisedao().update(((MyApplication)this.getApplication()).getConcurrents().get(i));
+        }
+
+        mdb.getAppDatabase().logicieldao().update(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel());
+
+        LoadDataEntreprise();
     }
 }
