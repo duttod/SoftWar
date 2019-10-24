@@ -33,6 +33,8 @@ import com.example.softwar.data.Logiciel;
 import com.example.softwar.data.Pattern;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class MiniJeu extends AppCompatActivity {
@@ -43,10 +45,12 @@ public class MiniJeu extends AppCompatActivity {
 
     Pattern pattern1;
     Pattern pattern2;
+    Pattern pattern3;
 
     TextView chrono;
     CountDownTimer countDownTimer;
     String action_demander;
+    ArrayList<TextView> reponses;
     int indice;
     int nb_bonnerep;
     int nb_mauvaiserep;
@@ -76,12 +80,15 @@ public class MiniJeu extends AppCompatActivity {
         titre = findViewById(R.id.minijeu_titre);
         layout_text = findViewById(R.id.layout_text);
         layout_reponses = findViewById(R.id.layout_reponses);
+        reponses = new ArrayList<>();
 
         pattern1 = new Pattern();
         pattern2 = new Pattern();
+        pattern3 = new Pattern();
 
         pattern1.melangeReponses();
         pattern2.melangeReponses();
+        pattern3.melangeReponses();
 
         initPattern1_2();
 
@@ -122,6 +129,7 @@ public class MiniJeu extends AppCompatActivity {
         initText("5-  }", l5);
         LinearLayout l6 = initLigne();
         initText("  ",l6);
+        affiche_reponses();
 
     }
 
@@ -181,7 +189,58 @@ public class MiniJeu extends AppCompatActivity {
 
 
         initText(" ", l16);
+        affiche_reponses();
+    }
+    public void initPattern1_3(){
+        /*public static void main(String[] args) {
 
+  int j = 20, i = 0;
+  try {
+    System.out.println(j/i);
+  } catch (ArithmeticException e) {
+    System.out.println("Division par zéro !");
+  }
+  System.out.println("coucou toi !");
+}*/
+        LinearLayout l1 = initLigne();
+        initText("1- public static ", l1);
+        initReponse("void",l1,pattern2);
+        initText(" Voiture {;", l1);
+        LinearLayout l2 = initLigne();
+        initText("2-    ", l2);
+        initReponse("String", l2,pattern2);
+        initText(" libelle;", l2);
+        LinearLayout l3 = initLigne();
+        initText("3-    ", l3);
+        initReponse("int", l3,pattern2);
+        initText(" prix;", l3);
+        LinearLayout l4 = initLigne();
+        initText("4-   int ", l4);
+        initReponse("prix", l4,pattern2);
+        initText(";", l4);
+        LinearLayout l5 = initLigne();
+        initText("5- ", l5);
+        LinearLayout l6 = initLigne();
+        initText("6-   public String getLibelle() { ", l6);
+        initReponse("return", l6,pattern2);
+        initText(" libelle; }", l6);
+        LinearLayout l7 = initLigne();
+        initText("7-    public int getPrix() { return prix; } ", l7);
+        LinearLayout l8 = initLigne();
+        initText("8-    public int getPoids() { return ", l8);
+        initReponse("poids", l8,pattern2);
+        initText("; }", l8);
+        LinearLayout l9 = initLigne();
+        initText("9- ", l9);
+        LinearLayout l10 = initLigne();
+        initText("10-    protected ", l10);
+        initReponse("void", l10,pattern2);
+        initText(" setLibelle(String libelle) { this.libelle = libelle; }", l10);
+        LinearLayout l11 = initLigne();
+        initText("11-    protected void setPrix(int prix) { this.prix = prix; }", l11);
+        LinearLayout l12 = initLigne();
+        initText(" ", l12);
+        affiche_reponses();
     }
 
     public void initText(String text, LinearLayout layout){
@@ -220,7 +279,7 @@ public class MiniJeu extends AppCompatActivity {
         tv.setTextColor(Color.parseColor("#FF22CD"));
         tv.setTypeface(ResourcesCompat.getFont(this, R.font.inconsolata));
         tv.setOnTouchListener(new MyTouchListener());
-        layout_reponses.addView(tv);
+        reponses.add(tv);
     }
 
     public LinearLayout initLigne(){
@@ -228,6 +287,12 @@ public class MiniJeu extends AppCompatActivity {
         l1.setOrientation(LinearLayout.HORIZONTAL);
         this.layout_text.addView(l1);
         return l1;
+    }
+    public void affiche_reponses(){
+        Collections.shuffle(reponses);
+        for (TextView tv: reponses){
+            layout_reponses.addView(tv);
+        }
     }
 
     public void valider_minijeu(View view) {
