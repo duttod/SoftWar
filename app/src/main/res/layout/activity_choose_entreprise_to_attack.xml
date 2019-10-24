@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg14"
+    android:orientation="vertical"
+    tools:context=".controllers.ChooseEntrepriseToAttack">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/nasalization"
+        android:textColor="#FFB900"
+        android:gravity="center"
+        android:text="Attaquer un concurrent"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            tools:context=".controllers.ChooseEntrepriseToAttack">
+
+            <LinearLayout
+                android:id="@+id/fiche_entreprise"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+
+                android:layout_weight="2"
+                android:background="@drawable/bgbutton"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/nasalization"
+                    android:text="Fiche d'entreprise"
+                    android:textColor="#FF22CD"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/nom_entreprise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nasalization"
+                    android:text="Nom de l'entreprise :"
+                    android:textColor="#FFB900"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/nom_logiciel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nasalization"
+                    android:text="Nom du logiciel :"
+                    android:textColor="#FFB900"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/nb_users_entreprise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nasalization"
+                    android:text="Nombre d'utilisateurs : "
+                    android:textColor="#FFB900"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/argent_entreprise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nasalization"
+                    android:text="Capital : "
+                    android:textColor="#FFB900"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/partdemarche_entreprise"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/nasalization"
+                    android:text="Parts de marché : "
+                    android:textColor="#FFB900"
+                    android:textSize="15sp" />
+
+                <Button
+                    android:id="@+id/attackbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bgbutton"
+                    android:layout_gravity="center"
+                    android:textColor="#FFB900"
+                    android:text="ATTAQUER"
+                    android:enabled="false"
+                    android:onClick="LaunchAttack"
+                    android:fontFamily="@font/nasalization"
+                    android:textSize="15sp">
+
+                </Button>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="@drawable/bgbutton"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/nasalization"
+                    android:text="Concurrents"
+                    android:textColor="#FF22CD"
+                    android:textSize="20sp" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical">
+
+                        <ScrollView
+                            android:id="@+id/scroll_classement"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="5dp">
+
+                            <LinearLayout
+                                android:id="@+id/classement"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="40dp"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+
+                            </LinearLayout>
+
+                        </ScrollView>
+                    </LinearLayout>
+                </ScrollView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

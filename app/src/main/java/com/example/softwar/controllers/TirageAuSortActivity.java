@@ -87,24 +87,6 @@ public class TirageAuSortActivity extends AppCompatActivity {
 
     }
 
-    private void sauvegarderEmploye(final String nomL) {
-
-        class sauvegarderEmploye extends AsyncTask<Void, Void, Void> {
-
-            @Override
-            protected Void doInBackground(Void... voids) {
-                Logiciel l = new Logiciel(nomL);
-                mDb.getAppDatabase().logicieldao().insert(l);
-
-                return null;
-            }
-
-        }
-
-        sauvegarderEmploye gt = new sauvegarderEmploye();
-        gt.execute();
-    }
-
     public void fermerbox(View view) {
         dialog.cancel();
     }

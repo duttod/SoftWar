@@ -30,6 +30,7 @@
             android:background="@drawable/bgbutton"
             android:fontFamily="@font/nasalization"
             android:text="Attaquer"
+            android:onClick="MiniJeuAttaquer"
             android:textColor="#FF22CD"
             android:textSize="24sp" />
 

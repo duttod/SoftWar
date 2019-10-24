@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseClient mdb;
     EntreprisePerso entreprise_joueur ;
     ArrayList<Entreprise> concurrents;
-    private Dialog dialog;
+    private Dialog dialog,dialogcompteur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,8 +164,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void GoToChoixAttackDef(View view) {
+        if(MyApplication.getInstance().getCompteur_action()<=0){
+
+            dialogcompteur = new Dialog(this);
+            dialogcompteur.setContentView(R.layout.popup_compteur_actions);
+            dialogcompteur.show();
+        }else{
+
         Intent intent = new Intent(this,ChooseRenforcerAttaquerActivity.class);
         startActivity(intent);
+        }
     }
 
     public void GoToStats(View view) {
@@ -182,8 +190,13 @@ public class MainActivity extends AppCompatActivity {
 
     //PARTIE A PASSER EN ASYNCHRONE SI POSSIBLE
 
+<<<<<<< HEAD
     public void FinTour(View view) {
 
+=======
+    public void RandomEvenementDebutTour(View view) {
+        MyApplication.getInstance().setCompteur_action(2);
+>>>>>>> 3b361b9368a6d4947b897ff5178fa4d66deb14dc
         int chanceevenement = (int) (Math.random() * (100 - 0));
         TextView txt = dialog.findViewById(R.id.description_alea);
         txt.setText("");
@@ -305,5 +318,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void fermerbox(View view) {
         dialog.cancel();
+    }
+
+    public void fermercompteurbox(View view) {
+        dialogcompteur.cancel();
     }
 }

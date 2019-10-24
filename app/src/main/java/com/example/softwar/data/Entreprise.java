@@ -28,6 +28,8 @@ public class Entreprise implements Serializable, Comparable<Entreprise> {
 	@ColumnInfo(name = "nbusers")
 	private int nbusers;
 
+
+
 	public Entreprise() {}
 
 	public Entreprise(String nomEntreprise,String nomLogiciel){

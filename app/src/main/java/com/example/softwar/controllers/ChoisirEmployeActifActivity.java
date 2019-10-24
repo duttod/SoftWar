@@ -2,10 +2,12 @@ package com.example.softwar.controllers;
 
 import android.content.ClipData;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
@@ -58,7 +60,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
         empActif.add((LinearLayout) findViewById(R.id.employe3));
 
         // Set les vues si des Employé sont déjà actif
-//        setEmployeDejaActif(empActif);
+        setEmployeDejaActif();
 
 
         // Lier l'adapter au listView
@@ -96,44 +98,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
 
                     }
                     else {
-                        // TODO  : Prendre en compte l'insertion et la suppression dans la bdd
-                        final int j = i;
-                        // Création du TextView
-                        text = new TextView(ChoisirEmployeActifActivity.this);
-                        text.setText(emp.getNomEmploye());
-                        empActif.get(i).addView(text);
-                        text = new TextView(ChoisirEmployeActifActivity.this);
-                        text.setText(emp.getPrenomEmploye());
-                        empActif.get(i).addView(text);
-                        text = new TextView(ChoisirEmployeActifActivity.this);
-                        text.setText(Integer.toString(emp.getId()));
-                        text.setVisibility(View.INVISIBLE);
-                        empActif.get(i).addView(text);
-
-                        // Suppression de la list des employes Actif
-                        empActif.get(i).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                empActif.get(j).removeAllViews();
-
-                                // Mise à jour bdd
-                                // TODO enlever les employeActif
-                                // -1 id quand il n'y a pas d'employé
-                                entreprise_joueur.setEmployeActif(j,-1);
-                                mDb.getAppDatabase().entreprisepersodao().update(entreprise_joueur);
-
-                            }
-                        });
-                        /*
-                         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                         *
-                         * Zone Code : mettre à jour la bdd de entreprise + set employé dans MyApplication
-                         *
-                         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                         * */
-
-                        entreprise_joueur.setEmployeActif(j,emp.getId());
-                        mDb.getAppDatabase().entreprisepersodao().update(entreprise_joueur);
+                        setEmployeActif(i,emp);
 
 
                     }
@@ -151,87 +116,6 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
         getEmp();
     }
 
-/*    // This defines your touch listener
-    private final class MyTouchListener implements View.OnTouchListener {
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                ClipData data = ClipData.newPlainText("", "");
-                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
-                view.startDrag(data, shadowBuilder, view, 0);
-                //view.setVisibility(View.INVISIBLE);
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }*/
-
-/*    class MyDragListener implements View.OnDragListener {
-        Drawable enterShape = getResources().getDrawable(R.drawable.shape_droptarget);
-        Drawable normalShape = getResources().getDrawable(R.drawable.shape);
-
-        @Override
-        public boolean onDrag(View v, DragEvent event) {
-            int action = event.getAction();
-            switch (event.getAction()) {
-                case DragEvent.ACTION_DRAG_STARTED:
-                    // do nothing
-                    break;
-                case DragEvent.ACTION_DRAG_ENTERED:
-                    //v.setBackgroundDrawable(enterShape);
-                    break;
-                case DragEvent.ACTION_DRAG_EXITED:
-                    //v.setBackgroundDrawable(normalShape);
-                    break;
-                case DragEvent.ACTION_DROP:
-                    // Dropped, reassign View to ViewGroup
-                    View view = (View) event.getLocalState();
-                    //stop displaying the view where it was before it was dragged
-
-                    // view.setVisibility(View.INVISIBLE);
-                    //view dragged item is being dropped on
-                    TextView dropTarget = (TextView) v;
-                    //view being dragged and dropped
-                    TextView dropped = (TextView) view;
-                    //update the text in the target view to reflect the data being dropped
-
-                    if (dropTarget instanceof TextView) {
-
-                        String init = dropTarget.getText().toString();
-
-                        dropTarget.setText(dropped.getText());
-                        dropTarget.setOnTouchListener(new MyTouchListener());
-
-                        ((TextView) view).setText(init);
-*//*
-                        if (((TextView) view).getText() == "       ") {
-                            view.setBackgroundColor(Color.YELLOW);
-                        }
-*//*
-                        //make it bold to highlight the fact that an item has been dropped
-                        dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
-
-                        Object tag = dropTarget.getTag();
-                        //if there is already an item here, set it back visible in its original place
-                        if(tag!=null)
-                        {
-                            //the tag is the view id already dropped here
-                            int existingID = (Integer)tag;
-                            //set the original view visible again
-                            findViewById(existingID).setVisibility(View.VISIBLE);
-                        }
-                    }
-
-                    break;
-                case DragEvent.ACTION_DRAG_ENDED:
-                    //v.setBackgroundDrawable(normalShape);
-                default:
-                    break;
-            }
-            return true;
-        }
-    }*/
-
     private void getEmp(){
         class GetEmp extends AsyncTask<Void, Void, List<Employe>>{
 
@@ -247,7 +131,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
 //                 Employe e = new Employe("Thierry","Henry",4,1,1,1);
 //                 employeList.add(e);
 
-
+                System.out.println(employeList.get(0).getNomEmploye());
                 return employeList;
             }
 
@@ -276,11 +160,62 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
 
 
     }*/
-    public void setEmployeDejaActif(ListView listEmp){
+    public void setEmployeDejaActif(){
         for (int i = 0; i < 3 ;i++) {
-            /*entreprise_joueur.getEmployeActif().get()
-            listEmp.*/
+            if (entreprise_joueur.getEmployeActif().get(i) != -1){
+                setEmployeActif(i,mDb.getAppDatabase().employeDao().getAnEmploye(entreprise_joueur.getEmployeActif().get(i)));
+            }
+
         }
 
+    }
+    public void setEmployeActif(int i, Employe emp){
+        // TODO  : Prendre en compte l'insertion et la suppression dans la bdd
+        final int j = i;
+        // Création du TextView
+        text = new TextView(ChoisirEmployeActifActivity.this);
+        text.setText(emp.getNomEmploye());
+        setDesignEmpActif(text);
+        empActif.get(i).addView(text);
+        text = new TextView(ChoisirEmployeActifActivity.this);
+        text.setText(emp.getPrenomEmploye());
+        setDesignEmpActif(text);
+        empActif.get(i).addView(text);
+        text = new TextView(ChoisirEmployeActifActivity.this);
+        text.setText(Integer.toString(emp.getId()));
+        text.setVisibility(View.INVISIBLE);
+        empActif.get(i).addView(text);
+
+        // Suppression de la list des employes Actif
+        empActif.get(i).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                empActif.get(j).removeAllViews();
+
+                // Mise à jour bdd
+                // TODO enlever les employeActif
+                // -1 id quand il n'y a pas d'employé
+                entreprise_joueur.setEmployeActif(j,-1);
+                mDb.getAppDatabase().entreprisepersodao().update(entreprise_joueur);
+
+            }
+        });
+        /*
+         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         *
+         * Zone Code : mettre à jour la bdd de entreprise + set employé dans MyApplication
+         *
+         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         * */
+
+        entreprise_joueur.setEmployeActif(j,emp.getId());
+        mDb.getAppDatabase().entreprisepersodao().update(entreprise_joueur);
+
+    }
+
+    public void setDesignEmpActif(TextView text){
+        text.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
+        text.setTextColor(Color.parseColor("#FFB900"));
+        text.setTextSize(25);
     }
 }
