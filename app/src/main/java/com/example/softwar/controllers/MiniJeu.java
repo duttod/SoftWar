@@ -17,7 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +53,12 @@ public class MiniJeu extends AppCompatActivity {
     private DatabaseClient mDb;
     private Jeu jeu_en_cours;
 
+    private float mx, my;
+    private float curX, curY;
+
+    private ScrollView vScroll;
+    private HorizontalScrollView hScroll;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +81,9 @@ public class MiniJeu extends AppCompatActivity {
         indice = 0;
 
         mDb = DatabaseClient.getInstance(getApplicationContext());
+
+        vScroll = (ScrollView) findViewById(R.id.vScroll);
+        hScroll = (HorizontalScrollView) findViewById(R.id.hScroll);
 
         InitJeu();
 
@@ -156,13 +167,13 @@ public class MiniJeu extends AppCompatActivity {
         LinearLayout l15 = initLigne();
         initText("15-  }", l15);
         LinearLayout l16 = initLigne();
-        initText(" ", l15);
+        initText(" ", l16);
     }
 
     public void initText(String text, LinearLayout layout){
         TextView tv = new TextView(this);
         tv.setText(text);
-        tv.setTextSize(26);
+        tv.setTextSize(20);
         tv.setTextColor(Color.parseColor("#FFB900"));
         tv.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
         layout.addView(tv);
@@ -172,7 +183,7 @@ public class MiniJeu extends AppCompatActivity {
 
         //LinearLayout l = new LinearLayout(this);
         //l.addView(tv1);
-        tv1.setTextSize(26);
+        tv1.setTextSize(20);
 
         tv1.setText("       ");
         tv1.setBackgroundColor(Color.YELLOW);
@@ -354,6 +365,35 @@ public class MiniJeu extends AppCompatActivity {
 
         InitJeu jeu = new InitJeu();
         jeu.execute();
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        float curX, curY;
+
+        switch (event.getAction()) {
+
+            case MotionEvent.ACTION_DOWN:
+                mx = event.getX();
+                my = event.getY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                curX = event.getX();
+                curY = event.getY();
+                vScroll.scrollBy((int) (mx - curX), (int) (my - curY));
+                hScroll.scrollBy((int) (mx - curX), (int) (my - curY));
+                mx = curX;
+                my = curY;
+                break;
+            case MotionEvent.ACTION_UP:
+                curX = event.getX();
+                curY = event.getY();
+                vScroll.scrollBy((int) (mx - curX), (int) (my - curY));
+                hScroll.scrollBy((int) (mx - curX), (int) (my - curY));
+                break;
+        }
+
+        return true;
     }
 
 }
