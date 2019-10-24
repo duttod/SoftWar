@@ -61,8 +61,6 @@ public class MiniJeu extends AppCompatActivity {
     private ScrollView vScroll;
     private HorizontalScrollView hScroll;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,7 +123,7 @@ public class MiniJeu extends AppCompatActivity {
     public void initPattern1_2(){
 
         LinearLayout l1 = initLigne();
-        initText("1- public abstract", l1);
+        initText("1- public abstract ", l1);
         initReponse("class",l1,pattern2);
         initText("Voiture {;", l1);
         LinearLayout l2 = initLigne();
@@ -155,7 +153,7 @@ public class MiniJeu extends AppCompatActivity {
         LinearLayout l9 = initLigne();
         initText("9- ", l9);
         LinearLayout l10 = initLigne();
-        initText("10-    protected", l10);
+        initText("10-    protected ", l10);
         initReponse("void", l10,pattern2);
         initText(" ; setLibelle(String libelle) { this.libelle = libelle; }", l10);
         LinearLayout l11 = initLigne();
@@ -204,6 +202,11 @@ public class MiniJeu extends AppCompatActivity {
 
         pattern.addBonneReponse(text);
         TextView tv = new TextView(this);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(10,0,10,0);
+        tv.setLayoutParams(params);
+
         tv.setText(text);
         tv.setTextSize(26);
         tv.setTextColor(Color.parseColor("#FF22CD"));
