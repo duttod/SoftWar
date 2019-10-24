@@ -121,9 +121,9 @@ public class MainActivity extends AppCompatActivity {
         argent.setText(Long.toString(((MyApplication)this.getApplication()).getEntreprise_joueur().getArgentEntreprise()));
         nomE.setText(((MyApplication)this.getApplication()).getEntreprise_joueur().getNomEntreprise());
         nbuser.setText(Integer.toString(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNbUtilisateurs()));
-        argent.setText("Argent:"+Long.toString(((MyApplication)this.getApplication()).getEntreprise_joueur().getArgentEntreprise()));
-        nomE.setText("Entreprise:"+((MyApplication)this.getApplication()).getEntreprise_joueur().getNomEntreprise());
-        nbuser.setText("Utilisateurs:"+Integer.toString(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNbUtilisateurs()));
+        argent.setText("Argent : "+Long.toString(((MyApplication)this.getApplication()).getEntreprise_joueur().getArgentEntreprise()));
+        nomE.setText("Entreprise : "+((MyApplication)this.getApplication()).getEntreprise_joueur().getNomEntreprise());
+        nbuser.setText("Utilisateurs : "+Integer.toString(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNbUtilisateurs()));
     }
 
     public void setImageLogiciel() {
@@ -211,20 +211,20 @@ public class MainActivity extends AppCompatActivity {
         if (chanceevenement <= 50) {
 
             List<Alea> aleas = mdb.getAppDatabase().aleadao().getAll();
-            int indice = (int) (Math.random() * ((aleas.size() - 1) - 0));
+            int indice = (int) (Math.random() * ((aleas.size()) - 0));
 
             Alea aleachoisi = aleas.get(indice);
-            txt.setText("Evènement : "+aleachoisi.getContexte()+ " | ");
+            txt.setText("Evènement : "+aleachoisi.getContexte());
 
             if (aleachoisi.getType().equals("bien")) {
 
                 if (aleachoisi.getArgent() != 0) {
                     ((MyApplication) this.getApplication()).getEntreprise_joueur().setArgentEntreprise(((MyApplication) this.getApplication()).getEntreprise_joueur().getArgentEntreprise() + aleachoisi.getArgent());
-                    txt.setText(txt.getText() + "+" + aleachoisi.getArgent() + "€ | ");
+                    txt.setText(txt.getText() + " | +" + aleachoisi.getArgent() + "€");
                 }
                 if (aleachoisi.getNbUtilisateurs() != 0) {
                     ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNbUtilisateurs(((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNbUtilisateurs() + aleachoisi.getNbUtilisateurs());
-                    txt.setText(txt.getText().toString() + "+" + aleachoisi.getNbUtilisateurs() + " utilisateurs | ");
+                    txt.setText(txt.getText() + " | +" + aleachoisi.getNbUtilisateurs() + " utilisateurs ");
                 }
                 if (aleachoisi.getSecurite() != 0) {
                     if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauSecurite()+aleachoisi.getSecurite() < 100) {
@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauSecurite(100);
                     }
-                    txt.setText(txt.getText().toString() + "+" + aleachoisi.getSecurite() + " sécurité | ");
+                    txt.setText(txt.getText() + " | +" + aleachoisi.getSecurite() + " sécurité ");
                 }
                 if (aleachoisi.getErgonomie() != 0) {
                     if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauErgonomie()+aleachoisi.getErgonomie() < 100) {
@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauErgonomie(100);
                     }
-                    txt.setText(txt.getText().toString() + "+" + aleachoisi.getErgonomie() + " ergonomie | ");
+                    txt.setText(txt.getText() + " | +" + aleachoisi.getErgonomie() + " ergonomie ");
                 }
                 if (aleachoisi.getPuissance() != 0) {
                     if ( ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauPuissance()+aleachoisi.getPuissance() < 100) {
@@ -248,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauPuissance(100);
                     }
-                    txt.setText(txt.getText().toString() + "+" + aleachoisi.getPuissance() + " puissance | ");
+                    txt.setText(txt.getText() + "| +" + aleachoisi.getPuissance() + " puissance ");
                 }
                 if (aleachoisi.getRentabilite() != 0 ) {
                     if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauRentabilite()+aleachoisi.getRentabilite() < 100) {
@@ -256,10 +256,12 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauRentabilite(100);
                     }
-                    txt.setText(txt.getText().toString() + "+" + aleachoisi.getRentabilite() + " rentabilité | ");
+                    txt.setText(txt.getText() + " | +" + aleachoisi.getRentabilite() + " rentabilité ");
                 }
 
-            } else if (aleachoisi.getType().equals("mauvais")) {
+            } else {
+
+                System.out.println("Passe");
 
                 if (aleachoisi.getArgent() != 0) {
                     if (((MyApplication) this.getApplication()).getEntreprise_joueur().getArgentEntreprise() >= aleachoisi.getArgent()) {
@@ -267,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().setArgentEntreprise(0);
                     }
-                    txt.setText(txt.getText().toString() + "-" + aleachoisi.getArgent() + "€ | ");
+                    txt.setText(txt.getText() + " | -" + aleachoisi.getArgent() + "€ ");
                 }
                 if (aleachoisi.getNbUtilisateurs() != 0) {
                     if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNbUtilisateurs() >= aleachoisi.getNbUtilisateurs()) {
@@ -275,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNbUtilisateurs(0);
                     }
-                    txt.setText(txt.getText().toString() + "-" + aleachoisi.getNbUtilisateurs() + " utilisateurs | ");
+                    txt.setText(txt.getText() + " | -" + aleachoisi.getNbUtilisateurs() + " utilisateurs ");
                 }
                 if (aleachoisi.getSecurite() != 0) {
                     if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauSecurite() >= aleachoisi.getSecurite()) {
@@ -283,7 +285,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauSecurite(0);
                     }
-                    txt.setText(txt.getText().toString() + "-" + aleachoisi.getSecurite() + " sécurité | ");
+                    txt.setText(txt.getText() + " | -" + aleachoisi.getSecurite() + " sécurité ");
                 }
                 if (aleachoisi.getErgonomie() != 0) {
                     if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauErgonomie() >= aleachoisi.getErgonomie()) {
@@ -291,7 +293,7 @@ public class MainActivity extends AppCompatActivity {
                     }else {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauErgonomie(0);
                     }
-                    txt.setText(txt.getText().toString() + "-" + aleachoisi.getErgonomie() + " ergonomie | ");
+                    txt.setText(txt.getText() + " | -" + aleachoisi.getErgonomie() + " ergonomie ");
                 }
                 if (aleachoisi.getPuissance() != 0) {
                     if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauPuissance() >= aleachoisi.getPuissance()) {
@@ -299,7 +301,7 @@ public class MainActivity extends AppCompatActivity {
                     }else {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauPuissance(0);
                     }
-                    txt.setText(txt.getText().toString() + "-" + aleachoisi.getPuissance() + " puissance | ");
+                    txt.setText(txt.getText() + " | -" + aleachoisi.getPuissance() + " puissance ");
                 }
                 if (aleachoisi.getRentabilite() != 0) {
                     if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauRentabilite() >= aleachoisi.getRentabilite()) {
@@ -307,13 +309,16 @@ public class MainActivity extends AppCompatActivity {
                     }else {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauRentabilite(0);
                     }
-                    txt.setText(txt.getText().toString() + "-" + aleachoisi.getRentabilite() + " rentabilité | ");
+                    txt.setText(txt.getText() + " | -" + aleachoisi.getRentabilite() + " rentabilité ");
 
                 }
             }
 
             dialog.show();
             //Appel au popup
+        } else {
+            txt.setText("Pas d'évènement aujourd'hui !");
+            dialog.show();
         }
 
         BilanTour();

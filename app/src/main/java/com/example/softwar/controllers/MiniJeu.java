@@ -127,7 +127,7 @@ public class MiniJeu extends AppCompatActivity {
         LinearLayout l1 = initLigne();
         initText("1- public abstract ", l1);
         initReponse("class",l1,pattern2);
-        initText("Voiture {;", l1);
+        initText(" Voiture {;", l1);
         LinearLayout l2 = initLigne();
         initText("2-    ", l2);
         initReponse("String", l2,pattern2);
@@ -157,7 +157,7 @@ public class MiniJeu extends AppCompatActivity {
         LinearLayout l10 = initLigne();
         initText("10-    protected ", l10);
         initReponse("void", l10,pattern2);
-        initText(" ; setLibelle(String libelle) { this.libelle = libelle; }", l10);
+        initText(" setLibelle(String libelle) { this.libelle = libelle; }", l10);
         LinearLayout l11 = initLigne();
         initText("11-    protected void setPrix(int prix) { this.prix = prix; }", l11);
         LinearLayout l12 = initLigne();
@@ -169,7 +169,7 @@ public class MiniJeu extends AppCompatActivity {
         LinearLayout l14 = initLigne();
         initText("14-    public String ", l14);
         initReponse("toString() ", l14,pattern2);
-        initText("{ return \"Voiture : \" + getLibelle() + \", Prix : \" + getPrix() + \", Poids : \" + getPoids(); }\n }", l14);
+        initText("{ return \"Voiture : \" + getLibelle() + \", Prix : \" + getPrix() + \", Poids : \" + getPoids(); }", l14);
         LinearLayout l15 = initLigne();
         initText("15-  }", l15);
         LinearLayout l16 = initLigne();
@@ -232,7 +232,7 @@ public class MiniJeu extends AppCompatActivity {
         intent.putExtra(ChooseRenforcerAttaquerActivity.ACTION_KEY,action_demander);
         intent.putExtra(ResultatMiniJeu.nbjuste, nb_bonnerep);
         intent.putExtra(ResultatMiniJeu.nbpossible, pattern2.getBonnesReponses().size());
-        Toast.makeText(this, "blblbl", Toast.LENGTH_LONG).show();
+
         countDownTimer.cancel();
         startActivity(intent);
     }
