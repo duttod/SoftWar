@@ -1,9 +1,11 @@
 package com.example.softwar.controllers;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.softwar.MyApplication;
@@ -77,6 +79,7 @@ public class ResultatMiniJeu extends AppCompatActivity {
     }
 
     public void giveRecompense() {
+
         int indice = (int) (Math.random() * ((listEvents.size()-1) - 0));
         ResultatJeu recompense = listEvents.get(indice);
 
@@ -127,5 +130,11 @@ public class ResultatMiniJeu extends AppCompatActivity {
 
         getResJeu gr = new getResJeu();
         gr.execute();
+    }
+
+    public void go_menu(View view) {
+        Intent intent = new Intent(MyApplication.getInstance(),MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }
