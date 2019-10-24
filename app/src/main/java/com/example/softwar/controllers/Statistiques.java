@@ -113,7 +113,8 @@ public class Statistiques extends AppCompatActivity {
         int nbjeux= entreprise_joueur.getNbMiniJeux();
         int gagnejeux=entreprise_joueur.getNbMiniJeuxGagner();
         if(gagnejeux!=0){
-            tvict.setText("Pourcentage de victoire:"+Double.toString((nbjeux/gagnejeux)*100));
+            double res = nbjeux/(double)gagnejeux;
+            tvict.setText("Pourcentage de victoire:"+Double.toString(res*100));
         }else{
             tvict.setText("Pourcentage de victoire:0");
         }

@@ -167,12 +167,12 @@ public class MiniJeu extends AppCompatActivity {
         LinearLayout l15 = initLigne();
         initText("15-  }", l15);
         LinearLayout l16 = initLigne();
-<<<<<<< HEAD
+
         initText(" ", l15);
 
-=======
+
         initText(" ", l16);
->>>>>>> 3b361b9368a6d4947b897ff5178fa4d66deb14dc
+
     }
 
     public void initText(String text, LinearLayout layout){

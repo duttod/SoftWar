@@ -28,7 +28,7 @@ public class EntreprisePerso extends Entreprise {
 		employes = new ArrayList<EmployeDansEntreprise>();
 	}
 
-	public EntreprisePerso (DatabaseClient mdb, String nomEntreprise, String nomLogiciel, long argentEntreprise, int nbContrats) {
+	public EntreprisePerso (DatabaseClient mdb, String nomEntreprise, String nomLogiciel, long argentEntreprise, int nbContrats,int nbMiniJeux,int nbMiniJeuxGagner) {
 
 		super(nomEntreprise,nomLogiciel);
 		this.mdb = mdb;
@@ -36,8 +36,8 @@ public class EntreprisePerso extends Entreprise {
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
 		setNomLogiciel(nomLogiciel);
-		recupNbMiniJeux();
-		recupNbMiniJeuxGagner();
+		setNbMiniJeux(nbMiniJeux);
+		setNbMiniJeuxGagner(nbMiniJeuxGagner);
 		setEmployes();
 		setLogiciel();
 	}
@@ -61,10 +61,10 @@ public class EntreprisePerso extends Entreprise {
 	private int nbContrats;
 
 	@ColumnInfo(name = "nbMiniJeux")
-	private int nbMiniJeux =0;
+	private int nbMiniJeux ;
 
 	@ColumnInfo(name = "nbMiniJeuxGagner")
-	private int nbMiniJeuxGagner = 0;
+	private int nbMiniJeuxGagner ;
 
 	public void setIdEmployeActif1(int idEmployeActif1) {
 		this.idEmployeActif1 = idEmployeActif1;
