@@ -27,7 +27,7 @@
     <LinearLayout
 
         android:layout_width="match_parent"
-        android:layout_height="206dp"
+        android:layout_height="281dp"
         android:background="@drawable/bgbutton"
         android:orientation="horizontal">
 
@@ -53,7 +53,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/nom_entreprise5"
+                android:id="@+id/nbMinijeux"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -63,7 +63,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/nom_entreprise7"
+                android:id="@+id/nbMinijeuxG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -73,7 +73,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/nom_entreprise8"
+                android:id="@+id/pourcentvictoire"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"

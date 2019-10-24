@@ -21,6 +21,8 @@ public class EntreprisePerso extends Entreprise {
 		setNomEntreprise(nomEntreprise);
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
+		setNbMiniJeuxGagner(0);
+		setNbMiniJeux(0);
 		setLogiciel(nomLogiciel);
 
 		employes = new ArrayList<EmployeDansEntreprise>();
@@ -41,9 +43,11 @@ public class EntreprisePerso extends Entreprise {
 	}
 
 	private void recupNbMiniJeux() {
+		this.nbMiniJeux=mdb.getAppDatabase().entreprisepersodao().getAll().get(0).getNbMiniJeux();
 	}
 
 	private void recupNbMiniJeuxGagner() {
+		this.nbMiniJeux=mdb.getAppDatabase().entreprisepersodao().getAll().get(0).getNbMiniJeuxGagner();
 	}
 
 	@Ignore
