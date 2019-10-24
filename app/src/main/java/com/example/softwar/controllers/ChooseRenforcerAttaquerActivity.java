@@ -5,6 +5,7 @@ import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.example.softwar.MyApplication;
 import com.example.softwar.R;
@@ -18,6 +19,8 @@ public class ChooseRenforcerAttaquerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_choose_renforcer_attaquer);
         getSupportActionBar().hide();
         ((MyApplication)this.getApplication()).FadeOut((float) 3.0);

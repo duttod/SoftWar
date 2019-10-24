@@ -1,12 +1,15 @@
 package com.example.softwar.controllers;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageSwitcher;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.softwar.MyApplication;
@@ -44,6 +47,7 @@ public class ListeEmployeAdapter extends ArrayAdapter<Employe> {
         TextView textViewProductivite = (TextView) rowView.findViewById(R.id.productivite_employe) ;
         TextView textViewRapidite = (TextView) rowView.findViewById(R.id.rapidite_employe);
         TextView textViewQuantite = (TextView) rowView.findViewById(R.id.quantite_employe);
+        ImageView spritemp = rowView.findViewById(R.id.imgemp);
 
         // Remplir les objet graphique avec les bonnes valeurs
         textViewNom.setText(emp.getNomEmploye());
@@ -52,6 +56,17 @@ public class ListeEmployeAdapter extends ArrayAdapter<Employe> {
         textViewAge.setText(Integer.toString(emp.getAgeEmploye()));
         textViewProductivite.setText(Integer.toString(emp.getProductivite()));
         textViewRapidite.setText(Integer.toString(emp.getRapidite()));
+
+        if(emp.getPrenomEmploye().equals("Fabieng")){
+            spritemp.setImageResource(R.drawable.base3);
+        }else if(emp.getPrenomEmploye().equals("Célestine")){
+            spritemp.setImageResource(R.drawable.base2);
+        }else if(emp.getPrenomEmploye().equals("Vaness")){
+            spritemp.setImageResource(R.drawable.base1);
+        }else if(emp.getPrenomEmploye().equals("Corenting")){
+            spritemp.setImageResource(R.drawable.base4);
+        }
+
 
 
 

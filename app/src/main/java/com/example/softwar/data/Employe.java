@@ -3,6 +3,7 @@ package com.example.softwar.data;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.media.Image;
 
 @Entity
 public class Employe {
@@ -118,5 +119,6 @@ public class Employe {
 	public void setRapidite(int rapidite) {
 		this.rapidite = rapidite;
 	}
+
 
 }

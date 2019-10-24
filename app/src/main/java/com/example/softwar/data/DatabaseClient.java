@@ -81,9 +81,10 @@ public class DatabaseClient {
             db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,contexte,type) VALUES(0,0,0,0,0,0,\"Un de vos concurrents a DDOS vos serveurs durant la nuit !\",\"mauvais\");");
             db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,contexte,type) VALUES(3000,0,0,0,0,0,\"Un de vos concurrents a fait une campagne massive d'e-mailing auprès de vos utilisateurs !\",\"bien\");");
 
-            db.execSQL("INSERT INTO Employe(nom,prenom,age,productivite,rapidite,rarete) VALUES(\"Gérot\", \"Cédric\",44,17,19,3);");
-            db.execSQL("INSERT INTO Employe(nom,prenom,age,productivite,rapidite,rarete) VALUES(\"Ceret\", \"Eric\",44,15,15,2);");
-            db.execSQL("INSERT INTO Employe(nom,prenom,age,productivite,rapidite,rarete) VALUES(\"Blancool\", \"Gaelle\",50,7,10,1);");
+            db.execSQL("INSERT INTO Employe(nom,prenom,age,productivite,rapidite,rarete) VALUES(\"Flex\", \"Fabieng\",44,17,19,3);");
+            db.execSQL("INSERT INTO Employe(nom,prenom,age,productivite,rapidite,rarete) VALUES(\"Goudja\", \"Célestine\",44,15,15,2);");
+            db.execSQL("INSERT INTO Employe(nom,prenom,age,productivite,rapidite,rarete) VALUES(\"Royale\", \"Vaness\",50,7,10,1);");
+            db.execSQL("INSERT INTO Employe(nom,prenom,age,productivite,rapidite,rarete) VALUES(\"Petit\", \"Corenting\",12,3,10,1);");
         }
     };
 
