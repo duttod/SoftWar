@@ -34,9 +34,16 @@ public class EntreprisePerso extends Entreprise {
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
 		setNomLogiciel(nomLogiciel);
-
+		recupNbMiniJeux();
+		recupNbMiniJeuxGagner();
 		setEmployes();
 		setLogiciel();
+	}
+
+	private void recupNbMiniJeux() {
+	}
+
+	private void recupNbMiniJeuxGagner() {
 	}
 
 	@Ignore
@@ -48,6 +55,12 @@ public class EntreprisePerso extends Entreprise {
 
 	@ColumnInfo(name = "nbContrats")
 	private int nbContrats;
+
+	@ColumnInfo(name = "nbMiniJeux")
+	private int nbMiniJeux =0;
+
+	@ColumnInfo(name = "nbMiniJeuxGagner")
+	private int nbMiniJeuxGagner = 0;
 
 	public void setIdEmployeActif1(int idEmployeActif1) {
 		this.idEmployeActif1 = idEmployeActif1;
@@ -200,4 +213,21 @@ public class EntreprisePerso extends Entreprise {
 		* Faire juste la somme des statistiques !*/
 	}
 
+	public int getNbMiniJeux() {
+		return nbMiniJeux;
+	}
+
+	public void setNbMiniJeux(int nb) {
+		this.nbMiniJeux = nb;
+		mdb.getAppDatabase().entreprisepersodao().update(this);
+	}
+
+	public int getNbMiniJeuxGagner() {
+		return nbMiniJeuxGagner;
+	}
+
+	public void setNbMiniJeuxGagner(int nbMiniJeuxGagner) {
+		this.nbMiniJeuxGagner = nbMiniJeuxGagner;
+		mdb.getAppDatabase().entreprisepersodao().update(this);
+	}
 }

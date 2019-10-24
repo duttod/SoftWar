@@ -165,9 +165,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void GoToChoixAttackDef(View view) {
         if(MyApplication.getInstance().getCompteur_action()<=0){
-            //TODO Ouvrir boite de dialogue pas asser de pts actions
+
             dialogcompteur = new Dialog(this);
             dialogcompteur.setContentView(R.layout.popup_compteur_actions);
+            dialogcompteur.show();
         }else{
 
         Intent intent = new Intent(this,ChooseRenforcerAttaquerActivity.class);
