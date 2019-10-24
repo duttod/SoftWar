@@ -6,7 +6,6 @@
     android:id="@+id/layout_popup"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg12"
     tools:context=".controllers.AmeliorationsActivity">
 
     <LinearLayout
