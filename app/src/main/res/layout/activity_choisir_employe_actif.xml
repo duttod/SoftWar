@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".controllers.ChoisirEmployeActifActivity"
-    android:background="#DFC989"
+    android:background="@drawable/bg12"
     android:orientation="vertical">
 
     <LinearLayout
@@ -21,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="@drawable/bgbutton">
 
         </LinearLayout>
         <LinearLayout
@@ -29,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
+            android:background="@drawable/bgbutton"
             android:layout_weight="1">
 
 
@@ -40,6 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
+            android:background="@drawable/bgbutton"
             android:layout_weight="1">
 
 
@@ -52,6 +55,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
+
         android:layout_weight="1">
     </ListView>
 
