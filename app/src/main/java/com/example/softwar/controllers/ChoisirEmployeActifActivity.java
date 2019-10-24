@@ -59,7 +59,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
         empActif.add((LinearLayout) findViewById(R.id.employe3));
 
         // Set les vues si des Employé sont déjà actif
-//        setEmployeDejaActif(empActif);
+        setEmployeDejaActif();
 
 
         // Lier l'adapter au listView
@@ -97,44 +97,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
 
                     }
                     else {
-                        // TODO  : Prendre en compte l'insertion et la suppression dans la bdd
-                        final int j = i;
-                        // Création du TextView
-                        text = new TextView(ChoisirEmployeActifActivity.this);
-                        text.setText(emp.getNomEmploye());
-                        empActif.get(i).addView(text);
-                        text = new TextView(ChoisirEmployeActifActivity.this);
-                        text.setText(emp.getPrenomEmploye());
-                        empActif.get(i).addView(text);
-                        text = new TextView(ChoisirEmployeActifActivity.this);
-                        text.setText(Integer.toString(emp.getId()));
-                        text.setVisibility(View.INVISIBLE);
-                        empActif.get(i).addView(text);
-
-                        // Suppression de la list des employes Actif
-                        empActif.get(i).setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                empActif.get(j).removeAllViews();
-
-                                // Mise à jour bdd
-                                // TODO enlever les employeActif
-                                // -1 id quand il n'y a pas d'employé
-                                entreprise_joueur.setEmployeActif(j,-1);
-                                mDb.getAppDatabase().entreprisepersodao().update(entreprise_joueur);
-
-                            }
-                        });
-                        /*
-                         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                         *
-                         * Zone Code : mettre à jour la bdd de entreprise + set employé dans MyApplication
-                         *
-                         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                         * */
-
-                        entreprise_joueur.setEmployeActif(j,emp.getId());
-                        mDb.getAppDatabase().entreprisepersodao().update(entreprise_joueur);
+                        setEmployeActif(i,emp);
 
 
                     }
@@ -277,11 +240,54 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
 
 
     }*/
-    public void setEmployeDejaActif(ListView listEmp){
+    public void setEmployeDejaActif(){
         for (int i = 0; i < 3 ;i++) {
-            /*entreprise_joueur.getEmployeActif().get()
-            listEmp.*/
+            if (entreprise_joueur.getEmployeActif().get(i) != -1){
+                setEmployeActif(i,mDb.getAppDatabase().employeDao().getAnEmploye(entreprise_joueur.getEmployeActif().get(i)));
+            }
+
         }
+
+    }
+    public void setEmployeActif(int i, Employe emp){
+        // TODO  : Prendre en compte l'insertion et la suppression dans la bdd
+        final int j = i;
+        // Création du TextView
+        text = new TextView(ChoisirEmployeActifActivity.this);
+        text.setText(emp.getNomEmploye());
+        empActif.get(i).addView(text);
+        text = new TextView(ChoisirEmployeActifActivity.this);
+        text.setText(emp.getPrenomEmploye());
+        empActif.get(i).addView(text);
+        text = new TextView(ChoisirEmployeActifActivity.this);
+        text.setText(Integer.toString(emp.getId()));
+        text.setVisibility(View.INVISIBLE);
+        empActif.get(i).addView(text);
+
+        // Suppression de la list des employes Actif
+        empActif.get(i).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                empActif.get(j).removeAllViews();
+
+                // Mise à jour bdd
+                // TODO enlever les employeActif
+                // -1 id quand il n'y a pas d'employé
+                entreprise_joueur.setEmployeActif(j,-1);
+                mDb.getAppDatabase().entreprisepersodao().update(entreprise_joueur);
+
+            }
+        });
+        /*
+         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         *
+         * Zone Code : mettre à jour la bdd de entreprise + set employé dans MyApplication
+         *
+         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         * */
+
+        entreprise_joueur.setEmployeActif(j,emp.getId());
+        mDb.getAppDatabase().entreprisepersodao().update(entreprise_joueur);
 
     }
 }
