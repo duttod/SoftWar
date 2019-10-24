@@ -126,7 +126,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <TextView
@@ -135,7 +135,7 @@
                     android:fontFamily="@font/nasalization"
                     android:text="Age : "
                     android:textColor="#FFB900"
-                    android:textSize="17dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -143,7 +143,7 @@
                     android:fontFamily="@font/nasalization"
                     android:text="Productivité : "
                     android:textColor="#FFB900"
-                    android:textSize="17dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -151,7 +151,7 @@
                     android:fontFamily="@font/nasalization"
                     android:text="Rapidité : "
                     android:textColor="#FFB900"
-                    android:textSize="17dp" />
+                    android:textSize="15sp" />
 
 
             </LinearLayout>
@@ -168,7 +168,7 @@
                     android:fontFamily="@font/nasalization"
                     android:text="44"
                     android:textColor="#FF22CD"
-                    android:textSize="17dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/productivite_employe"
@@ -177,7 +177,7 @@
                     android:fontFamily="@font/nasalization"
                     android:text="19"
                     android:textColor="#FF22CD"
-                    android:textSize="17dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/rapidite_employe"
@@ -186,7 +186,7 @@
                     android:fontFamily="@font/nasalization"
                     android:text="17"
                     android:textColor="#FF22CD"
-                    android:textSize="17dp" />
+                    android:textSize="15dp" />
 
 
             </LinearLayout>

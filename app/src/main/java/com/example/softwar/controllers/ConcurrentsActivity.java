@@ -88,7 +88,7 @@ public class ConcurrentsActivity extends AppCompatActivity {
                     nom_logiciel.setText("Nom du logiciel : "+nomlogiciel);
                     argent_entreprise.setText("Capital : "+argentreprise);
                     nb_users_entreprise.setText("Nombre d'utilisateurs du logiciel : "+nbusers);
-                    partdemarche_entreprise.setText("Parts de marché : "+((nbusers/users_total)*100)+"%");
+                    partdemarche_entreprise.setText("Parts de marché : "+Double.toString((double)(nbusers/(double)users_total)*100)+"%");
                 }
             });
 

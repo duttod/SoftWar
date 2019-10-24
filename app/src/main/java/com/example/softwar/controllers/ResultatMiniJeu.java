@@ -73,15 +73,30 @@ public class ResultatMiniJeu extends AppCompatActivity {
         double niveaudouble = (nbjuste_i/ (double)nbpossible_i);
         System.out.println(nbjuste_i+" - "+nbpossible_i+"Niveau : "+niveaudouble);
 
-        if (niveaudouble < 0.25) {
-            niveau = "mauvais";
-        } else if (niveaudouble >= 0.25 && niveaudouble < 0.5) {
-            niveau = "assezbon";
-        } else if (niveaudouble >= 0.5 && niveaudouble < 0.75) {
-            niveau = "bon";
+        if(action_demander.equals("renforcer")) {
+
+            if (niveaudouble < 0.25) {
+                niveau = "mauvais";
+            } else if (niveaudouble >= 0.25 && niveaudouble < 0.5) {
+                niveau = "assezbon";
+            } else if (niveaudouble >= 0.5 && niveaudouble < 0.75) {
+                niveau = "bon";
+            } else {
+                niveau = "excellent";
+                entreprisePerso.setNbMiniJeuxGagner(entreprisePerso.getNbMiniJeuxGagner() + 1);
+            }
+
         } else {
-            niveau = "excellent";
-            entreprisePerso.setNbMiniJeuxGagner(entreprisePerso.getNbMiniJeuxGagner()+1);
+            if (niveaudouble < 0.25) {
+                niveau = "mauvais";
+            } else if (niveaudouble >= 0.25 && niveaudouble < 0.5) {
+                niveau = "attaquer-assezbon";
+            } else if (niveaudouble >= 0.5 && niveaudouble < 0.75) {
+                niveau = "attaquer-bon";
+            } else {
+                niveau = "attaquer-excellent";
+                entreprisePerso.setNbMiniJeuxGagner(entreprisePerso.getNbMiniJeuxGagner() + 1);
+            }
         }
     }
 
@@ -100,10 +115,30 @@ public class ResultatMiniJeu extends AppCompatActivity {
 
         entreprisePerso.setArgentEntreprise(entreprisePerso.getArgentEntreprise()+recompense.getArgent());
         entreprisePerso.getLogiciel().setNbUtilisateurs(entreprisePerso.getLogiciel().getNbUtilisateurs()+recompense.getNbUtilisateurs());
-        entreprisePerso.getLogiciel().setNiveauErgonomie(entreprisePerso.getLogiciel().getNiveauErgonomie()+recompense.getErgonomie());
-        entreprisePerso.getLogiciel().setNiveauPuissance(entreprisePerso.getLogiciel().getNiveauPuissance()+recompense.getPuissance());
-        entreprisePerso.getLogiciel().setNiveauRentabilite(entreprisePerso.getLogiciel().getNiveauRentabilite()+recompense.getRentabilite());
-        entreprisePerso.getLogiciel().setNiveauSecurite(entreprisePerso.getLogiciel().getNiveauSecurite()+recompense.getSecurite());
+
+        if (entreprisePerso.getLogiciel().getNiveauErgonomie()+recompense.getErgonomie() < 100) {
+            entreprisePerso.getLogiciel().setNiveauErgonomie(entreprisePerso.getLogiciel().getNiveauErgonomie()+recompense.getErgonomie());
+        } else {
+            entreprisePerso.getLogiciel().setNiveauErgonomie(100);
+        }
+
+        if (entreprisePerso.getLogiciel().getNiveauPuissance()+recompense.getPuissance() < 100) {
+            entreprisePerso.getLogiciel().setNiveauPuissance(entreprisePerso.getLogiciel().getNiveauPuissance()+recompense.getPuissance());
+        } else {
+            entreprisePerso.getLogiciel().setNiveauPuissance(100);
+        }
+
+        if (entreprisePerso.getLogiciel().getNiveauRentabilite()+recompense.getRentabilite() < 100) {
+            entreprisePerso.getLogiciel().setNiveauRentabilite(entreprisePerso.getLogiciel().getNiveauRentabilite()+recompense.getRentabilite());
+        } else {
+            entreprisePerso.getLogiciel().setNiveauRentabilite(100);
+        }
+
+        if (entreprisePerso.getLogiciel().getNiveauSecurite()+recompense.getSecurite() < 100) {
+            entreprisePerso.getLogiciel().setNiveauSecurite(entreprisePerso.getLogiciel().getNiveauSecurite()+recompense.getSecurite());
+        } else {
+            entreprisePerso.getLogiciel().setNiveauSecurite(100);
+        }
 
         argent.setText("+ "+recompense.getArgent()+"€");
         nbusers.setText("+ "+recompense.getNbUtilisateurs()+" utilisateurs");
@@ -114,19 +149,30 @@ public class ResultatMiniJeu extends AppCompatActivity {
 
     }
     public void DammageEntreprise(){
-        int indice = (int) (Math.random() * ((listEvents.size()-1) - 0));
+
+        int indice = 0;
         ResultatJeu degats = listEvents.get(indice);
 
         Entreprise eA = MyApplication.getInstance().getEntreprise_attaquer();
-        eA.setNbusers(eA.getNbusers()-degats.getNbUtilisateurs());
-        eA.setArgentEntreprise(eA.getArgentEntreprise()-degats.getArgent());
+
+        if (eA.getArgentEntreprise() >= degats.getArgent()) {
+            eA.setNbusers(eA.getNbusers() - degats.getNbUtilisateurs());
+        } else {
+            eA.setNbusers(0);
+        }
+
+        if (eA.getArgentEntreprise() >= degats.getArgent()) {
+            eA.setArgentEntreprise(eA.getArgentEntreprise()-degats.getArgent());
+        } else {
+            eA.setArgentEntreprise(0);
+        }
 
         argent.setText("- "+degats.getArgent()+"€");
         nbusers.setText("- "+degats.getNbUtilisateurs()+" utilisateurs");
-        puissance.setText("- "+degats.getPuissance()+" puissance du logiciel");
-        ergonomie.setText("- "+degats.getErgonomie()+" ergonomie du logiciel");
-        securite.setText("- "+degats.getSecurite()+" sécurité du logiciel");
-        rentabilite.setText("- "+degats.getRentabilite()+" rentabilite du logiciel");
+        puissance.setText(" ");
+        ergonomie.setText(" ");
+        securite.setText(" ");
+        rentabilite.setText(" ");
 
         entreprisePerso.setArgentEntreprise(entreprisePerso.getArgentEntreprise()+degats.getArgent());
         ((MyApplication)this.getApplication()).setEntreprise_attaquer(null);
@@ -157,6 +203,7 @@ public class ResultatMiniJeu extends AppCompatActivity {
                 super.onPostExecute(mylist);
 
                 listEvents = mylist;
+
                 if(action_demander.equals("renforcer")){
                     giveRecompense();
                 }else{
