@@ -63,6 +63,7 @@ public class ResultatMiniJeu extends AppCompatActivity {
         affiche_resultats();
 
         getResJeu();
+        entreprisePerso.setNbMiniJeux(entreprisePerso.getNbMiniJeux()+1);
         ((MyApplication)this.getApplication()).decrementCompteur();
 
     }
@@ -76,6 +77,7 @@ public class ResultatMiniJeu extends AppCompatActivity {
             niveau = "bon";
         } else {
             niveau = "excellent";
+            entreprisePerso.setNbMiniJeuxGagner(entreprisePerso.getNbMiniJeuxGagner()+1);
         }
     }
 
