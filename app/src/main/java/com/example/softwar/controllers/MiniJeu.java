@@ -186,7 +186,7 @@ public class MiniJeu extends AppCompatActivity {
         tv.setText(text);
         tv.setTextSize(20);
         tv.setTextColor(Color.parseColor("#FFB900"));
-        tv.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
+        tv.setTypeface(ResourcesCompat.getFont(this, R.font.inconsolata));
         layout.addView(tv);
     }
     public void initReponse(String text, LinearLayout layout, Pattern pattern){
@@ -215,7 +215,7 @@ public class MiniJeu extends AppCompatActivity {
         tv.setText(text);
         tv.setTextSize(26);
         tv.setTextColor(Color.parseColor("#FF22CD"));
-        tv.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
+        tv.setTypeface(ResourcesCompat.getFont(this, R.font.inconsolata));
         tv.setOnTouchListener(new MyTouchListener());
         layout_reponses.addView(tv);
     }
