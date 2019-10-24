@@ -35,8 +35,7 @@ public class ResultatMiniJeu extends AppCompatActivity {
     private TextView resultats;
 
     private TextView argent, nbusers, puissance, rentabilite, securite, ergonomie;
-
-
+    private TextView recompense_titre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +49,7 @@ public class ResultatMiniJeu extends AppCompatActivity {
         nbpossible_i = getIntent().getIntExtra(nbpossible,0);
         resultats = findViewById(R.id.resultats_mini_jeu);
 
+        recompense_titre = findViewById(R.id.recompense_titre);
         argent = findViewById(R.id.argent);
         nbusers = findViewById(R.id.nbusers);
         puissance = findViewById(R.id.puissance);
@@ -205,8 +205,10 @@ public class ResultatMiniJeu extends AppCompatActivity {
                 listEvents = mylist;
 
                 if(action_demander.equals("renforcer")){
+                    recompense_titre.setText("Récompenses obtenues");
                     giveRecompense();
                 }else{
+                    recompense_titre.setText("Dégats infligés");
                     DammageEntreprise();
                 }
 
