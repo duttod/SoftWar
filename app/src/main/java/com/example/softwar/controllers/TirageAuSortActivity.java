@@ -25,6 +25,8 @@ public class TirageAuSortActivity extends AppCompatActivity {
     Dialog dialog2;
     TextView nbc;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);

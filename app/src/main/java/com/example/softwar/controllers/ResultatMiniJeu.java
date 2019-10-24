@@ -1,6 +1,7 @@
 package com.example.softwar.controllers;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,6 +36,8 @@ public class ResultatMiniJeu extends AppCompatActivity {
 
     private TextView argent, nbusers, puissance, rentabilite, securite, ergonomie;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +63,7 @@ public class ResultatMiniJeu extends AppCompatActivity {
         affiche_resultats();
 
         getResJeu();
+        entreprisePerso.setNbMiniJeux(entreprisePerso.getNbMiniJeux()+1);
         ((MyApplication)this.getApplication()).decrementCompteur();
 
     }
@@ -73,6 +77,7 @@ public class ResultatMiniJeu extends AppCompatActivity {
             niveau = "bon";
         } else {
             niveau = "excellent";
+            entreprisePerso.setNbMiniJeuxGagner(entreprisePerso.getNbMiniJeuxGagner()+1);
         }
     }
 
@@ -165,6 +170,13 @@ public class ResultatMiniJeu extends AppCompatActivity {
     public void go_menu(View view) {
         Intent intent = new Intent(MyApplication.getInstance(),MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        ((MyApplication)this.getApplication()).FadeOut((float) 3.0);
+        ((MyApplication)this.getApplication()).mediaPlayer.pause();
+
+        ((MyApplication)this.getApplication()).mediaPlayer = MediaPlayer.create(this, R.raw.maintheme);
+        ((MyApplication)this.getApplication()).FadeIn((float) 3.0);
+        ((MyApplication)this.getApplication()).mediaPlayer.setLooping(true);
+        ((MyApplication)this.getApplication()).mediaPlayer.start();
         startActivity(intent);
     }
 }
