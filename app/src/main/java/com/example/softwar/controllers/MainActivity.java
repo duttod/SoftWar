@@ -190,7 +190,12 @@ public class MainActivity extends AppCompatActivity {
 
     //PARTIE A PASSER EN ASYNCHRONE SI POSSIBLE
 
-    public void FinTour(View view) {RandomEvenementDebutTour(view);}
+    public void FinTour(View view) {
+        Logiciel l = entreprise_joueur.getLogiciel();
+        int somme = (l.getNiveauErgonomie()*20)+(l.getNiveauLogiciel()*20)+(l.getNiveauPuissance()*20)+(l.getNiveauRentabilite()*100+4000);
+        entreprise_joueur.setArgentEntreprise(entreprise_joueur.getArgentEntreprise()+somme);
+        RandomEvenementDebutTour(view);
+    }
 
     public void RandomEvenementDebutTour(View view) {
 
