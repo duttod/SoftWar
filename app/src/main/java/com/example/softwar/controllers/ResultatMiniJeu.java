@@ -158,7 +158,7 @@ public class ResultatMiniJeu extends AppCompatActivity {
 
         Entreprise eA = MyApplication.getInstance().getEntreprise_attaquer();
 
-        if (eA.getArgentEntreprise() >= degats.getArgent()) {
+        if (eA.getNbusers() >= degats.getNbUtilisateurs()) {
             eA.setNbusers(eA.getNbusers() - degats.getNbUtilisateurs());
         } else {
             eA.setNbusers(0);

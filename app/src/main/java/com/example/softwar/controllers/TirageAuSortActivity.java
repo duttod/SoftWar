@@ -71,6 +71,8 @@ public class TirageAuSortActivity extends AppCompatActivity {
     public void onepull(View view)  {
         if(entreprise_joueur.getNbContrats()>=1){
             animatetirage();
+        }else{
+            dialog2.show();
         }
 
         final Handler handler = new Handler();
@@ -114,7 +116,6 @@ public class TirageAuSortActivity extends AppCompatActivity {
                     dialog.getWindow().setLayout(layoutpop.getWidth()+130, (layoutpop.getHeight()/2)+40);
                 }else{
 
-                    dialog2.show();
                 }
             }
         }, 2000);
@@ -122,20 +123,6 @@ public class TirageAuSortActivity extends AppCompatActivity {
 
     }
 
-    public void tenpull(View view) {
-        //Tire l'employé
-        if(entreprise_joueur.getNbContrats()>=10){
-            for (int i=0 ; i<10 ;i++){
-                onepull(view);
-            }
-        }else{
-            //TODO Pas asser de contrat ouvrir boite de dialogue
-            dialog2.show();
-        }
-
-
-
-    }
 
     public void fermerbox(View view) {
         dialog.cancel();
