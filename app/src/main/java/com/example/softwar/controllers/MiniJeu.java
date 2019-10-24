@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.CountDownTimer;
 import android.support.v4.content.res.ResourcesCompat;
@@ -59,11 +60,14 @@ public class MiniJeu extends AppCompatActivity {
     private ScrollView vScroll;
     private HorizontalScrollView hScroll;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mini_jeu);
         getSupportActionBar().hide();
+
 
         action_demander = this.getIntent().getStringExtra(ChooseRenforcerAttaquerActivity.ACTION_KEY);
         System.out.println(action_demander);

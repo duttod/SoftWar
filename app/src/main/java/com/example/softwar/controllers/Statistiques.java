@@ -27,7 +27,7 @@ public class Statistiques extends AppCompatActivity {
     int users_total;
     LinearLayout eactif;
     DatabaseClient mdb = DatabaseClient.getInstance(MyApplication.getInstance());
-    TextView tnomE,targent,tnbu,tnbe,tpartm;
+    TextView tnomE,targent,tnbu,tnbe,tpartm,tvict,tnbj,tnbjg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,9 @@ public class Statistiques extends AppCompatActivity {
         tnbu= findViewById(R.id.snb_utilisateurs);
         tnbe= findViewById(R.id.snombre_employes);
         tpartm =  findViewById(R.id.spart_marche);
+        tnbj = findViewById(R.id.nbMinijeux);
+        tnbjg = findViewById(R.id.nbMinijeuxG);
+        tvict = findViewById(R.id.pourcentvictoire);
         setStatistiquesE();
         afficheEmployeActif();/*
         afficheEmployeActif1();
@@ -50,111 +53,7 @@ public class Statistiques extends AppCompatActivity {
         afficheEmployeActif3();*/
     }
 
-/*    public void afficheEmployeActif1() {
-            int id1 = entreprise_joueur.getIdEmployeActif1();
-            if(entreprise_joueur.getEmployeById(id1)!=null) {
-                Employe e = entreprise_joueur.getEmployeById(id1);
-                LinearLayout mavue = new LinearLayout(this);
-                mavue.setOrientation(LinearLayout.HORIZONTAL);
 
-                TextView nomE = new TextView(this);
-                nomE.setText("Nom:"+e.getNomEmploye()+" ");
-                nomE.setTextColor(Color.RED);
-                nomE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-                TextView pE = new TextView(this);
-                pE.setText("Prénom:"+e.getPrenomEmploye()+" ");
-                pE.setTextColor(Color.RED);
-                pE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-                TextView prodE = new TextView(this);
-                prodE.setText("Productivité:"+Integer.toString(e.getProductivite())+" ");
-                prodE.setTextColor(Color.RED);
-                prodE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-                TextView rapE = new TextView(this);
-                rapE.setText("Rapidité:"+Integer.toString(e.getRapidite())+" ");
-                rapE.setTextColor(Color.RED);
-                rapE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-                mavue.addView(nomE);
-                mavue.addView(pE);
-                mavue.addView(prodE);
-                mavue.addView(rapE);
-                eactif.addView(mavue);
-
-            }
-    }
-    public void afficheEmployeActif2() {
-        int id1 = entreprise_joueur.getIdEmployeActif2();
-        if(entreprise_joueur.getEmployeById(id1)!=null) {
-            Employe e = entreprise_joueur.getEmployeById(id1);
-            LinearLayout mavue = new LinearLayout(this);
-            mavue.setOrientation(LinearLayout.HORIZONTAL);
-
-            TextView nomE = new TextView(this);
-            nomE.setText("Nom:"+e.getNomEmploye()+" ");
-            nomE.setTextColor(Color.RED);
-            nomE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-            TextView pE = new TextView(this);
-            pE.setText("Prénom:"+e.getPrenomEmploye()+" ");
-            pE.setTextColor(Color.RED);
-            pE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-            TextView prodE = new TextView(this);
-            prodE.setText("Productivité:"+Integer.toString(e.getProductivite())+" ");
-            prodE.setTextColor(Color.RED);
-            prodE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-            TextView rapE = new TextView(this);
-            rapE.setText("Rapidité:"+Integer.toString(e.getRapidite())+" ");
-            rapE.setTextColor(Color.RED);
-            rapE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-            mavue.addView(nomE);
-            mavue.addView(pE);
-            mavue.addView(prodE);
-            mavue.addView(rapE);
-            eactif.addView(mavue);
-
-        }
-    }
-    public void afficheEmployeActif3() {
-        int id1 = entreprise_joueur.getIdEmployeActif3();
-        if(entreprise_joueur.getEmployeById(id1)!=null) {
-            Employe e = entreprise_joueur.getEmployeById(id1);
-            LinearLayout mavue = new LinearLayout(this);
-            mavue.setOrientation(LinearLayout.HORIZONTAL);
-
-            TextView nomE = new TextView(this);
-            nomE.setText("Nom:"+e.getNomEmploye()+" ");
-            nomE.setTextColor(Color.RED);
-            nomE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-            TextView pE = new TextView(this);
-            pE.setText("Prénom:"+e.getPrenomEmploye()+" ");
-            pE.setTextColor(Color.RED);
-            pE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-            TextView prodE = new TextView(this);
-            prodE.setText("Productivité:"+Integer.toString(e.getProductivite())+" ");
-            prodE.setTextColor(Color.RED);
-            prodE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-            TextView rapE = new TextView(this);
-            rapE.setText("Rapidité:"+Integer.toString(e.getRapidite())+" ");
-            rapE.setTextColor(Color.RED);
-            rapE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-            mavue.addView(nomE);
-            mavue.addView(pE);
-            mavue.addView(prodE);
-            mavue.addView(rapE);
-            eactif.addView(mavue);
-
-        }
-    }*/
 
     public void afficheEmployeActif(){
         for (int i = 0; i<3; i++){
@@ -208,6 +107,17 @@ public class Statistiques extends AppCompatActivity {
         targent.setText("Capital:"+Long.toString(entreprise_joueur.getArgentEntreprise()));
         tnbu.setText("Utilisateurs:"+Integer.toString(entreprise_joueur.getNbusers()));
         tnbe.setText("Employes:"+Integer.toString(entreprise_joueur.getEmployes().size()));
+
+        tnbj.setText("Mini-Jeux effectués:"+Integer.toString(entreprise_joueur.getNbMiniJeux()));
+        tnbjg.setText("Mini-Jeux gagnés:"+Integer.toString(entreprise_joueur.getNbMiniJeuxGagner()));
+        int nbjeux= entreprise_joueur.getNbMiniJeux();
+        int gagnejeux=entreprise_joueur.getNbMiniJeuxGagner();
+        if(gagnejeux!=0){
+            tvict.setText("Pourcentage de victoire:"+Double.toString((nbjeux/gagnejeux)*100));
+        }else{
+            tvict.setText("Pourcentage de victoire:0");
+        }
+
 
         //part de marché
         for (int i = 0; i < ((MyApplication)this.getApplication()).getConcurrents().size(); i++) {
