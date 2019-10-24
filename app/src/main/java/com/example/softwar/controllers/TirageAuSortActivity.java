@@ -54,6 +54,7 @@ public class TirageAuSortActivity extends AppCompatActivity {
         nbc.setText("Nombre de contrats possédés:"+Integer.toString(entreprise_joueur.getNbContrats()));
         //Ajoute au model et a la BD
         entreprise_joueur.addEmploye(t.getEmployeTire().get(0));
+        entreprise_joueur.setEmployes();
         dialog = new Dialog(TirageAuSortActivity.this);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.setContentView(R.layout.popup_tirage);

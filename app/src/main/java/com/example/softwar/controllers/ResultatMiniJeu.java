@@ -61,19 +61,23 @@ public class ResultatMiniJeu extends AppCompatActivity {
 
         determineniveau();
         affiche_resultats();
-
         getResJeu();
+
         entreprisePerso.setNbMiniJeux(entreprisePerso.getNbMiniJeux()+1);
         ((MyApplication)this.getApplication()).decrementCompteur();
 
     }
 
     public void determineniveau() {
-        if ((nbjuste_i/nbpossible_i) < 0.25) {
+
+        double niveaudouble = (nbjuste_i/ (double)nbpossible_i);
+        System.out.println(nbjuste_i+" - "+nbpossible_i+"Niveau : "+niveaudouble);
+
+        if (niveaudouble < 0.25) {
             niveau = "mauvais";
-        } else if ((nbjuste_i/nbpossible_i) >= 0.25 && (nbjuste_i/nbpossible_i) < 0.5) {
+        } else if (niveaudouble >= 0.25 && niveaudouble < 0.5) {
             niveau = "assezbon";
-        } else if ((nbjuste_i/nbpossible_i) >= 0.5 && (nbjuste_i/nbpossible_i) < 0.75) {
+        } else if (niveaudouble >= 0.5 && niveaudouble < 0.75) {
             niveau = "bon";
         } else {
             niveau = "excellent";

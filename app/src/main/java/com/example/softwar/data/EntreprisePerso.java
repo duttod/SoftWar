@@ -15,31 +15,37 @@ import java.util.List;
 @Entity
 public class EntreprisePerso extends Entreprise {
 
-	public EntreprisePerso(String nomEntreprise,String nomLogiciel,long argentEntreprise,int nbContrats){
+	public void setEntreprisePersoDepart(String nomEntreprise, String nomLogiciel, long argentEntreprise, int nbContrats) {
 
-		setNomLogiciel(nomLogiciel);
 		setNomEntreprise(nomEntreprise);
+		setNomLogiciel(nomLogiciel);
 		setArgentEntreprise(argentEntreprise);
 		setNbContrats(nbContrats);
 		setNbMiniJeuxGagner(0);
 		setNbMiniJeux(0);
 		setLogiciel(nomLogiciel);
 
+		System.out.println("PASSE CHEZ TA MERE");
+
+		for(int i = 0; i < 3; i++) {
+			setEmployeActif(i,-1);
+		}
+
 		employes = new ArrayList<EmployeDansEntreprise>();
+
 	}
 
-	public EntreprisePerso (DatabaseClient mdb, String nomEntreprise, String nomLogiciel, long argentEntreprise, int nbContrats) {
+	public void setEntreprisePersoCharge(DatabaseClient mdb) {
 
-		super(nomEntreprise,nomLogiciel);
+		System.out.println("PASSE CHEZ TON PERE");
+
 		this.mdb = mdb;
 
-		setArgentEntreprise(argentEntreprise);
-		setNbContrats(nbContrats);
-		setNomLogiciel(nomLogiciel);
 		recupNbMiniJeux();
 		recupNbMiniJeuxGagner();
 		setEmployes();
 		setLogiciel();
+
 	}
 
 	private void recupNbMiniJeux() {
@@ -51,7 +57,7 @@ public class EntreprisePerso extends Entreprise {
 	}
 
 	@Ignore
-	private DatabaseClient mdb =DatabaseClient.getInstance(MyApplication.getInstance());
+	private DatabaseClient mdb = DatabaseClient.getInstance(MyApplication.getInstance());
 
 	@Ignore
 	private List<EmployeDansEntreprise> employes;
@@ -61,7 +67,7 @@ public class EntreprisePerso extends Entreprise {
 	private int nbContrats;
 
 	@ColumnInfo(name = "nbMiniJeux")
-	private int nbMiniJeux =0;
+	private int nbMiniJeux = 0;
 
 	@ColumnInfo(name = "nbMiniJeuxGagner")
 	private int nbMiniJeuxGagner = 0;
@@ -81,26 +87,26 @@ public class EntreprisePerso extends Entreprise {
 	// id -1 == employé non set !
 
 	@ColumnInfo(name = "employeActif1")
-	private int idEmployeActif1 =-1;
+	private int idEmployeActif1;
 
 	@ColumnInfo(name = "employeActif2")
-	private int idEmployeActif2 =-1;
+	private int idEmployeActif2;
 
 	@ColumnInfo(name = "employeActif3")
-	private int idEmployeActif3 =-1;
+	private int idEmployeActif3;
 
-	public Employe getEmployeById(int id ){
-		EmployeDansEntreprise e = mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),id);
-		if(e!=null){
+	public Employe getEmployeById(int id) {
+		EmployeDansEntreprise e = mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(), id);
+		if (e != null) {
 			return e.getEmploye(mdb);
-		}else{
+		} else {
 			return null;
 		}
 
 	}
 
 	public void setEmployes() {
-		employes =  mdb.getAppDatabase().employeDansEntrepriseDao().getEmployeDuneEntreprise(getNomEntreprise());
+		employes = mdb.getAppDatabase().employeDansEntrepriseDao().getEmployeDuneEntreprise(getNomEntreprise());
 	}
 
 	public List<EmployeDansEntreprise> getEmployes() {
@@ -112,7 +118,6 @@ public class EntreprisePerso extends Entreprise {
 	}
 
 	/**
-	 * 
 	 * @param nbContrats
 	 */
 	public void setNbContrats(int nbContrats) {
@@ -125,9 +130,9 @@ public class EntreprisePerso extends Entreprise {
 	}
 
 	public void addEmploye(Employe emp) {
-		if (mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId()) != null) {
-			EmployeDansEntreprise employedansets = mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId());
-			employedansets.setQuantite(employedansets.getQuantite()+1);
+		if (mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(), emp.getId()) != null) {
+			EmployeDansEntreprise employedansets = mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(), emp.getId());
+			employedansets.setQuantite(employedansets.getQuantite() + 1);
 
 			mdb.getAppDatabase().employeDansEntrepriseDao().update(employedansets);
 		} else {
@@ -141,12 +146,12 @@ public class EntreprisePerso extends Entreprise {
 	}
 
 	public void removeEmploye(Employe emp) {
-		if (mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId()) != null && mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId()).getQuantite() > 1) {
-			EmployeDansEntreprise employedansets = mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId());
-			employedansets.setQuantite(employedansets.getQuantite()-1);
-		} else if (mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId()) != null && mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId()).getQuantite() == 1){
+		if (mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(), emp.getId()) != null && mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(), emp.getId()).getQuantite() > 1) {
+			EmployeDansEntreprise employedansets = mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(), emp.getId());
+			employedansets.setQuantite(employedansets.getQuantite() - 1);
+		} else if (mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(), emp.getId()) != null && mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(), emp.getId()).getQuantite() == 1) {
 
-			EmployeDansEntreprise employedansets = mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(),emp.getId());
+			EmployeDansEntreprise employedansets = mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(this.getNomEntreprise(), emp.getId());
 			mdb.getAppDatabase().employeDansEntrepriseDao().delete(employedansets);
 		}
 	}
@@ -154,13 +159,13 @@ public class EntreprisePerso extends Entreprise {
 	public void setEmployeActif(int numEmp, int idEmployeActif) {
 		switch (numEmp) {
 			case 0:
-				this.idEmployeActif1 = idEmployeActif;
+				setIdEmployeActif1(idEmployeActif);
 				break;
 			case 1:
-				this.idEmployeActif2 = idEmployeActif;
+				setIdEmployeActif2(idEmployeActif);
 				break;
 			case 2:
-				this.idEmployeActif3 = idEmployeActif;
+				setIdEmployeActif3(idEmployeActif);
 				break;
 		}
 	}
@@ -179,10 +184,13 @@ public class EntreprisePerso extends Entreprise {
 	}
 
 	public ArrayList<Integer> getEmployeActif(){
+
 		ArrayList<Integer> emps = new ArrayList<>();
+
 		emps.add(getIdEmployeActif1());
 		emps.add(getIdEmployeActif2());
 		emps.add(getIdEmployeActif3());
+
 		return emps;
 	}
 
