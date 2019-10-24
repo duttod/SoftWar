@@ -14,6 +14,7 @@ public class MyApplication extends Application {
     private static MyApplication instance;
     private EntreprisePerso entreprise_joueur ;
     private ArrayList<Entreprise> concurrents;
+    private int numero_tour;
 
     public static MyApplication getInstance() {
         return instance;
@@ -27,6 +28,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         instance = this;
         super.onCreate();
+        numero_tour = 1;
     }
 
 
@@ -44,5 +46,13 @@ public class MyApplication extends Application {
 
     public void setConcurrents(ArrayList<Entreprise> concurrents) {
         this.concurrents = concurrents;
+    }
+
+    public void addTour() {
+        this.numero_tour++;
+    }
+
+    public int getTour() {
+        return this.numero_tour;
     }
 }

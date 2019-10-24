@@ -157,6 +157,7 @@ public class MiniJeu extends AppCompatActivity {
         initText("15-  }", l15);
         LinearLayout l16 = initLigne();
         initText(" ", l15);
+
     }
 
     public void initText(String text, LinearLayout layout){
@@ -356,16 +357,3 @@ public class MiniJeu extends AppCompatActivity {
     }
 
 }
-
-    /*
-    	public void getRecompenses(EntreprisePerso p, DatabaseClient mdb) {
-
-		int indicemin = 0;
-		int indicemax = mdb.getAppDatabase().resultatjeudao().getAll().size();
-
-		int indice = (int) (Math.random() * ( indicemax - indicemin ));
-
-		ResultatJeu recompense = mdb.getAppDatabase().resultatjeudao().getAll().get(indice);
-
-	}
-     */
