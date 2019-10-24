@@ -8,85 +8,67 @@
     android:layout_height="match_parent"
     android:id="@+id/layout_tirage"
     android:background="@drawable/bg14"
+    android:padding="30dp"
     android:orientation="horizontal">
     <!-- manque contexte ! -->
 
 
     <!-- Changer de banière d'invocation -->
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+
+    <ImageView
+    android:id="@+id/imageView3"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    app:srcCompat="@mipmap/ic_launcher" />
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_weight="1"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:srcCompat="@android:drawable/ic_media_rew" />
+        android:fontFamily="@font/nasalization"
+        android:text="Engage un nouvel employé !"
+        android:textColor="#FFB900"
+        android:textSize="20dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="1">
-
-        <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        app:srcCompat="@mipmap/ic_launcher" />
-
-    <LinearLayout
+    <Button
+        android:id="@+id/button4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:layout_gravity="center">
+        android:layout_margin="5dp"
+        android:background="@drawable/bgbutton"
+        android:fontFamily="@font/nasalization"
+        android:onClick="onepull"
+        android:text="1 Recrutement"
+        android:textColor="#FFB900" />
 
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/bgbutton"
+        android:fontFamily="@font/nasalization"
+        android:text="10 recrutements"
+        android:textColor="#FFB900" />
 
         <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Engage un nouvel employé !"
-            android:fontFamily="@font/nasalization"
-            android:textColor="#FFB900"
-
-            android:layout_gravity="center"/>
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/bgbutton"
-            android:fontFamily="@font/nasalization"
-            android:textColor="#FFB900"
-            android:text="1 Recrutement"
-            android:onClick="onepull"/>
-
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:background="@drawable/bgbutton"
-            android:fontFamily="@font/nasalization"
-            android:textColor="#FFB900"
-            android:text="10 recrutements" />
-        <TextView
-            android:id="@+id/nbcontrats"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nasalization"
-            android:textColor="#FFB900"
-
-            android:layout_gravity="center"/>
-    </LinearLayout>
-
-    </LinearLayout>
-
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:id="@+id/nbcontrats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        app:srcCompat="@android:drawable/ic_media_ff" />
+        android:fontFamily="@font/nasalization"
+
+        android:textColor="#FFB900" />
+</LinearLayout>
+
 </LinearLayout>
