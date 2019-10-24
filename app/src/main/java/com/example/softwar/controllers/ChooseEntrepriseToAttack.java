@@ -1,37 +1,34 @@
 package com.example.softwar.controllers;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.softwar.MyApplication;
 import com.example.softwar.R;
 import com.example.softwar.data.Entreprise;
 
-import org.w3c.dom.Text;
-
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
-public class ConcurrentsActivity extends AppCompatActivity {
-
+public class ChooseEntrepriseToAttack extends AppCompatActivity {
     TextView nom_entreprise, nb_users_entreprise, argent_entreprise, partdemarche_entreprise, nom_logiciel, argent_t, nb_users_t;
     int users_total;
     int argent_total;
+    Entreprise econcurente;
     ArrayList<Entreprise> liste_entreprises;
     LinearLayout linclassement;
-
+    Button attack ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_concurrents);
+        setContentView(R.layout.activity_choose_entreprise_to_attack);
         getSupportActionBar().hide();
 
         nom_entreprise = findViewById(R.id.nom_entreprise);
@@ -42,9 +39,8 @@ public class ConcurrentsActivity extends AppCompatActivity {
 
         argent_t = findViewById(R.id.argent_total);
         nb_users_t = findViewById(R.id.nb_users_total);
+        attack = findViewById(R.id.attackbutton);
 
-        users_total = 0;
-        argent_total = 0;
 
         liste_entreprises = new ArrayList<>();
 
@@ -57,7 +53,6 @@ public class ConcurrentsActivity extends AppCompatActivity {
 
         liste_entreprises.add(((MyApplication)this.getApplication()).getEntreprise_joueur());
         Collections.sort(liste_entreprises);
-        Collections.reverse(liste_entreprises);
 
         for (int i = 0; i < liste_entreprises.size(); i++) {
             argent_total += liste_entreprises.get(i).getArgentEntreprise();
@@ -69,7 +64,7 @@ public class ConcurrentsActivity extends AppCompatActivity {
 
     public void setClassement() {
 
-        for (int i = 0; i < liste_entreprises.size(); i++) {
+        for (int i = 1; i < liste_entreprises.size(); i++) {
 
             TextView tx = new TextView(this);
 
@@ -77,6 +72,7 @@ public class ConcurrentsActivity extends AppCompatActivity {
             final Long argentreprise = liste_entreprises.get(i).getArgentEntreprise();
             final int nbusers = liste_entreprises.get(i).getLogiciel().getNbUtilisateurs();
             final String nomlogiciel = liste_entreprises.get(i).getLogiciel().getNomLogiciel();
+            econcurente = liste_entreprises.get(i);
 
             tx.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -87,6 +83,8 @@ public class ConcurrentsActivity extends AppCompatActivity {
                     argent_entreprise.setText("Capital : "+argentreprise);
                     nb_users_entreprise.setText("Nombre d'utilisateurs du logiciel : "+nbusers);
                     partdemarche_entreprise.setText("Parts de marché : "+((nbusers/users_total)*100)+"%");
+                    attack.setEnabled(true);
+
                 }
             });
 
@@ -98,7 +96,17 @@ public class ConcurrentsActivity extends AppCompatActivity {
             linclassement.addView(tx);
         }
 
-        nb_users_t.setText("Nombre total d'utilisateurs sur le marché : "+users_total);
-        argent_t.setText("Argent total en circulation : "+argent_total);
+
+    }
+
+    public void LaunchAttack(View view) {
+        ((MyApplication)this.getApplication()).setEntreprise_attaquer(econcurente);
+
+        Intent intent = new Intent(this,MiniJeu.class);
+        intent.putExtra(ChooseRenforcerAttaquerActivity.ACTION_KEY,"attaquer");
+        startActivity(intent);
+
     }
 }
+
+

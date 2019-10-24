@@ -202,6 +202,7 @@ public class MiniJeu extends AppCompatActivity {
 
     public void valider_minijeu(View view) {
         Intent intent = new Intent(this, ResultatMiniJeu.class);
+        intent.putExtra(ChooseRenforcerAttaquerActivity.ACTION_KEY,action_demander);
         intent.putExtra(ResultatMiniJeu.nbjuste, nb_bonnerep);
         intent.putExtra(ResultatMiniJeu.nbpossible, pattern2.getBonnesReponses().size());
         Toast.makeText(this, "blblbl", Toast.LENGTH_LONG).show();
