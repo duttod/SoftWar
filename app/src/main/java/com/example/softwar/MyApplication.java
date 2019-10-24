@@ -3,6 +3,7 @@ package com.example.softwar;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.support.v4.content.res.ResourcesCompat;
 
 import com.example.softwar.data.Entreprise;
@@ -17,6 +18,22 @@ public class MyApplication extends Application {
     private int compteur_action =2;
     private ArrayList<Entreprise> concurrents;
     private int numero_tour;
+    public MediaPlayer mediaPlayer;
+    float volume = 1;
+    float speed = 0.05f;
+
+    public void FadeOut(float deltaTime)
+    {
+        mediaPlayer.setVolume(volume, volume);
+        volume -= speed* deltaTime;
+
+    }
+    public void FadeIn(float deltaTime)
+    {
+        mediaPlayer.setVolume(volume, volume);
+        volume += speed* deltaTime;
+
+    }
 
     public static MyApplication getInstance() {
         return instance;
@@ -31,7 +48,11 @@ public class MyApplication extends Application {
         instance = this;
         super.onCreate();
         numero_tour = 1;
+        mediaPlayer = MediaPlayer.create(this, R.raw.maintheme);
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
     }
+
 
 
     public EntreprisePerso getEntreprise_joueur() {

@@ -19,7 +19,8 @@ public class HomePageActivity extends AppCompatActivity {
     public final static int CREDIT_REQU = 0;
     public final static int CHARGER_PARTIE_REQ = 1;
     public final static int NOUVELLE_PARTIE_REQ = 2;
-    MediaPlayer mediaPlayer;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +30,7 @@ public class HomePageActivity extends AppCompatActivity {
         TextView titre = findViewById(R.id.home_titre);
         Typeface typeface = ResourcesCompat.getFont(this, R.font.digitall);
         titre.setTypeface(typeface);
-        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.maintheme);
-        mediaPlayer.setLooping(true);
-        mediaPlayer.start();
+
     }
 
     public void ChargerPartie(View view) {

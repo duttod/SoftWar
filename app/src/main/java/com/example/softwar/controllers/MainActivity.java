@@ -190,13 +190,10 @@ public class MainActivity extends AppCompatActivity {
 
     //PARTIE A PASSER EN ASYNCHRONE SI POSSIBLE
 
-<<<<<<< HEAD
-    public void FinTour(View view) {
+    public void FinTour(View view) {}
 
-=======
     public void RandomEvenementDebutTour(View view) {
         MyApplication.getInstance().setCompteur_action(2);
->>>>>>> 3b361b9368a6d4947b897ff5178fa4d66deb14dc
         int chanceevenement = (int) (Math.random() * (100 - 0));
         TextView txt = dialog.findViewById(R.id.description_alea);
         txt.setText("");

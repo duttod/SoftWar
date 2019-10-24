@@ -30,6 +30,8 @@ public class CreationNewPartie extends AppCompatActivity {
     private DatabaseClient mDb;
     ArrayList<Logiciel> liste_logiciels = new ArrayList();
     ArrayList<EntreprisePerso> liste_entreprises = new ArrayList();
+
+
     EntreprisePerso eperso;
 
     @Override

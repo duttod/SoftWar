@@ -43,7 +43,16 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
     private ArrayList<LinearLayout> empActif = new ArrayList<>();
     private TextView text;
 
-
+    @Override
+    public void onPause(){
+        super.onPause();
+        ((MyApplication)this.getApplication()).mediaPlayer.pause();
+    }
+    @Override
+    public void onResume(){
+        super.onResume();
+        ((MyApplication)this.getApplication()).mediaPlayer.start();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
