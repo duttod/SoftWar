@@ -116,87 +116,6 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
         getEmp();
     }
 
-/*    // This defines your touch listener
-    private final class MyTouchListener implements View.OnTouchListener {
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                ClipData data = ClipData.newPlainText("", "");
-                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
-                view.startDrag(data, shadowBuilder, view, 0);
-                //view.setVisibility(View.INVISIBLE);
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }*/
-
-/*    class MyDragListener implements View.OnDragListener {
-        Drawable enterShape = getResources().getDrawable(R.drawable.shape_droptarget);
-        Drawable normalShape = getResources().getDrawable(R.drawable.shape);
-
-        @Override
-        public boolean onDrag(View v, DragEvent event) {
-            int action = event.getAction();
-            switch (event.getAction()) {
-                case DragEvent.ACTION_DRAG_STARTED:
-                    // do nothing
-                    break;
-                case DragEvent.ACTION_DRAG_ENTERED:
-                    //v.setBackgroundDrawable(enterShape);
-                    break;
-                case DragEvent.ACTION_DRAG_EXITED:
-                    //v.setBackgroundDrawable(normalShape);
-                    break;
-                case DragEvent.ACTION_DROP:
-                    // Dropped, reassign View to ViewGroup
-                    View view = (View) event.getLocalState();
-                    //stop displaying the view where it was before it was dragged
-
-                    // view.setVisibility(View.INVISIBLE);
-                    //view dragged item is being dropped on
-                    TextView dropTarget = (TextView) v;
-                    //view being dragged and dropped
-                    TextView dropped = (TextView) view;
-                    //update the text in the target view to reflect the data being dropped
-
-                    if (dropTarget instanceof TextView) {
-
-                        String init = dropTarget.getText().toString();
-
-                        dropTarget.setText(dropped.getText());
-                        dropTarget.setOnTouchListener(new MyTouchListener());
-
-                        ((TextView) view).setText(init);
-*//*
-                        if (((TextView) view).getText() == "       ") {
-                            view.setBackgroundColor(Color.YELLOW);
-                        }
-*//*
-                        //make it bold to highlight the fact that an item has been dropped
-                        dropTarget.setTypeface(Typeface.DEFAULT_BOLD);
-
-                        Object tag = dropTarget.getTag();
-                        //if there is already an item here, set it back visible in its original place
-                        if(tag!=null)
-                        {
-                            //the tag is the view id already dropped here
-                            int existingID = (Integer)tag;
-                            //set the original view visible again
-                            findViewById(existingID).setVisibility(View.VISIBLE);
-                        }
-                    }
-
-                    break;
-                case DragEvent.ACTION_DRAG_ENDED:
-                    //v.setBackgroundDrawable(normalShape);
-                default:
-                    break;
-            }
-            return true;
-        }
-    }*/
-
     private void getEmp(){
         class GetEmp extends AsyncTask<Void, Void, List<Employe>>{
 
@@ -212,7 +131,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
 //                 Employe e = new Employe("Thierry","Henry",4,1,1,1);
 //                 employeList.add(e);
 
-
+                System.out.println(employeList.get(0).getNomEmploye());
                 return employeList;
             }
 
@@ -256,16 +175,11 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
         // Création du TextView
         text = new TextView(ChoisirEmployeActifActivity.this);
         text.setText(emp.getNomEmploye());
-        text.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
-        text.setTextColor(Color.parseColor("#FFB900"));
-        text.setTextSize(25);
+        setDesignEmpActif(text);
         empActif.get(i).addView(text);
         text = new TextView(ChoisirEmployeActifActivity.this);
-        text.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
-        text.setTextColor(Color.parseColor("#FFB900"));
-
-        text.setTextSize(25);
         text.setText(emp.getPrenomEmploye());
+        setDesignEmpActif(text);
         empActif.get(i).addView(text);
         text = new TextView(ChoisirEmployeActifActivity.this);
         text.setText(Integer.toString(emp.getId()));
@@ -297,5 +211,11 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
         entreprise_joueur.setEmployeActif(j,emp.getId());
         mDb.getAppDatabase().entreprisepersodao().update(entreprise_joueur);
 
+    }
+
+    public void setDesignEmpActif(TextView text){
+        text.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
+        text.setTextColor(Color.parseColor("#FFB900"));
+        text.setTextSize(25);
     }
 }
