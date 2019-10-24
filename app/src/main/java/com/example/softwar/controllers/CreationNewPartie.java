@@ -30,6 +30,8 @@ public class CreationNewPartie extends AppCompatActivity {
     private DatabaseClient mDb;
     ArrayList<Logiciel> liste_logiciels = new ArrayList();
     ArrayList<EntreprisePerso> liste_entreprises = new ArrayList();
+
+
     EntreprisePerso eperso;
 
     @Override
@@ -194,7 +196,8 @@ public class CreationNewPartie extends AppCompatActivity {
 
             @Override
             protected EntreprisePerso doInBackground(Void... voids) {
-                EntreprisePerso e = new EntreprisePerso(nomE, nomL, 20000, 3);
+                EntreprisePerso e = new EntreprisePerso();
+                e.setEntreprisePersoDepart(nomE, nomL, 20000, 3);
                 mDb.getAppDatabase().entreprisepersodao().insert(e);
 
                 return e;

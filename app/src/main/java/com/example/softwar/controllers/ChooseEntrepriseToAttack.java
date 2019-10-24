@@ -25,6 +25,7 @@ public class ChooseEntrepriseToAttack extends AppCompatActivity {
     ArrayList<Entreprise> liste_entreprises;
     LinearLayout linclassement;
     Button attack ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

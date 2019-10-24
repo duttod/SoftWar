@@ -52,6 +52,7 @@ public class MiniJeu extends AppCompatActivity {
 
     private DatabaseClient mDb;
     private Jeu jeu_en_cours;
+    private EntreprisePerso entreprise_joueur;
 
     private float mx, my;
     private float curX, curY;
@@ -59,11 +60,15 @@ public class MiniJeu extends AppCompatActivity {
     private ScrollView vScroll;
     private HorizontalScrollView hScroll;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mini_jeu);
         getSupportActionBar().hide();
+
+        entreprise_joueur = ((MyApplication)this.getApplication()).getEntreprise_joueur();
 
         action_demander = this.getIntent().getStringExtra(ChooseRenforcerAttaquerActivity.ACTION_KEY);
         System.out.println(action_demander);
@@ -352,7 +357,13 @@ public class MiniJeu extends AppCompatActivity {
                 titre.setText(jeu.getNomJeu());
 
                 chrono = findViewById(R.id.chrono);
-                countDownTimer = new CountDownTimer(15000, 1000) {
+                // TODO patch le temps
+
+                double timeMiniJeu = 1000 + ((entreprise_joueur.getStatEmployeActif().get(1)/3)*1000);
+
+
+
+                countDownTimer = new CountDownTimer(15000, (int)timeMiniJeu) {
 
                     public void onTick(long millisUntilFinished) {
                         chrono.setText("seconds remaining: " + millisUntilFinished / 1000);

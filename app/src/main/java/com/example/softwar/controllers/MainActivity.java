@@ -190,13 +190,10 @@ public class MainActivity extends AppCompatActivity {
 
     //PARTIE A PASSER EN ASYNCHRONE SI POSSIBLE
 
-
-    public void FinTour(View view) {
-
-    }
-
+    public void FinTour(View view) {RandomEvenementDebutTour(view);}
 
     public void RandomEvenementDebutTour(View view) {
+
         MyApplication.getInstance().setCompteur_action(2);
         int chanceevenement = (int) (Math.random() * (100 - 0));
         TextView txt = dialog.findViewById(R.id.description_alea);
@@ -298,6 +295,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void BilanTour() {
+
         int numerotour =((MyApplication) this.getApplication()).getTour();
 
         //Traitements : distribuer argent + utilisateurs en fonction des stats du logiciel

@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,7 +30,7 @@ public class TirageAuSortActivity extends AppCompatActivity {
 
     Object objetquiattend ;
     TextView nbc;
-    public static Handler handler = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -79,6 +78,7 @@ public class TirageAuSortActivity extends AppCompatActivity {
                     nbc.setText("Nombre de contrats possédés:"+Integer.toString(entreprise_joueur.getNbContrats()));
                     //Ajoute au model et a la BD
                     entreprise_joueur.addEmploye(t.getEmployeTire().get(0));
+                    entreprise_joueur.setEmployes();
                     dialog = new Dialog(TirageAuSortActivity.this);
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                     dialog.setContentView(R.layout.popup_tirage);
@@ -108,8 +108,12 @@ public class TirageAuSortActivity extends AppCompatActivity {
                 onepull(view);
             }
         }else{
+            //TODO Pas asser de contrat ouvrir boite de dialogue
             dialog2.show();
         }
+
+
+
     }
 
     public void fermerbox(View view) {

@@ -28,6 +28,8 @@ public class ConcurrentsActivity extends AppCompatActivity {
     ArrayList<Entreprise> liste_entreprises;
     LinearLayout linclassement;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

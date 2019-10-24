@@ -1,6 +1,7 @@
 package com.example.softwar.controllers;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,6 +36,8 @@ public class ResultatMiniJeu extends AppCompatActivity {
 
     private TextView argent, nbusers, puissance, rentabilite, securite, ergonomie;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,19 +61,23 @@ public class ResultatMiniJeu extends AppCompatActivity {
 
         determineniveau();
         affiche_resultats();
-
         getResJeu();
+
         entreprisePerso.setNbMiniJeux(entreprisePerso.getNbMiniJeux()+1);
         ((MyApplication)this.getApplication()).decrementCompteur();
 
     }
 
     public void determineniveau() {
-        if ((nbjuste_i/nbpossible_i) < 0.25) {
+
+        double niveaudouble = (nbjuste_i/ (double)nbpossible_i);
+        System.out.println(nbjuste_i+" - "+nbpossible_i+"Niveau : "+niveaudouble);
+
+        if (niveaudouble < 0.25) {
             niveau = "mauvais";
-        } else if ((nbjuste_i/nbpossible_i) >= 0.25 && (nbjuste_i/nbpossible_i) < 0.5) {
+        } else if (niveaudouble >= 0.25 && niveaudouble < 0.5) {
             niveau = "assezbon";
-        } else if ((nbjuste_i/nbpossible_i) >= 0.5 && (nbjuste_i/nbpossible_i) < 0.75) {
+        } else if (niveaudouble >= 0.5 && niveaudouble < 0.75) {
             niveau = "bon";
         } else {
             niveau = "excellent";
@@ -167,6 +174,13 @@ public class ResultatMiniJeu extends AppCompatActivity {
     public void go_menu(View view) {
         Intent intent = new Intent(MyApplication.getInstance(),MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        ((MyApplication)this.getApplication()).FadeOut((float) 3.0);
+        ((MyApplication)this.getApplication()).mediaPlayer.pause();
+
+        ((MyApplication)this.getApplication()).mediaPlayer = MediaPlayer.create(this, R.raw.maintheme);
+        ((MyApplication)this.getApplication()).FadeIn((float) 3.0);
+        ((MyApplication)this.getApplication()).mediaPlayer.setLooping(true);
+        ((MyApplication)this.getApplication()).mediaPlayer.start();
         startActivity(intent);
     }
 }

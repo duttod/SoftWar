@@ -8,6 +8,8 @@ import com.example.softwar.R;
 
 public class CreditActivity extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

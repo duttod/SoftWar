@@ -6,6 +6,8 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import com.example.softwar.MyApplication;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,6 +20,8 @@ public class Entreprise implements Serializable, Comparable<Entreprise> {
 
 	@Ignore
 	Logiciel logiciel;
+	@Ignore
+	DatabaseClient mdb;
 
     @ColumnInfo(name = "nomLogiciel")
     private String nomLogiciel ;
@@ -62,6 +66,9 @@ public class Entreprise implements Serializable, Comparable<Entreprise> {
 
 	public void setArgentEntreprise(long argentEntreprise) {
 		this.argentEntreprise = argentEntreprise;
+		mdb=DatabaseClient.getInstance(MyApplication.getInstance());
+		mdb.getAppDatabase().entreprisedao().update(this);
+
 	}
 
 	public long getArgentEntreprise() {
@@ -91,6 +98,8 @@ public class Entreprise implements Serializable, Comparable<Entreprise> {
 
 	public void setNbusers(int nb) {
 		this.nbusers = nb;
+		mdb.getAppDatabase().entreprisedao().update(this);
+
 	}
 
     @Override
