@@ -357,11 +357,11 @@ public class MiniJeu extends AppCompatActivity {
                 chrono = findViewById(R.id.chrono);
                 // TODO patch le temps
 
-                double timeMiniJeu = 1000 + ((entreprise_joueur.getStatEmployeActif().get(1)/3)*1000);
+                double timeMiniJeu = 15000 + ((entreprise_joueur.getStatEmployeActif().get(1)*0.1)*1000);
 
 
 
-                countDownTimer = new CountDownTimer(15000, (int)timeMiniJeu) {
+                countDownTimer = new CountDownTimer((int)timeMiniJeu, 1000) {
 
                     public void onTick(long millisUntilFinished) {
                         chrono.setText("seconds remaining: " + millisUntilFinished / 1000);
