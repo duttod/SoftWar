@@ -37,7 +37,6 @@ public class Statistiques extends AppCompatActivity {
         entreprise_joueur =((MyApplication)this.getApplication()).getEntreprise_joueur();
         liste_entreprises = new ArrayList<>();
 
-        eactif = findViewById(R.id.listEmployeActif);
         tnomE = findViewById(R.id.snom_entreprise);
         targent = findViewById(R.id.sargent_entreprise);
         tnbu= findViewById(R.id.snb_utilisateurs);
@@ -95,8 +94,6 @@ public class Statistiques extends AppCompatActivity {
 
         }
         // Affichage des stats global des employés
-        TextView textStatGlobal = (TextView)findViewById(R.id.textStatGlobal);
-        textStatGlobal.setText("Prod : " + entreprise_joueur.getStatEmployeActif().get(0) + " Rap : " + entreprise_joueur.getStatEmployeActif().get(1));
 
 
     }
@@ -113,7 +110,8 @@ public class Statistiques extends AppCompatActivity {
         int nbjeux= entreprise_joueur.getNbMiniJeux();
         int gagnejeux=entreprise_joueur.getNbMiniJeuxGagner();
         if(gagnejeux!=0){
-            tvict.setText("Pourcentage de victoire:"+Double.toString((nbjeux/gagnejeux)*100));
+            double res = nbjeux/(double)gagnejeux;
+            tvict.setText("Pourcentage de victoire:"+Double.toString(res*100));
         }else{
             tvict.setText("Pourcentage de victoire:0");
         }
@@ -130,6 +128,11 @@ public class Statistiques extends AppCompatActivity {
             users_total += liste_entreprises.get(i).getLogiciel().getNbUtilisateurs();
         }
         tpartm.setText("Parts de marché : "+((entreprise_joueur.getNbusers()/users_total)*100)+"%");
+
+        TextView prod = findViewById(R.id.prodtot);
+        prod.setText(entreprise_joueur.getStatEmployeActif().get(0).toString());
+        TextView rap = findViewById(R.id.raptot);
+        rap.setText(entreprise_joueur.getStatEmployeActif().get(1).toString());
     }
 
 }

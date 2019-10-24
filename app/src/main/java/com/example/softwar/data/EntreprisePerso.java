@@ -45,7 +45,6 @@ public class EntreprisePerso extends Entreprise {
 		recupNbMiniJeuxGagner();
 		setEmployes();
 		setLogiciel();
-
 	}
 
 	private void recupNbMiniJeux() {
@@ -67,10 +66,10 @@ public class EntreprisePerso extends Entreprise {
 	private int nbContrats;
 
 	@ColumnInfo(name = "nbMiniJeux")
-	private int nbMiniJeux = 0;
+	private int nbMiniJeux ;
 
 	@ColumnInfo(name = "nbMiniJeuxGagner")
-	private int nbMiniJeuxGagner = 0;
+	private int nbMiniJeuxGagner ;
 
 	public void setIdEmployeActif1(int idEmployeActif1) {
 		this.idEmployeActif1 = idEmployeActif1;
@@ -118,6 +117,7 @@ public class EntreprisePerso extends Entreprise {
 	}
 
 	/**
+	 * 
 	 * @param nbContrats
 	 */
 	public void setNbContrats(int nbContrats) {

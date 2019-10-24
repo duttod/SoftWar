@@ -36,7 +36,6 @@ public class ChargePartie extends AppCompatActivity {
 
     public EntreprisePerso entreprise_joueur;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,6 +113,7 @@ public class ChargePartie extends AppCompatActivity {
 
                     entreprise_joueur = ent.get(0);
                     entreprise_joueur.setEntreprisePersoCharge(mdb);
+
 
                     MyApplication.getInstance().setEntreprise_joueur(entreprise_joueur);
                     setView();
