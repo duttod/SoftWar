@@ -61,7 +61,7 @@ public class EntreprisePerso extends Entreprise {
 		this.idEmployeActif3 = idEmployeActif3;
 	}
 
-	// id -1 = employé non set !
+	// id -1 == employé non set !
 
 	@ColumnInfo(name = "employeActif1")
 	private int idEmployeActif1 =-1;

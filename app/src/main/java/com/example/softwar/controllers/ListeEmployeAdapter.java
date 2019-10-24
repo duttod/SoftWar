@@ -58,8 +58,8 @@ public class ListeEmployeAdapter extends ArrayAdapter<Employe> {
         // TODO  : Enlever la création en dur adapter
         EntreprisePerso entreprisePerso = MyApplication.getInstance().getEntreprise_joueur();
         DatabaseClient mdb = DatabaseClient.getInstance(getContext());
-        //textViewQuantite.setText(Integer.toString(mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(entreprisePerso.getNomEntreprise(),emp.getId()).getQuantite()));
-        textViewQuantite.setText("0");
+        textViewQuantite.setText(Integer.toString(mdb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(entreprisePerso.getNomEntreprise(),emp.getId()).getQuantite()));
+        /*textViewQuantite.setText("0");*/
         return rowView;
     }
 }

@@ -170,20 +170,37 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView7"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mes employés actifs"
-        android:textColor="#FF22CD"
-        android:textSize="20dp"
-        android:textStyle="italic"
-        android:fontFamily="@font/nasalization"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
-        />
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mes employés actifs"
+            android:textColor="#FF22CD"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            android:fontFamily="@font/nasalization"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            />
+        <TextView
+            android:id="@+id/textStatGlobal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FF22CD"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            android:fontFamily="@font/nasalization"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
 
     <LinearLayout
 
