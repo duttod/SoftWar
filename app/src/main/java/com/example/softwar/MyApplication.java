@@ -3,6 +3,7 @@ package com.example.softwar;
 import android.app.Application;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.support.v4.content.res.ResourcesCompat;
 
 import com.example.softwar.data.Entreprise;
@@ -17,6 +18,7 @@ public class MyApplication extends Application {
     private int compteur_action =2;
     private ArrayList<Entreprise> concurrents;
 
+
     public static MyApplication getInstance() {
         return instance;
     }
@@ -29,6 +31,8 @@ public class MyApplication extends Application {
     public void onCreate() {
         instance = this;
         super.onCreate();
+
+
     }
 
 
