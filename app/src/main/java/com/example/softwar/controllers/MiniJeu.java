@@ -33,6 +33,8 @@ import com.example.softwar.data.Logiciel;
 import com.example.softwar.data.Pattern;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class MiniJeu extends AppCompatActivity {
@@ -41,12 +43,15 @@ public class MiniJeu extends AppCompatActivity {
     LinearLayout layout_text;
     LinearLayout layout_reponses;
 
-    Pattern pattern1;
-    Pattern pattern2;
+    Pattern pattern;
+
+    Pattern pattern4;
+
 
     TextView chrono;
     CountDownTimer countDownTimer;
     String action_demander;
+    ArrayList<TextView> reponses;
     int indice;
     int nb_bonnerep;
     int nb_mauvaiserep;
@@ -76,14 +81,24 @@ public class MiniJeu extends AppCompatActivity {
         titre = findViewById(R.id.minijeu_titre);
         layout_text = findViewById(R.id.layout_text);
         layout_reponses = findViewById(R.id.layout_reponses);
+        reponses = new ArrayList<>();
 
-        pattern1 = new Pattern();
-        pattern2 = new Pattern();
+        pattern = new Pattern();
+
+<<<<<<< HEAD
+        pattern4 = new Pattern();
 
         pattern1.melangeReponses();
         pattern2.melangeReponses();
 
-        initPattern1_2();
+        initPattern1_4();
+=======
+        //pattern1.melangeReponses();
+        //pattern2.melangeReponses();
+        //pattern3.melangeReponses();
+
+        initPattern1_3();
+>>>>>>> 5228a7e57bf96d58133aa47c5340fc944a5f0cf9
 
         nb_bonnerep = 0;
         nb_mauvaiserep = 0;
@@ -98,30 +113,26 @@ public class MiniJeu extends AppCompatActivity {
 
     }
     public void initPattern1_1(){
-        /*  int i=1;
-            while(i<=10){
-                System.out.println(i);
-                i++;
-            }
-        */
+
         LinearLayout l1 = initLigne();
         initText("1- ", l1);
-        initReponse("int i",l1,pattern1);
+        initReponse("int i",l1,pattern);
         initText("=1;", l1);
         LinearLayout l2 = initLigne();
         initText("2-  ", l2);
-        initReponse("while", l2,pattern1);
+        initReponse("while", l2,pattern);
         initText("(i<=10){", l2);
         LinearLayout l3 = initLigne();
         initText("3-        System.out.println(i);", l3);
         LinearLayout l4 = initLigne();
         initText("4-        ", l4);
-        initReponse("i++", l4,pattern1);
+        initReponse("i++", l4,pattern);
         initText(";", l4);
         LinearLayout l5 = initLigne();
         initText("5-  }", l5);
         LinearLayout l6 = initLigne();
         initText("  ",l6);
+        affiche_reponses();
 
     }
 
@@ -129,49 +140,49 @@ public class MiniJeu extends AppCompatActivity {
 
         LinearLayout l1 = initLigne();
         initText("1- public abstract ", l1);
-        initReponse("class",l1,pattern2);
+        initReponse("class",l1,pattern);
         initText(" Voiture {;", l1);
         LinearLayout l2 = initLigne();
         initText("2-    ", l2);
-        initReponse("String", l2,pattern2);
+        initReponse("String", l2,pattern);
         initText(" libelle;", l2);
         LinearLayout l3 = initLigne();
         initText("3-    ", l3);
-        initReponse("int", l3,pattern2);
+        initReponse("int", l3,pattern);
         initText(" prix;", l3);
         LinearLayout l4 = initLigne();
         initText("4-   int ", l4);
-        initReponse("prix", l4,pattern2);
+        initReponse("prix", l4,pattern);
         initText(";", l4);
         LinearLayout l5 = initLigne();
         initText("5- ", l5);
         LinearLayout l6 = initLigne();
         initText("6-   public String getLibelle() { ", l6);
-        initReponse("return", l6,pattern2);
+        initReponse("return", l6,pattern);
         initText(" libelle; }", l6);
         LinearLayout l7 = initLigne();
         initText("7-    public int getPrix() { return prix; } ", l7);
         LinearLayout l8 = initLigne();
         initText("8-    public int getPoids() { return ", l8);
-        initReponse("poids", l8,pattern2);
+        initReponse("poids", l8,pattern);
         initText("; }", l8);
         LinearLayout l9 = initLigne();
         initText("9- ", l9);
         LinearLayout l10 = initLigne();
         initText("10-    protected ", l10);
-        initReponse("void", l10,pattern2);
+        initReponse("void", l10,pattern);
         initText(" setLibelle(String libelle) { this.libelle = libelle; }", l10);
         LinearLayout l11 = initLigne();
         initText("11-    protected void setPrix(int prix) { this.prix = prix; }", l11);
         LinearLayout l12 = initLigne();
         initText("12-    protected void setPrix(int prix) { ", l12);
-        initReponse("this.", l12,pattern2);
+        initReponse("this.", l12,pattern);
         initText("prix = prix }", l12);
         LinearLayout l13 = initLigne();
         initText("13- ", l13);
         LinearLayout l14 = initLigne();
         initText("14-    public String ", l14);
-        initReponse("toString() ", l14,pattern2);
+        initReponse("toString() ", l14,pattern);
         initText("{ return \"Voiture : \" + getLibelle() + \", Prix : \" + getPrix() + \", Poids : \" + getPoids(); }", l14);
         LinearLayout l15 = initLigne();
         initText("15-  }", l15);
@@ -181,7 +192,111 @@ public class MiniJeu extends AppCompatActivity {
 
 
         initText(" ", l16);
+        affiche_reponses();
+    }
+    public void initPattern1_3(){
+        /*public static void main(String[] args) {
 
+            int j = 20, i = 0;
+            try {
+                System.out.println(j/i);
+            } catch (ArithmeticException e) {
+                System.out.println("Division par zéro !");
+            }
+            System.out.println("coucou toi !");
+        }*/
+        LinearLayout l1 = initLigne();
+        initText("1- public static ", l1);
+        initReponse("void",l1,pattern);
+        initText(" main(String[] args) {", l1);
+        LinearLayout l2 = initLigne();
+        initText("2-    ", l2);
+        LinearLayout l3 = initLigne();
+        initText("3-    ", l3);
+        initReponse("int", l3,pattern);
+        initText(" j = 20, i = 0;", l3);
+        LinearLayout l4 = initLigne();
+        initText("4-   ", l4);
+        initReponse("try", l4,pattern);
+        initText(" {", l4);
+        LinearLayout l5 = initLigne();
+        initText("5-    System.", l5);
+        initReponse("out.", l5, pattern);
+        initText("println(\"Division par zéro !\");",l5);
+        LinearLayout l6 = initLigne();
+        initText("6-   }", l6);
+        initReponse("catch", l6,pattern);
+        initText(" (ArithmeticException e) {", l6);
+        LinearLayout l7 = initLigne();
+        initText("7- }", l7);
+        LinearLayout l8 = initLigne();
+        initText("8-", l8);
+        initReponse("System.", l8,pattern);
+        initText("out.println(\"coucou toi !\");", l8);
+        LinearLayout l9 = initLigne();
+        initText("9- } ", l9);
+        LinearLayout l10 = initLigne();
+
+        initText(" ", l10);
+        affiche_reponses();
+    }
+
+    public void initPattern1_4(){
+
+        LinearLayout l1 = initLigne();
+        initText("1- public class SommeTableaux {", l1);
+        LinearLayout l2 = initLigne();
+        initText("2-   public static void ", l2);
+        initReponse("main", l2,pattern);
+        initText("(String[] args) {;", l2);
+        LinearLayout l3 = initLigne();
+        initText("3- ", l3);
+        LinearLayout l4 = initLigne();
+        initText("4-     ", l4);
+        initReponse("int", l4,pattern);
+        initText(" indice_tableau, total ", l4);
+        initReponse("= 0", l4, pattern);
+        initText(";", l4);
+        LinearLayout l5 = initLigne();
+        initText("5-     ", l5);
+        initReponse("int[]", l5,pattern);
+        initText(" nb = {1,2,3,4,5,6,7,8,9};", l5);
+        LinearLayout l6 = initLigne();
+        initText("6- ", l6);
+        LinearLayout l7 = initLigne();
+        initText("7-     ", l7);
+        initReponse("do", l7, pattern);
+        initText(" {", l7);
+        LinearLayout l8 = initLigne();
+        initText("8-       total += nb[", l8);
+        initReponse("indice_tableau", l8, pattern);
+        initText("];", l8);
+        LinearLayout l9 = initLigne();
+        initText("9-       indice_tableau", l9);
+        initReponse("++", l9, pattern);
+        initText(";", l9);
+        LinearLayout l10 = initLigne();
+        initText("10-     }", l10);
+        LinearLayout l11 = initLigne();
+        initText("11-     while (indice_tableau < ", l11);
+        initReponse("nb.length", l11,pattern);
+        initText(");", l11);
+        LinearLayout l12 = initLigne();
+        initText(" ", l12);
+        LinearLayout l13 = initLigne();
+        initText("13-     System.out.", l13);
+        initReponse("println", l13,pattern);
+        initText("(total);", l13);
+        LinearLayout l14 = initLigne();
+        initText("14- ", l14);
+        LinearLayout l15 = initLigne();
+        initText("15 -   }", l15);
+        LinearLayout l16 = initLigne();
+        initText("16- }", l16);
+        LinearLayout l17 = initLigne();
+
+        initText(" ", l17);
+        initText(" ", l17);
     }
 
     public void initText(String text, LinearLayout layout){
@@ -189,7 +304,7 @@ public class MiniJeu extends AppCompatActivity {
         tv.setText(text);
         tv.setTextSize(20);
         tv.setTextColor(Color.parseColor("#FFB900"));
-        tv.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
+        tv.setTypeface(ResourcesCompat.getFont(this, R.font.inconsolata));
         layout.addView(tv);
     }
     public void initReponse(String text, LinearLayout layout, Pattern pattern){
@@ -218,9 +333,9 @@ public class MiniJeu extends AppCompatActivity {
         tv.setText(text);
         tv.setTextSize(26);
         tv.setTextColor(Color.parseColor("#FF22CD"));
-        tv.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
+        tv.setTypeface(ResourcesCompat.getFont(this, R.font.inconsolata));
         tv.setOnTouchListener(new MyTouchListener());
-        layout_reponses.addView(tv);
+        reponses.add(tv);
     }
 
     public LinearLayout initLigne(){
@@ -229,12 +344,18 @@ public class MiniJeu extends AppCompatActivity {
         this.layout_text.addView(l1);
         return l1;
     }
+    public void affiche_reponses(){
+        Collections.shuffle(reponses);
+        for (TextView tv: reponses){
+            layout_reponses.addView(tv);
+        }
+    }
 
     public void valider_minijeu(View view) {
         Intent intent = new Intent(this, ResultatMiniJeu.class);
         intent.putExtra(ChooseRenforcerAttaquerActivity.ACTION_KEY,action_demander);
         intent.putExtra(ResultatMiniJeu.nbjuste, nb_bonnerep);
-        intent.putExtra(ResultatMiniJeu.nbpossible, pattern2.getBonnesReponses().size());
+        intent.putExtra(ResultatMiniJeu.nbpossible, pattern.getBonnesReponses().size());
 
         countDownTimer.cancel();
         startActivity(intent);
@@ -314,16 +435,24 @@ public class MiniJeu extends AppCompatActivity {
                         nb_bonnerep = 0;
                         nb_mauvaiserep = 0;
 
-                       for (int i = 0; i < pattern2.getBonnesReponses().size(); i++) {
+<<<<<<< HEAD
+                       for (int i = 0; i < pattern4.getBonnesReponses().size(); i++) {
                                TextView t = (TextView) findViewById(i);
-                               if(pattern2.getBonnesReponses().get(i).equals(t.getText().toString())){
+                               if(pattern4.getBonnesReponses().get(i).equals(t.getText().toString())){
+=======
+                       for (int i = 0; i < pattern.getBonnesReponses().size(); i++) {
+                               TextView t = (TextView) findViewById(i);
+                               if(pattern.getBonnesReponses().get(i).equals(t.getText().toString())){
+>>>>>>> 5228a7e57bf96d58133aa47c5340fc944a5f0cf9
                                    nb_bonnerep++;
                                } else {
                                    nb_mauvaiserep++;
                                }
                        }
+
                         System.out.println(nb_bonnerep);
                         System.out.println(nb_mauvaiserep);
+
                     }
 
                     break;

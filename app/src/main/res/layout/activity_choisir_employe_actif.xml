@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controllers.ChoisirEmployeActifActivity"
     android:background="@drawable/bg12"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".controllers.ChoisirEmployeActifActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +39,7 @@
                 android:background="@drawable/bgbutton"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="20dp"/>
+                android:padding="20dp" />
 
             <LinearLayout
                 android:id="@+id/employe2"
@@ -50,7 +49,7 @@
                 android:background="@drawable/bgbutton"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="20dp"/>
+                android:padding="20dp" />
 
             <LinearLayout
                 android:id="@+id/employe3"
@@ -60,7 +59,7 @@
                 android:background="@drawable/bgbutton"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="20dp"/>
+                android:padding="20dp" />
         </LinearLayout>
 
     </LinearLayout>

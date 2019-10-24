@@ -15,6 +15,18 @@ import com.example.softwar.R;
 public class ChooseRenforcerAttaquerActivity extends AppCompatActivity {
     public final static String ACTION_KEY = "action_demander";
 
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        ((MyApplication)this.getApplication()).FadeOut((float) 3.0);
+        ((MyApplication)this.getApplication()).mediaPlayer.pause();
+
+        ((MyApplication)this.getApplication()).mediaPlayer = MediaPlayer.create(this, R.raw.maintheme);
+        ((MyApplication)this.getApplication()).FadeIn((float) 3.0);
+        ((MyApplication)this.getApplication()).mediaPlayer.setLooping(true);
+        ((MyApplication)this.getApplication()).mediaPlayer.start();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
