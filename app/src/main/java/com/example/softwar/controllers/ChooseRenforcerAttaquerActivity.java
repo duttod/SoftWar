@@ -13,7 +13,7 @@ import com.example.softwar.R;
 
 public class ChooseRenforcerAttaquerActivity extends AppCompatActivity {
     public final static String ACTION_KEY = "action_demander";
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
