@@ -34,19 +34,28 @@
             android:background="@drawable/bgbutton"
             android:orientation="horizontal">
 
-            <ScrollView
-                android:id="@+id/scroll_text"
+            <HorizontalScrollView
+                android:id="@+id/hScroll"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="20dp">
 
-                <LinearLayout
-                    android:id="@+id/layout_text"
+                <ScrollView
+                    android:id="@+id/vScroll"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="20dp"
-                    android:orientation="vertical" />
-            </ScrollView>
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/layout_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="20dp"
+                        android:orientation="vertical" />
+                </ScrollView>
+
+            </HorizontalScrollView>
+
+
         </LinearLayout>
 
         <LinearLayout
