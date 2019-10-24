@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseClient mdb;
     EntreprisePerso entreprise_joueur ;
     ArrayList<Entreprise> concurrents;
-    private Dialog dialog,dialogcompteur;
+    private Dialog dialog,dialogcompteur,dialogftour,dial_erreur_ftour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -194,10 +194,16 @@ public class MainActivity extends AppCompatActivity {
     //PARTIE A PASSER EN ASYNCHRONE SI POSSIBLE
 
     public void FinTour(View view) {
-        Logiciel l = entreprise_joueur.getLogiciel();
-        int somme = (l.getNiveauErgonomie()*20)+(l.getNiveauLogiciel()*20)+(l.getNiveauPuissance()*20)+(l.getNiveauRentabilite()*100+4000);
-        entreprise_joueur.setArgentEntreprise(entreprise_joueur.getArgentEntreprise()+somme);
-        RandomEvenementDebutTour(view);
+        if(MyApplication.getInstance().getCompteur_action()==0){
+            BilanTour();
+        }else{
+            dial_erreur_ftour = new Dialog(this);
+            dial_erreur_ftour.setContentView(R.layout.popup_erreur_ftour);
+            dial_erreur_ftour.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+            dial_erreur_ftour.show();
+        }
+
+
     }
 
     public void RandomEvenementDebutTour(View view) {
@@ -322,9 +328,25 @@ public class MainActivity extends AppCompatActivity {
             dialog.show();
         }
 
-        BilanTour();
         ((MyApplication) this.getApplication()).addTour();
+        UpgradeConcurents();
         saveContext();
+        LoadDataEntreprise();
+    }
+
+    private void UpgradeConcurents() {
+        getConcurrents();
+        for(Entreprise c : concurrents){
+            Logiciel l = c.getLogiciel();
+            int somme = (l.getNiveauErgonomie()*20)+(l.getNiveauLogiciel()*20)+(l.getNiveauPuissance()*20)+(l.getNiveauRentabilite()*120+6000);
+            int nbuserg =l.getNiveauErgonomie()*530+2000+(l.getNbUtilisateurs()/100);
+            c.setArgentEntreprise(c.getArgentEntreprise()+somme);
+            c.getLogiciel().setNbUtilisateurs(l.getNbUtilisateurs()+nbuserg);
+            l.setNiveauErgonomie(l.getNiveauErgonomie()+1);
+            l.setNiveauPuissance(l.getNiveauPuissance()+1);
+            l.setNiveauSecurite(l.getNiveauSecurite()+1);
+            l.setNiveauRentabilite(l.getNiveauRentabilite()+2);
+        }
     }
 
     public void BilanTour() {
@@ -332,6 +354,27 @@ public class MainActivity extends AppCompatActivity {
         int numerotour =((MyApplication) this.getApplication()).getTour();
 
         //Traitements : distribuer argent + utilisateurs en fonction des stats du logiciel
+        Logiciel l = entreprise_joueur.getLogiciel();
+        int somme = (l.getNiveauErgonomie()*20)+(l.getNiveauLogiciel()*20)+(l.getNiveauPuissance()*20)+(l.getNiveauRentabilite()*100+4000);
+        int nbuserg =l.getNiveauErgonomie()*500+2000+(l.getNbUtilisateurs()/100);
+        entreprise_joueur.setArgentEntreprise(entreprise_joueur.getArgentEntreprise()+somme);
+        entreprise_joueur.setNbContrats(entreprise_joueur.getNbContrats()+1);
+        entreprise_joueur.getLogiciel().setNbUtilisateurs(l.getNbUtilisateurs()+nbuserg);
+
+
+
+        //Affichage des res dans un popup
+        dialogftour = new Dialog(this);
+        dialogftour.setContentView(R.layout.layout_fin_tour);
+        TextView targent = dialogftour.findViewById(R.id.argentfintour);
+        targent.setText("Vous recevez "+Integer.toString(somme)+"€");
+        TextView tuser = dialogftour.findViewById(R.id.utilisateursfintour);
+        tuser.setText("Vous recevez "+Integer.toString(nbuserg)+" utilisateurs");
+        TextView tcompteur = dialogftour.findViewById(R.id.compteurtour);
+        tcompteur.setText("Vous avez finis le tour:"+Integer.toString(numerotour));
+
+        dialogftour.show();
+        ((MyApplication) this.getApplication()).addTour();
         
     }
 
@@ -352,7 +395,16 @@ public class MainActivity extends AppCompatActivity {
         dialog.cancel();
     }
 
+    public void fermerbilanbox(View view) {
+        dialogftour.cancel();
+        RandomEvenementDebutTour(view);
+    }
+
     public void fermercompteurbox(View view) {
         dialogcompteur.cancel();
+    }
+
+    public void fermerdialerreur(View view) {
+        dial_erreur_ftour.cancel();
     }
 }

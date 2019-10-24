@@ -5,6 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Pattern {
 
@@ -74,6 +75,11 @@ public class Pattern {
 		this.bonnesReponses.add(reponse);
 		this.reponses.add(reponse);
 	}
+
+	public void melangeReponses(){
+		Collections.sort(this.reponses);
+	}
+
 	public void addMauvaiseReponse(String reponse){
 		this.reponses.add(reponse);
 	}

@@ -80,6 +80,9 @@ public class MiniJeu extends AppCompatActivity {
         pattern1 = new Pattern();
         pattern2 = new Pattern();
 
+        pattern1.melangeReponses();
+        pattern2.melangeReponses();
+
         initPattern1_2();
 
         nb_bonnerep = 0;
