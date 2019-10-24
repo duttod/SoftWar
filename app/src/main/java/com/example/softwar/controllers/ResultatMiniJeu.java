@@ -149,7 +149,8 @@ public class ResultatMiniJeu extends AppCompatActivity {
 
     }
     public void DammageEntreprise(){
-        int indice = (int) (Math.random() * ((listEvents.size()-1) - 0));
+
+        int indice = 0;
         ResultatJeu degats = listEvents.get(indice);
 
         Entreprise eA = MyApplication.getInstance().getEntreprise_attaquer();
@@ -168,6 +169,10 @@ public class ResultatMiniJeu extends AppCompatActivity {
 
         argent.setText("- "+degats.getArgent()+"€");
         nbusers.setText("- "+degats.getNbUtilisateurs()+" utilisateurs");
+        puissance.setText(" ");
+        ergonomie.setText(" ");
+        securite.setText(" ");
+        rentabilite.setText(" ");
 
         entreprisePerso.setArgentEntreprise(entreprisePerso.getArgentEntreprise()+degats.getArgent());
         ((MyApplication)this.getApplication()).setEntreprise_attaquer(null);
@@ -198,6 +203,7 @@ public class ResultatMiniJeu extends AppCompatActivity {
                 super.onPostExecute(mylist);
 
                 listEvents = mylist;
+
                 if(action_demander.equals("renforcer")){
                     giveRecompense();
                 }else{
