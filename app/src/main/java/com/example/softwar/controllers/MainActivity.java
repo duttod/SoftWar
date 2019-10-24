@@ -190,8 +190,13 @@ public class MainActivity extends AppCompatActivity {
 
     //PARTIE A PASSER EN ASYNCHRONE SI POSSIBLE
 
+<<<<<<< HEAD
+    public void FinTour(View view) {
+
+=======
     public void RandomEvenementDebutTour(View view) {
         MyApplication.getInstance().setCompteur_action(2);
+>>>>>>> 3b361b9368a6d4947b897ff5178fa4d66deb14dc
         int chanceevenement = (int) (Math.random() * (100 - 0));
         TextView txt = dialog.findViewById(R.id.description_alea);
         txt.setText("");
@@ -204,7 +209,7 @@ public class MainActivity extends AppCompatActivity {
             int indice = (int) (Math.random() * ((aleas.size() - 1) - 0));
 
             Alea aleachoisi = aleas.get(indice);
-            txt.setText(aleachoisi.getContexte()+ " | ");
+            txt.setText("Evènement : "+aleachoisi.getContexte()+ " | ");
 
             if (aleachoisi.getType().equals("bien")) {
 
@@ -286,7 +291,16 @@ public class MainActivity extends AppCompatActivity {
             //Appel au popup
         }
 
+        BilanTour();
+        ((MyApplication) this.getApplication()).addTour();
         saveContext();
+    }
+
+    public void BilanTour() {
+        int numerotour =((MyApplication) this.getApplication()).getTour();
+
+        //Traitements : distribuer argent + utilisateurs en fonction des stats du logiciel
+        
     }
 
     public void saveContext() {
