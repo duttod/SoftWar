@@ -88,6 +88,7 @@
                 android:fontFamily="@font/nasalization"
                 android:text="Abandonner"
                 android:textColor="#FF22CD"
+                android:onClick="ABANDONNER"
                 tools:text="Abandonner" />
 
             <TextView

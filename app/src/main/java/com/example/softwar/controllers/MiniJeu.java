@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.CountDownTimer;
 import android.support.v4.content.res.ResourcesCompat;
@@ -36,6 +37,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class MiniJeu extends AppCompatActivity {
 
@@ -85,20 +87,15 @@ public class MiniJeu extends AppCompatActivity {
 
         pattern = new Pattern();
 
-<<<<<<< HEAD
-        pattern4 = new Pattern();
+        int alea = new Random().nextInt(3);
+        if(alea == 0){
+            initPattern1_1();
+        }else if(alea ==1){
+            initPattern1_2();
+        }else if( alea ==3){
+            initPattern1_3();
+        }else initPattern1_4();
 
-        pattern1.melangeReponses();
-        pattern2.melangeReponses();
-
-        initPattern1_4();
-=======
-        //pattern1.melangeReponses();
-        //pattern2.melangeReponses();
-        //pattern3.melangeReponses();
-
-        initPattern1_3();
->>>>>>> 5228a7e57bf96d58133aa47c5340fc944a5f0cf9
 
         nb_bonnerep = 0;
         nb_mauvaiserep = 0;
@@ -297,6 +294,7 @@ public class MiniJeu extends AppCompatActivity {
 
         initText(" ", l17);
         initText(" ", l17);
+        affiche_reponses();
     }
 
     public void initText(String text, LinearLayout layout){
@@ -358,6 +356,20 @@ public class MiniJeu extends AppCompatActivity {
         intent.putExtra(ResultatMiniJeu.nbpossible, pattern.getBonnesReponses().size());
 
         countDownTimer.cancel();
+        startActivity(intent);
+    }
+
+    public void ABANDONNER(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        countDownTimer.cancel();
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        ((MyApplication)this.getApplication()).FadeOut((float) 3.0);
+        ((MyApplication)this.getApplication()).mediaPlayer.pause();
+
+        ((MyApplication)this.getApplication()).mediaPlayer = MediaPlayer.create(this, R.raw.maintheme);
+        ((MyApplication)this.getApplication()).FadeIn((float) 3.0);
+        ((MyApplication)this.getApplication()).mediaPlayer.setLooping(true);
+        ((MyApplication)this.getApplication()).mediaPlayer.start();
         startActivity(intent);
     }
 
@@ -424,10 +436,9 @@ public class MiniJeu extends AppCompatActivity {
 
                         Object tag = dropTarget.getTag();
                         //if there is already an item here, set it back visible in its original place
-                        if(tag!=null)
-                        {
+                        if (tag != null) {
                             //the tag is the view id already dropped here
-                            int existingID = (Integer)tag;
+                            int existingID = (Integer) tag;
                             //set the original view visible again
                             findViewById(existingID).setVisibility(View.VISIBLE);
                         }
@@ -435,47 +446,34 @@ public class MiniJeu extends AppCompatActivity {
                         nb_bonnerep = 0;
                         nb_mauvaiserep = 0;
 
-<<<<<<< HEAD
-                       for (int i = 0; i < pattern4.getBonnesReponses().size(); i++) {
-                               TextView t = (TextView) findViewById(i);
-                               if(pattern4.getBonnesReponses().get(i).equals(t.getText().toString())){
-=======
-                       for (int i = 0; i < pattern.getBonnesReponses().size(); i++) {
-                               TextView t = (TextView) findViewById(i);
-                               if(pattern.getBonnesReponses().get(i).equals(t.getText().toString())){
->>>>>>> 5228a7e57bf96d58133aa47c5340fc944a5f0cf9
-                                   nb_bonnerep++;
-                               } else {
-                                   nb_mauvaiserep++;
-                               }
-                       }
+                                for (int i = 0; i < pattern.getBonnesReponses().size(); i++) {
+                                    TextView t = (TextView) findViewById(i);
+                                    if (pattern.getBonnesReponses().get(i).equals(t.getText().toString())) {
+                                        nb_bonnerep++;
+                                    } else {
+                                        nb_mauvaiserep++;
+                                    }
+                                }
 
-                        System.out.println(nb_bonnerep);
-                        System.out.println(nb_mauvaiserep);
+                                System.out.println(nb_bonnerep);
+                                System.out.println(nb_mauvaiserep);
 
+                            }
+
+                            break;
+                            case DragEvent.ACTION_DRAG_ENDED:
+                                //v.setBackgroundDrawable(normalShape);
+                            default:
+                                break;
+                        }
+                        return true;
                     }
-
-                    break;
-                case DragEvent.ACTION_DRAG_ENDED:
-                    //v.setBackgroundDrawable(normalShape);
-                default:
-                    break;
             }
-            return true;
-        }
-    }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)
-    {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            // Fais ton traitement
-        }
-        return true;
-    }
+
 
     private void InitJeu() {
-        ///////////////////////
+
         // Classe asynchrone permettant de récupérer des taches et de mettre à jour le listView de l'activité
         class InitJeu extends AsyncTask<Void, Void, Jeu> {
 
@@ -521,33 +519,6 @@ public class MiniJeu extends AppCompatActivity {
         jeu.execute();
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        float curX, curY;
 
-        switch (event.getAction()) {
-
-            case MotionEvent.ACTION_DOWN:
-                mx = event.getX();
-                my = event.getY();
-                break;
-            case MotionEvent.ACTION_MOVE:
-                curX = event.getX();
-                curY = event.getY();
-                vScroll.scrollBy((int) (mx - curX), (int) (my - curY));
-                hScroll.scrollBy((int) (mx - curX), (int) (my - curY));
-                mx = curX;
-                my = curY;
-                break;
-            case MotionEvent.ACTION_UP:
-                curX = event.getX();
-                curY = event.getY();
-                vScroll.scrollBy((int) (mx - curX), (int) (my - curY));
-                hScroll.scrollBy((int) (mx - curX), (int) (my - curY));
-                break;
-        }
-
-        return true;
-    }
 
 }

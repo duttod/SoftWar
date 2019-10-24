@@ -171,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
             dialogcompteur = new Dialog(this);
             dialogcompteur.setContentView(R.layout.popup_compteur_actions);
+            dialogcompteur.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             dialogcompteur.show();
         }else{
 
@@ -372,7 +373,7 @@ public class MainActivity extends AppCompatActivity {
         tuser.setText("Vous recevez "+Integer.toString(nbuserg)+" utilisateurs");
         TextView tcompteur = dialogftour.findViewById(R.id.compteurtour);
         tcompteur.setText("Vous avez finis le tour:"+Integer.toString(numerotour));
-
+        dialogftour.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialogftour.show();
         ((MyApplication) this.getApplication()).addTour();
         
