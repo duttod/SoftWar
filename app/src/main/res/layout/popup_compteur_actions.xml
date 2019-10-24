@@ -10,9 +10,6 @@
     tools:context=".controllers.MainActivity">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         tools:ignore="MissingDefaultResource"
@@ -28,11 +25,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vous avez déja effectué vos 2 actions ce tour ci passer le tour !"
-                android:textColor="#FFB900"
                 android:fontFamily="@font/nasalization"
-                android:textSize="20dp"
-                android:gravity="center" />
+                android:gravity="center"
+                android:text="Vous avez déja effectué vos 2 actions ce tour ci, passez le tour !"
+                android:textColor="#FFB900"
+                android:textSize="20dp" />
 
         </LinearLayout>
     </LinearLayout>
