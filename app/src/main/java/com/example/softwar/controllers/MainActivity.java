@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.softwar.MyApplication;
 import com.example.softwar.R;
+import com.example.softwar.data.Alea;
 import com.example.softwar.data.DatabaseClient;
 import com.example.softwar.data.Entreprise;
 import com.example.softwar.data.EntreprisePerso;
@@ -24,10 +25,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    EntreprisePerso entreprise_joueur;
     TextView argent, nbuser, nomE;
     private DatabaseClient mdb;
+    EntreprisePerso entreprise_joueur ;
     ArrayList<Entreprise> concurrents;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,48 +42,77 @@ public class MainActivity extends AppCompatActivity {
         nomE = (TextView) findViewById(R.id.nomE);
 
         mdb = DatabaseClient.getInstance(getApplicationContext());
-        concurrents = new ArrayList<>();
-
 
         //Récupérer la variable globale Application
-        //!!!!!!!!!!!
+        //!!!!!!!!!!
         entreprise_joueur =((MyApplication)this.getApplication()).getEntreprise_joueur();
-        CreerRandomConcurrents();
-        setImageLogiciel();
-        LoadDataEntreprise();
+        concurrents = new ArrayList<>();
 
+        //setImageLogiciel();
+        LoadConcurrents();
+    }
+
+    //Pas toucher
+    public void LoadConcurrents() {
+
+        getConcurrents();
+
+    }
+
+    private void getConcurrents() {
+
+        class getConcurrents extends AsyncTask<Void, Void, List<Entreprise>> {
+
+            @Override
+            protected List<Entreprise> doInBackground(Void... voids) {
+
+                List<Entreprise> concu = mdb.getAppDatabase().entreprisedao().getAll();
+
+                return concu;
+            }
+
+            @Override
+            protected void onPostExecute(List<Entreprise> concu) {
+                super.onPostExecute(concu);
+
+                concurrents.clear();
+                concurrents.addAll(concu);
+
+                for (int i = 0; i < concurrents.size(); i++) {
+
+                    concurrents.get(i).setLogiciel(concurrents.get(i).getNomLogiciel());
+                    concurrents.get(i).getLogiciel().setNbUtilisateurs(concurrents.get(i).getNbusers());
+                    System.out.println(concurrents.get(i).getNomLogiciel());
+                    concurrents.get(i).getLogiciel().setNomLogiciel(concurrents.get(i).getNomLogiciel());
+                }
+
+                setMyAppConcu();
+                LoadDataEntreprise();
+
+            }
+        }
+
+        getConcurrents gc = new getConcurrents();
+        gc.execute();
+    }
+
+    public void setMyAppConcu() {
         ((MyApplication)this.getApplication()).setConcurrents(concurrents);
     }
 
     public void LoadDataEntreprise() {
 
-        argent.setText(Long.toString(entreprise_joueur.getArgentEntreprise()));
-        nomE.setText(entreprise_joueur.getNomEntreprise());
-        nbuser.setText(Integer.toString(entreprise_joueur.getLogiciel().getNbUtilisateurs()));
-        argent.setText("Argent:"+Long.toString(entreprise_joueur.getArgentEntreprise()));
-        nomE.setText("Entreprise:"+entreprise_joueur.getNomEntreprise());
-        nbuser.setText("Utilisateurs:"+Integer.toString(entreprise_joueur.getLogiciel().getNbUtilisateurs()));
-
-    }
-
-    public void CreerRandomConcurrents() {
-
-        for (int i = 0; i < 5; i++) {
-            Entreprise ets_conc = new Entreprise("Concurrent"+i,"Soft"+i);
-
-            int argent_depart = (int) (Math.random() * (2000 - 500));
-            int nb_utilisateurs_depart = (int) (Math.random() * (50000 - 1500));
-
-            ets_conc.setArgentEntreprise(argent_depart);
-            ets_conc.getLogiciel().setNbUtilisateurs(nb_utilisateurs_depart);
-
-            concurrents.add(ets_conc);
-        }
+        argent.setText(Long.toString(((MyApplication)this.getApplication()).getEntreprise_joueur().getArgentEntreprise()));
+        nomE.setText(((MyApplication)this.getApplication()).getEntreprise_joueur().getNomEntreprise());
+        nbuser.setText(Integer.toString(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNbUtilisateurs()));
+        argent.setText("Argent:"+Long.toString(((MyApplication)this.getApplication()).getEntreprise_joueur().getArgentEntreprise()));
+        nomE.setText("Entreprise:"+((MyApplication)this.getApplication()).getEntreprise_joueur().getNomEntreprise());
+        nbuser.setText("Utilisateurs:"+Integer.toString(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNbUtilisateurs()));
     }
 
     public void setImageLogiciel() {
 
-        switch(entreprise_joueur.getLogiciel().getNiveauLogiciel()) {
+        switch(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauLogiciel()) {
             case 1 : ////
                 break;
             case 2 : ////
@@ -110,5 +141,53 @@ public class MainActivity extends AppCompatActivity {
     public void go_employes(View view) {
         Intent intent = new Intent(this,ChoisirEmployeActifActivity.class);
         startActivity(intent);
+    }
+
+
+    public void GoToAmeliorer(View view) {
+        Intent intent = new Intent(this,AmeliorationsActivity.class);
+        startActivity(intent);
+    }
+
+    public void GoToChoixAttackDef(View view) {
+        Intent intent = new Intent(this,ChooseRenforcerAttaquerActivity.class);
+        startActivity(intent);
+    }
+
+    public void GoToStats(View view) {
+        Intent intent = new Intent(this,Statistiques.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        LoadDataEntreprise();
+    }
+
+    //PARTIE A PASSER EN ASYNCHRONE SI POSSIBLE
+
+    public void RandomEvenementDebutTour() {
+        List<Alea> aleas = mdb.getAppDatabase().aleadao().getAll();
+        int indice = (int) (Math.random() * ((aleas.size()-1) - 0));
+
+        Alea aleachoisi = aleas.get(indice);
+        ((MyApplication)this.getApplication()).getEntreprise_joueur().setArgentEntreprise(((MyApplication)this.getApplication()).getEntreprise_joueur().getArgentEntreprise()+((MyApplication)this.getApplication()).getEntreprise_joueur().getArgentEntreprise()*(aleachoisi.getArgent()/100));
+
+        //Suite à faire
+    }
+
+    public void saveContext(View view) {
+        mdb.getAppDatabase().entreprisepersodao().update(((MyApplication)this.getApplication()).getEntreprise_joueur());
+
+        for (int i = 0; i < ((MyApplication)this.getApplication()).getConcurrents().size(); i++) {
+            ((MyApplication)this.getApplication()).getConcurrents().get(i).setNbusers(((MyApplication)this.getApplication()).getConcurrents().get(i).getLogiciel().getNbUtilisateurs());
+            mdb.getAppDatabase().entreprisedao().update(((MyApplication)this.getApplication()).getConcurrents().get(i));
+        }
+
+        mdb.getAppDatabase().logicieldao().update(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel());
+
+        LoadDataEntreprise();
     }
 }

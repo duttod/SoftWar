@@ -11,6 +11,7 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,7 @@ public class MiniJeu extends AppCompatActivity {
     Pattern pattern;
     TextView chrono;
     CountDownTimer countDownTimer;
-
+    String action_demander;
     int indice;
     int nb_bonnerep;
     int nb_mauvaiserep;
@@ -53,6 +54,9 @@ public class MiniJeu extends AppCompatActivity {
         setContentView(R.layout.activity_mini_jeu);
         getSupportActionBar().hide();
 
+        action_demander = this.getIntent().getStringExtra(ChooseRenforcerAttaquerActivity.ACTION_KEY);
+        System.out.println(action_demander);
+        titre = findViewById(R.id.minijeu_titre);
         layout_text = findViewById(R.id.layout_text);
         layout_reponses = findViewById(R.id.layout_reponses);
         pattern = new Pattern();
@@ -63,24 +67,8 @@ public class MiniJeu extends AppCompatActivity {
         indice = 0;
 
         mDb = DatabaseClient.getInstance(getApplicationContext());
+
         InitJeu();
-
-        titre.setText(jeu_en_cours.getNomJeu());
-
-        chrono = findViewById(R.id.chrono);
-         countDownTimer = new CountDownTimer(15000, 1000) {
-
-            public void onTick(long millisUntilFinished) {
-                chrono.setText("seconds remaining: " + millisUntilFinished / 1000);
-            }
-
-            public void onFinish() {
-                chrono.setText("done!");
-                Button valider = findViewById(R.id.valider);
-                valider.performClick();
-            }
-        }.start();
-
 
     }
     public void initPattern1_1(){
@@ -256,6 +244,15 @@ public class MiniJeu extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            // Fais ton traitement
+        }
+        return true;
+    }
+
     private void InitJeu() {
         ///////////////////////
         // Classe asynchrone permettant de récupérer des taches et de mettre à jour le listView de l'activité
@@ -265,7 +262,7 @@ public class MiniJeu extends AppCompatActivity {
             protected Jeu doInBackground(Void... voids) {
                 Jeu jeu = mDb.getAppDatabase()
                         .jeuDao()
-                        .getAJeu("Resolution de code");
+                        .getAJeu("Resolutiondecode");
                 return jeu;
             }
 
@@ -273,6 +270,22 @@ public class MiniJeu extends AppCompatActivity {
             protected void onPostExecute(Jeu jeu) {
                 super.onPostExecute(jeu);
                 jeu_en_cours = jeu;
+
+                titre.setText(jeu.getNomJeu());
+
+                chrono = findViewById(R.id.chrono);
+                countDownTimer = new CountDownTimer(15000, 1000) {
+
+                    public void onTick(long millisUntilFinished) {
+                        chrono.setText("seconds remaining: " + millisUntilFinished / 1000);
+                    }
+
+                    public void onFinish() {
+                        chrono.setText("done!");
+                        Button valider = findViewById(R.id.valider);
+                        valider.performClick();
+                    }
+                }.start();
 
             }
         }

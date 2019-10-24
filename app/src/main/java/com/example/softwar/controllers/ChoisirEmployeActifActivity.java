@@ -34,20 +34,22 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
     // DATA
     private DatabaseClient mDb;
     private ListeEmployeAdapter adapter;
-    //private EntreprisePerso entreprise_joueur =((MyApplication)this.getApplication()).getEntreprise_joueur();
+    private EntreprisePerso entreprise_joueur;
 
     // VIEW
     private ListView listEmp;
     private ArrayList<LinearLayout> empActif = new ArrayList<>();
     private TextView text;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choisir_employe_actif);
-
+        getSupportActionBar().hide();
         // Récupération du DatabaseClient
         mDb = DatabaseClient.getInstance(getApplicationContext());
+        entreprise_joueur=((MyApplication)this.getApplication()).getEntreprise_joueur();
 
         // Récupérer les vues
         listEmp = findViewById(R.id.listEmploye);
@@ -56,8 +58,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
         empActif.add((LinearLayout) findViewById(R.id.employe3));
 
 
-        // Création du TextView
-        text = new TextView(this);
+
 
         // Lier l'adapter au listView
         adapter = new ListeEmployeAdapter(this,new ArrayList<Employe>());
@@ -70,39 +71,71 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Employe emp = adapter.getItem(position);
                 //
-                Toast.makeText(ChoisirEmployeActifActivity.this,"test",Toast.LENGTH_SHORT).show();
+
                 //
                 int i = 0;
-                while (i < 3 && empActif.get(i).getChildCount()>0){
-                    System.out.println("test");
-                    i++;
-                }
-                if (i == 3 && empActif.get(i-1).getChildCount() >0){
+                int occurrence =0;
+                for (int c =0; c<3;c++){
+                    if(empActif.get(c).getChildCount()>0){
+                        if (Integer.parseInt(((TextView)empActif.get(c).getChildAt(2)).getText().toString()) == emp.getId()){
+                            occurrence++;
+                        }
 
+                    }
+                }
+                if (occurrence<mDb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(entreprise_joueur.getNomEntreprise(),emp.getId()).getQuantite()){
+                    while (i < 3 && empActif.get(i).getChildCount()>0){
+                        System.out.println(empActif.get(i).getChildCount());
+                        System.out.println(empActif.get(i).getChildAt(0));
+                        i++;
+                    }
+                    System.out.println(i);
+                    if (i == 3 && empActif.get(i-1).getChildCount() >0){
+
+                    }
+                    else {
+                        // TODO  : Prendre en compte l'insertion et la suppression dans la bdd
+                        final int j = i;
+                        // Création du TextView
+                        text = new TextView(ChoisirEmployeActifActivity.this);
+                        text.setText(emp.getNomEmploye());
+                        empActif.get(i).addView(text);
+                        text = new TextView(ChoisirEmployeActifActivity.this);
+                        text.setText(emp.getPrenomEmploye());
+                        text = new TextView(ChoisirEmployeActifActivity.this);
+                        text.setText(Integer.toString(emp.getId()));
+                        empActif.get(i).addView(text);
+                        empActif.get(i).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                empActif.get(j).removeAllViews();
+
+                                // Mise à jour bdd
+                                // TODO enlever les employeActif
+                                // -1 id quand il n'y a pas d'employé
+                                entreprise_joueur.setEmployeActif(j,-1);
+                                mDb.getAppDatabase().entreprisepersodao().update(entreprise_joueur);
+
+                            }
+                        });
+                        /*
+                         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                         *
+                         * Zone Code : mettre à jour la bdd de entreprise + set employé dans MyApplication
+                         *
+                         * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                         * */
+
+                        entreprise_joueur.setEmployeActif(j,emp.getId());
+                        mDb.getAppDatabase().entreprisepersodao().update(entreprise_joueur);
+
+
+                    }
                 }
                 else {
-                    final int j = i;
-                    text.setText(emp.getNomEmploye());
-                    empActif.get(i).addView(text);
-                    text.setText(emp.getPrenomEmploye());
-                    empActif.get(i).addView(text);
-                    empActif.get(i).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            empActif.get(j).removeAllViews();
-                        }
-                    });
-                    /*
-                    * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    *
-                    * Zone Code : mettre à jour la bdd de entreprise + set employé dans MyApplication
-                    *
-                    * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    * */
-
-
-
+                    Toast.makeText(ChoisirEmployeActifActivity.this,"Employé déjà utilisé",Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 

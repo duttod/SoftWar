@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/bg12"
-    tools:context=".controllers.TirageAuSortActivity">
+    tools:context=".controllers.AmeliorationsActivity">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

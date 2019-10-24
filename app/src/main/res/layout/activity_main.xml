@@ -139,6 +139,7 @@
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
                 android:text="AMELIORER"
+                android:onClick="GoToAmeliorer"
                 android:textColor="#FFB900" />
 
             <Button
@@ -149,6 +150,7 @@
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
                 android:text="STATS"
+                android:onClick="GoToStats"
                 android:textColor="#FFB900" />
 
             <Button
@@ -167,10 +169,10 @@
                 android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
                 android:text="MINI-JEU"
+                android:onClick="GoToChoixAttackDef"
                 android:textColor="#FF22CD" />
         </LinearLayout>
 
@@ -188,6 +190,7 @@
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
                 android:text="FIN TOUR"
+                android:onClick="saveContext"
                 android:textColor="#FF22CD" />
 
 

@@ -3,6 +3,7 @@ package com.example.softwar.controllers;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.TextView;
 
 import com.example.softwar.MyApplication;
@@ -34,7 +35,7 @@ public class ResultatMiniJeu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultat_mini_jeu);
-
+        getSupportActionBar().hide();
         mDb = DatabaseClient.getInstance(getApplicationContext());
 
         nbjuste_i = getIntent().getIntExtra(nbjuste,0);
@@ -79,13 +80,13 @@ public class ResultatMiniJeu extends AppCompatActivity {
         int indice = (int) (Math.random() * ((listEvents.size()-1) - 0));
         ResultatJeu recompense = listEvents.get(indice);
 
-        /*((MyApplication)this.getApplication()).getEntreprise_joueur().setArgentEntreprise(((MyApplication)this.getApplication()).getEntreprise_joueur().getArgentEntreprise()+recompense.getArgent());
+        ((MyApplication)this.getApplication()).getEntreprise_joueur().setArgentEntreprise(((MyApplication)this.getApplication()).getEntreprise_joueur().getArgentEntreprise()+recompense.getArgent());
         ((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().setNbUtilisateurs(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNbUtilisateurs()+recompense.getNbUtilisateurs());
         ((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauErgonomie(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauErgonomie()+recompense.getErgonomie());
         ((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauPuissance(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauPuissance()+recompense.getPuissance());
         ((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauRentabilite(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauRentabilite()+recompense.getRentabilite());
         ((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauSecurite(((MyApplication)this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauSecurite()+recompense.getSecurite());
-*/
+
         argent.setText("+ "+recompense.getArgent()+"€");
         nbusers.setText("+ "+recompense.getNbUtilisateurs()+" utilisateurs");
         puissance.setText("+ "+recompense.getPuissance()+" puissance du logiciel");
@@ -93,6 +94,15 @@ public class ResultatMiniJeu extends AppCompatActivity {
         securite.setText("+ "+recompense.getSecurite()+" sécurité du logiciel");
         rentabilite.setText("+ "+recompense.getRentabilite()+" rentabilite du logiciel");
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            // Fais ton traitement
+        }
+        return true;
     }
 
     private void getResJeu() {
