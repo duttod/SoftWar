@@ -190,7 +190,7 @@
                 android:background="@drawable/bgbutton"
                 android:fontFamily="@font/nasalization"
                 android:text="FIN TOUR"
-                android:onClick="RandomEvenementDebutTour"
+                android:onClick="FinTour"
                 android:textColor="#FF22CD" />
 
 

@@ -16,6 +16,7 @@ public class MyApplication extends Application {
     private Entreprise entreprise_attaquer;
     private int compteur_action =2;
     private ArrayList<Entreprise> concurrents;
+    private int numero_tour;
 
     public static MyApplication getInstance() {
         return instance;
@@ -29,6 +30,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         instance = this;
         super.onCreate();
+        numero_tour = 1;
     }
 
 
@@ -48,6 +50,13 @@ public class MyApplication extends Application {
         this.concurrents = concurrents;
     }
 
+    public void addTour() {
+        this.numero_tour++;
+    }
+
+    public int getTour() {
+        return this.numero_tour;
+    }
     public Entreprise getEntreprise_attaquer() {
         return entreprise_attaquer;
     }
