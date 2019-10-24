@@ -62,7 +62,7 @@ public class AmeliorationsActivity extends AppCompatActivity {
 
         log = entreprise_joueur.getLogiciel();
         LoadData();
-    } 
+    }
     public void LoadData(){
         barErgo.setProgress(log.getNiveauErgonomie());
         barOpti.setProgress(log.getNiveauRentabilite());
