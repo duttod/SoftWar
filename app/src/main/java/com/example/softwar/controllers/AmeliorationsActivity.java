@@ -69,10 +69,10 @@ public class AmeliorationsActivity extends AppCompatActivity {
         barSecu.setProgress(log.getNiveauSecurite());
         barPuissance.setProgress(log.getNiveauPuissance());
 
-        coutErgo = log.getNiveauErgonomie()*888;
-        coutOpti = log.getNiveauRentabilite()*888;
-        coutSecu = log.getNiveauSecurite()*888;
-        coutPuissance = log.getNiveauPuissance()*888;
+        coutErgo = log.getNiveauErgonomie()*888+1233;
+        coutOpti = log.getNiveauRentabilite()*888+2412;
+        coutSecu = log.getNiveauSecurite()*888+1521;
+        coutPuissance = log.getNiveauPuissance()*888+2104;
 
         argentpossede=entreprise_joueur.getArgentEntreprise();
         monargent.setText(Long.toString(argentpossede));
