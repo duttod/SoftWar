@@ -24,4 +24,10 @@ public class ChooseRenforcerAttaquerActivity extends AppCompatActivity {
         intent.putExtra(ACTION_KEY,"renforcer");
         startActivity(intent);
     }
+
+    public void MiniJeuAttaquer(View view) {
+        Intent intent = new Intent(this,ChooseEntrepriseToAttack.class);
+        intent.putExtra(ACTION_KEY,"attaquer");
+        startActivity(intent);
+    }
 }

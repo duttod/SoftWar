@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class MyApplication extends Application {
     private static MyApplication instance;
     private EntreprisePerso entreprise_joueur ;
+    private Entreprise entreprise_attaquer;
     private ArrayList<Entreprise> concurrents;
 
     public static MyApplication getInstance() {
@@ -44,5 +45,13 @@ public class MyApplication extends Application {
 
     public void setConcurrents(ArrayList<Entreprise> concurrents) {
         this.concurrents = concurrents;
+    }
+
+    public Entreprise getEntreprise_attaquer() {
+        return entreprise_attaquer;
+    }
+
+    public void setEntreprise_attaquer(Entreprise entreprise_attaquer) {
+        this.entreprise_attaquer = entreprise_attaquer;
     }
 }
