@@ -65,8 +65,9 @@ public class TirageAuSortActivity extends AppCompatActivity {
     }
 
     public void onepull(View view)  {
-
-        animatetirage();
+        if(entreprise_joueur.getNbContrats()>=1){
+            animatetirage();
+        }
 
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

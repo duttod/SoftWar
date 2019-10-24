@@ -25,8 +25,6 @@ public class EntreprisePerso extends Entreprise {
 		setNbMiniJeux(0);
 		setLogiciel(nomLogiciel);
 
-		System.out.println("PASSE CHEZ TA MERE");
-
 		for(int i = 0; i < 3; i++) {
 			setEmployeActif(i,-1);
 		}
@@ -36,8 +34,6 @@ public class EntreprisePerso extends Entreprise {
 	}
 
 	public void setEntreprisePersoCharge(DatabaseClient mdb) {
-
-		System.out.println("PASSE CHEZ TON PERE");
 
 		this.mdb = mdb;
 
