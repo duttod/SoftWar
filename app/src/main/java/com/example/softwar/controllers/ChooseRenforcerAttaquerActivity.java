@@ -25,7 +25,7 @@ public class ChooseRenforcerAttaquerActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         ((MyApplication)this.getApplication()).FadeOut((float) 3.0);
         ((MyApplication)this.getApplication()).mediaPlayer.pause();
-        ((MyApplication)this.getApplication()).mediaPlayer = MediaPlayer.create(this, R.raw.gametheme);
+        ((MyApplication)this.getApplication()).mediaPlayer = MediaPlayer.create(this, R.raw.gametheme2_0);
         ((MyApplication)this.getApplication()).FadeIn((float) 3.0);
         ((MyApplication)this.getApplication()).mediaPlayer.setLooping(true);
         ((MyApplication)this.getApplication()).mediaPlayer.start();

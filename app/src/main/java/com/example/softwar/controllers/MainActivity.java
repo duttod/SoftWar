@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
                 setMyAppConcu();
                 LoadDataEntreprise();
+                saveContext();
 
             }
         }
@@ -187,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume()
     {
         super.onResume();
-        LoadDataEntreprise();
+        LoadConcurrents();
     }
 
     //PARTIE A PASSER EN ASYNCHRONE SI POSSIBLE

@@ -365,7 +365,7 @@ public class MiniJeu extends AppCompatActivity {
                 chrono = findViewById(R.id.chrono);
                 // TODO patch le temps
 
-                double timeMiniJeu = 15000 + ((entreprise_joueur.getStatEmployeActif().get(1)*0.1)*1000);
+                double timeMiniJeu = 15000 + ((entreprise_joueur.getStatEmployeActif().get(1)*0.2)*1000);
 
 
 

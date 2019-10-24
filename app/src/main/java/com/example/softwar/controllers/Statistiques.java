@@ -49,74 +49,23 @@ public class Statistiques extends AppCompatActivity {
         tnbjg = findViewById(R.id.nbMinijeuxG);
         tvict = findViewById(R.id.pourcentvictoire);
         setStatistiquesE();
-        afficheEmployeActif();/*
-        afficheEmployeActif1();
-        afficheEmployeActif2();
-        afficheEmployeActif3();*/
     }
-
-
-
-    public void afficheEmployeActif(){
-        for (int i = 0; i<3; i++){
-            if (entreprise_joueur.getEmployeActif().get(i) != -1){
-
-                Employe emp = mdb.getAppDatabase().employeDao().getAnEmploye(entreprise_joueur.getEmployeActif().get(i));
-
-                LinearLayout mavue = new LinearLayout(this);
-                mavue.setOrientation(LinearLayout.HORIZONTAL);
-
-                TextView nomE = new TextView(this);
-                nomE.setText("Nom:"+emp.getNomEmploye()+" ");
-                nomE.setTextColor(Color.RED);
-                nomE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-                TextView pE = new TextView(this);
-                pE.setText("Prénom:"+emp.getPrenomEmploye()+" ");
-                pE.setTextColor(Color.RED);
-                pE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-                TextView prodE = new TextView(this);
-                prodE.setText("Productivité:"+Integer.toString(emp.getProductivite())+" ");
-                prodE.setTextColor(Color.RED);
-                prodE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-                TextView rapE = new TextView(this);
-                rapE.setText("Rapidité:"+Integer.toString(emp.getRapidite())+" ");
-                rapE.setTextColor(Color.RED);
-                rapE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
-
-                mavue.addView(nomE);
-                mavue.addView(pE);
-                mavue.addView(prodE);
-                mavue.addView(rapE);
-                eactif.addView(mavue);
-
-
-            }
-
-        }
-        // Affichage des stats global des employés
-
-
-    }
-
 
     public void setStatistiquesE() {
-        tnomE.setText("Nom:"+entreprise_joueur.getNomEntreprise());
-        targent.setText("Capital:"+Long.toString(entreprise_joueur.getArgentEntreprise()));
-        tnbu.setText("Utilisateurs:"+Integer.toString(entreprise_joueur.getNbusers()));
-        tnbe.setText("Employes:"+Integer.toString(entreprise_joueur.getEmployes().size()));
+        tnomE.setText("Nom : "+entreprise_joueur.getNomEntreprise());
+        targent.setText("Capital : "+Long.toString(entreprise_joueur.getArgentEntreprise()));
+        tnbu.setText("Utilisateurs : "+Integer.toString(entreprise_joueur.getLogiciel().getNbUtilisateurs()));
+        tnbe.setText("Employes : "+Integer.toString(entreprise_joueur.getEmployes().size()));
 
-        tnbj.setText("Mini-Jeux effectués:"+Integer.toString(entreprise_joueur.getNbMiniJeux()));
-        tnbjg.setText("Mini-Jeux gagnés:"+Integer.toString(entreprise_joueur.getNbMiniJeuxGagner()));
+        tnbj.setText("Mini-Jeux effectués : "+Integer.toString(entreprise_joueur.getNbMiniJeux()));
+        tnbjg.setText("Mini-Jeux gagnés : "+Integer.toString(entreprise_joueur.getNbMiniJeuxGagner()));
         int nbjeux= entreprise_joueur.getNbMiniJeux();
         int gagnejeux=entreprise_joueur.getNbMiniJeuxGagner();
         if(gagnejeux!=0){
-            double res = nbjeux/(double)gagnejeux;
-            tvict.setText("Pourcentage de victoire:"+Double.toString(res*100));
+            double res = (double)gagnejeux/nbjeux;
+            tvict.setText("Pourcentage de victoire : "+(double) Math.round(res*100));
         }else{
-            tvict.setText("Pourcentage de victoire:0");
+            tvict.setText("Pourcentage de victoire : 0");
         }
 
 
@@ -130,7 +79,7 @@ public class Statistiques extends AppCompatActivity {
         for (int i = 0; i < liste_entreprises.size(); i++) {
             users_total += liste_entreprises.get(i).getLogiciel().getNbUtilisateurs();
         }
-        tpartm.setText("Parts de marché : "+((entreprise_joueur.getNbusers()/users_total)*100)+"%");
+        tpartm.setText("Parts de marché : "+Double.toString((double)(entreprise_joueur.getLogiciel().getNbUtilisateurs()/(double)users_total)*100)+"%");
 
         TextView prod = findViewById(R.id.prodtot);
         prod.setText(entreprise_joueur.getStatEmployeActif().get(0).toString());

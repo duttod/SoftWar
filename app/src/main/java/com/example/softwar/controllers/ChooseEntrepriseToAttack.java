@@ -55,7 +55,6 @@ public class ChooseEntrepriseToAttack extends AppCompatActivity {
             liste_entreprises.add(((MyApplication)this.getApplication()).getConcurrents().get(i));
         }
 
-        liste_entreprises.add(((MyApplication)this.getApplication()).getEntreprise_joueur());
         Collections.sort(liste_entreprises);
 
         for (int i = 0; i < liste_entreprises.size(); i++) {
@@ -68,7 +67,7 @@ public class ChooseEntrepriseToAttack extends AppCompatActivity {
 
     public void setClassement() {
 
-        for (int i = 1; i < liste_entreprises.size(); i++) {
+        for (int i = 0; i < liste_entreprises.size(); i++) {
 
             TextView tx = new TextView(this);
 
@@ -86,13 +85,13 @@ public class ChooseEntrepriseToAttack extends AppCompatActivity {
                     nom_logiciel.setText("Nom du logiciel : "+nomlogiciel);
                     argent_entreprise.setText("Capital : "+argentreprise);
                     nb_users_entreprise.setText("Nombre d'utilisateurs du logiciel : "+nbusers);
-                    partdemarche_entreprise.setText("Parts de marché : "+Double.toString((double)(nbusers/(double)users_total)*100)+"%");
+                    partdemarche_entreprise.setText("Parts de marché : "+Double.toString((double)(double) Math.round((nbusers/(double)users_total)*100))+"%");
                     attack.setEnabled(true);
 
                 }
             });
 
-            tx.setText(i+". "+nomets);
+            tx.setText((i+1)+". "+nomets);
             tx.setTextSize(16);
             tx.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
             tx.setTextColor(Color.parseColor("#FFB900"));

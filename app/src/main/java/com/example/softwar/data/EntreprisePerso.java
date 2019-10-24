@@ -36,9 +36,7 @@ public class EntreprisePerso extends Entreprise {
 	public void setEntreprisePersoCharge(DatabaseClient mdb) {
 
 		this.mdb = mdb;
-
-		recupNbMiniJeux();
-		recupNbMiniJeuxGagner();
+		
 		setEmployes();
 		setLogiciel();
 	}
