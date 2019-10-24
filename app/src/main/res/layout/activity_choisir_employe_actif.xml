@@ -12,51 +12,44 @@
     <LinearLayout
         android:id="@+id/employeActif"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/employe1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:layout_weight="1"
-            android:background="@drawable/bgbutton">
+            android:background="@drawable/bgbutton"
+            android:orientation="horizontal">
+
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/employe2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:layout_weight="1"
             android:background="@drawable/bgbutton"
-            android:layout_weight="1">
+            android:orientation="horizontal"/>
 
-
-
-
-        </LinearLayout>
         <LinearLayout
             android:id="@+id/employe3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:layout_weight="1"
             android:background="@drawable/bgbutton"
-            android:layout_weight="1">
-
-
-
-        </LinearLayout>
+            android:orientation="horizontal"/>
     </LinearLayout>
 
     <ListView
         android:id="@+id/listEmploye"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_weight="1"
 
-        android:layout_weight="1">
-    </ListView>
+        android:orientation="vertical"></ListView>
 
 </LinearLayout>
