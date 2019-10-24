@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -89,9 +90,25 @@ public class TirageAuSortActivity extends AppCompatActivity {
                     TextView nomE = (TextView)dialog.findViewById(R.id.nom_employe);
                     TextView pnomE = (TextView)dialog.findViewById(R.id.prenom_employe);
                     TextView rarE = (TextView)dialog.findViewById(R.id.rarete_employe);
+                    TextView ageE = dialog.findViewById(R.id.age_employe);
+                    TextView rapE = dialog.findViewById(R.id.rapidite_employe);
+                    TextView prodE = dialog.findViewById(R.id.productivite_employe);
+                    ImageView imageE = dialog.findViewById(R.id.image_employe);
                     nomE.setText(t.getEmployeTire().get(0).getNomEmploye());
                     pnomE.setText(t.getEmployeTire().get(0).getPrenomEmploye());
                     rarE.setText(Integer.toString(t.getEmployeTire().get(0).getRarete()));
+                    ageE.setText(Integer.toString(t.getEmployeTire().get(0).getAgeEmploye()));
+                    rapE.setText(Integer.toString(t.getEmployeTire().get(0).getRapidite()));
+                    prodE.setText(Integer.toString(t.getEmployeTire().get(0).getProductivite()));
+                    if(t.getEmployeTire().get(0).getPrenomEmploye().equals("Fabieng")){
+                        imageE.setImageResource(R.drawable.base3);
+                    }else if(t.getEmployeTire().get(0).getPrenomEmploye().equals("Célestine")){
+                        imageE.setImageResource(R.drawable.base2);
+                    }else if(t.getEmployeTire().get(0).getPrenomEmploye().equals("Vaness")){
+                        imageE.setImageResource(R.drawable.base1);
+                    }else if(t.getEmployeTire().get(0).getPrenomEmploye().equals("Corenting")){
+                        imageE.setImageResource(R.drawable.base4);
+                    }
                     dialog.show();
                     LinearLayout layoutpop = findViewById(R.id.layout_tirage);
                     dialog.getWindow().setLayout(layoutpop.getWidth()+130, (layoutpop.getHeight()/2)+40);

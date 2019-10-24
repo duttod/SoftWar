@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -182,6 +183,20 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
     public void setEmployeActif(int i, Employe emp){
         // TODO  : Prendre en compte l'insertion et la suppression dans la bdd
         final int j = i;
+
+        //creation image
+    /*
+        ImageView image = new ImageView(this);
+        if(emp.getPrenomEmploye().equals("Fabieng")){
+            image.setImageResource(R.drawable.base3);
+        }else if(emp.getPrenomEmploye().equals("Célestine")){
+            image.setImageResource(R.drawable.base2);
+        }else if(emp.getPrenomEmploye().equals("Vaness")){
+            image.setImageResource(R.drawable.base1);
+        }else if(emp.getPrenomEmploye().equals("Corenting")){
+            image.setImageResource(R.drawable.base4);
+        }
+        empActif.get(i).addView(image);*/
         // Création du TextView
         text = new TextView(ChoisirEmployeActifActivity.this);
         text.setText(emp.getNomEmploye());

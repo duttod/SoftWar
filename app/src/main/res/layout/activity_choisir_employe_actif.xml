@@ -10,49 +10,83 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/employeActif"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="3"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:fontFamily="@font/nasalization"
+            android:gravity="center"
+            android:text="Employés Actifs"
+            android:textColor="#FFB900"
+            android:textSize="30dp" />
 
         <LinearLayout
-            android:id="@+id/employe1"
+            android:id="@+id/employeActif"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/bgbutton"
-            android:gravity="center"
             android:orientation="horizontal">
 
+            <LinearLayout
+                android:id="@+id/employe1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bgbutton"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="20dp"/>
 
+            <LinearLayout
+                android:id="@+id/employe2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bgbutton"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="20dp"/>
+
+            <LinearLayout
+                android:id="@+id/employe3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bgbutton"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="20dp"/>
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/employe2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bgbutton"
-            android:gravity="center"
-            android:orientation="horizontal" />
-
-        <LinearLayout
-            android:id="@+id/employe3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/bgbutton"
-            android:gravity="center"
-            android:orientation="horizontal" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/listEmploye"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="3"
+        android:orientation="vertical">
 
-        android:orientation="vertical"></ListView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:fontFamily="@font/nasalization"
+            android:text="Employés disponibles :"
+            android:textColor="#FFB900"
+            android:textSize="20dp" />
+
+        <ListView
+            android:id="@+id/listEmploye"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+
+            android:orientation="vertical"></ListView>
+    </LinearLayout>
 
 </LinearLayout>

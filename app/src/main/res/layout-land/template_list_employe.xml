@@ -205,7 +205,7 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
                 android:fontFamily="@font/nasalization"
-                android:text="Quantité x "
+                android:text="x"
                 android:textColor="#FFB900"
                 android:textSize="20dp" />
 
