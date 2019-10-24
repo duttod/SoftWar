@@ -225,26 +225,34 @@ public class MainActivity extends AppCompatActivity {
                     txt.setText(txt.getText().toString() + "+" + aleachoisi.getNbUtilisateurs() + " utilisateurs | ");
                 }
                 if (aleachoisi.getSecurite() != 0) {
-                    if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauSecurite() < 20) {
+                    if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauSecurite()+aleachoisi.getSecurite() < 100) {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauSecurite(((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauSecurite() + aleachoisi.getSecurite());
+                    } else {
+                        ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauSecurite(100);
                     }
                     txt.setText(txt.getText().toString() + "+" + aleachoisi.getSecurite() + " sécurité | ");
                 }
                 if (aleachoisi.getErgonomie() != 0) {
-                    if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauErgonomie() < 20) {
+                    if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauErgonomie()+aleachoisi.getErgonomie() < 100) {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauErgonomie(((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauErgonomie() + aleachoisi.getErgonomie());
+                    } else {
+                        ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauErgonomie(100);
                     }
                     txt.setText(txt.getText().toString() + "+" + aleachoisi.getErgonomie() + " ergonomie | ");
                 }
                 if (aleachoisi.getPuissance() != 0) {
-                    if ( ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauPuissance() < 20) {
+                    if ( ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauPuissance()+aleachoisi.getPuissance() < 100) {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauPuissance(((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauPuissance() + aleachoisi.getPuissance());
+                    } else {
+                        ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauPuissance(100);
                     }
                     txt.setText(txt.getText().toString() + "+" + aleachoisi.getPuissance() + " puissance | ");
                 }
                 if (aleachoisi.getRentabilite() != 0 ) {
-                    if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauRentabilite() < 20) {
+                    if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauRentabilite()+aleachoisi.getRentabilite() < 100) {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauRentabilite(((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauRentabilite() + aleachoisi.getRentabilite());
+                    } else {
+                        ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauRentabilite(100);
                     }
                     txt.setText(txt.getText().toString() + "+" + aleachoisi.getRentabilite() + " rentabilité | ");
                 }
@@ -254,36 +262,48 @@ public class MainActivity extends AppCompatActivity {
                 if (aleachoisi.getArgent() != 0) {
                     if (((MyApplication) this.getApplication()).getEntreprise_joueur().getArgentEntreprise() >= aleachoisi.getArgent()) {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().setArgentEntreprise(((MyApplication) this.getApplication()).getEntreprise_joueur().getArgentEntreprise() - aleachoisi.getArgent());
+                    } else {
+                        ((MyApplication) this.getApplication()).getEntreprise_joueur().setArgentEntreprise(0);
                     }
                     txt.setText(txt.getText().toString() + "-" + aleachoisi.getArgent() + "€ | ");
                 }
                 if (aleachoisi.getNbUtilisateurs() != 0) {
                     if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNbUtilisateurs() >= aleachoisi.getNbUtilisateurs()) {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNbUtilisateurs(((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNbUtilisateurs() - aleachoisi.getNbUtilisateurs());
+                    } else {
+                        ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNbUtilisateurs(0);
                     }
                     txt.setText(txt.getText().toString() + "-" + aleachoisi.getNbUtilisateurs() + " utilisateurs | ");
                 }
                 if (aleachoisi.getSecurite() != 0) {
                     if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauSecurite() >= aleachoisi.getSecurite()) {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauSecurite(((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauSecurite() - aleachoisi.getSecurite());
+                    } else {
+                        ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauSecurite(0);
                     }
                     txt.setText(txt.getText().toString() + "-" + aleachoisi.getSecurite() + " sécurité | ");
                 }
                 if (aleachoisi.getErgonomie() != 0) {
                     if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauErgonomie() >= aleachoisi.getErgonomie()) {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauErgonomie(((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauErgonomie() - aleachoisi.getErgonomie());
+                    }else {
+                        ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauErgonomie(0);
                     }
                     txt.setText(txt.getText().toString() + "-" + aleachoisi.getErgonomie() + " ergonomie | ");
                 }
                 if (aleachoisi.getPuissance() != 0) {
                     if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauPuissance() >= aleachoisi.getPuissance()) {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauPuissance(((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauPuissance() - aleachoisi.getPuissance());
+                    }else {
+                        ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauPuissance(0);
                     }
                     txt.setText(txt.getText().toString() + "-" + aleachoisi.getPuissance() + " puissance | ");
                 }
                 if (aleachoisi.getRentabilite() != 0) {
                     if (((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauRentabilite() >= aleachoisi.getRentabilite()) {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauRentabilite(((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauRentabilite() - aleachoisi.getRentabilite());
+                    }else {
+                        ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauRentabilite(0);
                     }
                     txt.setText(txt.getText().toString() + "-" + aleachoisi.getRentabilite() + " rentabilité | ");
 
