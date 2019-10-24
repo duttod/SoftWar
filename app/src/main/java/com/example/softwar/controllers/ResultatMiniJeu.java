@@ -77,6 +77,7 @@ public class ResultatMiniJeu extends AppCompatActivity {
     }
 
     public void giveRecompense() {
+
         int indice = (int) (Math.random() * ((listEvents.size()-1) - 0));
         ResultatJeu recompense = listEvents.get(indice);
 
