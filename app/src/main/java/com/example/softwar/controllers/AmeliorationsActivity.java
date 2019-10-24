@@ -1,6 +1,7 @@
 package com.example.softwar.controllers;
 
 import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,7 @@ public class AmeliorationsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         dialog = new Dialog(AmeliorationsActivity.this);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.setContentView(R.layout.popup_amelioration);
 
         setContentView(R.layout.activity_ameliorations);

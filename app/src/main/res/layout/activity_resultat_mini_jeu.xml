@@ -12,20 +12,22 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:layout_weight="2"
         android:fontFamily="@font/nasalization"
         android:gravity="center"
         android:text="Resultats"
         android:textColor="#FFB900"
-        android:layout_margin="10dp"
         android:textSize="30sp"
         android:textStyle="bold|italic" />
 
     <TextView
         android:id="@+id/resultats_mini_jeu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
         android:fontFamily="@font/nasalization"
         android:gravity="center"
         android:text="TextView"
@@ -34,9 +36,10 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-    android:layout_margin="10dp"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
         android:background="@drawable/bgbutton"
         android:orientation="vertical">
 
@@ -140,5 +143,17 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="2"
+        android:fontFamily="@font/nasalization"
+        android:text="Revenir au menu"
+        android:textColor="#FFB900"
+        android:onClick="go_menu"
+        android:background="@drawable/bgbutton"/>
 
 </LinearLayout>

@@ -12,7 +12,8 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".controllers.ResultatMiniJeu"></activity>
+        <activity android:name=".controllers.ResultatMiniJeu"
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".controllers.ConcurrentsActivity"
             android:screenOrientation="landscape" />
