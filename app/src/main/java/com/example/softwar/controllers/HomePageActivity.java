@@ -49,11 +49,7 @@ public class HomePageActivity extends AppCompatActivity {
 
 
         if (requestCode == CREDIT_REQU || requestCode == CHARGER_PARTIE_REQ || requestCode == NOUVELLE_PARTIE_REQ) {
-            if (resultCode == RESULT_OK) {
-                Toast.makeText(this,"Retour OK", Toast.LENGTH_SHORT).show();
-            } else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(this,"Problème retour", Toast.LENGTH_SHORT).show();
-            }
+                Toast.makeText(this,"Retour", Toast.LENGTH_SHORT).show();
         }
     }
 /*

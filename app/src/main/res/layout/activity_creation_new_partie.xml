@@ -25,7 +25,7 @@
     <LinearLayout
         android:id="@+id/linear_1"
         android:layout_width="match_parent"
-        android:layout_height="298dp"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
         android:orientation="vertical">
@@ -40,26 +40,26 @@
 
             <TextView
                 android:id="@+id/text_nom_entreprise"
-                android:layout_width="275dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginRight="15dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
+                android:fontFamily="@font/nasalization"
                 android:gravity="right"
                 android:text="Nom de l'entreprise"
                 android:textColor="#FFB900"
-                android:fontFamily="@font/nasalization"
                 android:textSize="24sp"
                 android:textStyle="bold|italic" />
 
             <EditText
                 android:id="@+id/edit_nom_entreprise"
-                android:layout_width="491dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
-                android:gravity="center_horizontal"
-                android:textColor="#FFB900"
+                android:layout_weight="1"
                 android:fontFamily="@font/nasalization"
-                />
+                android:gravity="center_horizontal"
+                android:textColor="#FFB900" />
 
         </LinearLayout>
 
@@ -73,39 +73,43 @@
 
             <TextView
                 android:id="@+id/text_nom_logiciel"
-                android:layout_width="275dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginRight="15dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
+                android:fontFamily="@font/nasalization"
                 android:gravity="right"
                 android:text="Nom du logiciel"
                 android:textColor="#FFB900"
-                android:fontFamily="@font/nasalization"
                 android:textSize="24sp"
                 android:textStyle="bold|italic" />
 
             <EditText
                 android:id="@+id/edit_nom_logiciel"
-                android:layout_width="491dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/nasalization"
                 android:gravity="center_horizontal"
-                android:textColor="#FFB900"
-                android:fontFamily="@font/nasalization"/>
+                android:textColor="#FFB900" />
 
         </LinearLayout>
 
-        <ImageButton
+        <Button
             android:id="@+id/valider_CreationNewPartie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bgbutton"
+            android:fontFamily="@font/nasalization"
             android:gravity="center"
-            android:layout_marginTop="20dp"
             android:onClick="demarrerPartie"
-            android:padding="0dp"
-            android:src="@drawable/demarrerpartie"
-            android:text="Démarrer la partie" />
+            android:padding="15dp"
+            android:text="Démarrer la partie"
+            android:textColor="#FFB900"
+            android:textSize="30dp" />
 
     </LinearLayout>
 

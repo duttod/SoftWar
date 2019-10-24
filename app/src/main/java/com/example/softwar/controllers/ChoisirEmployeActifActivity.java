@@ -46,7 +46,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choisir_employe_actif);
-
+        getSupportActionBar().hide();
         // Récupération du DatabaseClient
         mDb = DatabaseClient.getInstance(getApplicationContext());
         entreprise_joueur=((MyApplication)this.getApplication()).getEntreprise_joueur();
@@ -112,6 +112,9 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
 
                                 // Mise à jour bdd
                                 // TODO enlever les employeActif
+                                // -1 id quand il n'y a pas d'employé
+                                entreprise_joueur.setEmployeActif(j,-1);
+                                mDb.getAppDatabase().entreprisepersodao().update(entreprise_joueur);
 
                             }
                         });
