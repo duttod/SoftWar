@@ -44,12 +44,13 @@ public class Statistiques extends AppCompatActivity {
         tnbe= findViewById(R.id.snombre_employes);
         tpartm =  findViewById(R.id.spart_marche);
         setStatistiquesE();
+        afficheEmployeActif();/*
         afficheEmployeActif1();
         afficheEmployeActif2();
-        afficheEmployeActif3();
+        afficheEmployeActif3();*/
     }
 
-    public void afficheEmployeActif1() {
+/*    public void afficheEmployeActif1() {
             int id1 = entreprise_joueur.getIdEmployeActif1();
             if(entreprise_joueur.getEmployeById(id1)!=null) {
                 Employe e = entreprise_joueur.getEmployeById(id1);
@@ -153,6 +154,52 @@ public class Statistiques extends AppCompatActivity {
             eactif.addView(mavue);
 
         }
+    }*/
+
+    public void afficheEmployeActif(){
+        for (int i = 0; i<3; i++){
+            if (entreprise_joueur.getEmployeActif().get(i) != -1){
+
+                Employe emp = mdb.getAppDatabase().employeDao().getAnEmploye(entreprise_joueur.getEmployeActif().get(i));
+
+                LinearLayout mavue = new LinearLayout(this);
+                mavue.setOrientation(LinearLayout.HORIZONTAL);
+
+                TextView nomE = new TextView(this);
+                nomE.setText("Nom:"+emp.getNomEmploye()+" ");
+                nomE.setTextColor(Color.RED);
+                nomE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
+
+                TextView pE = new TextView(this);
+                pE.setText("Prénom:"+emp.getPrenomEmploye()+" ");
+                pE.setTextColor(Color.RED);
+                pE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
+
+                TextView prodE = new TextView(this);
+                prodE.setText("Productivité:"+Integer.toString(emp.getProductivite())+" ");
+                prodE.setTextColor(Color.RED);
+                prodE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
+
+                TextView rapE = new TextView(this);
+                rapE.setText("Rapidité:"+Integer.toString(emp.getRapidite())+" ");
+                rapE.setTextColor(Color.RED);
+                rapE.setTextSize(TypedValue.COMPLEX_UNIT_DIP,15);
+
+                mavue.addView(nomE);
+                mavue.addView(pE);
+                mavue.addView(prodE);
+                mavue.addView(rapE);
+                eactif.addView(mavue);
+
+
+            }
+
+        }
+        // Affichage des stats global des employés
+        TextView textStatGlobal = (TextView)findViewById(R.id.textStatGlobal);
+        textStatGlobal.setText("Prod : " + entreprise_joueur.getStatEmployeActif().get(0) + " Rap : " + entreprise_joueur.getStatEmployeActif().get(1));
+
+
     }
 
 

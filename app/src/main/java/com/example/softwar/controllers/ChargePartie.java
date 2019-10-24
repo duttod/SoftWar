@@ -45,7 +45,7 @@ public class ChargePartie extends AppCompatActivity {
         mdb = DatabaseClient.getInstance(getApplicationContext());
         linear_bouttons_parties = findViewById(R.id.linear_bouttons_partie);
 
-        if (mdb.getAppDatabase().entreprisepersodao() != null && (mdb.getAppDatabase().entreprisepersodao().getAll().size() != 0)) {
+        if (mdb.getAppDatabase().entreprisepersodao().getAll() != null && (mdb.getAppDatabase().entreprisepersodao().getAll().size() != 0)) {
             getPartie();
         }
     }

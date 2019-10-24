@@ -235,11 +235,11 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
                         .employeDao() // ne pas récupếrer dans la bdd mais dans entreprise ! à faire lorsque l'on a les var global !!!!!!
                         .getAll();*/
                 ArrayList<Employe> employeList = new ArrayList<>();
-                /*for (int i =0; i<entreprise_joueur.getEmployes().size();i++){
-                   employeList.add(entreprise_joueur.getEmployes().get(i).getEmploye(mDb));
-                }*/
-                 Employe e = new Employe("Thierry","Henry",4,1,1,1);
-                 employeList.add(e);
+                for (int i =0; i<entreprise_joueur.getEmployes().size();i++){
+                   employeList.add(mDb.getAppDatabase().employeDao().getAnEmploye(entreprise_joueur.getEmployes().get(i).getIdEmploye()));
+                }
+//                 Employe e = new Employe("Thierry","Henry",4,1,1,1);
+//                 employeList.add(e);
 
 
                 return employeList;
