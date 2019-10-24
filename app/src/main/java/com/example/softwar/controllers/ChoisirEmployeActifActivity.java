@@ -2,10 +2,12 @@ package com.example.softwar.controllers;
 
 import android.content.ClipData;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
@@ -254,8 +256,15 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
         // Création du TextView
         text = new TextView(ChoisirEmployeActifActivity.this);
         text.setText(emp.getNomEmploye());
+        text.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
+        text.setTextColor(Color.parseColor("#FFB900"));
+        text.setTextSize(25);
         empActif.get(i).addView(text);
         text = new TextView(ChoisirEmployeActifActivity.this);
+        text.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
+        text.setTextColor(Color.parseColor("#FFB900"));
+
+        text.setTextSize(25);
         text.setText(emp.getPrenomEmploye());
         empActif.get(i).addView(text);
         text = new TextView(ChoisirEmployeActifActivity.this);
