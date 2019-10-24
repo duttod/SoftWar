@@ -4,10 +4,14 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.example.softwar.MyApplication;
@@ -39,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         dialog = new Dialog(MainActivity.this);
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.MATCH_PARENT;
+        dialog.getWindow().setAttributes(lp);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.setContentView(R.layout.popup_aleadebuttour);
 
         argent = (TextView) findViewById(R.id.argent);
@@ -177,6 +187,8 @@ public class MainActivity extends AppCompatActivity {
         int chanceevenement = (int) (Math.random() * (100 - 0));
         TextView txt = dialog.findViewById(R.id.description_alea);
         txt.setText("");
+        txt.setTextColor(Color.parseColor("#FFB900"));
+        txt.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
 
         if (chanceevenement <= 50) {
 
@@ -258,6 +270,7 @@ public class MainActivity extends AppCompatActivity {
                         ((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().setNiveauRentabilite(((MyApplication) this.getApplication()).getEntreprise_joueur().getLogiciel().getNiveauRentabilite() - aleachoisi.getRentabilite());
                     }
                     txt.setText(txt.getText().toString() + "-" + aleachoisi.getRentabilite() + " rentabilité | ");
+
                 }
             }
 
