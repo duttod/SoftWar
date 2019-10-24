@@ -54,20 +54,19 @@ public class DatabaseClient {
             db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,0,0,0,\"mauvais\");");
 
             db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(2500,1000,0,0,0,0,\"assezbon\");");
-            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,1,0,0,0,\"assezbon\");");
-            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,1,0,0,\"assezbon\");");
-            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,0,1,0,\"assezbon\");");
-            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,0,0,1,\"assezbon\");");
+            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,5,0,0,0,\"assezbon\");");
+            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,5,0,0,\"assezbon\");");
+            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,0,5,0,\"assezbon\");");
 
             db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(5000,2500,0,0,0,0,\"bon\");");
-            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,1,0,1,0,\"bon\");");
-            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,1,0,1,0,0,\"bon\");");
-            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,0,1,1,\"bon\");");
+            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,10,0,0,0,\"bon\");");
+            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,10,0,0,\"bon\");");
+            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,0,10,0,\"bon\");");
 
             db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(10000,5000,0,0,0,0,\"excellent\");");
-            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,2,0,1,0,\"excellent\");");
-            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,2,0,0,\"excellent\");");
-            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,0,2,1,\"excellent\");");
+            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,15,0,0,0,\"excellent\");");
+            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,15,0,0,\"excellent\");");
+            db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,0,15,0,\"excellent\");");
 
             db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(0,0,0,0,0,0,\"mauvais\");");
 
@@ -77,9 +76,14 @@ public class DatabaseClient {
 
             db.execSQL("INSERT INTO ResultatJeu (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,resultat) VALUES(10000,5000,0,0,0,0,\"attaquer-excellent\");");
 
-            db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,contexte,type) VALUES(0,1500,0,0,0,0,\"Votre campagne de promotion a attiré de riches investisseurs !\",\"bien\");");
-            db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,contexte,type) VALUES(0,0,0,0,0,0,\"Un de vos concurrents a DDOS vos serveurs durant la nuit !\",\"mauvais\");");
-            db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,contexte,type) VALUES(3000,0,0,0,0,0,\"Un de vos concurrents a fait une campagne massive d'e-mailing auprès de vos utilisateurs !\",\"bien\");");
+            db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,contexte,type) VALUES(0,2500,0,0,0,0,\"Votre campagne de promotion a attiré de riches investisseurs !\",\"bien\");");
+            db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,contexte,type) VALUES(0,0,10,0,0,0,\"Votre logiciel a été adopté par une grande compagnie pharmaceutique\",\"bien\");");
+            db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,contexte,type) VALUES(4000,0,0,0,0,0,\"Un de vos concurrents a fait une campagne massive d'e-mailing auprès de vos utilisateurs !\",\"bien\");");
+
+            db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,contexte,type) VALUES(0,5000,0,10,0,0,\"Un de vos employés a mis un 0 en trop sur une facture !\",\"mauvais\");");
+            db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,contexte,type) VALUES(0,0,0,10,0,0,\"Un de vos concurrents a DDOS vos serveurs durant la nuit !\",\"mauvais\");");
+            db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,contexte,type) VALUES(0,0,0,15,0,0,\"Un de vos concurrents a réalisé une injection SQL sur votre site !\",\"mauvais\");");
+            db.execSQL("INSERT INTO Alea (nbUtilisateurs,argent,rentabilite,securite,puissance,ergonomie,contexte,type) VALUES(0,0,0,0,0,10,\"Un hacker a redirigé la homepage de votre site sur le sien !\",\"mauvais\");");
 
             db.execSQL("INSERT INTO Employe(nom,prenom,age,productivite,rapidite,rarete) VALUES(\"Gérot\", \"Cédric\",44,17,19,3);");
             db.execSQL("INSERT INTO Employe(nom,prenom,age,productivite,rapidite,rarete) VALUES(\"Ceret\", \"Eric\",44,15,15,2);");

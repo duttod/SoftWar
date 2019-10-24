@@ -76,7 +76,7 @@ public class TirageAuSortActivity extends AppCompatActivity {
                 if(entreprise_joueur.getNbContrats()>=1){
                     t = new Tirage();
                     t.Tirages(1);
-                    nbc.setText("Nombre de contrats possédés:"+Integer.toString(entreprise_joueur.getNbContrats()));
+                    nbc.setText("Nombre de contrats possédés : "+Integer.toString(entreprise_joueur.getNbContrats()));
                     //Ajoute au model et a la BD
                     entreprise_joueur.addEmploye(t.getEmployeTire().get(0));
                     entreprise_joueur.setEmployes();
