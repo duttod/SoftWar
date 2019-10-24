@@ -100,6 +100,7 @@ public class EntreprisePerso extends Entreprise {
 	 */
 	public void setNbContrats(int nbContrats) {
 		this.nbContrats = nbContrats;
+		mdb.getAppDatabase().entreprisepersodao().update(this);
 	}
 
 	public void setLogiciel() {

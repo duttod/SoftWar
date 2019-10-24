@@ -37,7 +37,10 @@ public class MiniJeu extends AppCompatActivity {
     TextView titre;
     LinearLayout layout_text;
     LinearLayout layout_reponses;
-    Pattern pattern;
+
+    Pattern pattern1;
+    Pattern pattern2;
+
     TextView chrono;
     CountDownTimer countDownTimer;
     String action_demander;
@@ -59,8 +62,11 @@ public class MiniJeu extends AppCompatActivity {
         titre = findViewById(R.id.minijeu_titre);
         layout_text = findViewById(R.id.layout_text);
         layout_reponses = findViewById(R.id.layout_reponses);
-        pattern = new Pattern();
-        initPattern1_1();
+
+        pattern1 = new Pattern();
+        pattern2 = new Pattern();
+
+        initPattern1_2();
 
         nb_bonnerep = 0;
         nb_mauvaiserep = 0;
@@ -79,18 +85,18 @@ public class MiniJeu extends AppCompatActivity {
             }
         */
         LinearLayout l1 = initLigne();
-        initText("1-  int ", l1);
-        initReponse("i",l1);
+        initText("1- ", l1);
+        initReponse("int i",l1,pattern1);
         initText("=1;", l1);
         LinearLayout l2 = initLigne();
         initText("2-  ", l2);
-        initReponse("while", l2);
+        initReponse("while", l2,pattern1);
         initText("(i<=10){", l2);
         LinearLayout l3 = initLigne();
         initText("3-        System.out.println(i);", l3);
         LinearLayout l4 = initLigne();
         initText("4-        ", l4);
-        initReponse("i++", l4);
+        initReponse("i++", l4,pattern1);
         initText(";", l4);
         LinearLayout l5 = initLigne();
         initText("5-  }", l5);
@@ -98,6 +104,61 @@ public class MiniJeu extends AppCompatActivity {
         initText("  ",l6);
 
     }
+
+    public void initPattern1_2(){
+
+        LinearLayout l1 = initLigne();
+        initText("1- public abstract", l1);
+        initReponse("class",l1,pattern2);
+        initText("Voiture {;", l1);
+        LinearLayout l2 = initLigne();
+        initText("2-    ", l2);
+        initReponse("String", l2,pattern2);
+        initText(" libelle;", l2);
+        LinearLayout l3 = initLigne();
+        initText("3-    ", l3);
+        initReponse("int", l3,pattern2);
+        initText(" prix;", l3);
+        LinearLayout l4 = initLigne();
+        initText("4-   int ", l4);
+        initReponse("prix", l4,pattern2);
+        initText(";", l4);
+        LinearLayout l5 = initLigne();
+        initText("5- ", l5);
+        LinearLayout l6 = initLigne();
+        initText("6-   public String getLibelle() { ", l6);
+        initReponse("return", l6,pattern2);
+        initText(" libelle; }", l6);
+        LinearLayout l7 = initLigne();
+        initText("7-    public int getPrix() { return prix; } ", l7);
+        LinearLayout l8 = initLigne();
+        initText("8-    public int getPoids() { return ", l8);
+        initReponse("poids", l8,pattern2);
+        initText("; }", l8);
+        LinearLayout l9 = initLigne();
+        initText("9- ", l9);
+        LinearLayout l10 = initLigne();
+        initText("10-    protected", l10);
+        initReponse("void", l10,pattern2);
+        initText(" ; setLibelle(String libelle) { this.libelle = libelle; }", l10);
+        LinearLayout l11 = initLigne();
+        initText("11-    protected void setPrix(int prix) { this.prix = prix; }", l11);
+        LinearLayout l12 = initLigne();
+        initText("12-    protected void setPrix(int prix) { ", l12);
+        initReponse("this.", l12,pattern2);
+        initText("prix = prix }", l12);
+        LinearLayout l13 = initLigne();
+        initText("13- ", l13);
+        LinearLayout l14 = initLigne();
+        initText("14-    public String ", l14);
+        initReponse("toString() ", l14,pattern2);
+        initText("{ return \"Voiture : \" + getLibelle() + \", Prix : \" + getPrix() + \", Poids : \" + getPoids(); }\n }", l14);
+        LinearLayout l15 = initLigne();
+        initText("15-  }", l15);
+        LinearLayout l16 = initLigne();
+        initText(" ", l15);
+    }
+
     public void initText(String text, LinearLayout layout){
         TextView tv = new TextView(this);
         tv.setText(text);
@@ -106,7 +167,7 @@ public class MiniJeu extends AppCompatActivity {
         tv.setTypeface(ResourcesCompat.getFont(this, R.font.nasalization));
         layout.addView(tv);
     }
-    public void initReponse(String text, LinearLayout layout){
+    public void initReponse(String text, LinearLayout layout, Pattern pattern){
         TextView tv1 = new TextView(this);
 
         //LinearLayout l = new LinearLayout(this);
@@ -143,7 +204,7 @@ public class MiniJeu extends AppCompatActivity {
         Intent intent = new Intent(this, ResultatMiniJeu.class);
         intent.putExtra(ChooseRenforcerAttaquerActivity.ACTION_KEY,action_demander);
         intent.putExtra(ResultatMiniJeu.nbjuste, nb_bonnerep);
-        intent.putExtra(ResultatMiniJeu.nbpossible, pattern.getBonnesReponses().size());
+        intent.putExtra(ResultatMiniJeu.nbpossible, pattern2.getBonnesReponses().size());
         Toast.makeText(this, "blblbl", Toast.LENGTH_LONG).show();
         countDownTimer.cancel();
         startActivity(intent);
@@ -223,9 +284,9 @@ public class MiniJeu extends AppCompatActivity {
                         nb_bonnerep = 0;
                         nb_mauvaiserep = 0;
 
-                       for (int i = 0; i < pattern.getBonnesReponses().size(); i++) {
+                       for (int i = 0; i < pattern2.getBonnesReponses().size(); i++) {
                                TextView t = (TextView) findViewById(i);
-                               if(pattern.getBonnesReponses().get(i).equals(t.getText().toString())){
+                               if(pattern2.getBonnesReponses().get(i).equals(t.getText().toString())){
                                    nb_bonnerep++;
                                } else {
                                    nb_mauvaiserep++;

@@ -70,6 +70,7 @@ public class Tirage {
         }
         entreprise_joueur = MyApplication.getInstance().getEntreprise_joueur();
         entreprise_joueur.setNbContrats(entreprise_joueur.getNbContrats()-nbTirage);
+
         return getEmployeTire();
     }
 

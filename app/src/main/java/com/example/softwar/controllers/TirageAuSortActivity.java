@@ -2,6 +2,7 @@ package com.example.softwar.controllers;
 
 import android.app.Dialog;
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ public class TirageAuSortActivity extends AppCompatActivity {
 
 
         dialog2 = new Dialog(TirageAuSortActivity.this);
+        dialog2.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog2.setContentView(R.layout.popup_amelioration);
     }
 
@@ -51,6 +53,7 @@ public class TirageAuSortActivity extends AppCompatActivity {
         //Ajoute au model et a la BD
         entreprise_joueur.addEmploye(t.getEmployeTire().get(0));
         dialog = new Dialog(TirageAuSortActivity.this);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         dialog.setContentView(R.layout.popup_tirage);
         TextView nomE = (TextView)dialog.findViewById(R.id.nom_employe);
         TextView pnomE = (TextView)dialog.findViewById(R.id.prenom_employe);
