@@ -64,7 +64,7 @@ public class ChooseEntrepriseToAttack extends AppCompatActivity {
 
     public void setClassement() {
 
-        for (int i = 0; i < liste_entreprises.size(); i++) {
+        for (int i = 1; i < liste_entreprises.size(); i++) {
 
             TextView tx = new TextView(this);
 

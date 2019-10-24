@@ -58,6 +58,7 @@ public class ResultatMiniJeu extends AppCompatActivity {
         affiche_resultats();
 
         getResJeu();
+        ((MyApplication)this.getApplication()).decrementCompteur();
 
     }
 
@@ -108,6 +109,13 @@ public class ResultatMiniJeu extends AppCompatActivity {
         Entreprise eA = MyApplication.getInstance().getEntreprise_attaquer();
         eA.setNbusers(eA.getNbusers()-degats.getNbUtilisateurs());
         eA.setArgentEntreprise(eA.getArgentEntreprise()-degats.getArgent());
+
+        argent.setText("- "+degats.getArgent()+"€");
+        nbusers.setText("- "+degats.getNbUtilisateurs()+" utilisateurs");
+        puissance.setText("- "+degats.getPuissance()+" puissance du logiciel");
+        ergonomie.setText("- "+degats.getErgonomie()+" ergonomie du logiciel");
+        securite.setText("- "+degats.getSecurite()+" sécurité du logiciel");
+        rentabilite.setText("- "+degats.getRentabilite()+" rentabilite du logiciel");
 
         entreprisePerso.setArgentEntreprise(entreprisePerso.getArgentEntreprise()+degats.getArgent());
         ((MyApplication)this.getApplication()).setEntreprise_attaquer(null);

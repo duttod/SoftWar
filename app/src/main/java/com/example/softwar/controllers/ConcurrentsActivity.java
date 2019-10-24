@@ -57,6 +57,7 @@ public class ConcurrentsActivity extends AppCompatActivity {
 
         liste_entreprises.add(((MyApplication)this.getApplication()).getEntreprise_joueur());
         Collections.sort(liste_entreprises);
+        Collections.reverse(liste_entreprises);
 
         for (int i = 0; i < liste_entreprises.size(); i++) {
             argent_total += liste_entreprises.get(i).getArgentEntreprise();
