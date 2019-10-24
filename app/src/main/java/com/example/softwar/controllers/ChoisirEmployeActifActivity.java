@@ -52,6 +52,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
         // Récupération du DatabaseClient
         mDb = DatabaseClient.getInstance(getApplicationContext());
         entreprise_joueur=((MyApplication)this.getApplication()).getEntreprise_joueur();
+        entreprise_joueur.setEmployes();
 
         // Récupérer les vues
         listEmp = findViewById(R.id.listEmploye);
@@ -80,7 +81,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
                 int occurrence =0;
                 for (int c =0; c<3;c++){
                     if(empActif.get(c).getChildCount()>0){
-                        System.out.println(empActif.get(c).getChildCount());
+
                         if (Integer.parseInt(((TextView)empActif.get(c).getChildAt(2)).getText().toString()) == emp.getId()){
                             occurrence++;
                         }
@@ -89,11 +90,9 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
                 }
                 if (occurrence<mDb.getAppDatabase().employeDansEntrepriseDao().getUnEmployeDuneEntreprise(entreprise_joueur.getNomEntreprise(),emp.getId()).getQuantite()){
                     while (i < 3 && empActif.get(i).getChildCount()>0){
-                        System.out.println(empActif.get(i).getChildCount());
-                        System.out.println(empActif.get(i).getChildAt(0));
                         i++;
                     }
-                    System.out.println(i);
+
                     if (i == 3 && empActif.get(i-1).getChildCount() >0){
 
                     }
@@ -131,7 +130,6 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
 //                 Employe e = new Employe("Thierry","Henry",4,1,1,1);
 //                 employeList.add(e);
 
-                System.out.println(employeList.get(0).getNomEmploye());
                 return employeList;
             }
 
@@ -165,10 +163,10 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
             if (entreprise_joueur.getEmployeActif().get(i) != -1){
                 setEmployeActif(i,mDb.getAppDatabase().employeDao().getAnEmploye(entreprise_joueur.getEmployeActif().get(i)));
             }
-
         }
 
     }
+
     public void setEmployeActif(int i, Employe emp){
         // TODO  : Prendre en compte l'insertion et la suppression dans la bdd
         final int j = i;
@@ -209,7 +207,7 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
          * */
 
         entreprise_joueur.setEmployeActif(j,emp.getId());
-        mDb.getAppDatabase().entreprisepersodao().update(entreprise_joueur);
+        saveEmployeActifs();
 
     }
 
@@ -218,4 +216,32 @@ public class ChoisirEmployeActifActivity extends AppCompatActivity {
         text.setTextColor(Color.parseColor("#FFB900"));
         text.setTextSize(25);
     }
+
+
+    private void saveEmployeActifs() {
+
+        class saveEmployeActifs extends AsyncTask<Void, Void, EntreprisePerso> {
+
+            @Override
+            protected EntreprisePerso doInBackground(Void... voids) {
+
+                System.out.println("Id enregistré : "+entreprise_joueur.getIdEmployeActif1());
+                mDb.getAppDatabase().entreprisepersodao().update(entreprise_joueur);
+                return entreprise_joueur;
+
+            }
+
+            @Override
+            protected void onPostExecute(EntreprisePerso ent) {
+                super.onPostExecute(ent);
+                System.out.println(mDb.getAppDatabase().entreprisepersodao().getAll().get(0).getIdEmployeActif1());
+            }
+
+        }
+
+        saveEmployeActifs sa = new saveEmployeActifs();
+        sa.execute();
+
+    }
+
 }

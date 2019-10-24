@@ -109,7 +109,10 @@ public class ChargePartie extends AppCompatActivity {
             protected void onPostExecute(List<EntreprisePerso> ent) {
                 super.onPostExecute(ent);
 
-                    entreprise_joueur = new EntreprisePerso (mdb, ent.get(0).getNomEntreprise(), ent.get(0).getNomLogiciel(), ent.get(0).getArgentEntreprise(), ent.get(0).getNbContrats());
+                    System.out.println("ID Charge : "+mdb.getAppDatabase().entreprisepersodao().getAll().get(0).getIdEmployeActif1());
+
+                    entreprise_joueur = ent.get(0);
+                    entreprise_joueur.setEntreprisePersoCharge(mdb);
 
                     MyApplication.getInstance().setEntreprise_joueur(entreprise_joueur);
                     setView();
