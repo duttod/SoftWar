@@ -35,7 +35,7 @@ public class Tirage {
         {
             switch (allEmploye.get(i).getRarete()) {
                 case 1:
-                    for (int j= 0; j <3s;j++){
+                    for (int j= 0; j <3;j++){
                         tirageEmploye.add(allEmploye.get(i));
                     }
                     break;
