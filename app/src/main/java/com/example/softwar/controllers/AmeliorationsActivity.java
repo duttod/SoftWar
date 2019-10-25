@@ -24,16 +24,6 @@ public class AmeliorationsActivity extends AppCompatActivity {
     long coutErgo,coutOpti,coutSecu,coutPuissance;
     private Dialog dialog;
 
-    @Override
-    public void onPause(){
-        super.onPause();
-        ((MyApplication)this.getApplication()).mediaPlayer.pause();
-    }
-    @Override
-    public void onResume(){
-        super.onResume();
-        ((MyApplication)this.getApplication()).mediaPlayer.start();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
